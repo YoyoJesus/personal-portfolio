@@ -20,7 +20,7 @@ export const SITE_CONFIG: SiteConfig = {
     
   ],
   socialImage: "/zen-og.png",
-  canonicalURL: "https://astro-zen.vercel.app",
+  canonicalURL: "https://dev.asternberg.xyz",
 };
 
 export const SITE_CONTENT: SiteContent = {
@@ -30,6 +30,7 @@ export const SITE_CONTENT: SiteContent = {
     summary:
       "Student at Kent State University specializing in cybersecurity and network administration. Event Coordinator for HacKSU, Kent State's premier hacking club.",
     email: "austinsternberg45@gmail.com",
+    resume: "https://resume.asternberg.xyz",
   },
   experience: [
     {
