@@ -27,6 +27,7 @@ export interface ExperienceProps {
   position: string;
   startDate: string;
   endDate: string;
+  workType: string;
   summary: string | string[];
 }
 
