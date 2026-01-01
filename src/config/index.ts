@@ -1,23 +1,23 @@
 import type { SiteConfig, SiteContent } from "../types";
 
 export const SITE_CONFIG: SiteConfig = {
-  title: "Alejandro Múnez — Mobile & Web Developer",
-  author: "Alejandro Múnez Cuntez",
+  title: "Austin Sternberg — Computer Science Student",
+  author: "Austin Sternberg",
   description:
-    "Software Engineer based in San Francisco, USA. I specialize in UI design, web and mobile application development and maintenance.",
+    "Decicated Computer Science student from Mentor, Ohio. Working twards a penetration testing or network engineering career. Event Coordinator for HacKSU, Kent State's largest CS club.",
   lang: "en",
-  siteLogo: "/alejandro-small.jpg",
+  siteLogo: "/austin-small.jpg",
   navLinks: [
     { text: "Experience", href: "#experience" },
     { text: "Projects", href: "#projects" },
     { text: "About", href: "#about" },
   ],
   socialLinks: [
-    { text: "Twitter", href: "https://github.com/immois/astro-zen" },
-    { text: "LinkedIn", href: "https://github.com/immois/astro-zen" },
-    { text: "Github", href: "https://github.com/immois/astro-zen" },
-    { text: "Youtube", href: "https://github.com/immois/astro-zen" },
-    { text: "Dribbble", href: "https://github.com/immois/astro-zen" },
+    { text: "Linktree" , href: "https://yoyojesus.xyz" },
+    { text: "LinkedIn", href: "https://www.linkedin.com/in/austin-sternberg/" },
+    { text: "Github", href: "https://github.com/yoyojesus" },
+    { text: "Youtube", href: "https://www.youtube.com/@yoyojesus" },
+    
   ],
   socialImage: "/zen-og.png",
   canonicalURL: "https://astro-zen.vercel.app",
@@ -25,41 +25,49 @@ export const SITE_CONFIG: SiteConfig = {
 
 export const SITE_CONTENT: SiteContent = {
   hero: {
-    name: "Alejandro Múnez",
-    specialty: "Mobile & Web Developer",
+    name: "Austin Sternberg",
+    specialty: "Computer Science Student",
     summary:
-      "Developer based in San Francisco, USA. I specialize in UI design, web and mobile application development and maintenance.",
-    email: "example@email.com",
+      "Student at Kent State University specializing in cybersecurity and network administration. Event Coordinator for HacKSU, Kent State's premier hacking club.",
+    email: "austinsternberg45@gmail.com",
   },
   experience: [
     {
-      company: "Zalmart",
-      position: "Lead Android Developer",
-      startDate: "May 2018",
-      endDate: "Sept 2020",
+      company: "HacKSU",
+      position: "Events Coordinator",
+      startDate: "Jan 2025",
+      endDate: "Present",
       summary: [
-        "Implemented advanced memory management and code optimization techniques, resulting in a reduction in application load time by 40% and a decrease in crashes by 25%. This significantly improved user experience and increased user retention by 20%.",
-        "I led a team of developers in building and integrating new features using Jetpack Android components such as LiveData and ViewModel. This enabled us to build scalable and maintainable applications, reducing the crash rate by 20% and speeding up the time to delivery of new features by 15%.",
-        "Integrated Google Pay for in-app purchases, resulting in a 35% increase in mobile transaction revenue. Additionally, implemented Firebase Analytics to gain insights into user behavior, enabling data-driven optimizations and a 30% increase in user retention.",
+        "Manage the budget, timeline, and marketing effort for four events spread across each academic year.",
+        "Delegate tasks including emailing sponsors, picking up items, and advertising outside of Kent State.",
+        "Serve as the main point of contact & head of events. Work with University departments to secure funding, locations, and interest.",
+        "Coordinate with sponsors to provide prizes, swag, and food for events.",
+        "Work directly with Department Heads to ensure events run smoothly, safely, and within University guidelines.",
       ],
     },
     {
-      company: "Bankit",
-      position: "Mobile Developer",
-      startDate: "Feb 2017",
-      endDate: "May 2018",
+      company: "Riverside Local Schools",
+      position: "IT Intern",
+      startDate: "May 2025",
+      endDate: "Aug 2025",
       summary: [
-        "I designed and developed a mobile application using Flutter, allowing it to be deployed on both Android and iOS with a single codebase. This reduced development time by 50% and maintenance costs by 30%, facilitating a consistent user experience on both platforms.",
-        "I integrated biometric authentication and data encryption, significantly improving the security of user data. This implementation resulted in a 40% increase in user trust and a 25% reduction in unauthorized access attempts.",
+        "Supported network and device maintenance across district buildings.",
+        "Troubleshooting hardware and software issues for staff, classrooms, and students.",
+        "Assisted with system upgrades and deployment of new technologies.",
+        "Worked closely with the IT team to troubleshoot and resolve networking issues and ensure optimal performance of school systems.",
+        "Lead student workers in learning how to repair and maintain devices used by students and staff.",
       ],
     },
     {
-      company: "Driveer",
-      position: "Frontend Developer",
-      startDate: "Jun 2015",
-      endDate: "Oct 2016",
-      summary:
-        "Developed and integrated a real-time vehicle tracking system using WebSockets, improving accuracy and data update in the application. This functionality increased user satisfaction by 30% and reduced customer service inquiries by 25%.",
+      company: "Riverside Local Schools",
+      position: "IT Student",
+      startDate: "Jun 2022",
+      endDate: "Feb 2025",
+      summary: [
+        "Assessed and repaired student devices, primarily chromebooks.",
+        "Cleaned and inventoried tech equipment across the district.",
+        "Prepared devices for sale or disposal, primarily through the deletion and destruction of data to DOTD standards.",
+      ],
     },
   ],
   projects: [
@@ -87,11 +95,11 @@ export const SITE_CONTENT: SiteContent = {
   ],
   about: {
     description: `
-      Hi, I’m Alejandro Múnez, a passionate Mobile and Web Developer with a knack for crafting seamless digital experiences. With a strong background in both Android and iOS development, as well as front-end web technologies, I thrive in the intersection where creativity meets technology.
+      Hi, I’m Austin Sternberg, a passionate Mobile and Web Developer with a knack for crafting seamless digital experiences. With a strong background in both Android and iOS development, as well as front-end web technologies, I thrive in the intersection where creativity meets technology.
 
       Over the years, I’ve honed my skills in building robust, user-friendly applications that not only meet the needs of users but also push the boundaries of what’s possible. My projects range from innovative mobile applications to responsive web designs, all with a focus on performance, security, and scalability.
     `,
-    image: "/alejandro-big.jpg",
+    image: "/austin-big.JPG",
   },
 };
 
