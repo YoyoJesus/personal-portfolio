@@ -37,6 +37,7 @@ export const SITE_CONTENT: SiteContent = {
       position: "Events Coordinator",
       startDate: "Jan 2025",
       endDate: "Present",
+      workType: "Part-Time",
       summary: [
         "Manage the budget, timeline, and marketing effort for four events spread across each academic year.",
         "Delegate tasks including emailing sponsors, picking up items, and advertising outside of Kent State.",
@@ -49,7 +50,8 @@ export const SITE_CONTENT: SiteContent = {
       company: "Riverside Local Schools",
       position: "IT Intern",
       startDate: "May 2025",
-      endDate: "Aug 2025",
+      endDate: "Present",
+      workType: "Internship - Seasonal",
       summary: [
         "Supported network and device maintenance across district buildings.",
         "Troubleshooting hardware and software issues for staff, classrooms, and students.",
@@ -63,10 +65,12 @@ export const SITE_CONTENT: SiteContent = {
       position: "IT Student",
       startDate: "Jun 2022",
       endDate: "Feb 2025",
+      workType: "Seasonal",
       summary: [
         "Assessed and repaired student devices, primarily chromebooks.",
         "Cleaned and inventoried tech equipment across the district.",
         "Prepared devices for sale or disposal, primarily through the deletion and destruction of data to DOTD standards.",
+        "Took inventory of all technology assets in the district, and set up equipment for classroom use.",
       ],
     },
   ],

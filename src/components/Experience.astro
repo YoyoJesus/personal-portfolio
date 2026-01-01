@@ -11,7 +11,7 @@ const { experience } = Astro.props;
 
 <Section text="Work Experience" href="experience">
   {
-    experience.map(({ company, position, startDate, endDate, summary }) => (
+    experience.map(({ company, position, startDate, workType, endDate, summary }) => (
       <div class="mb-10">
         <h3 class="mb-1.5 font-serif text-2xl font-semibold text-white">
           {company}
@@ -22,6 +22,9 @@ const { experience } = Astro.props;
           </h4>
           <span class="pb-[2px] text-sm text-white/70">
             {startDate} — {endDate}
+          </span>
+          <span class="pb-[1.25px] text-sm text-white/50">
+            {workType}
           </span>
         </div>
         {Array.isArray(summary) ? (
