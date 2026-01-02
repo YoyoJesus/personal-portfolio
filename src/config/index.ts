@@ -28,7 +28,7 @@ export const SITE_CONTENT: SiteContent = {
     name: "Austin Sternberg",
     specialty: "Computer Science Student",
     summary:
-      "Student at Kent State University specializing in cybersecurity and network administration. Event Coordinator for HacKSU, Kent State's premier hacking club.",
+      "Student at Kent State University specializing in cybersecurity and network administration. Event Coordinator for HacKSU, Kent State's premier computer science club.",
     email: "austinsternberg45@gmail.com",
     resume: "https://resume.asternberg.xyz",
   },
@@ -114,9 +114,11 @@ export const SITE_CONTENT: SiteContent = {
   ],
   about: {
     description: `
-      Hi, I’m Austin Sternberg, a passionate Mobile and Web Developer with a knack for crafting seamless digital experiences. With a strong background in both Android and iOS development, as well as front-end web technologies, I thrive in the intersection where creativity meets technology.
+      Hi, I'm Austin Sternberg :wave:. I'm a Computer Science student at Kent State and am passionate for cybersecurity and networking. I've been working with computers since I was a kid, loving to tinker with hardware and software. I currently work two part-time/seasonal jobs between Riverside Local Schools, where I serve as an IT Intern, and HacKSU, where I am the Events Coordinator.
 
-      Over the years, I’ve honed my skills in building robust, user-friendly applications that not only meet the needs of users but also push the boundaries of what’s possible. My projects range from innovative mobile applications to responsive web designs, all with a focus on performance, security, and scalability.
+      In my free time, I've been working on a handful of personal project, mostly revolving around web development, though the python INFOSEC repository is a personal favorite of mine. Outside of CS, I enjoy combat robotics, where I am currently serving as the President of Kent State's Combat Robotics club.
+
+      I'm always working on something or learning new skills. Feel free to reach out if you'd like to connect!
     `,
     image: "/austin-big.JPG",
   },
