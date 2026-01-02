@@ -125,7 +125,6 @@ const publicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
     }
   });
 
-  // Handle form submission
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
@@ -138,10 +137,9 @@ const publicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
         from_name: formData.get('name'),
         from_email: formData.get('email'),
         message: formData.get('message'),
-        to_name: 'Austin', // You can customize this
+        to_name: 'Austin',
       };
 
-      // Send directly from the form element
       const response = await emailjs.sendForm(serviceId, templateId, form, publicKey);
       
       console.log('EmailJS Response:', response);
