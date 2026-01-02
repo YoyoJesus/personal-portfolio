@@ -77,26 +77,40 @@ export const SITE_CONTENT: SiteContent = {
   ],
   projects: [
     {
-      name: "Spotifu Music",
-      summary: "A music streaming app that emulates Spotify's core features.",
+      name: "BluQ",
+      summary: "TCP/IP implemented in Bluetooth to build a simple chat application. Built with python and Angular for user frontend. ",
       linkPreview: "/",
-      linkSource: "https://github.com/immois/astro-zen",
+      linkSource: "https://github.com/IanRohrbacher/Dearborn-Hack-2025",
       image: "/spotifu.png",
     },
     {
-      name: "Shopp App",
-      summary: "An e-commerce platform that replicates Shopify's key features.",
+      name: "Python INFOSEC",
+      summary: "A collection of python scripts for various information security and reconnaissance tasks.",
       linkPreview: "/",
-      linkSource: "https://github.com/immois/astro-zen",
+      linkSource: "https://github.com/YoyoJesus/python-INFOsec",
       image: "/shopify-clon.png",
     },
     {
-      name: "ClonTagram",
-      summary: "A social network that replicates the features of Instagram",
+      name: "MediTrack",
+      summary: "A website to allow users to make appointments with doctors and track diagoneses. Doctors can manage appointments and send information to billing. Billing puts in claims and insurance can see them. Build with flask and postgressql",
       linkPreview: "/",
-      linkSource: "https://github.com/immois/astro-zen",
+      linkSource: "https://github.com/EnderHubris/MediTrack",
       image: "/clone-ig.png",
     },
+    {
+      name: "Ripple Chat",
+      summary: "A real-time chat, voice, and video application using websockets and peer-to-peer connections. Built with React, Node.js, and WebRTC.",
+      linkPreview: "/",
+      linkSource: "https://github.com/arizotaz/discord_clone",
+      image: "/astro-portfolio.png",
+    },
+    {
+      name: "SCI Smart Badge",
+      summary: "An IOT badge that collects decibel levels and motion data to monitor engagement in small group settings. Built using an Arduino Sense board and integrated with a set of python scripts for data analysis.",
+      linkPreview: "/",
+      linkSource: "https://github.com/YoyoJesus/SCI-Lab-BadgeSoftware",
+      image: "/astro-portfolio.png",
+    }
   ],
   about: {
     description: `
