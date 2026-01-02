@@ -1,0 +1,158 @@
+---
+const serviceId = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+const templateId = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+const publicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+---
+
+<div id="contact-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/70 backdrop-blur-sm">
+  <div class="relative w-full max-w-md rounded-2xl bg-[#1a1a1a] p-8 shadow-2xl border border-neutral/20">
+    <button
+      id="close-modal"
+      class="absolute right-4 top-4 text-2xl text-neutral hover:text-white transition-colors"
+      aria-label="Close modal"
+    >
+      ×
+    </button>
+    
+    <h2 class="mb-6 font-serif text-3xl font-bold text-white">Get in Touch</h2>
+    
+    <form id="contact-form" class="space-y-4">
+      <div class="form-group">
+        <label for="name" class="mb-2 block text-sm font-medium text-neutral">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="w-full rounded-lg border border-neutral/30 bg-black/50 px-4 py-3 text-white placeholder-neutral/50 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+          placeholder="Your name"
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="email" class="mb-2 block text-sm font-medium text-neutral">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full rounded-lg border border-neutral/30 bg-black/50 px-4 py-3 text-white placeholder-neutral/50 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+          placeholder="your.email@example.com"
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="message" class="mb-2 block text-sm font-medium text-neutral">Message:</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="5"
+          required
+          class="w-full rounded-lg border border-neutral/30 bg-black/50 px-4 py-3 text-white placeholder-neutral/50 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
+          placeholder="Your message..."
+        ></textarea>
+      </div>
+      
+      <button
+        type="submit"
+        id="submit-btn"
+        class="w-full rounded-full bg-primary px-8 py-4 font-medium text-white hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        Send Message
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div id="toast" class="fixed top-4 right-4 z-[60] hidden min-w-[300px] rounded-lg border border-green-500/20 bg-green-500/10 px-6 py-4 shadow-lg backdrop-blur-sm">
+  <p id="toast-message" class="text-sm font-medium text-green-400"></p>
+</div>
+
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+></script>
+
+<script define:vars={{ serviceId, templateId, publicKey }}>
+  // Initialize EmailJS
+  emailjs.init(publicKey);
+
+  const modal = document.getElementById('contact-modal');
+  const form = document.getElementById('contact-form');
+  const closeBtn = document.getElementById('close-modal');
+  const openBtn = document.getElementById('open-contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const toast = document.getElementById('toast');
+  const toastMessage = document.getElementById('toast-message');
+
+  function showToast(message, isError = false) {
+    toastMessage.textContent = message;
+    toast.className = `fixed top-4 right-4 z-[60] min-w-[300px] rounded-lg border px-6 py-4 shadow-lg backdrop-blur-sm ${
+      isError 
+        ? 'border-red-500/20 bg-red-500/10' 
+        : 'border-green-500/20 bg-green-500/10'
+    }`;
+    toastMessage.className = `text-sm font-medium ${isError ? 'text-red-400' : 'text-green-400'}`;
+    toast.classList.remove('hidden');
+    
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 5000);
+  }
+
+  // Open modal
+  openBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  });
+
+  // Close modal
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+    form.reset();
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Handle form submission
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    try {
+      const formData = new FormData(form);
+      const templateParams = {
+        from_name: formData.get('name'),
+        from_email: formData.get('email'),
+        message: formData.get('message'),
+        to_name: 'Austin', // You can customize this
+      };
+
+      // Send directly from the form element
+      const response = await emailjs.sendForm(serviceId, templateId, form, publicKey);
+      
+      console.log('EmailJS Response:', response);
+      showToast('Message sent successfully! I\'ll get back to you soon.', false);
+      closeModal();
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      showToast('Failed to send message. Please try again.', true);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+</script>
