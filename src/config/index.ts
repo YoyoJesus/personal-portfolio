@@ -110,11 +110,26 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "/",
       linkSource: "https://github.com/YoyoJesus/SCI-Lab-BadgeSoftware",
       image: "/astro-portfolio.png",
-    }
+    },
+    {
+      name: "KSU Combat Robotics Website",
+      summary: "A basic website to showcase Kent State's Combat Robotics club, built with React and hosted on Vercel. Currently being improved and moved to SvelteKit.",
+      linkPreview: "https://ksucombat.club",
+      linkSource: "https://github.com/CombatRoboticsKSU/KSU-Combat-Robotics-Website",
+      image: "/astro-portfolio.png",
+    },
+    {
+      name: "Kent Hack It",
+      summary: "Website and Challenges for Kent Hack It, HacKSU's annual CTF event. Built with React & MongoDB. Challenges written using a variety of technologies.",
+      linkPreview: "/",
+      linkSource: "https://github.com/hacksu/kent-hack-it",
+      image: "/astro-portfolio.png",
+    },
+    
   ],
   about: {
     description: `
-      Hi, I'm Austin Sternberg :wave:. I'm a Computer Science student at Kent State and am passionate for cybersecurity and networking. I've been working with computers since I was a kid, loving to tinker with hardware and software. I currently work two part-time/seasonal jobs between Riverside Local Schools, where I serve as an IT Intern, and HacKSU, where I am the Events Coordinator.
+      Hi, I'm Austin Sternberg 👋. I'm a Computer Science student at Kent State and am passionate for cybersecurity and networking. I've been working with computers since I was a kid, loving to tinker with hardware and software. I currently work two part-time/seasonal jobs between Riverside Local Schools, where I serve as an IT Intern, and HacKSU, where I am the Events Coordinator.
 
       In my free time, I've been working on a handful of personal project, mostly revolving around web development, though the python INFOSEC repository is a personal favorite of mine. Outside of CS, I enjoy combat robotics, where I am currently serving as the President of Kent State's Combat Robotics club.
 
