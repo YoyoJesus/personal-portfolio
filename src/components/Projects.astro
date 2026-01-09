@@ -122,85 +122,89 @@ const { projects } = Astro.props;
     const cards = Array.from(track.querySelectorAll('.project-card'));
     const cardCount = cards.length;
     
-    // Clone cards for infinite scroll
-    cards.forEach(card => {
-      const clone = card.cloneNode(true) as HTMLElement;
-      track.appendChild(clone);
-    });
+    // Clone cards three times - before and after for true infinite circular scroll
+    const clonesBefore = cards.map(card => card.cloneNode(true) as HTMLElement);
+    const clonesAfter = cards.map(card => card.cloneNode(true) as HTMLElement);
     
-    let currentIndex = 0;
+    // Prepend and append clones
+    clonesBefore.reverse().forEach(clone => track.insertBefore(clone, track.firstChild));
+    clonesAfter.forEach(clone => track.appendChild(clone));
+    
     let autoScrollInterval: number;
-    let isUserScrolling = false;
+    let isUserInteracting = false;
     let scrollTimeout: number;
 
     function getCardWidth() {
       return cards[0]?.offsetWidth || 0;
     }
 
-    function scrollToIndex(index: number, smooth = true) {
-      const cardWidth = getCardWidth();
-      const gap = 16; // gap-4 = 1rem = 16px
-      const scrollPosition = index * (cardWidth + gap);
-      
-      carousel.scrollTo({
-        left: scrollPosition,
-        behavior: smooth ? 'smooth' : 'auto'
-      });
+    function getGap() {
+      return 16; // gap-4 = 1rem = 16px
     }
 
-    function handleInfiniteScroll() {
+    function getTotalCardWidth() {
+      return getCardWidth() + getGap();
+    }
+
+    // Initialize scroll position to center set
+    function initializePosition() {
+      const totalWidth = getTotalCardWidth();
+      carousel.scrollLeft = totalWidth * cardCount;
+    }
+
+    // Handle infinite circular wrapping
+    function handleCircularScroll() {
       const scrollLeft = carousel.scrollLeft;
-      const cardWidth = getCardWidth();
-      const gap = 16;
-      const totalWidth = cardWidth + gap;
+      const totalWidth = getTotalCardWidth();
+      const minScroll = totalWidth * (cardCount - 1);
+      const maxScroll = totalWidth * (cardCount * 2 + 1);
       
-      // If scrolled past all original cards, reset to beginning
-      if (scrollLeft >= totalWidth * cardCount) {
-        carousel.scrollTo({ left: 0, behavior: 'auto' });
-        currentIndex = 0;
+      // If scrolled too far right, wrap to beginning (maintaining relative position)
+      if (scrollLeft >= maxScroll) {
+        carousel.scrollLeft = scrollLeft - (totalWidth * cardCount);
       }
-      // If scrolled before first card (shouldn't happen but safety check)
-      else if (scrollLeft < 0) {
-        carousel.scrollTo({ left: totalWidth * (cardCount - 1), behavior: 'auto' });
-        currentIndex = cardCount - 1;
+      // If scrolled too far left, wrap to end (maintaining relative position)
+      else if (scrollLeft <= minScroll) {
+        carousel.scrollLeft = scrollLeft + (totalWidth * cardCount);
       }
     }
 
     function autoScroll() {
-      if (!isUserScrolling) {
-        currentIndex = (currentIndex + 1) % cardCount;
-        scrollToIndex(currentIndex);
+      if (!isUserInteracting) {
+        carousel.scrollBy({
+          left: getTotalCardWidth(),
+          behavior: 'smooth'
+        });
       }
     }
+
+    // Initialize position
+    setTimeout(initializePosition, 0);
 
     // Start auto-scroll
     autoScrollInterval = setInterval(autoScroll, 4000) as unknown as number;
 
-    // Handle user interaction
+    // Handle scroll events for circular wrapping
     carousel.addEventListener('scroll', () => {
-      isUserScrolling = true;
       clearTimeout(scrollTimeout);
       
       scrollTimeout = setTimeout(() => {
-        handleInfiniteScroll();
-        isUserScrolling = false;
-        
-        // Update current index based on scroll position
-        const cardWidth = getCardWidth();
-        const gap = 16;
-        const totalWidth = cardWidth + gap;
-        currentIndex = Math.round(carousel.scrollLeft / totalWidth) % cardCount;
-      }, 150) as unknown as number;
+        handleCircularScroll();
+      }, 100) as unknown as number;
     });
 
-    // Pause on touch/mouse interaction
-    carousel.addEventListener('touchstart', () => {
-      isUserScrolling = true;
-    });
+    // Pause auto-scroll on user interaction
+    const pauseAutoScroll = () => {
+      isUserInteracting = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isUserInteracting = false;
+      }, 2000) as unknown as number;
+    };
 
-    carousel.addEventListener('mousedown', () => {
-      isUserScrolling = true;
-    });
+    carousel.addEventListener('touchstart', pauseAutoScroll);
+    carousel.addEventListener('mousedown', pauseAutoScroll);
+    carousel.addEventListener('wheel', pauseAutoScroll);
 
     // Cleanup on page navigation
     document.addEventListener('astro:before-preparation', () => {
