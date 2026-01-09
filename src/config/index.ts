@@ -82,6 +82,18 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "/",
       linkSource: "https://github.com/IanRohrbacher/Dearborn-Hack-2025",
       image: "/bluq.png",
+      collaborators: [
+        {
+          name: "Ian Rohrbacher",
+          image: "/collaborators/ianr.jpg",
+          profileLink: "https://github.com/IanRohrbacher",
+        },
+        {
+          name: "Mason Bair",
+          image: "/collaborators/masonb.jpg",
+          profileLink: "https://www.masonbair.com/",
+        },
+      ],
     },
     {
       name: "Python INFOSEC",

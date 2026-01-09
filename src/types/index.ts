@@ -38,6 +38,7 @@ export interface ProjectProps {
   image: string;
   linkPreview?: string;
   linkSource?: string;
+  collaborators?: CollaboratorProps[];
 }
 
 export interface AboutProps {
@@ -48,4 +49,10 @@ export interface AboutProps {
 export interface HeaderProps {
   siteLogo: string;
   navLinks: { text: string; href: string }[];
+}
+
+export interface CollaboratorProps {
+  name: string;
+  image: string;
+  profileLink?: string;
 }

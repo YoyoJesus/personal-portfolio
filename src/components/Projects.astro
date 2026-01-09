@@ -15,7 +15,7 @@ const { projects } = Astro.props;
   <div id="projects-carousel" class="sm:hidden mb-8 -mx-4 px-4 overflow-x-auto scrollbar-hide">
     <div id="projects-track" class="flex gap-4 pb-4 animate-scroll">
       {
-        projects.map(({ name, summary, image, linkPreview, linkSource }) => {
+        projects.map(({ name, summary, image, linkPreview, linkSource, collaborators }) => {
           return (
             <div class="project-card snap-center shrink-0 w-[85vw] max-w-[340px] rounded-2xl border border-neutral/20 bg-black">
               <div class="relative z-[1] flex flex-col h-[520px] w-full rounded-2xl bg-[#5A7863]/85 before:absolute before:inset-0 before:z-[-1] before:rounded-2xl before:bg-[url(/raja.png)] before:bg-[length:128px] before:bg-repeat before:opacity-[5%] before:content-['']">
@@ -42,6 +42,46 @@ const { projects } = Astro.props;
                       </a>
                     )}
                   </div>
+                  {collaborators && collaborators.length > 0 && (
+                    <div class="mt-4 pt-4 border-t border-neutral/20">
+                      <p class="text-xs text-neutral/60 mb-2">Collaborators:</p>
+                      <div class="flex gap-2 flex-wrap">
+                        {collaborators.map(({ name: collabName, image: collabImage, profileLink }) => (
+                          profileLink ? (
+                            <a
+                              href={profileLink}
+                              target="_blank"
+                              class="flex items-center gap-2 bg-black/30 rounded-full px-3 py-1.5 hover:bg-black/50 transition-colors"
+                              title={collabName}
+                            >
+                              <Image
+                                src={collabImage}
+                                alt={collabName}
+                                width="24"
+                                height="24"
+                                class="w-6 h-6 rounded-full object-cover"
+                              />
+                              <span class="text-xs text-white">{collabName}</span>
+                            </a>
+                          ) : (
+                            <div
+                              class="flex items-center gap-2 bg-black/30 rounded-full px-3 py-1.5"
+                              title={collabName}
+                            >
+                              <Image
+                                src={collabImage}
+                                alt={collabName}
+                                width="24"
+                                height="24"
+                                class="w-6 h-6 rounded-full object-cover"
+                              />
+                              <span class="text-xs text-white">{collabName}</span>
+                            </div>
+                          )
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div class="flex-1 overflow-hidden min-h-0">
                   <Image
@@ -58,7 +98,7 @@ const { projects } = Astro.props;
         })
       }
       {
-        projects.map(({ name, summary, image, linkPreview, linkSource }) => {
+        projects.map(({ name, summary, image, linkPreview, linkSource, collaborators }) => {
           return (
             <div class="project-card snap-center shrink-0 w-[85vw] max-w-[340px] rounded-2xl border border-neutral/20 bg-black">
               <div class="relative z-[1] flex flex-col h-[520px] w-full rounded-2xl bg-[#5A7863]/85 before:absolute before:inset-0 before:z-[-1] before:rounded-2xl before:bg-[url(/raja.png)] before:bg-[length:128px] before:bg-repeat before:opacity-[5%] before:content-['']">
@@ -85,6 +125,46 @@ const { projects } = Astro.props;
                       </a>
                     )}
                   </div>
+                  {collaborators && collaborators.length > 0 && (
+                    <div class="mt-4 pt-4 border-t border-neutral/20">
+                      <p class="text-xs text-neutral/60 mb-2">Collaborators:</p>
+                      <div class="flex gap-2 flex-wrap">
+                        {collaborators.map(({ name: collabName, image: collabImage, profileLink }) => (
+                          profileLink ? (
+                            <a
+                              href={profileLink}
+                              target="_blank"
+                              class="flex items-center gap-2 bg-black/30 rounded-full px-3 py-1.5 hover:bg-black/50 transition-colors"
+                              title={collabName}
+                            >
+                              <Image
+                                src={collabImage}
+                                alt={collabName}
+                                width="24"
+                                height="24"
+                                class="w-6 h-6 rounded-full object-cover"
+                              />
+                              <span class="text-xs text-white">{collabName}</span>
+                            </a>
+                          ) : (
+                            <div
+                              class="flex items-center gap-2 bg-black/30 rounded-full px-3 py-1.5"
+                              title={collabName}
+                            >
+                              <Image
+                                src={collabImage}
+                                alt={collabName}
+                                width="24"
+                                height="24"
+                                class="w-6 h-6 rounded-full object-cover"
+                              />
+                              <span class="text-xs text-white">{collabName}</span>
+                            </div>
+                          )
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div class="flex-1 overflow-hidden min-h-0">
                   <Image
@@ -106,7 +186,7 @@ const { projects } = Astro.props;
   <!-- Desktop stacked cards (original layout) -->
   <div class="hidden sm:block">
     {
-      projects.map(({ name, summary, image, linkPreview, linkSource }, index) => {
+      projects.map(({ name, summary, image, linkPreview, linkSource, collaborators }, index) => {
         const top = 98 + index * 40;
         return (
           <div
@@ -114,7 +194,7 @@ const { projects } = Astro.props;
             class="sticky mb-12 rounded-2xl border border-neutral/20 bg-black"
           >
             <div class="bg-difu relative z-[1] grid h-[580px] w-full grid-rows-2 rounded-2xl bg-[#5A7863]/85 before:absolute before:inset-0 before:z-[-1] before:rounded-2xl before:bg-[url(/raja.png)] before:bg-[length:128px] before:bg-repeat before:opacity-[5%] before:content-[''] sm:grid-cols-2 sm:grid-rows-1 md:h-96">
-              <div class="px-6 pt-12">
+              <div class="px-6 pt-12 pb-6 flex flex-col">
                 <h3 class="mb-5 font-serif text-3xl font-medium text-[#B8DB80]">
                   {name}
                 </h3>
@@ -137,6 +217,44 @@ const { projects } = Astro.props;
                     </a>
                   )}
                 </div>
+                {collaborators && collaborators.length > 0 && (
+                  <div class="mt-auto pt-6">
+                    <p class="text-xs text-neutral/60 mb-3">Collaborators:</p>
+                    <div class="flex gap-2">
+                      {collaborators.map(({ name: collabName, image: collabImage, profileLink }) => (
+                        profileLink ? (
+                          <a
+                            href={profileLink}
+                            target="_blank"
+                            class="group relative"
+                            title={collabName}
+                          >
+                            <Image
+                              src={collabImage}
+                              alt={collabName}
+                              width="40"
+                              height="40"
+                              class="w-10 h-10 rounded-full object-cover ring-2 ring-transparent group-hover:ring-[#B8DB80] transition-all"
+                            />
+                          </a>
+                        ) : (
+                          <div
+                            class="relative"
+                            title={collabName}
+                          >
+                            <Image
+                              src={collabImage}
+                              alt={collabName}
+                              width="40"
+                              height="40"
+                              class="w-10 h-10 rounded-full object-cover"
+                            />
+                          </div>
+                        )
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
               <div class="flex items-end justify-end overflow-hidden">
                 <Image
