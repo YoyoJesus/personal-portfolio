@@ -129,11 +129,6 @@ export const SITE_CONTENT: SiteContent = {
           image: "/collaborators/paigeo.jpg",
           profileLink: "https://www.linkedin.com/in/paige-ogden-57b254289/",
         },
-        {
-          name: "Colton Staiduhar",
-          image: "/collaborators/coltons.jpg",
-          profileLink: "https://colton.staiduhar.com/",
-        },
       ],
     },
     {
@@ -142,6 +137,28 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "/",
       linkSource: "https://github.com/arizotaz/discord_clone",
       image: "/ripple-chat.png",
+      collaborators: [
+        {
+          name: "Colton Staiduhar",
+          image: "/collaborators/coltons.jpg",
+          profileLink: "https://colton.staiduhar.com/",
+        },
+        {
+          name: "Noah Al-lahabi",
+          image: "/collaborators/noaha.jpg",
+          profileLink: "https://enderhubris.github.io/my_happy_site/",
+        },
+        {
+          name: "Ian Rohrbacher",
+          image: "/collaborators/ianr.jpg",
+          profileLink: "http://rohrbacher.cc/",
+        },
+        {
+          name: "Paige Ogden",
+          image: "/collaborators/paigeo.jpg",
+          profileLink: "https://www.linkedin.com/in/paige-ogden-57b254289/",
+        },
+      ],
     },
     {
       name: "SCI Smart Badge",
@@ -149,6 +166,13 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "/",
       linkSource: "https://github.com/YoyoJesus/SCI-Lab-BadgeSoftware",
       image: "/bage.jpg",
+      collaborators: [
+        {
+          name: "Bishop Kliskey",
+          image: "/collaborators/bishopk.jpg",
+          profileLink: "https://www.linkedin.com/in/bishop-kliskey-0074251b1/",
+        }
+      ],
     },
     {
       name: "KSU Combat Robotics Website",
@@ -156,6 +180,23 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "https://ksucombat.club",
       linkSource: "https://github.com/CombatRoboticsKSU/KSU-Combat-Robotics-Website",
       image: "/ksucombat.png",
+      collaborators: [
+        {
+          name: "Noah Al-lahabi",
+          image: "/collaborators/noaha.jpg",
+          profileLink: "https://enderhubris.github.io/my_happy_site/",
+        },
+        {
+          name: "Ian Rohrbacher",
+          image: "/collaborators/ianr.jpg",
+          profileLink: "http://rohrbacher.cc/",
+        },
+        {
+          name: "Conner Brunner",
+          image: "/collaborators/connerb.jpg",
+          profileLink: "https://github.com/ManOfNeptune27",
+        },
+      ],
     },
     {
       name: "Kent Hack It",
@@ -163,6 +204,23 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "/",
       linkSource: "https://github.com/hacksu/kent-hack-it",
       image: "/khi.png",
+      collaborators: [
+        {
+          name: "Noah Al-lahabi",
+          image: "/collaborators/noaha.jpg",
+          profileLink: "https://enderhubris.github.io/my_happy_site/",
+        },
+        {
+          name: "Ian Rohrbacher",
+          image: "/collaborators/ianr.jpg",
+          profileLink: "http://rohrbacher.cc/",
+        },
+        {
+          name: "TJ Raklovits",
+          image: "/collaborators/tjk.jpeg",
+          profileLink: "https://monster0506.dev/",
+        },
+      ],
     },
     {
       name: "Linktree Replacement",
