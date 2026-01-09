@@ -86,12 +86,17 @@ export const SITE_CONTENT: SiteContent = {
         {
           name: "Ian Rohrbacher",
           image: "/collaborators/ianr.jpg",
-          profileLink: "https://github.com/IanRohrbacher",
+          profileLink: "http://rohrbacher.cc/",
         },
         {
           name: "Mason Bair",
           image: "/collaborators/masonb.jpg",
           profileLink: "https://www.masonbair.com/",
+        },
+        {
+          name: "Noah Al-lahabi",
+          image: "/collaborators/noaha.jpg",
+          profileLink: "https://enderhubris.github.io/my_happy_site/",
         },
       ],
     },
@@ -108,6 +113,28 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "/",
       linkSource: "https://github.com/EnderHubris/MediTrack",
       image: "/meditrack.png",
+      collaborators: [
+        {
+          name: "Noah Al-lahabi",
+          image: "/collaborators/noaha.jpg",
+          profileLink: "https://enderhubris.github.io/my_happy_site/",
+        },
+        {
+          name: "Ian Rohrbacher",
+          image: "/collaborators/ianr.jpg",
+          profileLink: "http://rohrbacher.cc/",
+        },
+        {
+          name: "Paige Ogden",
+          image: "/collaborators/paigeo.jpg",
+          profileLink: "https://www.linkedin.com/in/paige-ogden-57b254289/",
+        },
+        {
+          name: "Colton Staiduhar",
+          image: "/collaborators/coltons.jpg",
+          profileLink: "https://colton.staiduhar.com/",
+        },
+      ],
     },
     {
       name: "Ripple Chat",

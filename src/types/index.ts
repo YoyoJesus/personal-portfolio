@@ -52,7 +52,7 @@ export interface HeaderProps {
 }
 
 export interface CollaboratorProps {
-  name: string;
   image: string;
+  name: string;
   profileLink?: string;
 }
