@@ -21,6 +21,7 @@ export interface HeroProps {
   summary: string;
   email: string;
   resume: string;
+  blog: string;
 }
 
 export interface ExperienceProps {

@@ -31,6 +31,7 @@ export const SITE_CONTENT: SiteContent = {
       "Student at Kent State University specializing in cybersecurity and network administration. Event Coordinator for HacKSU, Kent State's premier computer science club.",
     email: "austinsternberg45@gmail.com",
     resume: "https://resume.asternberg.xyz",
+    blog: "https://blog.yoyojesus.xyz",
   },
   experience: [
     {
