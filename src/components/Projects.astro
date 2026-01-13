@@ -13,7 +13,7 @@ const { projects } = Astro.props;
 <Section text="Featured Projects" href="projects">
   <!-- Mobile horizontal scroll -->
   <div id="projects-carousel" class="sm:hidden mb-8 -mx-4 px-4 overflow-x-auto scrollbar-hide">
-    <div id="projects-track" class="flex gap-4 pb-4 animate-scroll">
+    <div id="projects-track" class="flex gap-4 pb-4">
       {
         projects.map(({ name, summary, image, linkPreview, linkSource, collaborators }) => {
           return (
