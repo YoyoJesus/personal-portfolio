@@ -39,6 +39,7 @@ export interface ProjectProps {
   image: string;
   linkPreview?: string;
   linkSource?: string;
+  linkWriteup?: string;
   collaborators?: CollaboratorProps[];
 }
 

@@ -82,6 +82,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "TCP/IP implemented in Bluetooth to build a simple chat application. Built with python and Angular for user frontend. ",
       linkPreview: "/",
       linkSource: "https://github.com/IanRohrbacher/Dearborn-Hack-2025",
+      linkWriteup: "/",
       image: "/bluq.png",
       collaborators: [
         {
@@ -106,6 +107,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "A collection of python scripts for various information security and reconnaissance tasks.",
       linkPreview: "/",
       linkSource: "https://github.com/YoyoJesus/python-INFOsec",
+      linkWriteup: "/",
       image: "/infosec.png",
     },
     {
@@ -113,6 +115,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "A website to allow users to make appointments with doctors and track diagoneses. Doctors can manage appointments and send information to billing. Billing puts in claims and insurance can see them. Build with flask and postgressql",
       linkPreview: "/",
       linkSource: "https://github.com/EnderHubris/MediTrack",
+      linkWriteup: "/",
       image: "/meditrack.png",
       collaborators: [
         {
@@ -137,6 +140,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "A real-time chat, voice, and video application using websockets and peer-to-peer connections. Built with React, Node.js, and WebRTC.",
       linkPreview: "/",
       linkSource: "https://github.com/arizotaz/discord_clone",
+      linkWriteup: "/",
       image: "/ripple-chat.png",
       collaborators: [
         {
@@ -166,6 +170,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "An IOT badge that collects decibel levels and motion data to monitor engagement in small group settings. Built using an Arduino Sense board and integrated with a set of python scripts for data analysis.",
       linkPreview: "/",
       linkSource: "https://github.com/YoyoJesus/SCI-Lab-BadgeSoftware",
+      linkWriteup: "/",
       image: "/bage.jpg",
       collaborators: [
         {
@@ -180,6 +185,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "A basic website to showcase Kent State's Combat Robotics club, built with React and hosted on Vercel. Currently being improved and moved to SvelteKit.",
       linkPreview: "https://ksucombat.club",
       linkSource: "https://github.com/CombatRoboticsKSU/KSU-Combat-Robotics-Website",
+      linkWriteup: "/",
       image: "/ksucombat.png",
       collaborators: [
         {
@@ -204,6 +210,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "Website and Challenges for Kent Hack It, HacKSU's annual CTF event. Built with React & MongoDB. Challenges written using a variety of technologies.",
       linkPreview: "/",
       linkSource: "https://github.com/hacksu/kent-hack-it",
+      linkWriteup: "/",
       image: "/khi.png",
       collaborators: [
         {
@@ -228,6 +235,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "A personal Linktree-style website built with SvelteKit and hosted on Vercel. Fully customizable and open source.",
       linkPreview: "https://yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/linktree-replacement",
+      linkWriteup: "/",
       image: "/linktree-clone.png",
     },
     {
@@ -235,6 +243,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "Sitch is a company that provides smart rfid buisness cards. I like the card, but their website desinger is clunky and limited. So, I built my own version of their website using ElysiaJS and hosted on Vercel.",
       linkPreview: "https://sitch.yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/sitch-replacement",
+      linkWriteup: "/",
       image: "/sitch-clone.png",
     },
   ],
