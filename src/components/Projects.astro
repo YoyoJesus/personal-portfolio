@@ -183,7 +183,7 @@ const { projects } = Astro.props;
   <div class="hidden sm:block">
     {
       projects.map(({ name, summary, image, linkPreview, linkSource, collaborators }, index) => {
-        const top = 98 + index * 40;
+        const top = 98 + Math.min(index, 2) * 40;
         return (
           <div
             style={`top: ${top}px;`}
