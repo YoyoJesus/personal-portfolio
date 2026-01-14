@@ -128,7 +128,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "A website to allow users to make appointments with doctors and track diagoneses. Doctors can manage appointments and send information to billing. Billing puts in claims and insurance can see them. Build with flask and postgressql",
       linkPreview: "/",
       linkSource: "https://github.com/EnderHubris/MediTrack",
-      linkWriteup: "/",
+      linkWriteup: "https://blog.yoyojesus.xyz/blog/meditrack",
       image: "/meditrack.png",
       collaborators: [
         {
@@ -153,7 +153,7 @@ export const SITE_CONTENT: SiteContent = {
       summary: "A real-time chat, voice, and video application using websockets and peer-to-peer connections. Built with React, Node.js, and WebRTC.",
       linkPreview: "/",
       linkSource: "https://github.com/arizotaz/discord_clone",
-      linkWriteup: "/",
+      linkWriteup: "https://blog.yoyojesus.xyz/blog/ripple-chat",
       image: "/ripple-chat.png",
       collaborators: [
         {
