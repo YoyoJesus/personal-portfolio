@@ -28,7 +28,7 @@ export const SITE_CONTENT: SiteContent = {
     name: "Austin Sternberg",
     specialty: "Computer Science Student",
     summary:
-      "Student at Kent State University specializing in cybersecurity and network administration. Event Coordinator for HacKSU, Kent State's premier computer science club.",
+      "Student at Kent State University specializing in cybersecurity and network administration. Event Coordinator for HacKSU, Kent State's premier computer science club. President of Kent State Combat Robotics.",
     email: "austinsternberg45@gmail.com",
     resume: "https://resume.asternberg.xyz",
     blog: "https://blog.yoyojesus.xyz",
@@ -46,6 +46,19 @@ export const SITE_CONTENT: SiteContent = {
         "Serve as the main point of contact & head of events. Work with University departments to secure funding, locations, and interest.",
         "Coordinate with sponsors to provide prizes, swag, and food for events.",
         "Work directly with Department Heads to ensure events run smoothly, safely, and within University guidelines.",
+      ],
+    },
+    {
+      company: "KSU Combat Robotics",
+      position: "President",
+      startDate: "May 2025",
+      endDate: "Present",
+      workType: "Part-Time",
+      summary: [
+        "Lead a team of 30+ members in designing, building, and repairing combat robots for competition.",
+        "Organize meetings, delegate tasks, and manage the club's budget and resources with the support of the executive team.",
+        "Coordinate with departmental and university officials to ensure club events run smoothly and within guidelines.",
+        "Develop lessons and workshops to teach members how to use tools like CAD software, soldering, and electronics.",
       ],
     },
     {
