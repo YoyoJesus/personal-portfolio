@@ -221,7 +221,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Kent Hack It",
       summary: "Website and Challenges for Kent Hack It, HacKSU's annual CTF event. Built with React & MongoDB. Challenges written using a variety of technologies.",
-      linkPreview: "/",
+      linkPreview: "https://ctf.hacksu.com",
       linkSource: "https://github.com/hacksu/kent-hack-it",
       linkWriteup: "/",
       image: "/khi.png",
