@@ -124,6 +124,31 @@ export const SITE_CONTENT: SiteContent = {
       image: "/infosec.png",
     },
     {
+      name: "narr0w",
+      summary: "An automated ticketing assigment system for IT and DevOps teams. Built with Svelte, FastAPI, n8n, and Open Router.",
+      linkPreview: "https://narr0w.tech",
+      linkSource: "https://github.com/nexhacks2026/nexhacks-2026",
+      linkWriteup: "/",
+      image: "/narrow.png",
+      collaborators: [
+        {
+          name: "Andrew Roddy",
+          image: "/collaborators/andrewr.jpg",
+          profileLink: "https://andrewroddy.com/",
+        },
+        {
+          name: "TJ Raklovits",
+          image: "/collaborators/tjk.jpeg",
+          profileLink: "https://monster0506.dev/",
+        },
+        {
+          name: "Mason Bair",
+          image: "/collaborators/masonb.jpg",
+          profileLink: "https://www.masonbair.com/",
+        },
+      ],
+    },
+    {
       name: "MediTrack",
       summary: "A website to allow users to make appointments with doctors and track diagoneses. Doctors can manage appointments and send information to billing. Billing puts in claims and insurance can see them. Build with flask and postgressql",
       linkPreview: "/",
