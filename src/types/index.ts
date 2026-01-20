@@ -40,6 +40,7 @@ export interface ProjectProps {
   linkPreview?: string;
   linkSource?: string;
   linkWriteup?: string;
+  languages: LanguageProps[];
   collaborators?: CollaboratorProps[];
 }
 
@@ -57,4 +58,10 @@ export interface CollaboratorProps {
   image: string;
   name: string;
   profileLink?: string;
+}
+
+export interface LanguageProps {
+  icon: string; // Icon name from devicon or simple-icons (e.g., 'devicon:python', 'simple-icons:react')
+  name: string;
+  languageLink?: string;
 }

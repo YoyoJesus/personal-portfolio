@@ -97,6 +97,11 @@ export const SITE_CONTENT: SiteContent = {
       linkSource: "https://github.com/IanRohrbacher/Dearborn-Hack-2025",
       linkWriteup: "/",
       image: "/bluq.png",
+      languages: [
+        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
+        { icon: "devicon-angularjs-plain colored", name: "Angular", languageLink: "https://angular.io/" },
+        { icon: "devicon-bash-plain", name: "Bash", languageLink: "https://www.gnu.org/software/bash/" },
+      ],
       collaborators: [
         {
           name: "Ian Rohrbacher",
@@ -122,14 +127,32 @@ export const SITE_CONTENT: SiteContent = {
       linkSource: "https://github.com/YoyoJesus/python-INFOsec",
       linkWriteup: "/",
       image: "/infosec.png",
+      languages: [
+        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
+      ],
     },
     {
       name: "narr0w",
       summary: "An automated ticketing assigment system for IT and DevOps teams. Built with Svelte, FastAPI, n8n, and Open Router.",
-      linkPreview: "https://narr0w.tech",
+      linkPreview: "/",
       linkSource: "https://github.com/nexhacks2026/nexhacks-2026",
-      linkWriteup: "/",
+      linkWriteup: "https://devpost.com/software/triage-flow",
       image: "/narrow.png",
+      languages: [
+        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
+        { icon: "devicon-fastapi-plain colored", name: "FastAPI", languageLink: "https://fastapi.tiangolo.com/" },
+        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
+        { icon: "devicon-docker-plain colored", name: "Docker", languageLink: "https://www.docker.com/" },
+        { icon : "https://n8n.io/favicon.ico", name: "n8n", languageLink: "https://n8n.io/" },
+        { icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Google_Gemini_icon_2025.svg/250px-Google_Gemini_icon_2025.svg.png",
+          name: "OpenRouter", languageLink: "https://openrouter.ai/"
+        },
+        { icon: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/openrouter-icon.png",
+          name: "OpenRouter", languageLink: "https://openrouter.ai/"
+        },
+        { icon: "devicon-digitalocean-plain colored", name: "DigitalOcean", languageLink: "https://www.digitalocean.com/" }
+        
+      ],
       collaborators: [
         {
           name: "Andrew Roddy",
@@ -155,6 +178,11 @@ export const SITE_CONTENT: SiteContent = {
       linkSource: "https://github.com/EnderHubris/MediTrack",
       linkWriteup: "https://blog.yoyojesus.xyz/blog/meditrack",
       image: "/meditrack.png",
+      languages: [
+        { icon: "devicon-flask-original colored", name: "Flask", languageLink: "https://flask.palletsprojects.com/" },
+        { icon: "devicon-postgresql-plain colored", name: "PostgreSQL", languageLink: "https://www.postgresql.org/" },
+        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
+      ],
       collaborators: [
         {
           name: "Noah Al-lahabi",
@@ -180,6 +208,13 @@ export const SITE_CONTENT: SiteContent = {
       linkSource: "https://github.com/arizotaz/discord_clone",
       linkWriteup: "https://blog.yoyojesus.xyz/blog/ripple-chat",
       image: "/ripple-chat.png",
+      languages: [
+        { icon: "devicon-react-original colored", name: "React", languageLink: "https://react.dev/" },
+        { icon: "devicon-nodejs-plain colored", name: "Node.js", languageLink: "https://nodejs.org/" },
+        { icon: "https://webrtc.github.io/webrtc-org/assets/images/webrtc-logo-vert-retro-dist.svg", 
+          name: "WebRTC", languageLink: "https://webrtc.org/" },
+        { icon: "devicon-mongodb-plain colored", name: "MongoDB", languageLink: "https://www.mongodb.com/" },
+      ],
       collaborators: [
         {
           name: "Colton Staiduhar",
@@ -210,6 +245,11 @@ export const SITE_CONTENT: SiteContent = {
       linkSource: "https://github.com/YoyoJesus/SCI-Lab-BadgeSoftware",
       linkWriteup: "/",
       image: "/bage.jpg",
+      languages: [
+        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
+        { icon: "devicon-arduino-plain colored", name: "Arduino", languageLink: "https://www.arduino.cc/" },
+        { icon: "devicon-c-plain colored", name: "C/C++", languageLink: "https://isocpp.org/" },
+      ],
       collaborators: [
         {
           name: "Bishop Kliskey",
@@ -225,6 +265,11 @@ export const SITE_CONTENT: SiteContent = {
       linkSource: "https://github.com/CombatRoboticsKSU/KSU-Combat-Robotics-Website",
       linkWriteup: "/",
       image: "/ksucombat.png",
+      languages: [
+        { icon: "devicon-react-original colored", name: "React", languageLink: "https://react.dev/" },
+        { icon: "devicon-markdown-plain colored", name: "Markdown", languageLink: "https://www.markdownguide.org/" },
+        { icon: "devicon-bootstrap-plain colored", name: "Bootstrap", languageLink: "https://getbootstrap.com/" },
+      ],
       collaborators: [
         {
           name: "Noah Al-lahabi",
@@ -250,6 +295,12 @@ export const SITE_CONTENT: SiteContent = {
       linkSource: "https://github.com/hacksu/kent-hack-it",
       linkWriteup: "/",
       image: "/khi.png",
+      languages: [
+        { icon: "devicon-react-original colored", name: "React", languageLink: "https://react.dev/" },
+        { icon: "devicon-mongodb-plain colored", name: "MongoDB", languageLink: "https://www.mongodb.com/" },
+        { icon: "devicon-nodejs-plain colored", name: "Node.js", languageLink: "https://nodejs.org/" },
+        { icon: "devicon-bootstrap-plain colored", name: "Bootstrap", languageLink: "https://getbootstrap.com/" },
+      ],
       collaborators: [
         {
           name: "Noah Al-lahabi",
@@ -275,6 +326,10 @@ export const SITE_CONTENT: SiteContent = {
       linkSource: "https://github.com/YoyoJesus/linktree-replacement",
       linkWriteup: "/",
       image: "/linktree-clone.png",
+      languages: [
+        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
+        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
+      ],
     },
     {
       name: "Sitch Replacement",
@@ -283,6 +338,12 @@ export const SITE_CONTENT: SiteContent = {
       linkSource: "https://github.com/YoyoJesus/sitch-replacement",
       linkWriteup: "/",
       image: "/sitch-clone.png",
+      languages: [
+        { icon: "https://images.seeklogo.com/logo-png/58/2/elysia-logo-png_seeklogo-580325.png",
+           name: "ElysiaJS", languageLink: "https://elysiajs.com/" 
+        },
+        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
+      ],
     },
   ],
   about: {
