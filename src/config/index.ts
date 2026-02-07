@@ -259,6 +259,27 @@ export const SITE_CONTENT: SiteContent = {
       ],
     },
     {
+      name: "Typst Resume Builder",
+      summary: "A resume builder built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom resumes with a simple interface.",
+      linkPreview: "https://rg.barknote.top/",
+      linkSource: "https://github.com/YoyoJesus/resume-generator",
+      linkWriteup: "/",
+      image: "/resume-builder.png",
+      languages: [
+        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
+        { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
+        { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
+        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
+      ],
+     collaborators: [
+        {
+          name: "TJ Raklovits",
+          image: "/collaborators/tjk.jpeg",
+          profileLink: "https://monster0506.dev/",
+        },
+      ],
+    },
+    {
       name: "KSU Combat Robotics Website",
       summary: "A basic website to showcase Kent State's Combat Robotics club, built with React and hosted on Vercel. Currently being improved and moved to SvelteKit.",
       linkPreview: "https://ksucombat.club",
