@@ -65,7 +65,7 @@ export const SITE_CONTENT: SiteContent = {
       company: "Riverside Local Schools",
       position: "IT Intern",
       startDate: "May 2025",
-      endDate: "Present",
+      endDate: "Jan 2026",
       workType: "Internship - Seasonal",
       summary: [
         "Supported network and device maintenance across district buildings.",
@@ -369,7 +369,7 @@ export const SITE_CONTENT: SiteContent = {
   ],
   about: {
     description: `
-      Hi, I'm Austin Sternberg 👋. I'm a Computer Science student at Kent State and am passionate for cybersecurity and networking. I've been working with computers since I was a kid, loving to tinker with hardware and software. I currently work two part-time/seasonal jobs between Riverside Local Schools, where I serve as an IT Intern, and HacKSU, where I am the Events Coordinator.
+      Hi, I'm Austin Sternberg 👋. I'm a Computer Science student at Kent State and am passionate for cybersecurity and networking. I currently serve as the Events Coordinator at HacKSU, where I manage large events like our Hackathon, Kent Hack Enough.
 
       In my free time, I've been working on a handful of personal project, mostly revolving around web development, though the python INFOSEC repository is a personal favorite of mine. Outside of CS, I enjoy combat robotics, where I am currently serving as the President of Kent State's Combat Robotics club.
 
