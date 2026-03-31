@@ -5,14 +5,8 @@
   export let projects: ProjectProps[] = [];
   
   let carouselContainer: HTMLDivElement;
-  let carouselTrack: HTMLDivElement;
-  let isUserScrolling = false;
   let scrollTimeout: number;
-  let translateX = 0;
   let cardWidth = 0;
-  let animationSpeed = 60; // pixels per second
-  let lastTimestamp = 0;
-  let animationFrame: number;
   
   // Triple the projects for infinite scroll
   const tripleProjects = [...projects, ...projects, ...projects];
@@ -23,131 +17,41 @@
   }
   
   onMount(() => {
-    if (carouselTrack) {
-      // Calculate card width (90vw max 420px + 16px gap)
+    if (carouselContainer) {
       const viewportWidth = window.innerWidth;
       cardWidth = Math.min(viewportWidth * 0.9, 420) + 16;
-      
-      // Start at the beginning of middle section
-      translateX = -(projects.length * cardWidth);
-      carouselTrack.style.transform = `translateX(${translateX}px)`;
-      
-      // Also set initial scroll position to middle
-      if (carouselContainer) {
-        carouselContainer.scrollLeft = projects.length * cardWidth;
-      }
-      
-      startAutoScroll();
+      // Start at the middle section
+      carouselContainer.scrollLeft = projects.length * cardWidth;
     }
   });
-  
+
   onDestroy(() => {
-    if (animationFrame) {
-      cancelAnimationFrame(animationFrame);
-    }
     if (scrollTimeout) {
       clearTimeout(scrollTimeout);
     }
   });
-  
-  function startAutoScroll() {
-    function animate(timestamp: number) {
-      if (!carouselTrack || !carouselContainer) {
-        animationFrame = requestAnimationFrame(animate);
-        return;
-      }
-      
-      if (!lastTimestamp) lastTimestamp = timestamp;
-      const deltaTime = (timestamp - lastTimestamp) / 1000; // Convert to seconds
-      lastTimestamp = timestamp;
-      
-      if (!isUserScrolling) {
-        // Move left (negative direction)
-        translateX -= animationSpeed * deltaTime;
-        
-        // Check for wrapping
-        const singleSetWidth = projects.length * cardWidth;
-        
-        // If we've scrolled past the second set, wrap back to first set
-        if (translateX < -(singleSetWidth * 2)) {
-          translateX += singleSetWidth;
-        }
-        // If we're before the first set, wrap forward
-        else if (translateX > -singleSetWidth) {
-          translateX -= singleSetWidth;
-        }
-        
-        carouselTrack.style.transform = `translateX(${translateX}px)`;
-      }
-      
-      animationFrame = requestAnimationFrame(animate);
-    }
-    
-    animationFrame = requestAnimationFrame(animate);
-  }
   
   function handleScroll() {
-    // User is manually scrolling - disable transform immediately
-    if (!isUserScrolling) {
-      isUserScrolling = true;
-      if (carouselTrack) {
-        carouselTrack.style.transform = 'none';
-      }
+    if (!carouselContainer) return;
+    const scrollLeft = carouselContainer.scrollLeft;
+    const maxScroll = carouselContainer.scrollWidth;
+    const singleSetWidth = projects.length * cardWidth;
+
+    if (scrollLeft <= 10) {
+      carouselContainer.scrollLeft = singleSetWidth + scrollLeft;
+    } else if (scrollLeft >= maxScroll - carouselContainer.clientWidth - 10) {
+      carouselContainer.scrollLeft = scrollLeft - singleSetWidth;
     }
-    
-    // Only check for wrapping, don't force it aggressively
-    if (carouselContainer) {
-      const scrollLeft = carouselContainer.scrollLeft;
-      const maxScroll = carouselContainer.scrollWidth;
-      const singleSetWidth = projects.length * cardWidth;
-      
-      // Only wrap if they've scrolled very far
-      if (scrollLeft <= 10) {
-        // At the very beginning, jump to middle
-        carouselContainer.scrollLeft = singleSetWidth + scrollLeft;
-      } else if (scrollLeft >= maxScroll - carouselContainer.clientWidth - 10) {
-        // At the very end, jump back
-        carouselContainer.scrollLeft = scrollLeft - singleSetWidth;
-      }
-    }
-    
-    // Clear previous timeout
-    if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
-    }
-    
-    // Resume auto-scroll after user stops scrolling for 3 seconds
-    scrollTimeout = setTimeout(() => {
-      if (carouselContainer && carouselTrack) {
-        // Sync translateX to current scroll position before resuming
-        translateX = -carouselContainer.scrollLeft;
-        carouselTrack.style.transform = `translateX(${translateX}px)`;
-      }
-      isUserScrolling = false;
-      lastTimestamp = 0;
-    }, 3000) as unknown as number;
   }
-  
+
   function handleTouchStart() {
-    isUserScrolling = true;
-    if (carouselTrack) {
-      carouselTrack.style.transform = 'none';
-    }
-    if (scrollTimeout) {
-      clearTimeout(scrollTimeout);
-    }
+    if (scrollTimeout) clearTimeout(scrollTimeout);
+  }
+
+  function handleTouchEnd() {
+    // no-op: wrapping is handled by handleScroll
   }
   
-  function handleTouchEnd() {
-    scrollTimeout = setTimeout(() => {
-      if (carouselContainer && carouselTrack) {
-        translateX = -carouselContainer.scrollLeft;
-        carouselTrack.style.transform = `translateX(${translateX}px)`;
-      }
-      isUserScrolling = false;
-      lastTimestamp = 0;
-    }, 3000) as unknown as number;
-  }
 </script>
 
 <div 
@@ -159,8 +63,8 @@
   aria-label="Projects carousel"
   class="mb-8 -mx-4 px-4 overflow-x-auto scrollbar-hide"
 >
-  <div bind:this={carouselTrack} class="carousel-track flex gap-4 pb-4">
-    {#each tripleProjects as { name, summary, image, linkPreview, linkSource, linkWriteup, collaborators, languages }, index}
+  <div class="carousel-track flex gap-4 pb-4">
+    {#each tripleProjects as { name, summary, image, linkPreview, linkSource, linkWriteup, collaborators, languages }}
       <div class="project-card snap-center shrink-0 w-[90vw] max-w-[420px] rounded-2xl border border-neutral/20 bg-black">
         <div class="relative z-[1] flex flex-col h-[600px] w-full rounded-2xl bg-[#354C2C]/85 before:absolute before:inset-0 before:z-[-1] before:rounded-2xl before:bg-[url(/raja.png)] before:bg-[length:128px] before:bg-repeat before:opacity-[5%] before:content-['']">
           <div class="px-6 pt-8 pb-4 flex-shrink-0">
@@ -288,10 +192,4 @@
     display: none;
   }
   
-  .carousel-track {
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-  }
 </style>
