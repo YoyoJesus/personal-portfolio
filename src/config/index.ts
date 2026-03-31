@@ -280,6 +280,21 @@ export const SITE_CONTENT: SiteContent = {
       ],
     },
     {
+      name: "Typst Email Signature Generator ",
+      summary: "An email signature generator built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom email signatures with a simple interface.",
+      linkPreview: "https://email.barknote.top/",
+      linkSource: "https://github.com/YoyoJesus/email-signature-maker",
+      linkWriteup: "/",
+      image: "/email.png",
+      languages: [
+        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
+        { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
+        { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
+        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
+      ],
+      collaborators: [],
+    },
+    {
       name: "KSU Combat Robotics Website",
       summary: "A basic website to showcase Kent State's Combat Robotics club, built with React and hosted on Vercel. Currently being improved and moved to SvelteKit.",
       linkPreview: "https://ksucombat.club",
