@@ -34,13 +34,15 @@ const { projects } = Astro.props;
                 </h3>
                 <p class="text-base text-neutral">{summary}</p>
                 <div class="flex flex-wrap gap-4 pt-10 text-white">
-                  <a
-                    href={linkSource}
-                    target="_blank"
-                    class="after:relative after:bottom-[-5px] after:content-[url(/external.svg)] hover:underline whitespace-nowrap"
-                  >
-                    Source
-                  </a>
+                  {linkSource !== "/" && (
+                    <a
+                      href={linkSource}
+                      target="_blank"
+                      class="after:relative after:bottom-[-5px] after:content-[url(/external.svg)] hover:underline whitespace-nowrap"
+                    >
+                      Source
+                    </a>
+                  )}
                   {linkPreview !== "/" && (
                     <a
                       href={linkPreview}

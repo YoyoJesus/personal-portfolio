@@ -73,13 +73,15 @@
             </h3>
             <p class="text-sm text-neutral line-clamp-4">{summary}</p>
             <div class="flex flex-wrap gap-3 pt-6 text-white text-sm">
-              <a
-                href={linkSource}
-                target="_blank"
-                class="after:relative after:bottom-[-5px] after:content-[url(/external.svg)] hover:underline whitespace-nowrap"
-              >
-                Source
-              </a>
+              {#if linkSource !== "/"}
+                <a
+                  href={linkSource}
+                  target="_blank"
+                  class="after:relative after:bottom-[-5px] after:content-[url(/external.svg)] hover:underline whitespace-nowrap"
+                >
+                  Source
+                </a>
+              {/if}
               {#if linkPreview !== "/"}
                 <a
                   href={linkPreview}

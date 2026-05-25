@@ -284,10 +284,10 @@ export const SITE_CONTENT: SiteContent = {
       ],
     },
     {
-      name: "Typst Resume Builder",
-      summary: "A resume builder built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom resumes with a simple interface.",
-      linkPreview: "https://rg.barknote.top/",
-      linkSource: "https://github.com/YoyoJesus/resume-generator",
+      name: "BarkNote",
+      summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface.",
+      linkPreview: "https://barknote.top/",
+      linkSource: "/",
       linkWriteup: "/",
       image: "/resume-builder.png",
       languages: [
@@ -296,28 +296,7 @@ export const SITE_CONTENT: SiteContent = {
         { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
         { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
       ],
-     collaborators: [
-        {
-          name: "TJ Raklovits",
-          image: "/collaborators/tjk.jpeg",
-          profileLink: "https://monster0506.dev/",
-        },
-      ],
-    },
-    {
-      name: "Typst Email Signature Generator ",
-      summary: "An email signature generator built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom email signatures with a simple interface.",
-      linkPreview: "https://email.barknote.top/",
-      linkSource: "https://github.com/YoyoJesus/email-signature-maker",
-      linkWriteup: "/",
-      image: "/email.png",
-      languages: [
-        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
-        { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
-        { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
-        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
-      ],
-      collaborators: [],
+     collaborators: [],
     },
     {
       name: "KSU Combat Robotics Website",
@@ -409,7 +388,11 @@ export const SITE_CONTENT: SiteContent = {
   ],
   about: {
     description: `
-      Hi, I'm Austin Sternberg 👋. I'm a Computer Science student at Kent State and am passionate for cybersecurity and networking. I currently serve as the Events Coordinator at HacKSU, where I manage large events like our Hackathon, Kent Hack Enough.
+      Hi, I'm Austin Sternberg 👋. I'm a Computer Science student at Kent State and am passionate for cybersecurity and networking. 
+
+      I am currently an intern at Awetomaton, a small but growing defense contractor based in Beavercreek, Ohio. I work in the IT department, developing internal tools to help streamline operations.
+      
+      I also currently serve as the President of HacKSU, as well as the President of Kent State's Combat Robotics club.
 
       In my free time, I've been working on a handful of personal project, mostly revolving around web development, though the python INFOSEC repository is a personal favorite of mine. Outside of CS, I enjoy combat robotics, where I am currently serving as the President of Kent State's Combat Robotics club.
 
