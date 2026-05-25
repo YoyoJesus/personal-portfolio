@@ -31,6 +31,13 @@ export interface ExperienceProps {
   endDate: string;
   workType: string;
   summary: string | string[];
+  previousPositions?: PreviousPositionProps[];
+}
+
+export interface PreviousPositionProps {
+  position: string;
+  startDate: string;
+  endDate: string;
 }
 
 export interface ProjectProps {

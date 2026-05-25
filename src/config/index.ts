@@ -28,24 +28,42 @@ export const SITE_CONTENT: SiteContent = {
     name: "Austin Sternberg",
     specialty: "Computer Science Student",
     summary:
-      "Student at Kent State University specializing in cybersecurity and network administration. Event Coordinator for HacKSU, Kent State's premier computer science club. President of Kent State Combat Robotics.",
+      "Student at Kent State University specializing in cybersecurity and network administration. Intern at Awtomaton, working on internal tools. President for HacKSU, Kent State's premier computer science club. President of Kent State Combat Robotics.",
     email: "austinsternberg45@gmail.com",
     resume: "https://resume.asternberg.xyz",
     blog: "https://blog.yoyojesus.xyz",
   },
   experience: [
     {
+      company: "Awetomaton Ltd",
+      position: "Information Technology Intern",
+      startDate: "May 2026",
+      endDate: "Present",
+      workType: "Internship",
+      summary: [
+        "Develop internal tools to help streamline operations and improve efficiency across the company.",
+        "Improve previous workflows, implementing strong and more scalable solutions to help the company grow.",
+        "Work closely with one of the founders to improve tools and workflows, and learm some of the day-to-day of this small but growing company.",
+      ],
+    },
+    {
       company: "HacKSU",
-      position: "Events Coordinator",
-      startDate: "Jan 2025",
+      position: "President",
+      startDate: "August 2025",
       endDate: "Present",
       workType: "Part-Time",
       summary: [
-        "Manage the budget, timeline, and marketing effort for four events spread across each academic year.",
-        "Delegate tasks including emailing sponsors, picking up items, and advertising outside of Kent State.",
-        "Serve as the main point of contact & head of events. Work with University departments to secure funding, locations, and interest.",
-        "Coordinate with sponsors to provide prizes, swag, and food for events.",
-        "Work directly with Department Heads to ensure events run smoothly, safely, and within University guidelines.",
+        "Manage a team of 15+ executive members to plan and execute events for a club of 100+ members.",
+        "Oversee the planning and execution of the club's annual events, including a hackathon, CTF, and various workshops and speaker events throughout the year.",
+        "Build connections with industry professionals to bring in speakers and sponsors for events, and to create opportunities for members.",
+        "Lead weekly executive meetings to coordinate efforts across different teams and ensure the success of club events.",
+      ],
+      previousPositions: [
+        {
+          position: "Events Coordinator",
+          startDate: "Jan 2025",
+          endDate: "August 2026",
+        }
       ],
     },
     {
@@ -59,6 +77,13 @@ export const SITE_CONTENT: SiteContent = {
         "Organize meetings, delegate tasks, and manage the club's budget and resources with the support of the executive team.",
         "Coordinate with departmental and university officials to ensure club events run smoothly and within guidelines.",
         "Develop lessons and workshops to teach members how to use tools like CAD software, soldering, and electronics.",
+      ],
+      previousPositions: [
+        {
+          position: "Project Manager",
+          startDate: "May 2024",
+          endDate: "May 2025",
+        }
       ],
     },
     {
