@@ -28,7 +28,7 @@ export const SITE_CONTENT: SiteContent = {
     name: "Austin Sternberg",
     specialty: "Computer Science Student",
     summary:
-      "Student at Kent State University specializing in cybersecurity and network administration. Intern at Awtomaton, working on internal tools. President for HacKSU, Kent State's premier computer science club. President of Kent State Combat Robotics.",
+      "CS Senior at Kent State University. Incoming SWE at Awetomaton. President for HacKSU, Kent State's premier computer science club. President of Kent State Combat Robotics.",
     email: "austinsternberg45@gmail.com",
     resume: "https://resume.asternberg.xyz",
     blog: "https://blog.yoyojesus.xyz",
@@ -38,7 +38,7 @@ export const SITE_CONTENT: SiteContent = {
       company: "Awetomaton Ltd",
       position: "Information Technology Intern",
       startDate: "May 2026",
-      endDate: "Present",
+      endDate: "August 2026",
       workType: "Internship",
       summary: [
         "Develop internal tools to help streamline operations and improve efficiency across the company.",
@@ -285,7 +285,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "BarkNote",
-      summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface.",
+      summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface. Some tooling backed by OpenAI's API platform, allowing for uploading of documents to fill in data.",
       linkPreview: "https://barknote.top/",
       linkSource: "/",
       linkWriteup: "/",
@@ -295,6 +295,7 @@ export const SITE_CONTENT: SiteContent = {
         { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
         { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
         { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
+        {icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai.svg", name: "OpenAI API", languageLink: "https://openai.com/api/"},
       ],
      collaborators: [],
     },
