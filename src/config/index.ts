@@ -35,18 +35,6 @@ export const SITE_CONTENT: SiteContent = {
   },
   experience: [
     {
-      company: "Awetomaton Ltd",
-      position: "Information Technology Intern",
-      startDate: "May 2026",
-      endDate: "August 2026",
-      workType: "Internship",
-      summary: [
-        "Develop internal tools to help streamline operations and improve efficiency across the company.",
-        "Improve previous workflows, implementing strong and more scalable solutions to help the company grow.",
-        "Work closely with one of the founders to improve tools and workflows, and learm some of the day-to-day of this small but growing company.",
-      ],
-    },
-    {
       company: "HacKSU",
       position: "President",
       startDate: "August 2025",
@@ -84,6 +72,18 @@ export const SITE_CONTENT: SiteContent = {
           startDate: "May 2024",
           endDate: "May 2025",
         }
+      ],
+    },
+    {
+      company: "Awetomaton Ltd",
+      position: "Information Technology Intern",
+      startDate: "May 2026",
+      endDate: "August 2026",
+      workType: "Internship",
+      summary: [
+        "Devloped internal tools to help streamline operations and improve efficiency across the company.",
+        "Improved previous workflows, implementing strong and more scalable solutions to help the company grow.",
+        "Worked closely with one of the founders to improve tools and workflows, and learm some of the day-to-day of this small but growing company.",
       ],
     },
     {
