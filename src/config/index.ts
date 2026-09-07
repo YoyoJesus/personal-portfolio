@@ -81,7 +81,7 @@ export const SITE_CONTENT: SiteContent = {
       endDate: "August 2026",
       workType: "Internship",
       summary: [
-        "Devloped internal tools to help streamline operations and improve efficiency across the company.",
+        "Developed internal tools to help streamline operations and improve efficiency across the company.",
         "Improved previous workflows, implementing strong and more scalable solutions to help the company grow.",
         "Worked closely with one of the founders to improve tools and workflows, and learm some of the day-to-day of this small but growing company.",
       ],
