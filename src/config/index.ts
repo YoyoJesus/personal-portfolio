@@ -1,10 +1,10 @@
 import type { SiteConfig, SiteContent } from "../types";
 
 export const SITE_CONFIG: SiteConfig = {
-  title: "Austin Sternberg — Computer Science Student",
+  title: "Austin Sternberg - Computer Science Student",
   author: "Austin Sternberg",
   description:
-    "Decicated Computer Science student from Mentor, Ohio. Working twards a penetration testing or network engineering career. Event Coordinator for HacKSU, Kent State's largest CS club.",
+    "CS Senior @ Kent State, with a passion for web development & cybersecurity.",
   lang: "en",
   siteLogo: "/austin-small.jpg",
   navLinks: [
@@ -28,7 +28,7 @@ export const SITE_CONTENT: SiteContent = {
     name: "Austin Sternberg",
     specialty: "Computer Science Student",
     summary:
-      "CS Senior at Kent State University. Incoming SWE at Awetomaton. President for HacKSU, Kent State's premier computer science club. President of Kent State Combat Robotics.",
+      "CS Senior at Kent State University. President for HacKSU, Kent State's premier computer science club. President of Kent State Combat Robotics.",
     email: "austinsternberg45@gmail.com",
     resume: "https://resume.asternberg.xyz",
     blog: "https://blog.yoyojesus.xyz",
