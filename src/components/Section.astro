@@ -5,13 +5,23 @@ interface Props {
 }
 
 const { text, href } = Astro.props;
+const number = href === "experience" ? "01" : href === "projects" ? "02" : "03";
 ---
 
-<section id={href} class="py-24">
-  <h2
-    class="mb-14 font-serif text-4xl font-bold tracking-tighter text-white md:text-5xl"
-  >
-    {text}
-  </h2>
-  <slot />
+<section id={href} class="border-t border-white py-20 md:py-28">
+  <div class="mb-14 grid grid-cols-12 gap-4 md:mb-20">
+    <p
+      class="col-span-2 text-xs font-bold tracking-[0.16em] text-primary uppercase"
+    >
+      {number}
+    </p>
+    <h2
+      class="col-span-10 font-serif text-4xl font-bold tracking-tighter text-white md:col-span-7 md:text-6xl"
+    >
+      {text}
+    </h2>
+  </div>
+  <div class="md:pl-[16.666667%]">
+    <slot />
+  </div>
 </section>

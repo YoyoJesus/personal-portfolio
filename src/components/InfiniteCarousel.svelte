@@ -65,19 +65,20 @@
 >
   <div class="carousel-track flex gap-4 pb-4">
     {#each tripleProjects as { name, summary, image, linkPreview, linkSource, linkWriteup, collaborators, languages }}
-      <div class="project-card snap-center shrink-0 w-[90vw] max-w-[420px] rounded-2xl border border-neutral/20 bg-black">
-        <div class="relative z-[1] flex flex-col h-[600px] w-full rounded-2xl bg-[#354C2C]/85 before:absolute before:inset-0 before:z-[-1] before:rounded-2xl before:bg-[url(/raja.png)] before:bg-[length:128px] before:bg-repeat before:opacity-[5%] before:content-['']">
+      <div class="project-card w-[90vw] max-w-[420px] shrink-0 snap-center border-2 border-white bg-black">
+        <div class="relative z-[1] flex h-[600px] w-full flex-col bg-[#f5f5f5]">
           <div class="px-6 pt-8 pb-4 flex-shrink-0">
-            <h3 class="mb-3 font-serif text-2xl font-medium text-[#B8DB80]">
+            <p class="mb-5 text-xs font-bold uppercase tracking-[0.14em] text-neutral">Selected work</p>
+            <h3 class="mb-3 font-serif text-3xl font-bold tracking-tight text-primary">
               {name}
             </h3>
             <p class="text-sm text-neutral line-clamp-4">{summary}</p>
-            <div class="flex flex-wrap gap-3 pt-6 text-white text-sm">
+            <div class="flex flex-wrap gap-3 pt-6 text-xs font-bold uppercase tracking-[0.08em] text-white">
               {#if linkSource !== "/"}
                 <a
                   href={linkSource}
                   target="_blank"
-                  class="after:relative after:bottom-[-5px] after:content-[url(/external.svg)] hover:underline whitespace-nowrap"
+                  class="whitespace-nowrap border-b border-white pb-1 hover:text-primary"
                 >
                   Source
                 </a>
@@ -86,7 +87,7 @@
                 <a
                   href={linkPreview}
                   target="_blank"
-                  class="after:relative after:bottom-[-5px] after:content-[url(/external.svg)] hover:underline whitespace-nowrap"
+                  class="whitespace-nowrap border-b border-white pb-1 hover:text-primary"
                 >
                   Demo
                 </a>
@@ -95,7 +96,7 @@
                 <a
                   href={linkWriteup}
                   target="_blank"
-                  class="after:relative after:bottom-[-5px] after:content-[url(/external.svg)] hover:underline whitespace-nowrap"
+                  class="whitespace-nowrap border-b border-white pb-1 hover:text-primary"
                 >
                   Writeup
                 </a>
@@ -113,7 +114,7 @@
                       title={langName}
                     >
                       {#if isUrl}
-                        <img src={icon} alt={langName} class="w-6 h-6 object-contain" />
+                        <img src={icon} alt={langName} class="h-6 w-6 object-contain grayscale" />
                       {:else}
                         <i class={`${icon} text-2xl`}></i>
                       {/if}
@@ -121,7 +122,7 @@
                   {:else}
                     <div title={langName}>
                       {#if isUrl}
-                        <img src={icon} alt={langName} class="w-6 h-6 object-contain" />
+                        <img src={icon} alt={langName} class="h-6 w-6 object-contain grayscale" />
                       {:else}
                         <i class={`${icon} text-2xl`}></i>
                       {/if}
@@ -131,8 +132,8 @@
               </div>
             {/if}
             {#if collaborators && collaborators.length > 0}
-              <div class="mt-4 pt-4 border-t border-neutral/20">
-                <p class="text-xs text-neutral/60 mb-2">Collaborators:</p>
+              <div class="mt-4 border-t border-white/20 pt-4">
+                <p class="mb-2 text-xs font-bold uppercase tracking-[0.12em] text-neutral">Collaborators</p>
                 <div class="flex gap-2">
                   {#each collaborators as { name: collabName, image: collabImage, profileLink }}
                     {#if profileLink}
@@ -147,7 +148,7 @@
                           alt={collabName}
                           width="32"
                           height="32"
-                          class="w-8 h-8 rounded-full object-cover ring-2 ring-transparent group-hover:ring-[#B8DB80] transition-all"
+                          class="h-8 w-8 border border-white object-cover grayscale"
                         />
                       </a>
                     {:else}
@@ -160,7 +161,7 @@
                           alt={collabName}
                           width="32"
                           height="32"
-                          class="w-8 h-8 rounded-full object-cover"
+                          class="h-8 w-8 border border-white object-cover grayscale"
                         />
                       </div>
                     {/if}
@@ -169,9 +170,9 @@
               </div>
             {/if}
           </div>
-          <div class="flex-1 overflow-hidden min-h-0">
+          <div class="min-h-0 flex-1 overflow-hidden border-t-2 border-white bg-black p-2">
             <img
-              class="h-full w-full rounded-b-2xl object-cover object-center"
+              class="h-full w-full object-cover object-center grayscale"
               src={getImageSrc(image)}
               alt={name}
               width="736"

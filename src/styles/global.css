@@ -2,12 +2,12 @@
 
 @theme {
   --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
-  --font-serif: "Gabarito Variable", ui-serif, serif;
+  --font-serif: "Gabarito Variable", "Helvetica Neue", Arial, sans-serif;
 
-  --color-primary: #628141;
-  --color-neutral: #94a3b8;
-  --color-white: #e2e8f0;
-  --color-black: #1B211A;
+  --color-primary: #e21d2b;
+  --color-neutral: #626262;
+  --color-white: #111111;
+  --color-black: #ffffff;
 
   --text-xs: 0.875rem;
   --text-xs--line-height: 1.125rem;
@@ -54,16 +54,43 @@
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 html {
-	scroll-behavior: smooth;
-	scrollbar-width: none;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  background: #ffffff;
+}
+
+body {
+  color: #111111;
+  background: #ffffff;
+}
+
+::selection {
+  color: #ffffff;
+  background: #e21d2b;
+}
+
+:focus-visible {
+  outline: 3px solid #e21d2b;
+  outline-offset: 4px;
 }
 
 html::-webkit-scrollbar {
-	display: none;
+  display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
