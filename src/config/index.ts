@@ -146,6 +146,24 @@ export const SITE_CONTENT: SiteContent = {
       ],
     },
     {
+      name: "ToolSmith",
+      summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface. Some tooling backed by OpenAI's API platform, allowing for uploading of documents to fill in data.",
+      linkPreview: "https://toolsmith.online/",
+      linkSource: "/",
+      linkWriteup: "/",
+      image: "/Toolsmith.png",
+      languages: [
+        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
+        { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
+        { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
+        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
+        { icon: "https://ui.shadcn.com/favicon.ico", name: "ShadCN", languageLink: "https://ui.shadcn.com/"},
+        { icon: "https://github.com/naptha/tesseract.js/raw/master/docs/images/tesseract_dark.png", name: "Tesseract JS", languageLink: "https://tesseract.projectnaptha.com/"},
+        {icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai.svg", name: "OpenAI API", languageLink: "https://openai.com/api/"},
+      ],
+     collaborators: [],
+    },
+    {
       name: "Python INFOSEC",
       summary: "A collection of python scripts for various information security and reconnaissance tasks.",
       linkPreview: "/",
@@ -282,22 +300,6 @@ export const SITE_CONTENT: SiteContent = {
           profileLink: "https://www.linkedin.com/in/bishop-kliskey-0074251b1/",
         }
       ],
-    },
-    {
-      name: "BarkNote",
-      summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface. Some tooling backed by OpenAI's API platform, allowing for uploading of documents to fill in data.",
-      linkPreview: "https://barknote.top/",
-      linkSource: "/",
-      linkWriteup: "/",
-      image: "/resume-builder.png",
-      languages: [
-        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
-        { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
-        { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
-        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
-        {icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai.svg", name: "OpenAI API", languageLink: "https://openai.com/api/"},
-      ],
-     collaborators: [],
     },
     {
       name: "KSU Combat Robotics Website",
