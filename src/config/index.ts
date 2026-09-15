@@ -161,7 +161,13 @@ export const SITE_CONTENT: SiteContent = {
         { icon: "https://github.com/naptha/tesseract.js/raw/master/docs/images/tesseract_dark.png", name: "Tesseract JS", languageLink: "https://tesseract.projectnaptha.com/"},
         {icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai.svg", name: "OpenAI API", languageLink: "https://openai.com/api/"},
       ],
-     collaborators: [],
+     collaborators: [
+        {
+          name: "TJ Raklovits",
+          image: "/collaborators/tjk.jpeg",
+          profileLink: "https://monster0506.dev/",
+        },
+     ],
     },
     {
       name: "Python INFOSEC",
