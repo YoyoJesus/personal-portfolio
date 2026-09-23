@@ -6,6 +6,7 @@ export interface SiteConfig extends HeaderProps {
   socialLinks: { text: string; href: string }[];
   socialImage: string;
   canonicalURL?: string;
+  activity: { letterboxd: string; lastfm: string; steam: string };
 }
 
 export interface SiteContent {

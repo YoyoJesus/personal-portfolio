@@ -1,0 +1,199 @@
+---
+import { Icon } from "astro-icon/components";
+import Section from "./Section.astro";
+import { stars, type Film } from "../lib/letterboxd";
+import type { Listening } from "../lib/lastfm";
+import type { Gaming } from "../lib/steam";
+
+interface Props {
+  films: Film[];
+  listening: Listening;
+  letterboxdUser: string;
+  lastfmUser: string;
+  gaming: Gaming;
+  steamId: string;
+}
+
+const { films, listening, letterboxdUser, lastfmUser, gaming, steamId } = Astro.props;
+// Phones only get the first three films and games.
+const mobileHide = (i: number) => (i >= 3 ? "max-sm:hidden" : "");
+const maxPlays = Math.max(...listening.topArtists.map((a) => a.plays), 1);
+const watchedOn = (d: string) =>
+  new Date(`${d}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+---
+
+<Section text="When I'm Not Coding" href="not-coding">
+  <div class="mb-16">
+    <div class="mb-5 flex items-baseline justify-between">
+      <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
+        <Icon name="simple-icons:letterboxd" class="size-6 text-[#B8DB80]" /> Recently Watched
+      </h3>
+      <a
+        href={`https://letterboxd.com/${letterboxdUser}/`}
+        target="_blank"
+        class="text-sm text-neutral after:relative after:bottom-[-4px] after:content-[url(/external.svg)] hover:text-primary"
+      >
+        View All
+      </a>
+    </div>
+    {
+      films.length ? (
+        <ul class="grid grid-cols-3 gap-3 sm:grid-cols-5">
+          {films.map((f, i) => (
+            <li class={mobileHide(i)}>
+              <a href={f.link} target="_blank" class="group block" title={`${f.title} (${f.year})`}>
+                <img
+                  src={f.poster}
+                  alt={`${f.title} poster`}
+                  loading="lazy"
+                  class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-[#B8DB80]"
+                />
+                <span class="mt-1.5 flex items-center justify-between text-xs">
+                  <span class="text-[#B8DB80]">{stars(f.rating)}</span>
+                  <span class="flex items-center gap-1 text-neutral">
+                    {f.liked && <Icon name="ph:heart-fill" class="size-3 text-primary" />}
+                    {f.rewatch && <Icon name="ph:arrows-clockwise-bold" class="size-3" />}
+                    {f.watched && watchedOn(f.watched)}
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-neutral">
+          The Letterboxd feed didn't load during this build. It will fill in on the next deploy.
+        </p>
+      )
+    }
+  </div>
+
+  <div>
+    <div class="mb-5 flex items-baseline justify-between">
+      <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
+        <Icon name="simple-icons:lastdotfm" class="size-6 text-[#B8DB80]" /> Listening Activity
+      </h3>
+      <a
+        href={`https://www.last.fm/user/${lastfmUser}`}
+        target="_blank"
+        class="text-sm text-neutral after:relative after:bottom-[-4px] after:content-[url(/external.svg)] hover:text-primary"
+      >
+        Last.fm
+      </a>
+    </div>
+    {
+      listening.recent.length === 0 ? (
+        <p class="rounded-2xl border border-neutral/20 p-5 text-neutral">
+          {listening.missingKey
+            ? "Scrobbles appear here once LASTFM_API_KEY is set in .env."
+            : "Last.fm didn't respond during this build. Scrobbles will show on the next deploy."}
+        </p>
+      ) : (
+        <div class="grid gap-10 sm:grid-cols-2">
+          <ol class="space-y-3">
+            {listening.recent.map((t) => (
+              <li>
+                <a href={t.link} target="_blank" class="group flex items-center gap-3">
+                  {t.art ? (
+                    <img src={t.art} alt="" class="size-11 rounded-md object-cover" />
+                  ) : (
+                    <span class="grid size-11 place-items-center rounded-md bg-[#5A7863]/60 text-neutral">
+                      <Icon name="ph:music-note-bold" class="size-4" />
+                    </span>
+                  )}
+                  <span class="min-w-0 flex-1">
+                    <span class="block truncate text-sm font-medium text-white group-hover:text-[#B8DB80]">
+                      {t.name}
+                    </span>
+                    <span class="block truncate text-xs text-neutral">{t.artist}</span>
+                  </span>
+                  {t.nowPlaying && (
+                    <Icon
+                      name="svg-spinners:bars-scale-middle"
+                      class="size-5 shrink-0 text-[#B8DB80]"
+                      aria-label="Playing now"
+                    />
+                  )}
+                </a>
+              </li>
+            ))}
+          </ol>
+          <div>
+            <p class="mb-3 text-sm text-white/50">Top artists this month</p>
+            <ul class="space-y-2">
+              {listening.topArtists.map((a) => (
+                <li class="relative overflow-hidden rounded-md">
+                  <span
+                    class="absolute inset-y-0 left-0 bg-primary/35"
+                    style={`width: ${(a.plays / maxPlays) * 100}%`}
+                  />
+                  <a href={a.link} target="_blank" class="relative flex justify-between px-3 py-1.5 text-sm text-white">
+                    <span>{a.name}</span>
+                    <span class="text-neutral tabular-nums">{a.plays} plays</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )
+    }
+  </div>
+
+  <div class="mt-16">
+    <div class="mb-5 flex items-baseline justify-between">
+      <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
+        <Icon name="simple-icons:steam" class="size-6 text-[#B8DB80]" /> Most Played
+      </h3>
+      <a
+        href={`https://steamcommunity.com/profiles/${steamId}`}
+        target="_blank"
+        class="text-sm text-neutral after:relative after:bottom-[-4px] after:content-[url(/external.svg)] hover:text-primary"
+      >
+        Steam
+      </a>
+    </div>
+    {
+      gaming.games.length ? (
+        <ul class="grid grid-cols-3 gap-3 sm:grid-cols-5">
+          {gaming.games.map((g, i) => (
+            <li class={mobileHide(i)}>
+              <a href={g.link} target="_blank" class="group block" title={g.name}>
+                <img
+                  src={g.cover}
+                  alt={`${g.name} cover`}
+                  loading="lazy"
+                  class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-[#B8DB80]"
+                />
+                <span class="mt-1.5 flex items-center justify-between text-xs">
+                  <span class="text-[#B8DB80] tabular-nums">{g.hours.toLocaleString("en-US")} hrs</span>
+                  <span class="flex items-center gap-1 text-neutral">
+                    {g.recent && <Icon name="ph:game-controller-fill" class="size-3.5 text-[#B8DB80]" />}
+                    {g.lastPlayed && watchedOn(g.lastPlayed)}
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="rounded-2xl border border-neutral/20 p-5 text-neutral">
+          {gaming.missingKey
+            ? "Games appear here once STEAM_API_KEY is set in .env."
+            : "Steam didn't respond during this build. Games will show on the next deploy."}
+        </p>
+      )
+    }
+  </div>
+
+  <ul class="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-neutral/20 pt-5 text-xs text-neutral">
+    <li class="flex items-center gap-1.5"><span class="text-[#B8DB80]">★★★½</span> My rating</li>
+    <li class="flex items-center gap-1.5"><Icon name="ph:arrows-clockwise-bold" class="size-3.5" /> Rewatch</li>
+    <li class="flex items-center gap-1.5">
+      <Icon name="svg-spinners:bars-scale-middle" class="size-4 text-[#B8DB80]" /> Playing right now
+    </li>
+    <li class="flex items-center gap-1.5">
+      <Icon name="ph:game-controller-fill" class="size-3.5 text-[#B8DB80]" /> Played in the last 2 weeks
+    </li>
+  </ul>
+</Section>
