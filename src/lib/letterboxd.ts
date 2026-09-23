@@ -28,6 +28,7 @@ export async function getRecentFilms(user: string, limit = 10): Promise<Film[]> 
         link: tag(item, "link"),
       }))
       .filter((f) => f.title)
+      .sort((a, b) => b.watched.localeCompare(a.watched))
       .slice(0, limit);
   } catch {
     return [];
