@@ -11,7 +11,7 @@
   const { letterboxd, lastfm, steam } = SITE_CONFIG.activity;
 </script>
 
-<Hero {...SITE_CONTENT.hero} />
+<Hero {...SITE_CONTENT.hero} contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
 <Experience text="Work Experience" href="experience" experience={SITE_CONTENT.experience} />
 <Experience text="Leadership / Volunteering" href="leadership" experience={SITE_CONTENT.leadership} />
 <Projects projects={SITE_CONTENT.projects} />

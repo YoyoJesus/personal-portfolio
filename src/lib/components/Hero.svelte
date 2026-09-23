@@ -1,8 +1,18 @@
 <script lang="ts">
   import ContactForm from "./ContactForm.svelte";
+  import ContributionGraph from "./ContributionGraph.svelte";
   import type { HeroProps } from "$lib/types";
+  import type { Contributions } from "$lib/server/github";
 
-  let { name, specialty, summary, resume, blog }: HeroProps = $props();
+  let {
+    name,
+    specialty,
+    summary,
+    resume,
+    blog,
+    contributions,
+    githubUser,
+  }: HeroProps & { contributions: Contributions; githubUser: string } = $props();
 
   let contactOpen = $state(false);
 </script>
@@ -16,9 +26,11 @@
   >
     {specialty}
   </p>
-  <p class="mb-16 text-base font-normal text-neutral md:text-lg">
+  <p class="mb-16 text-base font-normal text-neutral md:mb-10 md:text-lg">
     {summary}
   </p>
+
+  <ContributionGraph {contributions} user={githubUser} />
 
   <div class="flex flex-wrap gap-4">
     <button
