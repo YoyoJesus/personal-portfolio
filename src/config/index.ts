@@ -10,6 +10,7 @@ export const SITE_CONFIG: SiteConfig = {
   navLinks: [
     { text: "Experience", href: "#experience" },
     { text: "Projects", href: "#projects" },
+    { text: "Off the Clock", href: "#off-the-clock" },
     { text: "About", href: "#about" },
   ],
   socialLinks: [
@@ -21,6 +22,7 @@ export const SITE_CONFIG: SiteConfig = {
   ],
   socialImage: "/zen-og.png",
   canonicalURL: "https://dev.asternberg.xyz",
+  activity: { letterboxd: "yoyojesus", lastfm: "yoyojesus" },
 };
 
 export const SITE_CONTENT: SiteContent = {
