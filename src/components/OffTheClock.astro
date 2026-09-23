@@ -3,15 +3,18 @@ import { Icon } from "astro-icon/components";
 import Section from "./Section.astro";
 import { stars, type Film } from "../lib/letterboxd";
 import type { Listening } from "../lib/lastfm";
+import type { Gaming } from "../lib/steam";
 
 interface Props {
   films: Film[];
   listening: Listening;
   letterboxdUser: string;
   lastfmUser: string;
+  gaming: Gaming;
+  steamId: string;
 }
 
-const { films, listening, letterboxdUser, lastfmUser } = Astro.props;
+const { films, listening, letterboxdUser, lastfmUser, gaming, steamId } = Astro.props;
 const maxPlays = Math.max(...listening.topArtists.map((a) => a.plays), 1);
 const watchedOn = (d: string) =>
   new Date(`${d}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
@@ -135,11 +138,60 @@ const watchedOn = (d: string) =>
     }
   </div>
 
+  <div class="mt-16">
+    <div class="mb-5 flex items-baseline justify-between">
+      <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
+        <Icon name="simple-icons:steam" class="size-6 text-[#B8DB80]" /> Most Played
+      </h3>
+      <a
+        href={`https://steamcommunity.com/profiles/${steamId}`}
+        target="_blank"
+        class="text-sm text-neutral after:relative after:bottom-[-4px] after:content-[url(/external.svg)] hover:text-primary"
+      >
+        Steam
+      </a>
+    </div>
+    {
+      gaming.games.length ? (
+        <ul class="grid grid-cols-3 gap-3 sm:grid-cols-5">
+          {gaming.games.map((g) => (
+            <li>
+              <a href={g.link} target="_blank" class="group block" title={g.name}>
+                <img
+                  src={g.cover}
+                  alt={`${g.name} cover`}
+                  loading="lazy"
+                  class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-[#B8DB80]"
+                />
+                <span class="mt-1.5 flex items-center justify-between text-xs">
+                  <span class="text-[#B8DB80] tabular-nums">{g.hours.toLocaleString("en-US")} hrs</span>
+                  <span class="flex items-center gap-1 text-neutral">
+                    {g.recent && <Icon name="ph:game-controller-fill" class="size-3.5 text-[#B8DB80]" />}
+                    {g.lastPlayed && watchedOn(g.lastPlayed)}
+                  </span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="rounded-2xl border border-neutral/20 p-5 text-neutral">
+          {gaming.missingKey
+            ? "Games appear here once STEAM_API_KEY is set in .env."
+            : "Steam didn't respond during this build. Games will show on the next deploy."}
+        </p>
+      )
+    }
+  </div>
+
   <ul class="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-neutral/20 pt-5 text-xs text-neutral">
     <li class="flex items-center gap-1.5"><span class="text-[#B8DB80]">★★★½</span> My rating</li>
     <li class="flex items-center gap-1.5"><Icon name="ph:arrows-clockwise-bold" class="size-3.5" /> Rewatch</li>
     <li class="flex items-center gap-1.5">
       <Icon name="svg-spinners:bars-scale-middle" class="size-4 text-[#B8DB80]" /> Playing right now
+    </li>
+    <li class="flex items-center gap-1.5">
+      <Icon name="ph:game-controller-fill" class="size-3.5 text-[#B8DB80]" /> Played in the last 2 weeks
     </li>
   </ul>
 </Section>
