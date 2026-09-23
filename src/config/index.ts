@@ -9,6 +9,7 @@ export const SITE_CONFIG: SiteConfig = {
   siteLogo: "/austin-small.jpg",
   navLinks: [
     { text: "Experience", href: "#experience" },
+    { text: "Leadership", href: "#leadership" },
     { text: "Projects", href: "#projects" },
     { text: "When I'm Not Coding", href: "#not-coding" },
     { text: "About", href: "#about" },
