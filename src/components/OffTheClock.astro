@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { films, listening, letterboxdUser, lastfmUser, gaming, steamId } = Astro.props;
-// Phones only get the first three of each list.
+// Phones only get the first three films and games.
 const mobileHide = (i: number) => (i >= 3 ? "max-sm:hidden" : "");
 const maxPlays = Math.max(...listening.topArtists.map((a) => a.plays), 1);
 const watchedOn = (d: string) =>
@@ -91,8 +91,8 @@ const watchedOn = (d: string) =>
       ) : (
         <div class="grid gap-10 sm:grid-cols-2">
           <ol class="space-y-3">
-            {listening.recent.map((t, i) => (
-              <li class={mobileHide(i)}>
+            {listening.recent.map((t) => (
+              <li>
                 <a href={t.link} target="_blank" class="group flex items-center gap-3">
                   {t.art ? (
                     <img src={t.art} alt="" class="size-11 rounded-md object-cover" />
@@ -121,8 +121,8 @@ const watchedOn = (d: string) =>
           <div>
             <p class="mb-3 text-sm text-white/50">Top artists this month</p>
             <ul class="space-y-2">
-              {listening.topArtists.map((a, i) => (
-                <li class={`${mobileHide(i)} relative overflow-hidden rounded-md`}>
+              {listening.topArtists.map((a) => (
+                <li class="relative overflow-hidden rounded-md">
                   <span
                     class="absolute inset-y-0 left-0 bg-primary/35"
                     style={`width: ${(a.plays / maxPlays) * 100}%`}
