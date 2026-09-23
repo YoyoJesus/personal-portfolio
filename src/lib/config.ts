@@ -1,4 +1,4 @@
-import type { SiteConfig, SiteContent } from "../types";
+import type { SiteConfig, SiteContent } from "./types";
 
 export const SITE_CONFIG: SiteConfig = {
   title: "Austin Sternberg - Computer Science Student",

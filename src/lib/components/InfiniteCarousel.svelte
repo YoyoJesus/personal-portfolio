@@ -1,11 +1,11 @@
 <script lang="ts">
   import { onMount, onDestroy } from 'svelte';
-  import type { ProjectProps } from '@types';
+  import type { ProjectProps } from '$lib/types';
   
   export let projects: ProjectProps[] = [];
   
   let carouselContainer: HTMLDivElement;
-  let scrollTimeout: number;
+  let scrollTimeout: number | undefined;
   let cardWidth = 0;
   
   // Triple the projects for infinite scroll

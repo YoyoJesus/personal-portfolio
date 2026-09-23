@@ -34,6 +34,3 @@ export async function getRecentFilms(user: string, limit = 10): Promise<Film[]> 
     return [];
   }
 }
-
-export const stars = (rating: number | null) =>
-  rating == null ? "" : "★".repeat(Math.floor(rating)) + (rating % 1 ? "½" : "");

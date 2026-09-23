@@ -1,3 +1,5 @@
+import { env } from "$env/dynamic/private";
+
 export interface Track {
   name: string;
   artist: string;
@@ -23,7 +25,7 @@ const API = "https://ws.audioscrobbler.com/2.0/";
 const EMPTY = { recent: [], topArtists: [] };
 
 export async function getListening(user: string): Promise<Listening> {
-  const key = import.meta.env.LASTFM_API_KEY;
+  const key = env.LASTFM_API_KEY;
   if (!key) return { ...EMPTY, missingKey: true };
   const call = (method: string, extra = "") =>
     fetch(`${API}?method=${method}&user=${user}&api_key=${key}&format=json${extra}`).then((r) => r.json());

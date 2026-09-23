@@ -1,3 +1,5 @@
+import { env } from "$env/dynamic/private";
+
 export interface Game {
   name: string;
   hours: number;
@@ -23,7 +25,7 @@ async function coverFor(appid: number) {
 }
 
 export async function getTopGames(steamId: string, limit = 5): Promise<Gaming> {
-  const key = import.meta.env.STEAM_API_KEY;
+  const key = env.STEAM_API_KEY;
   if (!key) return { games: [], missingKey: true };
   try {
     const res = await fetch(`${API}?key=${key}&steamid=${steamId}&include_appinfo=1&format=json`);
