@@ -18,10 +18,6 @@ const watchedOn = (d: string) =>
 ---
 
 <Section text="Off the Clock" href="off-the-clock">
-  <p class="-mt-8 mb-12 text-base text-neutral">
-    What I've been watching and listening to lately, pulled from Letterboxd and Last.fm.
-  </p>
-
   <div class="mb-16">
     <div class="mb-5 flex items-baseline justify-between">
       <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
@@ -32,7 +28,7 @@ const watchedOn = (d: string) =>
         target="_blank"
         class="text-sm text-neutral after:relative after:bottom-[-4px] after:content-[url(/external.svg)] hover:text-primary"
       >
-        Diary
+        Letterboxd
       </a>
     </div>
     {
@@ -70,7 +66,7 @@ const watchedOn = (d: string) =>
   <div>
     <div class="mb-5 flex items-baseline justify-between">
       <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
-        <Icon name="simple-icons:lastdotfm" class="size-6 text-[#B8DB80]" /> On Repeat
+        <Icon name="simple-icons:lastdotfm" class="size-6 text-[#B8DB80]" /> Recent Listening Activity
       </h3>
       <a
         href={`https://www.last.fm/user/${lastfmUser}`}
@@ -107,7 +103,11 @@ const watchedOn = (d: string) =>
                     <span class="block truncate text-xs text-neutral">{t.artist}</span>
                   </span>
                   {t.nowPlaying && (
-                    <Icon name="ph:waveform-bold" class="size-4 text-[#B8DB80]" aria-label="Playing now" />
+                    <Icon
+                      name="svg-spinners:bars-scale-middle"
+                      class="size-5 shrink-0 text-[#B8DB80]"
+                      aria-label="Playing now"
+                    />
                   )}
                 </a>
               </li>
@@ -134,4 +134,12 @@ const watchedOn = (d: string) =>
       )
     }
   </div>
+
+  <ul class="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-neutral/20 pt-5 text-xs text-neutral">
+    <li class="flex items-center gap-1.5"><span class="text-[#B8DB80]">★★★½</span> My rating</li>
+    <li class="flex items-center gap-1.5"><Icon name="ph:arrows-clockwise-bold" class="size-3.5" /> Rewatch</li>
+    <li class="flex items-center gap-1.5">
+      <Icon name="svg-spinners:bars-scale-middle" class="size-4 text-[#B8DB80]" /> Playing right now
+    </li>
+  </ul>
 </Section>
