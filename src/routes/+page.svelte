@@ -9,6 +9,27 @@
   let { data } = $props();
 
   const { letterboxd, lastfm, steam } = SITE_CONFIG.activity;
+
+  // svelte-ignore state_referenced_locally
+  let films = $state(data.films);
+  // svelte-ignore state_referenced_locally
+  let listening = $state(data.listening);
+
+  // Poll Letterboxd and Last.fm while the tab is visible so "now playing" stays current.
+  $effect(() => {
+    const refresh = async () => {
+      if (document.hidden) return;
+      const res = await fetch("/api/activity").catch(() => null);
+      if (!res?.ok) return;
+      ({ films, listening } = await res.json());
+    };
+    const timer = setInterval(refresh, 30_000);
+    document.addEventListener("visibilitychange", refresh);
+    return () => {
+      clearInterval(timer);
+      document.removeEventListener("visibilitychange", refresh);
+    };
+  });
 </script>
 
 <Hero {...SITE_CONTENT.hero} contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
@@ -16,8 +37,8 @@
 <Experience text="Leadership / Volunteering" href="leadership" experience={SITE_CONTENT.leadership} />
 <Projects projects={SITE_CONTENT.projects} />
 <OffTheClock
-  films={data.films}
-  listening={data.listening}
+  {films}
+  {listening}
   letterboxdUser={letterboxd}
   lastfmUser={lastfm}
   gaming={data.gaming}
