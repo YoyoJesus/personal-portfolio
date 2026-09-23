@@ -7,7 +7,7 @@ import type { PageServerLoad } from "./$types";
 export const load: PageServerLoad = async ({ setHeaders }) => {
   const { letterboxd, lastfm, steam } = SITE_CONFIG.activity;
   const [films, listening, gaming] = await Promise.all([
-    getRecentFilms(letterboxd),
+    getRecentFilms(letterboxd, 5),
     getListening(lastfm),
     getTopGames(steam),
   ]);
