@@ -1,7 +1,3 @@
----
-// Animated decorative elements for desktop only
----
-
 <div class="side-animations hidden lg:block">
   <!-- Left side animations -->
   <div class="fixed left-8 top-1/4 z-0 opacity-60">
