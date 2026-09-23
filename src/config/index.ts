@@ -37,6 +37,47 @@ export const SITE_CONTENT: SiteContent = {
   },
   experience: [
     {
+      company: "Awetomaton Ltd",
+      position: "Information Technology Intern",
+      startDate: "May 2026",
+      endDate: "August 2026",
+      workType: "Internship",
+      summary: [
+        "Developed internal tools to help streamline operations and improve efficiency across the company.",
+        "Improved previous workflows, implementing strong and more scalable solutions to help the company grow.",
+        "Worked closely with one of the founders to improve tools and workflows, and learm some of the day-to-day of this small but growing company.",
+      ],
+    },
+    {
+      company: "Riverside Local Schools",
+      position: "IT Intern",
+      startDate: "May 2025",
+      endDate: "Jan 2026",
+      workType: "Internship - Seasonal",
+      summary: [
+        "Supported network and device maintenance across district buildings.",
+        "Troubleshooting hardware and software issues for staff, classrooms, and students.",
+        "Assisted with system upgrades and deployment of new technologies.",
+        "Worked closely with the IT team to troubleshoot and resolve networking issues and ensure optimal performance of school systems.",
+        "Lead student workers in learning how to repair and maintain devices used by students and staff.",
+      ],
+    },
+    {
+      company: "Riverside Local Schools",
+      position: "IT Student",
+      startDate: "Jun 2022",
+      endDate: "Feb 2025",
+      workType: "Seasonal",
+      summary: [
+        "Assessed and repaired student devices, primarily chromebooks.",
+        "Cleaned and inventoried tech equipment across the district.",
+        "Prepared devices for sale or disposal, primarily through the deletion and destruction of data to DOTD standards.",
+        "Took inventory of all technology assets in the district, and set up equipment for classroom use.",
+      ],
+    },
+  ],
+  leadership: [
+    {
       company: "HacKSU",
       position: "President",
       startDate: "August 2025",
@@ -74,45 +115,6 @@ export const SITE_CONTENT: SiteContent = {
           startDate: "May 2024",
           endDate: "May 2025",
         }
-      ],
-    },
-    {
-      company: "Awetomaton Ltd",
-      position: "Information Technology Intern",
-      startDate: "May 2026",
-      endDate: "August 2026",
-      workType: "Internship",
-      summary: [
-        "Developed internal tools to help streamline operations and improve efficiency across the company.",
-        "Improved previous workflows, implementing strong and more scalable solutions to help the company grow.",
-        "Worked closely with one of the founders to improve tools and workflows, and learm some of the day-to-day of this small but growing company.",
-      ],
-    },
-    {
-      company: "Riverside Local Schools",
-      position: "IT Intern",
-      startDate: "May 2025",
-      endDate: "Jan 2026",
-      workType: "Internship - Seasonal",
-      summary: [
-        "Supported network and device maintenance across district buildings.",
-        "Troubleshooting hardware and software issues for staff, classrooms, and students.",
-        "Assisted with system upgrades and deployment of new technologies.",
-        "Worked closely with the IT team to troubleshoot and resolve networking issues and ensure optimal performance of school systems.",
-        "Lead student workers in learning how to repair and maintain devices used by students and staff.",
-      ],
-    },
-    {
-      company: "Riverside Local Schools",
-      position: "IT Student",
-      startDate: "Jun 2022",
-      endDate: "Feb 2025",
-      workType: "Seasonal",
-      summary: [
-        "Assessed and repaired student devices, primarily chromebooks.",
-        "Cleaned and inventoried tech equipment across the district.",
-        "Prepared devices for sale or disposal, primarily through the deletion and destruction of data to DOTD standards.",
-        "Took inventory of all technology assets in the district, and set up equipment for classroom use.",
       ],
     },
   ],
