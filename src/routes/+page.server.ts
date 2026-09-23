@@ -14,6 +14,9 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
     getContributions(github),
   ]);
   // Vercel's CDN serves a cached copy for a minute, then refreshes in the background.
-  setHeaders({ "cache-control": "public, max-age=0, s-maxage=60, stale-while-revalidate=300" });
+  // Skip the CDN cache when Last.fm failed so an empty section isn't served for minutes.
+  setHeaders({
+    "cache-control": listening.failed ? "no-store" : "public, max-age=0, s-maxage=60, stale-while-revalidate=300",
+  });
   return { films, listening, gaming, contributions };
 };

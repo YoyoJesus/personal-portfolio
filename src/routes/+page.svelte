@@ -21,8 +21,12 @@
       if (document.hidden) return;
       const res = await fetch("/api/activity").catch(() => null);
       if (!res?.ok) return;
-      ({ films, listening } = await res.json());
+      const fresh = await res.json();
+      films = fresh.films;
+      // Keep what we have rather than blanking the section on a failed poll.
+      if (!fresh.listening.failed) listening = fresh.listening;
     };
+    refresh();
     const timer = setInterval(refresh, 30_000);
     document.addEventListener("visibilitychange", refresh);
     return () => {
@@ -36,12 +40,5 @@
 <Experience text="Work Experience" href="experience" experience={SITE_CONTENT.experience} />
 <Experience text="Leadership / Volunteering" href="leadership" experience={SITE_CONTENT.leadership} />
 <Projects projects={SITE_CONTENT.projects} />
-<OffTheClock
-  {films}
-  {listening}
-  letterboxdUser={letterboxd}
-  lastfmUser={lastfm}
-  gaming={data.gaming}
-  steamId={steam}
-/>
+<OffTheClock {films} {listening} letterboxdUser={letterboxd} lastfmUser={lastfm} gaming={data.gaming} steamId={steam} />
 <About {...SITE_CONTENT.about} name={SITE_CONTENT.hero.name} />

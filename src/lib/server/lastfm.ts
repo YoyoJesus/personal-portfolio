@@ -18,6 +18,7 @@ export interface Listening {
   recent: Track[];
   topArtists: Artist[];
   missingKey: boolean;
+  failed?: boolean;
 }
 
 const API = "https://ws.audioscrobbler.com/2.0/";
@@ -27,8 +28,16 @@ const EMPTY = { recent: [], topArtists: [] };
 export async function getListening(user: string): Promise<Listening> {
   const key = env.LASTFM_API_KEY;
   if (!key) return { ...EMPTY, missingKey: true };
-  const call = (method: string, extra = "") =>
-    fetch(`${API}?method=${method}&user=${user}&api_key=${key}&format=json${extra}`).then((r) => r.json());
+  // Last.fm intermittently answers with an error payload, so retry once before giving up.
+  const call = async (method: string, extra = "", retries = 1): Promise<any> => {
+    const url = `${API}?method=${method}&user=${user}&api_key=${key}&format=json${extra}`;
+    const data = await fetch(url)
+      .then((r) => r.json())
+      .catch(() => null);
+    if (data && !data.error) return data;
+    if (retries) return call(method, extra, retries - 1);
+    throw new Error(data?.message ?? `Last.fm ${method} failed`);
+  };
   try {
     const [recent, top] = await Promise.all([
       call("user.getrecenttracks", "&limit=20"),
@@ -46,7 +55,8 @@ export async function getListening(user: string): Promise<Listening> {
       recent: tracks.filter((t, i) => tracks.findIndex((u) => u.link === t.link) === i).slice(0, 5),
       topArtists: top.topartists.artist.map((a: any) => ({ name: a.name, plays: Number(a.playcount), link: a.url })),
     };
-  } catch {
-    return { ...EMPTY, missingKey: false };
+  } catch (err) {
+    console.error(err);
+    return { ...EMPTY, missingKey: false, failed: true };
   }
 }

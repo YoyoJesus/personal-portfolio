@@ -9,6 +9,10 @@ export const GET: RequestHandler = async () => {
   const [films, listening] = await Promise.all([getRecentFilms(letterboxd, 5), getListening(lastfm)]);
   return json(
     { films, listening },
-    { headers: { "cache-control": "public, max-age=0, s-maxage=30, stale-while-revalidate=60" } },
+    {
+      headers: {
+        "cache-control": listening.failed ? "no-store" : "public, max-age=0, s-maxage=30, stale-while-revalidate=60",
+      },
+    },
   );
 };
