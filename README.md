@@ -1,19 +1,17 @@
 # Personal Portfolio
 
-Serves to show case my work and experience. Based on the astro-zen vercel template
+Serves to show case my work and experience. Originally based on the astro-zen vercel template, now running on SvelteKit.
 
-##  Getting Started with your own
+The "When I'm Not Coding" section (Letterboxd, Last.fm, Steam) is rendered on each request and cached at Vercel's edge for 60 seconds, so it stays current without redeploying.
 
-Clone this repository to your local machine using Git.
+## Getting Started
 
-```scheme
-git clone https://github.com/immois/astro-zen.git
-cd astro-zen
-```
+Copy `.env.example` to `.env` and fill in the keys.
 
-| Command        | Action                                       |
-| :------------- | :------------------------------------------- |
-| `pnpm install` | Installs dependencies                        |
-| `pnpm dev`     | Starts local dev server at `localhost:4321`  |
-| `pnpm build`   | Build your production site to `./dist/`      |
-| `pnpm preview` | Preview your build locally, before deploying |
+| Command           | Action                                      |
+| :---------------- | :------------------------------------------ |
+| `npm install`     | Installs dependencies                       |
+| `npm run dev`     | Starts local dev server at `localhost:5173` |
+| `npm run build`   | Builds the production site                  |
+| `npm run preview` | Previews the production build locally       |
+| `npm run check`   | Type-checks the project                     |
