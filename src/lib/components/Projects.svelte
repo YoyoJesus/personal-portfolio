@@ -51,11 +51,21 @@
     if (!carousel || !step) return;
     if (scrollTimer) clearTimeout(scrollTimer);
     const cardIndex = Math.round(carousel.scrollLeft / step);
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     carousel.scrollTo({
       left: (cardIndex + direction) * step,
-      behavior: "instant",
+      behavior: reduceMotion ? "instant" : "smooth",
     });
   }
+
+  function handleCarouselKeydown(event: KeyboardEvent) {
+    if (event.target !== carousel) return;
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    moveCarousel(event.key === "ArrowLeft" ? -1 : 1);
+  }
+
+  const pad = (value: number) => String(value).padStart(2, "0");
 
   onMount(() => {
     window.addEventListener("resize", centerCarousel);
@@ -165,12 +175,17 @@
 
   {#if projects.length}
     <div class="mobile-carousel">
+      <!-- Scrollable regions must be focusable so keyboard users can move through them. -->
+      <!-- svelte-ignore a11y_no_noninteractive_tabindex, a11y_no_noninteractive_element_interactions -->
       <div
         class="carousel-viewport"
         bind:this={carousel}
         onscroll={handleCarouselScroll}
+        onkeydown={handleCarouselKeydown}
         role="region"
+        aria-roledescription="carousel"
         aria-label="Projects carousel"
+        tabindex="0"
         style:height={carouselHeight ? `${carouselHeight}px` : undefined}
       >
         <div class="carousel-track">
@@ -184,8 +199,15 @@
         </div>
       </div>
       <div class="carousel-controls">
-        <span>Swipe to browse</span>
-        <div>
+        <div class="carousel-status">
+          <span class="carousel-count" aria-live="polite">
+            <strong>{pad(activeIndex + 1)}</strong> / {pad(projects.length)}
+          </span>
+          <div class="carousel-progress" aria-hidden="true">
+            <span style:width={`${((activeIndex + 1) / projects.length) * 100}%`}></span>
+          </div>
+        </div>
+        <div class="carousel-buttons">
           <button type="button" onclick={() => moveCarousel(-1)} aria-label="Previous project">←</button>
           <button type="button" onclick={() => moveCarousel(1)} aria-label="Next project">→</button>
         </div>
@@ -222,10 +244,17 @@
 
   .carousel-viewport {
     overflow-x: auto;
+    overflow-y: hidden;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     transition: height 180ms ease;
+  }
+
+  .carousel-viewport:focus-visible {
+    outline: 2px solid #b8db80;
+    outline-offset: 4px;
+    border-radius: 1.25rem;
   }
 
   .carousel-viewport::-webkit-scrollbar {
@@ -247,15 +276,49 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 1rem 1.25rem 0 0;
-    color: #b8db80;
+    gap: 1.5rem;
+    margin: 1.25rem 1.25rem 0 0;
     font-family: "Gabarito Variable", sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
   }
 
-  .carousel-controls div {
+  .carousel-status {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 0.9rem;
+  }
+
+  .carousel-count {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+  }
+
+  .carousel-count strong {
+    color: #b8db80;
+    font-weight: 600;
+  }
+
+  .carousel-progress {
+    flex: 1;
+    max-width: 7rem;
+    height: 2px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #3c503d;
+  }
+
+  .carousel-progress span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: #b8db80;
+    transition: width 220ms ease;
+  }
+
+  .carousel-buttons {
     display: flex;
     gap: 0.5rem;
   }
@@ -270,6 +333,9 @@
     color: #e2e8f0;
     cursor: pointer;
     font-size: 1.1rem;
+    transition:
+      border-color 150ms ease,
+      color 150ms ease;
   }
 
   .carousel-controls button:hover {
@@ -379,7 +445,6 @@
   }
   .project-footer {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
@@ -388,6 +453,8 @@
   }
   .project-links {
     display: flex;
+    flex: 1;
+    min-width: 0;
     flex-wrap: wrap;
     gap: 0.75rem 1.2rem;
   }
@@ -409,6 +476,7 @@
   }
   .project-team {
     display: flex;
+    flex: none;
     align-items: center;
     padding-left: 0.3rem;
   }
@@ -447,6 +515,13 @@
     .project-card.featured {
       grid-column: 1 / -1;
       flex-direction: row-reverse;
+      min-height: 23rem;
+    }
+    .featured .project-details {
+      padding: 2rem;
+    }
+    .featured .project-heading h3 {
+      font-size: clamp(2rem, 4vw, 2.5rem);
     }
     .featured .project-image,
     .featured .project-details {
@@ -462,7 +537,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .carousel-viewport {
+    .carousel-viewport,
+    .carousel-progress span,
+    .carousel-controls button {
       transition: none;
     }
     .project-card {
