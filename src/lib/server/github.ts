@@ -1,6 +1,13 @@
+export interface Day {
+  date: string;
+  count: number;
+  level: number;
+}
+
 export interface Contributions {
   total: number;
-  weeks: number[][];
+  // Padding days outside the range are null.
+  weeks: (Day | null)[][];
   months: { week: number; label: string }[];
 }
 
@@ -10,18 +17,18 @@ export async function getContributions(user: string): Promise<Contributions> {
   try {
     const res = await fetch(`${API}/${user}?y=last`);
     const data = await res.json();
-    const days: { date: string; level: number }[] = data.contributions ?? [];
+    const days: Day[] = (data.contributions ?? []).map(({ date, count, level }: Day) => ({ date, count, level }));
     if (!days.length) return { total: 0, weeks: [], months: [] };
     // Pad both ends so every column is a full Sunday-to-Saturday week, like GitHub's graph.
     const start = new Date(days[0].date);
     start.setUTCDate(start.getUTCDate() - start.getUTCDay());
-    const levels = [...Array(new Date(days[0].date).getUTCDay()).fill(0), ...days.map((d) => d.level)];
-    while (levels.length % 7) levels.push(0);
-    const weeks: number[][] = [];
+    const cells: (Day | null)[] = [...Array(new Date(days[0].date).getUTCDay()).fill(null), ...days];
+    while (cells.length % 7) cells.push(null);
+    const weeks: Contributions["weeks"] = [];
     const months: Contributions["months"] = [];
-    for (let i = 0; i < levels.length; i += 7) {
+    for (let i = 0; i < cells.length; i += 7) {
       const w = i / 7;
-      weeks.push(levels.slice(i, i + 7));
+      weeks.push(cells.slice(i, i + 7));
       const sunday = new Date(start);
       sunday.setUTCDate(start.getUTCDate() + i);
       const label = sunday.toLocaleString("en-US", { month: "short", timeZone: "UTC" });
