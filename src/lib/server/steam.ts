@@ -28,7 +28,7 @@ export async function getTopGames(steamId: string, limit = 5): Promise<Gaming> {
   const key = env.STEAM_API_KEY;
   if (!key) return { games: [], missingKey: true };
   try {
-    const res = await fetch(`${API}?key=${key}&steamid=${steamId}&include_appinfo=1&format=json`);
+    const res = await fetch(`${API}?key=${key}&steamid=${steamId}&include_appinfo=1&include_played_free_games=1&format=json`);
     const owned: any[] = (await res.json()).response?.games ?? [];
     const top = owned.sort((a, b) => b.playtime_forever - a.playtime_forever).slice(0, limit);
     const games = await Promise.all(
