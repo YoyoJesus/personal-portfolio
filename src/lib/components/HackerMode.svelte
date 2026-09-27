@@ -83,7 +83,7 @@
 
   <button
     type="button"
-    class="fixed bottom-4 left-4 z-40 cursor-pointer border border-primary/60 bg-black/80 px-3 py-1.5 text-xs text-primary backdrop-blur-sm transition-colors hover:bg-primary hover:text-white"
+    class="fixed bottom-4 left-4 z-[70] cursor-pointer border border-primary/60 bg-black/80 px-3 py-1.5 text-xs text-primary backdrop-blur-sm transition-colors hover:bg-primary hover:text-white"
     onclick={() => setHacker(false)}
   >
     fsociety :: exit
