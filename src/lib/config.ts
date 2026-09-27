@@ -37,9 +37,9 @@ export const SITE_CONTENT: SiteContent = {
     blog: "https://blog.yoyojesus.xyz",
   },
   hackerHero: {
-    specialty: "CTF Competitor",
+    specialty: "CTF Competitor & Security Enthusiast",
     summary:
-      "I take systems apart to see how they break, then put them back together stronger. Web apps, networks, and whatever the next challenge throws at me. CompTIA Security+ and Network+ certified.",
+      "I take systems apart to see how they break, then put them back together stronger. Web apps, networks, and whatever the next challenge throws at me.",
     wins: [
       { place: "1st", event: "Quantum CTF @ BSidesCLE 2026" },
       { place: "4th", event: "Hack Ohio 2025" },

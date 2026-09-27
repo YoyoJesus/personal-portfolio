@@ -28,7 +28,12 @@
     {displayName}
   </h1>
   <p
-    class="mb-9 font-serif text-4xl leading-[46px] font-bold tracking-tighter text-primary sm:text-5xl md:text-6xl"
+    class={[
+      "mb-9 font-serif font-bold text-primary",
+      hacker.on
+        ? "text-[min(3.9vw,2rem)] leading-tight whitespace-nowrap"
+        : "text-4xl leading-[46px] tracking-tighter sm:text-5xl md:text-6xl",
+    ]}
   >
     {hacker.on ? hackerHero.specialty : specialty}
   </p>
