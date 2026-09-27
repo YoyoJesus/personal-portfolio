@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import Menu from "$lib/icons/Menu.svelte";
   import type { HeaderProps } from "$lib/types";
+  import { HACKER_AVATAR, hacker } from "$lib/hacker.svelte";
 
   let { siteLogo, navLinks }: HeaderProps = $props();
 
@@ -35,7 +36,7 @@
 
 <header class="sticky top-0 z-50 mx-auto flex max-w-5xl animate-slide-in justify-between bg-black px-5 py-6">
   <a href="/" aria-label="Home link">
-    <img class="rounded-full" src={siteLogo} width="45" height="45" alt="website logo" loading="lazy" decoding="async" />
+    <img class="rounded-full" src={hacker.on ? HACKER_AVATAR : siteLogo} width="45" height="45" alt="website logo" loading="lazy" decoding="async" />
   </a>
 
   <button

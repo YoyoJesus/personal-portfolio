@@ -1,4 +1,5 @@
 export const HACKER_ALIAS = "yoyojesus";
+export const HACKER_AVATAR = "/hacker-mask.svg";
 export const HACKER_HASHES = ["#hacker", "#robot"];
 const STORAGE_KEY = "hackermode";
 
