@@ -36,7 +36,7 @@
   <div class="mb-16">
     <div class="mb-5 flex items-baseline justify-between">
       <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
-        <IconLetterboxd class="size-6 text-[#B8DB80]" /> Recently Watched
+        <IconLetterboxd class="size-6 text-accent" /> Recently Watched
       </h3>
       <a
         href={`https://letterboxd.com/${letterboxdUser}/`}
@@ -55,10 +55,10 @@
                 src={f.poster}
                 alt={`${f.title} poster`}
                 loading="lazy"
-                class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-[#B8DB80]"
+                class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
               />
               <span class="mt-1.5 flex items-center justify-between text-xs">
-                <span class="text-[#B8DB80]">{stars(f.rating)}</span>
+                <span class="text-accent">{stars(f.rating)}</span>
                 <span class="flex items-center gap-1 text-neutral">
                   {#if f.liked}<IconHeart class="size-3 text-primary" />{/if}
                   {#if f.rewatch}<IconRewatch class="size-3" />{/if}
@@ -77,7 +77,7 @@
   <div>
     <div class="mb-5 flex items-baseline justify-between">
       <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
-        <IconLastfm class="size-6 text-[#B8DB80]" /> Listening Activity
+        <IconLastfm class="size-6 text-accent" /> Listening Activity
       </h3>
       <a
         href={`https://www.last.fm/user/${lastfmUser}`}
@@ -102,18 +102,18 @@
                 {#if t.art}
                   <img src={t.art} alt="" class="size-11 rounded-md object-cover" />
                 {:else}
-                  <span class="grid size-11 place-items-center rounded-md bg-[#5A7863]/60 text-neutral">
+                  <span class="grid size-11 place-items-center rounded-md bg-muted/60 text-neutral">
                     <IconMusicNote class="size-4" />
                   </span>
                 {/if}
                 <span class="min-w-0 flex-1">
-                  <span class="block truncate text-sm font-medium text-white group-hover:text-[#B8DB80]">
+                  <span class="block truncate text-sm font-medium text-white group-hover:text-accent">
                     {t.name}
                   </span>
                   <span class="block truncate text-xs text-neutral">{t.artist}</span>
                 </span>
                 {#if t.nowPlaying}
-                  <IconPlaying class="size-5 shrink-0 text-[#B8DB80]" aria-label="Playing now" />
+                  <IconPlaying class="size-5 shrink-0 text-accent" aria-label="Playing now" />
                 {/if}
               </a>
             </li>
@@ -141,7 +141,7 @@
   <div class="mt-16">
     <div class="mb-5 flex items-baseline justify-between">
       <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
-        <IconSteam class="size-6 text-[#B8DB80]" /> Most Played
+        <IconSteam class="size-6 text-accent" /> Most Played
       </h3>
       <a
         href={`https://steamcommunity.com/profiles/${steamId}`}
@@ -160,12 +160,12 @@
                 src={g.cover}
                 alt={`${g.name} cover`}
                 loading="lazy"
-                class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-[#B8DB80]"
+                class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
               />
               <span class="mt-1.5 flex items-center justify-between text-xs">
-                <span class="text-[#B8DB80] tabular-nums">{g.hours.toLocaleString("en-US")} hrs</span>
+                <span class="text-accent tabular-nums">{g.hours.toLocaleString("en-US")} hrs</span>
                 <span class="flex items-center gap-1 text-neutral">
-                  {#if g.recent}<IconController class="size-3.5 text-[#B8DB80]" />{/if}
+                  {#if g.recent}<IconController class="size-3.5 text-accent" />{/if}
                   {#if g.lastPlayed}{watchedOn(g.lastPlayed)}{/if}
                 </span>
               </span>
@@ -183,13 +183,13 @@
   </div>
 
   <ul class="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-neutral/20 pt-5 text-xs text-neutral">
-    <li class="flex items-center gap-1.5"><span class="text-[#B8DB80]">★★★½</span> My rating</li>
+    <li class="flex items-center gap-1.5"><span class="text-accent">★★★½</span> My rating</li>
     <li class="flex items-center gap-1.5"><IconRewatch class="size-3.5" /> Rewatch</li>
     <li class="flex items-center gap-1.5">
-      <IconPlaying class="size-4 text-[#B8DB80]" /> Playing right now
+      <IconPlaying class="size-4 text-accent" /> Playing right now
     </li>
     <li class="flex items-center gap-1.5">
-      <IconController class="size-3.5 text-[#B8DB80]" /> Played in the last 2 weeks
+      <IconController class="size-3.5 text-accent" /> Played in the last 2 weeks
     </li>
   </ul>
 </Section>

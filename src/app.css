@@ -8,6 +8,16 @@
   --color-neutral: #94a3b8;
   --color-white: #e2e8f0;
   --color-black: #1B211A;
+  --color-accent: #b8db80;
+  --color-muted: #5a7863;
+  --color-surface: #243328;
+  --color-surface-raised: #34473a;
+  --color-edge: #3c503d;
+  --color-edge-strong: #53684f;
+  --color-edge-hover: #71945d;
+  --color-underline: #91b876;
+  --color-soft: #b9c5bf;
+  --color-chip: #c7d8bd;
 
   --text-xs: 0.875rem;
   --text-xs--line-height: 1.125rem;

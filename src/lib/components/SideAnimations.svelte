@@ -4,10 +4,10 @@
     <div class="animate-float-slow h-48 w-48 rounded-full bg-gradient-to-br from-primary/40 to-primary/10 blur-xl"></div>
   </div>
   <div class="fixed left-16 top-1/2 z-0 opacity-50">
-    <div class="animate-float-medium h-40 w-40 rounded-full bg-gradient-to-br from-[#B8DB80]/50 to-[#B8DB80]/15 blur-lg"></div>
+    <div class="animate-float-medium h-40 w-40 rounded-full bg-gradient-to-br from-accent/50 to-accent/15 blur-lg"></div>
   </div>
   <div class="fixed left-12 bottom-1/4 z-0 opacity-55">
-    <div class="animate-float-fast h-44 w-44 rounded-full bg-gradient-to-br from-[#5A7863]/45 to-[#5A7863]/10 blur-xl"></div>
+    <div class="animate-float-fast h-44 w-44 rounded-full bg-gradient-to-br from-muted/45 to-muted/10 blur-xl"></div>
   </div>
   <div class="fixed left-4 top-2/3 z-0 opacity-45">
     <div class="animate-pulse-glow h-36 w-36 rounded-full bg-gradient-to-br from-primary/35 to-transparent blur-lg"></div>
@@ -18,13 +18,13 @@
     <div class="animate-float-medium h-52 w-52 rounded-full bg-gradient-to-bl from-primary/40 to-primary/10 blur-xl"></div>
   </div>
   <div class="fixed right-14 top-2/3 z-0 opacity-50">
-    <div class="animate-float-slow h-40 w-40 rounded-full bg-gradient-to-bl from-[#B8DB80]/50 to-[#B8DB80]/15 blur-lg"></div>
+    <div class="animate-float-slow h-40 w-40 rounded-full bg-gradient-to-bl from-accent/50 to-accent/15 blur-lg"></div>
   </div>
   <div class="fixed right-10 bottom-1/3 z-0 opacity-55">
-    <div class="animate-float-fast h-48 w-48 rounded-full bg-gradient-to-bl from-[#5A7863]/45 to-[#5A7863]/10 blur-xl"></div>
+    <div class="animate-float-fast h-48 w-48 rounded-full bg-gradient-to-bl from-muted/45 to-muted/10 blur-xl"></div>
   </div>
   <div class="fixed right-4 top-1/2 z-0 opacity-45">
-    <div class="animate-pulse-glow h-38 w-38 rounded-full bg-gradient-to-bl from-[#B8DB80]/40 to-transparent blur-lg"></div>
+    <div class="animate-pulse-glow h-38 w-38 rounded-full bg-gradient-to-bl from-accent/40 to-transparent blur-lg"></div>
   </div>
 </div>
 
