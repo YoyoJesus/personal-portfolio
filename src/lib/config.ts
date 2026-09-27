@@ -36,6 +36,15 @@ export const SITE_CONTENT: SiteContent = {
     resume: "https://resume.asternberg.xyz",
     blog: "https://blog.yoyojesus.xyz",
   },
+  hackerHero: {
+    specialty: "CTF Competitor & Security Enthusiast",
+    summary:
+      "I take systems apart to see how they break, then put them back together stronger. Web apps, networks, and whatever the next challenge throws at me.",
+    wins: [
+      { place: "1st", event: "Quantum CTF @ BSidesCLE 2026" },
+      { place: "4th", event: "Hack Ohio 2025" },
+    ],
+  },
   experience: [
     {
       company: "Awetomaton Ltd",
@@ -413,6 +422,17 @@ export const SITE_CONTENT: SiteContent = {
       I'm always working on something or learning new skills. Feel free to reach out if you'd like to connect!
     `,
     image: "/austin-big.JPG",
+  },
+  hackerAbout: {
+    description: `
+      Hello, friend. Online I go by yoyojesus.
+
+      I got into security because every system has an edge case someone forgot about, and finding it is the best kind of puzzle. Networks, web apps, and CTF challenges are where I spend most of that curiosity.
+
+      Most of my free time goes to capture-the-flag competitions and to writing my own tooling for recon and automation. The python INFOSEC repository is a personal favorite.
+
+      If you're building something and want a second pair of eyes on how it might break, feel free to reach out.
+    `,
   },
 };
 

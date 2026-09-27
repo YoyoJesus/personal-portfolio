@@ -11,10 +11,12 @@ export interface SiteConfig extends HeaderProps {
 
 export interface SiteContent {
   hero: HeroProps;
+  hackerHero: HackerHeroProps;
   experience: ExperienceProps[];
   leadership: ExperienceProps[];
   projects: ProjectProps[];
   about: AboutProps;
+  hackerAbout: Pick<AboutProps, "description">;
 }
 
 export interface HeroProps {
@@ -24,6 +26,13 @@ export interface HeroProps {
   email: string;
   resume: string;
   blog: string;
+}
+
+/** Hero copy shown while hacker mode is on. */
+export interface HackerHeroProps {
+  specialty: string;
+  summary: string;
+  wins: { place: string; event: string }[];
 }
 
 export interface ExperienceProps {

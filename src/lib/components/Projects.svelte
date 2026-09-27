@@ -225,7 +225,7 @@
 <style>
   .projects-intro {
     margin: -1.5rem 0 2rem;
-    color: #94a3b8;
+    color: var(--color-neutral);
     font-size: 0.875rem;
     line-height: 1.5;
   }
@@ -252,7 +252,7 @@
   }
 
   .carousel-viewport:focus-visible {
-    outline: 2px solid #b8db80;
+    outline: 2px solid var(--color-accent);
     outline-offset: 4px;
     border-radius: 1.25rem;
   }
@@ -278,7 +278,7 @@
     justify-content: space-between;
     gap: 1.5rem;
     margin: 1.25rem 1.25rem 0 0;
-    font-family: "Gabarito Variable", sans-serif;
+    font-family: var(--font-serif);
   }
 
   .carousel-status {
@@ -289,7 +289,7 @@
   }
 
   .carousel-count {
-    color: #94a3b8;
+    color: var(--color-neutral);
     font-size: 0.8rem;
     font-variant-numeric: tabular-nums;
     letter-spacing: 0.08em;
@@ -297,7 +297,7 @@
   }
 
   .carousel-count strong {
-    color: #b8db80;
+    color: var(--color-accent);
     font-weight: 600;
   }
 
@@ -307,14 +307,14 @@
     height: 2px;
     overflow: hidden;
     border-radius: 999px;
-    background: #3c503d;
+    background: var(--color-edge);
   }
 
   .carousel-progress span {
     display: block;
     height: 100%;
     border-radius: inherit;
-    background: #b8db80;
+    background: var(--color-accent);
     transition: width 220ms ease;
   }
 
@@ -328,9 +328,9 @@
     width: 2.5rem;
     height: 2.5rem;
     place-items: center;
-    border: 1px solid #53684f;
+    border: 1px solid var(--color-edge-strong);
     border-radius: 50%;
-    color: #e2e8f0;
+    color: var(--color-white);
     cursor: pointer;
     font-size: 1.1rem;
     transition:
@@ -339,12 +339,12 @@
   }
 
   .carousel-controls button:hover {
-    border-color: #b8db80;
-    color: #b8db80;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
   }
 
   .carousel-controls button:focus-visible {
-    outline: 2px solid #b8db80;
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 
@@ -353,23 +353,23 @@
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
-    border: 1px solid #3c503d;
+    border: 1px solid var(--color-edge);
     border-radius: 1.25rem;
-    background: #243328;
+    background: var(--color-surface);
     transition:
       border-color 180ms ease,
       transform 180ms ease;
   }
 
   .project-card:hover {
-    border-color: #71945d;
+    border-color: var(--color-edge-hover);
     transform: translateY(-3px);
   }
   .project-image {
     position: relative;
     overflow: hidden;
     aspect-ratio: 16 / 10;
-    background: #34473a;
+    background: var(--color-surface-raised);
   }
   .project-image::after {
     position: absolute;
@@ -392,8 +392,8 @@
     padding: 1.5rem;
   }
   .project-heading h3 {
-    color: #e2e8f0;
-    font-family: "Gabarito Variable", sans-serif;
+    color: var(--color-white);
+    font-family: var(--font-serif);
     font-size: clamp(1.6rem, 4vw, 2rem);
     font-weight: 600;
     letter-spacing: -0.04em;
@@ -402,7 +402,7 @@
 
   .project-summary {
     margin-top: 0.9rem;
-    color: #b9c5bf;
+    color: var(--color-soft);
     font-size: 0.875rem;
     line-height: 1.65;
   }
@@ -418,10 +418,10 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    border: 1px solid #53684f;
+    border: 1px solid var(--color-edge-strong);
     border-radius: 999px;
     padding: 0.3rem 0.65rem;
-    color: #c7d8bd;
+    color: var(--color-chip);
     font-size: 0.7rem;
     line-height: 1.25;
   }
@@ -440,7 +440,7 @@
     object-fit: contain;
   }
   .project-tech a:focus-visible {
-    outline: 2px solid #b8db80;
+    outline: 2px solid var(--color-accent);
     outline-offset: 4px;
   }
   .project-footer {
@@ -459,15 +459,15 @@
     gap: 0.75rem 1.2rem;
   }
   .project-links a {
-    color: #e2e8f0;
+    color: var(--color-white);
     font-size: 0.8rem;
     font-weight: 600;
     text-decoration: underline;
-    text-decoration-color: #91b876;
+    text-decoration-color: var(--color-underline);
     text-underline-offset: 0.3rem;
   }
   .project-links a:hover {
-    color: #b8db80;
+    color: var(--color-accent);
   }
   .project-links a span {
     display: inline-block;
@@ -486,7 +486,7 @@
     width: 2rem;
     height: 2rem;
     margin-left: -0.3rem;
-    border: 2px solid #243328;
+    border: 2px solid var(--color-surface);
     border-radius: 50%;
   }
   .project-team img {
@@ -496,11 +496,11 @@
     object-fit: cover;
   }
   .project-team a:hover {
-    outline: 2px solid #b8db80;
+    outline: 2px solid var(--color-accent);
   }
   .project-links a:focus-visible,
   .project-team a:focus-visible {
-    outline: 2px solid #b8db80;
+    outline: 2px solid var(--color-accent);
     outline-offset: 4px;
   }
 

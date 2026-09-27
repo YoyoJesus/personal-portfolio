@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { SiteConfig } from "$lib/types";
+  import { HACKER_ALIAS, hacker } from "$lib/hacker.svelte";
 
   let { author, socialLinks }: Pick<SiteConfig, "author" | "socialLinks"> = $props();
   const currentYear = new Date().getFullYear();
@@ -20,6 +21,6 @@
     {/each}
   </ul>
   <p class="text-xs">
-    {author} - {currentYear}
+    {hacker.on ? HACKER_ALIAS : author} - {currentYear}
   </p>
 </footer>

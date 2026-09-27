@@ -36,9 +36,9 @@
   });
 </script>
 
-<Hero {...SITE_CONTENT.hero} contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
+<Hero {...SITE_CONTENT.hero} hackerHero={SITE_CONTENT.hackerHero} contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
 <Experience text="Work Experience" href="experience" experience={SITE_CONTENT.experience} />
 <Experience text="Leadership / Volunteering" href="leadership" experience={SITE_CONTENT.leadership} />
 <Projects projects={SITE_CONTENT.projects} />
 <OffTheClock {films} {listening} letterboxdUser={letterboxd} lastfmUser={lastfm} gaming={data.gaming} steamId={steam} />
-<About {...SITE_CONTENT.about} name={SITE_CONTENT.hero.name} />
+<About {...SITE_CONTENT.about} hackerDescription={SITE_CONTENT.hackerAbout.description} name={SITE_CONTENT.hero.name} />
