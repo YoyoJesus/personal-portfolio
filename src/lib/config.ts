@@ -42,7 +42,7 @@ export const SITE_CONTENT: SiteContent = {
       "I take systems apart to see how they break, then put them back together stronger. Web apps, networks, and whatever the next challenge throws at me.",
     wins: [
       { place: "1st", event: "Hack Dearborn 4" },
-      { place: "Dev Swarm & Token Company Winner", event: "Nex Hacks 2026" },
+      { place: "1st", event: "Nex Hacks 2026 - DevSwarm & Token Company Tracks" },
       { place: "1st", event: "Quantum CTF @ BSidesCLE 2026" },
       { place: "4th", event: "Capture Ohio CTF 2025" },
     ],
