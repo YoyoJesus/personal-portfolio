@@ -77,3 +77,80 @@ html::-webkit-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+/* Hacker mode easter egg (Konami code, typing "fsociety", or /#fsociety) — Mr. Robot palette */
+html.hacker {
+  --color-primary: #e0111b;
+  --color-neutral: #8f8f8f;
+  --color-white: #f2f2f2;
+  --color-black: #050505;
+  --color-accent: #ff2d2d;
+  --color-muted: #5c0b0e;
+  --color-surface: #0e0e0e;
+  --color-surface-raised: #171717;
+  --color-edge: #2b0d0e;
+  --color-edge-strong: #4d1417;
+  --color-edge-hover: #e0111b;
+  --color-underline: #e0111b;
+  --color-soft: #b5b5b5;
+  --color-chip: #d9d9d9;
+
+  --font-sans: ui-monospace, "JetBrains Mono", "Fira Code", SFMono-Regular, Menlo, Consolas, monospace;
+  --font-serif: ui-monospace, "JetBrains Mono", "Fira Code", SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+html.hacker ::selection {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Split-channel glitch on elements with a data-text attribute */
+html.hacker .glitch {
+  position: relative;
+}
+
+html.hacker .glitch::before,
+html.hacker .glitch::after {
+  position: absolute;
+  inset: 0;
+  content: attr(data-text);
+  pointer-events: none;
+}
+
+html.hacker .glitch::before {
+  color: var(--color-primary);
+  animation: glitch 3s infinite steps(1);
+  mix-blend-mode: screen;
+}
+
+html.hacker .glitch::after {
+  color: #3fd0ff;
+  animation: glitch 2.3s infinite reverse steps(1);
+  mix-blend-mode: screen;
+}
+
+@keyframes glitch {
+  0%, 88%, 100% {
+    clip-path: inset(0 0 100% 0);
+    transform: none;
+  }
+  90% {
+    clip-path: inset(10% 0 55% 0);
+    transform: translate(-4px, 1px);
+  }
+  93% {
+    clip-path: inset(60% 0 8% 0);
+    transform: translate(4px, -1px);
+  }
+  96% {
+    clip-path: inset(35% 0 40% 0);
+    transform: translate(-2px, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.hacker .glitch::before,
+  html.hacker .glitch::after {
+    display: none;
+  }
+}

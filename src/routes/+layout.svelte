@@ -6,6 +6,7 @@
   import Header from "$lib/components/Header.svelte";
   import SideAnimations from "$lib/components/SideAnimations.svelte";
   import Footer from "$lib/components/Footer.svelte";
+  import HackerMode from "$lib/components/HackerMode.svelte";
 
   let { children } = $props();
 
@@ -36,3 +37,4 @@
   {@render children()}
 </main>
 <Footer {author} {socialLinks} />
+<HackerMode />

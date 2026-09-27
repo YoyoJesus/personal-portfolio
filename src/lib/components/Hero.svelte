@@ -2,6 +2,7 @@
   import ContactForm from "./ContactForm.svelte";
   import ContributionGraph from "./ContributionGraph.svelte";
   import type { HeroProps } from "$lib/types";
+  import { HACKER_ALIAS, hacker } from "$lib/hacker.svelte";
   import type { Contributions } from "$lib/server/github";
 
   let {
@@ -15,11 +16,15 @@
   }: HeroProps & { contributions: Contributions; githubUser: string } = $props();
 
   let contactOpen = $state(false);
+  const displayName = $derived(hacker.on ? HACKER_ALIAS : name);
 </script>
 
 <section class="py-24 md:py-32" id="#hero">
-  <h1 class="mb-1.5 font-serif text-7xl font-bold tracking-tightest text-white sm:text-8xl md:mb-0 md:text-9xl">
-    {name}
+  <h1
+    class="glitch mb-1.5 font-serif text-7xl font-bold tracking-tightest text-white sm:text-8xl md:mb-0 md:text-9xl"
+    data-text={displayName}
+  >
+    {displayName}
   </h1>
   <p
     class="mb-9 font-serif text-4xl leading-[46px] font-bold tracking-tighter text-primary sm:text-5xl md:text-6xl"

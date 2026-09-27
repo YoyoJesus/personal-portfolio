@@ -278,7 +278,7 @@
     justify-content: space-between;
     gap: 1.5rem;
     margin: 1.25rem 1.25rem 0 0;
-    font-family: "Gabarito Variable", sans-serif;
+    font-family: var(--font-serif);
   }
 
   .carousel-status {
@@ -393,7 +393,7 @@
   }
   .project-heading h3 {
     color: var(--color-white);
-    font-family: "Gabarito Variable", sans-serif;
+    font-family: var(--font-serif);
     font-size: clamp(1.6rem, 4vw, 2rem);
     font-weight: 600;
     letter-spacing: -0.04em;
