@@ -16,6 +16,7 @@ export interface SiteContent {
   leadership: ExperienceProps[];
   projects: ProjectProps[];
   about: AboutProps;
+  hackerAbout: Pick<AboutProps, "description">;
 }
 
 export interface HeroProps {

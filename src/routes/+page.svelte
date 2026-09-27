@@ -41,4 +41,4 @@
 <Experience text="Leadership / Volunteering" href="leadership" experience={SITE_CONTENT.leadership} />
 <Projects projects={SITE_CONTENT.projects} />
 <OffTheClock {films} {listening} letterboxdUser={letterboxd} lastfmUser={lastfm} gaming={data.gaming} steamId={steam} />
-<About {...SITE_CONTENT.about} name={SITE_CONTENT.hero.name} />
+<About {...SITE_CONTENT.about} hackerDescription={SITE_CONTENT.hackerAbout.description} name={SITE_CONTENT.hero.name} />

@@ -423,6 +423,17 @@ export const SITE_CONTENT: SiteContent = {
     `,
     image: "/austin-big.JPG",
   },
+  hackerAbout: {
+    description: `
+      Hello, friend. Online I go by yoyojesus.
+
+      I got into security because every system has an edge case someone forgot about, and finding it is the best kind of puzzle. Networks, web apps, and CTF challenges are where I spend most of that curiosity.
+
+      Most of my free time goes to capture-the-flag competitions and to writing my own tooling for recon and automation. The python INFOSEC repository is a personal favorite.
+
+      If you're building something and want a second pair of eyes on how it might break, feel free to reach out.
+    `,
+  },
 };
 
 // #5755ff
