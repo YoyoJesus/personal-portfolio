@@ -1,5 +1,5 @@
 export const HACKER_ALIAS = "yoyojesus";
-export const HACKER_HASHES = ["#fsociety", "#hackermode"];
+export const HACKER_HASHES = ["#hacker", "#robot"];
 const STORAGE_KEY = "hackermode";
 
 export const hacker = $state({ on: false, booting: false });

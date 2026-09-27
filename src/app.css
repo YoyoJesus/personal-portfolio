@@ -78,7 +78,7 @@ html::-webkit-scrollbar {
   scrollbar-width: none;  /* Firefox */
 }
 
-/* Hacker mode easter egg (Konami code, typing "fsociety", or /#fsociety) — Mr. Robot palette */
+/* Hacker mode easter egg (Konami code, typing "hacker", or /#hacker) — Mr. Robot palette */
 html.hacker {
   --color-primary: #e0111b;
   --color-neutral: #8f8f8f;

@@ -3,14 +3,14 @@
   import { HACKER_ALIAS, HACKER_HASHES, hacker, restoreHacker, setHacker } from "$lib/hacker.svelte";
 
   const KONAMI = ["arrowup", "arrowup", "arrowdown", "arrowdown", "arrowleft", "arrowright", "arrowleft", "arrowright", "b", "a"];
-  const PASSPHRASE = "fsociety";
+  const PASSPHRASE = "hacker";
 
   const BOOT = [
-    "$ ssh root@dev.asternberg.xyz",
+    "$ ssh yoyojesus@dev.asternberg.xyz",
     "[+] connection established",
-    "[+] bypassing firewall ........... done",
-    "[+] escalating privileges ........ done",
-    "[+] rewriting stylesheet ......... done",
+    "[+] loading profile .............. done",
+    "[+] compiling projects ........... done",
+    "[+] applying terminal theme ...... done",
     "$ whoami",
     HACKER_ALIAS,
     "",
@@ -74,7 +74,7 @@
 
 <svelte:head>
   {#if hacker.on}
-    <title>{HACKER_ALIAS} :: fsociety</title>
+    <title>{HACKER_ALIAS} :: terminal</title>
   {/if}
 </svelte:head>
 
@@ -86,7 +86,7 @@
     class="fixed bottom-4 left-4 z-[70] cursor-pointer border border-primary/60 bg-black/80 px-3 py-1.5 text-xs text-primary backdrop-blur-sm transition-colors hover:bg-primary hover:text-white"
     onclick={() => setHacker(false)}
   >
-    fsociety :: exit
+    exit hacker mode
   </button>
 {/if}
 
