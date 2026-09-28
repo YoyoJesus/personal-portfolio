@@ -17,6 +17,8 @@ export interface SiteContent {
   projects: ProjectProps[];
   about: AboutProps;
   hackerAbout: Pick<AboutProps, "description">;
+  /** Project names shown first, in this order, while hacker mode is on. */
+  hackerProjectOrder: string[];
 }
 
 export interface HeroProps {
@@ -43,6 +45,9 @@ export interface ExperienceProps {
   workType: string;
   summary: string | string[];
   previousPositions?: PreviousPositionProps[];
+  /** Fields swapped in while hacker mode is on. */
+  hacker?: Partial<Omit<ExperienceProps, "hacker" | "hackerHidden">>;
+  hackerHidden?: boolean;
 }
 
 export interface PreviousPositionProps {
@@ -60,6 +65,8 @@ export interface ProjectProps {
   linkWriteup?: string;
   languages: LanguageProps[];
   collaborators?: CollaboratorProps[];
+  /** Fields swapped in while hacker mode is on. */
+  hacker?: Partial<Pick<ProjectProps, "summary">>;
 }
 
 export interface AboutProps {

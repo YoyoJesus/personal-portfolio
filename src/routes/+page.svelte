@@ -38,7 +38,12 @@
 
 <Hero {...SITE_CONTENT.hero} hackerHero={SITE_CONTENT.hackerHero} contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
 <Experience text="Work Experience" href="experience" experience={SITE_CONTENT.experience} />
-<Experience text="Leadership / Volunteering" href="leadership" experience={SITE_CONTENT.leadership} />
-<Projects projects={SITE_CONTENT.projects} />
+<Experience
+  text="Leadership / Volunteering"
+  hackerText="$ cat leadership.log"
+  href="leadership"
+  experience={SITE_CONTENT.leadership}
+/>
+<Projects projects={SITE_CONTENT.projects} hackerOrder={SITE_CONTENT.hackerProjectOrder} />
 <OffTheClock {films} {listening} letterboxdUser={letterboxd} lastfmUser={lastfm} gaming={data.gaming} steamId={steam} />
 <About {...SITE_CONTENT.about} hackerDescription={SITE_CONTENT.hackerAbout.description} name={SITE_CONTENT.hero.name} />

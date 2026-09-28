@@ -2,8 +2,19 @@
   import { onMount } from "svelte";
   import Section from "./Section.svelte";
   import type { LanguageProps, ProjectProps } from "$lib/types";
+  import { hacker } from "$lib/hacker.svelte";
 
-  let { projects }: { projects: ProjectProps[] } = $props();
+  let { projects: allProjects, hackerOrder }: { projects: ProjectProps[]; hackerOrder: string[] } = $props();
+
+  // Hacker mode pins security projects to the front and swaps in their hacker copy.
+  const projects = $derived.by(() => {
+    if (!hacker.on) return allProjects;
+    const rank = (p: ProjectProps) => {
+      const i = hackerOrder.indexOf(p.name);
+      return i === -1 ? hackerOrder.length : i;
+    };
+    return allProjects.map((p) => ({ ...p, ...p.hacker })).sort((a, b) => rank(a) - rank(b));
+  });
   let carousel: HTMLDivElement | undefined = $state();
   let activeIndex = $state(0);
   let carouselHeight = $state(0);
@@ -168,9 +179,9 @@
   </article>
 {/snippet}
 
-<Section text="Featured Projects" href="projects">
+<Section text={hacker.on ? "$ ls ~/projects" : "Featured Projects"} href="projects">
   <div class="projects-intro">
-    <p>Things I've built and explored.</p>
+    <p>{hacker.on ? "Tools, CTF infrastructure, and everything else I've built." : "Things I've built and explored."}</p>
   </div>
 
   {#if projects.length}

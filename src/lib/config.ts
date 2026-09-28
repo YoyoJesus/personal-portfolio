@@ -108,9 +108,22 @@ export const SITE_CONTENT: SiteContent = {
           endDate: "August 2026",
         }
       ],
+      hacker: {
+        position: "CTF Director",
+        previousPositions: [
+          { position: "President", startDate: "August 2026", endDate: "Present" },
+          { position: "Events Coordinator", startDate: "Jan 2025", endDate: "August 2026" },
+        ],
+        summary: [
+          "Run Kent Hack It, HacKSU's annual capture-the-flag competition, from challenge design through game day.",
+          "Write and test challenges across web exploitation, forensics, cryptography, and reverse engineering.",
+          "Teach members the fundamentals through workshops and practice challenges, and build HacKSU's competitive CTF team.",
+        ],
+      },
     },
     {
       company: "KSU Combat Robotics",
+      hackerHidden: true,
       position: "President",
       startDate: "May 2025",
       endDate: "Present",
@@ -188,6 +201,9 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Python INFOSEC",
       summary: "A collection of python scripts for various information security and reconnaissance tasks.",
+      hacker: {
+        summary: "My personal recon toolkit: a collection of python scripts for scanning, enumeration, and other information security tasks.",
+      },
       linkPreview: "/",
       linkSource: "https://github.com/YoyoJesus/python-INFOsec",
       linkWriteup: "/",
@@ -356,6 +372,9 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Kent Hack It",
       summary: "Website and Challenges for Kent Hack It, HacKSU's annual CTF event. Built with React & MongoDB. Challenges written using a variety of technologies.",
+      hacker: {
+        summary: "HacKSU's annual capture-the-flag. The scoring platform is built with React & MongoDB, and the challenges span web, crypto, forensics, and reversing, each one built to be broken.",
+      },
       linkPreview: "https://ctf.hacksu.com",
       linkSource: "https://github.com/hacksu/kent-hack-it",
       linkWriteup: "/",
@@ -425,6 +444,7 @@ export const SITE_CONTENT: SiteContent = {
     `,
     image: "/austin-big.JPG",
   },
+  hackerProjectOrder: ["Kent Hack It", "Python INFOSEC"],
   hackerAbout: {
     description: `
       Hello, friend. Online I go by yoyojesus.

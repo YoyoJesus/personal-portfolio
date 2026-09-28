@@ -11,6 +11,7 @@
   import type { Film } from "$lib/server/letterboxd";
   import type { Listening } from "$lib/server/lastfm";
   import type { Gaming } from "$lib/server/steam";
+  import { hacker } from "$lib/hacker.svelte";
 
   interface Props {
     films: Film[];
@@ -32,7 +33,7 @@
     rating == null ? "" : "★".repeat(Math.floor(rating)) + (rating % 1 ? "½" : "");
 </script>
 
-<Section text="When I'm Not Coding" href="not-coding">
+<Section text={hacker.on ? "$ ps aux --afk" : "When I'm Not Coding"} href="not-coding">
   <div class="mb-16">
     <div class="mb-5 flex items-baseline justify-between">
       <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">

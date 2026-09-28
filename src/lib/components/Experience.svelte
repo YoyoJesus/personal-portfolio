@@ -1,12 +1,22 @@
 <script lang="ts">
   import Section from "./Section.svelte";
   import type { ExperienceProps } from "$lib/types";
+  import { hacker } from "$lib/hacker.svelte";
 
-  let { text, href, experience }: { text: string; href: string; experience: ExperienceProps[] } = $props();
+  let {
+    text,
+    hackerText = text,
+    href,
+    experience,
+  }: { text: string; hackerText?: string; href: string; experience: ExperienceProps[] } = $props();
+
+  const entries = $derived(
+    hacker.on ? experience.filter((e) => !e.hackerHidden).map((e) => ({ ...e, ...e.hacker })) : experience,
+  );
 </script>
 
-<Section {text} {href}>
-  {#each experience as { company, position, startDate, workType, endDate, summary, previousPositions }}
+<Section text={hacker.on ? hackerText : text} {href}>
+  {#each entries as { company, position, startDate, workType, endDate, summary, previousPositions }}
     <div class="mb-10">
       <h3 class="mb-1.5 font-serif text-2xl font-semibold text-white">
         {company}
