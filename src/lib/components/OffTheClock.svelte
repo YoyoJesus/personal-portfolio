@@ -42,9 +42,9 @@
       <a
         href={`https://letterboxd.com/${letterboxdUser}/`}
         target="_blank"
-        class="text-sm text-neutral after:relative after:bottom-[-4px] after:content-[url(/external.svg)] hover:text-primary"
+        class="text-sm text-neutral hover:text-primary"
       >
-        View All
+        View All <span aria-hidden="true">↗</span>
       </a>
     </div>
     {#if films.length}
@@ -83,9 +83,9 @@
       <a
         href={`https://www.last.fm/user/${lastfmUser}`}
         target="_blank"
-        class="text-sm text-neutral after:relative after:bottom-[-4px] after:content-[url(/external.svg)] hover:text-primary"
+        class="text-sm text-neutral hover:text-primary"
       >
-        Last.fm
+        Last.fm <span aria-hidden="true">↗</span>
       </a>
     </div>
     {#if listening.recent.length === 0}
@@ -147,9 +147,9 @@
       <a
         href={`https://steamcommunity.com/profiles/${steamId}`}
         target="_blank"
-        class="text-sm text-neutral after:relative after:bottom-[-4px] after:content-[url(/external.svg)] hover:text-primary"
+        class="text-sm text-neutral hover:text-primary"
       >
-        Steam
+        Steam <span aria-hidden="true">↗</span>
       </a>
     </div>
     {#if gaming.games.length}

@@ -13,9 +13,9 @@
         <a
           {href}
           target="_blank"
-          class="inline-block px-4 py-3 after:relative after:bottom-[-4px] after:content-[url(/external.svg)] hover:text-primary"
+          class="inline-block px-4 py-3 hover:text-primary"
         >
-          {text}
+          {text} <span aria-hidden="true">↗</span>
         </a>
       </li>
     {/each}

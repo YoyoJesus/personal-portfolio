@@ -432,13 +432,13 @@ export const SITE_CONTENT: SiteContent = {
   ],
   about: {
     description: `
-      Hi, I'm Austin Sternberg 👋. I'm a Computer Science student at Kent State and am passionate for cybersecurity and networking. 
+      Hi, I'm Austin Sternberg 👋. I'm a Computer Science senior at Kent State with a passion for cybersecurity and networking.
 
-      I am currently an intern at Awetomaton, a small but growing defense contractor based in Beavercreek, Ohio. I work in the IT department, developing internal tools to help streamline operations.
-      
-      I also currently serve as the President of HacKSU, as well as the President of Kent State's Combat Robotics club.
+      This past summer I interned at Awetomaton, a small but growing defense contractor based in Beavercreek, Ohio, where I built internal tools for the IT department to help streamline operations.
 
-      In my free time, I've been working on a handful of personal project, mostly revolving around web development, though the python INFOSEC repository is a personal favorite of mine. Outside of CS, I enjoy combat robotics, where I am currently serving as the President of Kent State's Combat Robotics club.
+      On campus, I serve as President of HacKSU, Kent State's computer science club, and as President of Kent State's Combat Robotics club.
+
+      Outside of class, I spend my time on personal projects, hackathons, and CTFs. Recently I placed first at Hack Dearborn 4 and the Quantum CTF at BSidesCLE 2026, and won two tracks at NexHacks 2026. The python INFOSEC repository is still a personal favorite of mine.
 
       I'm always working on something or learning new skills. Feel free to reach out if you'd like to connect!
     `,
