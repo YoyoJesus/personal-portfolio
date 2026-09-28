@@ -444,7 +444,20 @@ export const SITE_CONTENT: SiteContent = {
     `,
     image: "/austin-big.JPG",
   },
-  hackerProjectOrder: ["Kent Hack It", "Python INFOSEC"],
+  // Security work first, then networking/protocols, hardware, and apps handling sensitive data; plain web builds last.
+  hackerProjectOrder: [
+    "Kent Hack It",
+    "Python INFOSEC",
+    "BluQ",
+    "Ripple Chat",
+    "SCI Smart Badge",
+    "MediTrack",
+    "narr0w",
+    "Sitch Replacement",
+    "ToolSmith",
+    "KSU Combat Robotics Website",
+    "Linktree Replacement",
+  ],
   hackerAbout: {
     description: `
       Hello, friend. Online I go by yoyojesus.
