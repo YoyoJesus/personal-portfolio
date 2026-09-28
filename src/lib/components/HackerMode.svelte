@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { HACKER_ALIAS, HACKER_HASHES, HACKER_HOST, finishSequence, hacker, restoreHacker, setHacker } from "$lib/hacker.svelte";
+  import { HACKER_ALIAS, HACKER_FAVICON, HACKER_HASHES, HACKER_HOST, finishSequence, hacker, restoreHacker, setHacker } from "$lib/hacker.svelte";
 
   const KONAMI = ["arrowup", "arrowup", "arrowdown", "arrowdown", "arrowleft", "arrowright", "arrowleft", "arrowright", "b", "a"];
   const PASSPHRASE = "hacker";
@@ -64,12 +64,17 @@
     checkHash();
   });
 
-  // A second <title> in svelte:head doesn't revert the tab title when removed, so swap it directly.
+  // A second <title> in svelte:head doesn't revert the tab title when removed, so swap it (and the favicon) directly.
   $effect(() => {
     if (!hacker.on) return;
-    const previous = document.title;
+    const icon = document.querySelector<HTMLLinkElement>("link[rel='icon']");
+    const previous = { title: document.title, icon: icon?.href };
     document.title = `${HACKER_ALIAS} :: terminal`;
-    return () => (document.title = previous);
+    if (icon) icon.href = HACKER_FAVICON;
+    return () => {
+      document.title = previous.title;
+      if (icon && previous.icon) icon.href = previous.icon;
+    };
   });
 
   // Type the boot/shutdown log out line by line, then hand control back to the site.
