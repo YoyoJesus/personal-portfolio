@@ -1,12 +1,12 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { HACKER_ALIAS, HACKER_HASHES, finishSequence, hacker, restoreHacker, setHacker } from "$lib/hacker.svelte";
+  import { HACKER_ALIAS, HACKER_HASHES, HACKER_HOST, finishSequence, hacker, restoreHacker, setHacker } from "$lib/hacker.svelte";
 
   const KONAMI = ["arrowup", "arrowup", "arrowdown", "arrowdown", "arrowleft", "arrowright", "arrowleft", "arrowright", "b", "a"];
   const PASSPHRASE = "hacker";
 
   const BOOT = [
-    "$ ssh yoyojesus@dev.asternberg.xyz",
+    `${HACKER_ALIAS}@${HACKER_HOST}:~$ ssh yoyojesus@dev.asternberg.xyz`,
     "[+] connection established",
     "[+] loading profile .............. done",
     "[+] compiling projects ........... done",

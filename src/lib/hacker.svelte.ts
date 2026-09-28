@@ -1,4 +1,6 @@
 export const HACKER_ALIAS = "yoyojesus";
+// Hostname of my hacking machine, shown in shell prompts.
+export const HACKER_HOST = "Cr1tical0verflow";
 // Photo by Bermix Studio on Unsplash (Unsplash License), recolored red:
 // https://unsplash.com/photos/a-man-in-a-hoodie-using-a-laptop-computer-bCrM2e1M0a4
 export const HACKER_AVATAR = "/hacker-avatar.jpg";
