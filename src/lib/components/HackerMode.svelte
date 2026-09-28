@@ -22,10 +22,13 @@
     "[+] saving session ............... done",
     "[+] restoring default theme ...... done",
     "[+] closing connection ........... done",
-    "Connection to dev.asternberg.xyz closed.",
     "",
     "goodbye, friend.",
+    "",
+    "Connection to dev.asternberg.xyz closed.",
+    `${HACKER_ALIAS}@${HACKER_HOST}:~$ `,
   ];
+  const SIGN_OFFS = ["hello, friend.", "goodbye, friend."];
 
   const lines = $derived(hacker.sequence === "shutdown" ? SHUTDOWN : BOOT);
 
@@ -61,6 +64,14 @@
     checkHash();
   });
 
+  // A second <title> in svelte:head doesn't revert the tab title when removed, so swap it directly.
+  $effect(() => {
+    if (!hacker.on) return;
+    const previous = document.title;
+    document.title = `${HACKER_ALIAS} :: terminal`;
+    return () => (document.title = previous);
+  });
+
   // Type the boot/shutdown log out line by line, then hand control back to the site.
   $effect(() => {
     if (!hacker.sequence) return;
@@ -85,12 +96,6 @@
 
 <svelte:window {onkeydown} onhashchange={checkHash} />
 
-<svelte:head>
-  {#if hacker.on}
-    <title>{HACKER_ALIAS} :: terminal</title>
-  {/if}
-</svelte:head>
-
 {#if hacker.on}
   <div class="scanlines" aria-hidden="true"></div>
 
@@ -106,10 +111,10 @@
 {#if hacker.sequence}
   <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
   <div class="boot fixed inset-0 z-[100] flex items-center justify-center bg-black p-6" onclick={finishSequence}>
-    <pre class="w-full max-w-xl text-sm leading-7 whitespace-pre-wrap text-white sm:text-base">{#each lines.slice(0, shown) as line, i}<span
-          class={[line.startsWith("[+]") && "text-neutral", i === lines.length - 1 && "text-2xl text-primary sm:text-3xl"]}
+    <pre class="w-full max-w-xl text-sm leading-7 whitespace-pre-wrap text-white sm:text-base">{#each lines.slice(0, shown) as line, i}{i ? "\n" : ""}<span
+          class={[line.startsWith("[+]") && "text-neutral", SIGN_OFFS.includes(line) && "text-2xl text-primary sm:text-3xl"]}
           >{line}</span
-        >{"\n"}{/each}<span class="cursor">█</span></pre>
+        >{/each}<span class="cursor">█</span></pre>
     <p class="absolute bottom-6 text-xs text-neutral">click or press any key to skip</p>
   </div>
 {/if}
