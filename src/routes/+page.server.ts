@@ -3,20 +3,22 @@ import { getRecentFilms } from "$lib/server/letterboxd";
 import { getListening } from "$lib/server/lastfm";
 import { getTopGames } from "$lib/server/steam";
 import { getContributions } from "$lib/server/github";
+import { getQuote } from "$lib/server/quotable";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ setHeaders }) => {
   const { letterboxd, lastfm, steam, github } = SITE_CONFIG.activity;
-  const [films, listening, gaming, contributions] = await Promise.all([
+  const [films, listening, gaming, contributions, quote] = await Promise.all([
     getRecentFilms(letterboxd, 5),
     getListening(lastfm),
     getTopGames(steam),
     getContributions(github),
+    getQuote(),
   ]);
   // Vercel's CDN serves a cached copy for a minute, then refreshes in the background.
   // Skip the CDN cache when Last.fm failed so an empty section isn't served for minutes.
   setHeaders({
     "cache-control": listening.failed ? "no-store" : "public, max-age=0, s-maxage=60, stale-while-revalidate=300",
   });
-  return { films, listening, gaming, contributions };
+  return { films, listening, gaming, contributions, quote };
 };

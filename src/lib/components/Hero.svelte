@@ -4,6 +4,7 @@
   import type { HackerHeroProps, HeroProps } from "$lib/types";
   import { HACKER_ALIAS, hacker } from "$lib/hacker.svelte";
   import type { Contributions } from "$lib/server/github";
+  import type { Quote } from "$lib/server/quotable";
 
   let {
     name,
@@ -13,8 +14,14 @@
     blog,
     hackerHero,
     contributions,
+    quote,
     githubUser,
-  }: HeroProps & { hackerHero: HackerHeroProps; contributions: Contributions; githubUser: string } = $props();
+  }: HeroProps & {
+    hackerHero: HackerHeroProps;
+    contributions: Contributions;
+    quote: Quote | null;
+    githubUser: string;
+  } = $props();
 
   let contactOpen = $state(false);
   const displayName = $derived(hacker.on ? HACKER_ALIAS : name);
@@ -53,6 +60,14 @@
     <p class="mb-16 text-base font-normal text-neutral md:mb-10 md:text-lg">
       {summary}
     </p>
+  {/if}
+
+  {#if quote}
+    <figure class="mb-6 text-sm text-neutral">
+      {#if hacker.on}<p class="mb-1">$ fortune</p>{/if}
+      <blockquote class="text-white/80 {hacker.on ? '' : 'italic'}">"{quote.content}"</blockquote>
+      <figcaption class="mt-1">- {quote.author}</figcaption>
+    </figure>
   {/if}
 
   <ContributionGraph {contributions} user={githubUser} />

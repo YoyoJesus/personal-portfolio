@@ -36,7 +36,13 @@
   });
 </script>
 
-<Hero {...SITE_CONTENT.hero} hackerHero={SITE_CONTENT.hackerHero} contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
+<Hero
+  {...SITE_CONTENT.hero}
+  hackerHero={SITE_CONTENT.hackerHero}
+  contributions={data.contributions}
+  quote={data.quote}
+  githubUser={SITE_CONFIG.activity.github}
+/>
 <Experience text="Work Experience" href="experience" experience={SITE_CONTENT.experience} />
 <Experience
   text="Leadership / Volunteering"
