@@ -14,17 +14,25 @@
     blog,
     hackerHero,
     contributions,
-    quote,
     githubUser,
   }: HeroProps & {
     hackerHero: HackerHeroProps;
     contributions: Contributions;
-    quote: Quote | null;
     githubUser: string;
   } = $props();
 
   let contactOpen = $state(false);
   const displayName = $derived(hacker.on ? HACKER_ALIAS : name);
+
+  let quote = $state<Quote | null>(null);
+
+  // Fetched client-side so each visit gets a new quote despite the page being CDN-cached.
+  $effect(() => {
+    fetch("/api/quote")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((q) => (quote = q))
+      .catch(() => {});
+  });
 </script>
 
 <section class="py-24 md:py-32" id="#hero">
