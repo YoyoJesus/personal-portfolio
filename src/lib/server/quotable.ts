@@ -19,7 +19,6 @@ const TAGS = [
   "Creativity",
   "Perseverance",
   "Work",
-  "Competition",
   "Character",
   "Knowledge",
   "Change",
@@ -44,6 +43,8 @@ const BLOCKED_TAGS = new Set([
   "Pain",
   "Humorous",
   "Stupidity",
+  "Sports",
+  "Athletics",
 ]);
 
 const BLOCKED_AUTHORS = new Set([
