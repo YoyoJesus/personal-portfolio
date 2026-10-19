@@ -157,7 +157,9 @@ export const SITE_CONTENT: SiteContent = {
       image: "/bluq.webp",
       languages: [
         { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
-        { icon: "devicon-angularjs-plain colored", name: "Angular", languageLink: "https://angular.io/" },
+        { icon: "devicon-angular-plain colored", name: "Angular", languageLink: "https://angular.dev/" },
+        { icon: "devicon-flask-original colored", name: "Flask", languageLink: "https://flask.palletsprojects.com/" },
+        { icon: "devicon-raspberrypi-plain colored", name: "Raspberry Pi", languageLink: "https://www.raspberrypi.com/" },
         { icon: "devicon-bash-plain", name: "Bash", languageLink: "https://www.gnu.org/software/bash/" },
       ],
       collaborators: [
@@ -246,7 +248,7 @@ export const SITE_CONTENT: SiteContent = {
       awards: [
         { label: "2 track wins at NexHacks 2026", href: "https://devpost.com/software/triage-flow", details: "DevSwarm and The Token Company" },
       ],
-      summary: "An automated ticketing assigment system for IT and DevOps teams. Built with Svelte, FastAPI, n8n, and Open Router.",
+      summary: "An automated ticketing assignment system for IT and DevOps teams. Built with SvelteKit, FastAPI, n8n, and OpenRouter.",
       linkPreview: "/",
       linkSource: "https://github.com/nexhacks2026/nexhacks-2026",
       linkWriteup: "https://devpost.com/software/triage-flow",
@@ -254,12 +256,9 @@ export const SITE_CONTENT: SiteContent = {
       languages: [
         { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
         { icon: "devicon-fastapi-plain colored", name: "FastAPI", languageLink: "https://fastapi.tiangolo.com/" },
-        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
+        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
         { icon: "devicon-docker-plain colored", name: "Docker", languageLink: "https://www.docker.com/" },
         { icon : "https://n8n.io/favicon.ico", name: "n8n", languageLink: "https://n8n.io/" },
-        { icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Google_Gemini_icon_2025.svg/250px-Google_Gemini_icon_2025.svg.png",
-          name: "OpenRouter", languageLink: "https://openrouter.ai/"
-        },
         { icon: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/openrouter-icon.png",
           name: "OpenRouter", languageLink: "https://openrouter.ai/"
         },
@@ -287,14 +286,14 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "MediTrack",
       status: "Prototype",
-      summary: "A website to allow users to make appointments with doctors and track diagoneses. Doctors can manage appointments and send information to billing. Billing puts in claims and insurance can see them. Build with flask and postgressql",
+      summary: "A website for booking doctor appointments and tracking diagnoses, with workflows for doctors, billing, and insurance. Built with Flask and MySQL.",
       linkPreview: "/",
       linkSource: "https://github.com/EnderHubris/MediTrack",
       linkWriteup: "https://blog.yoyojesus.xyz/blog/meditrack",
       image: "/meditrack.png",
       languages: [
         { icon: "devicon-flask-original colored", name: "Flask", languageLink: "https://flask.palletsprojects.com/" },
-        { icon: "devicon-postgresql-plain colored", name: "PostgreSQL", languageLink: "https://www.postgresql.org/" },
+        { icon: "devicon-mysql-plain colored", name: "MySQL", languageLink: "https://www.mysql.com/" },
         { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
       ],
       collaborators: [
@@ -393,15 +392,16 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "KSU Combat Robotics Website",
       status: "Active",
-      summary: "A basic website to showcase Kent State's Combat Robotics club, built with React and hosted on Vercel. Currently being improved and moved to SvelteKit.",
+      summary: "Kent State's Combat Robotics club website, with event registration, team updates, and club information. Built with SvelteKit, PostgreSQL, and Drizzle, and hosted on Vercel.",
       linkPreview: "https://ksucombat.club",
       linkSource: "https://github.com/CombatRoboticsKSU/KSU-Combat-Robotics-Website",
       linkWriteup: "/",
       image: "/ksucombat.webp",
       languages: [
-        { icon: "devicon-react-original colored", name: "React", languageLink: "https://react.dev/" },
-        { icon: "devicon-markdown-plain colored", name: "Markdown", languageLink: "https://www.markdownguide.org/" },
-        { icon: "devicon-bootstrap-plain colored", name: "Bootstrap", languageLink: "https://getbootstrap.com/" },
+        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
+        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
+        { icon: "devicon-postgresql-plain colored", name: "PostgreSQL", languageLink: "https://www.postgresql.org/" },
+        { icon: "https://orm.drizzle.team/favicon.ico", name: "Drizzle", languageLink: "https://orm.drizzle.team/" },
       ],
       collaborators: [
         {
@@ -424,19 +424,20 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Kent Hack It",
       status: "Active",
-      summary: "Website and Challenges for Kent Hack It, HacKSU's annual CTF event. Built with React & MongoDB. Challenges written using a variety of technologies.",
+      summary: "The competition platform and challenges for Kent Hack It, HacKSU's annual CTF event. Built with SvelteKit, PostgreSQL, and Drizzle, with challenges spanning a variety of technologies.",
       hacker: {
-        summary: "HacKSU's annual capture-the-flag. The scoring platform is built with React & MongoDB, and the challenges span web, crypto, forensics, and reversing, each one built to be broken.",
+        summary: "HacKSU's annual capture-the-flag. The scoring platform is built with SvelteKit and PostgreSQL, and the challenges span web, crypto, forensics, and reversing, each one built to be broken.",
       },
       linkPreview: "https://ctf.hacksu.com",
       linkSource: "https://github.com/hacksu/kent-hack-it",
       linkWriteup: "/",
       image: "/khi.webp",
       languages: [
-        { icon: "devicon-react-original colored", name: "React", languageLink: "https://react.dev/" },
-        { icon: "devicon-mongodb-plain colored", name: "MongoDB", languageLink: "https://www.mongodb.com/" },
-        { icon: "devicon-nodejs-plain colored", name: "Node.js", languageLink: "https://nodejs.org/" },
-        { icon: "devicon-bootstrap-plain colored", name: "Bootstrap", languageLink: "https://getbootstrap.com/" },
+        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
+        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
+        { icon: "devicon-postgresql-plain colored", name: "PostgreSQL", languageLink: "https://www.postgresql.org/" },
+        { icon: "https://orm.drizzle.team/favicon.ico", name: "Drizzle", languageLink: "https://orm.drizzle.team/" },
+        { icon: "devicon-tailwindcss-plain colored", name: "Tailwind CSS", languageLink: "https://tailwindcss.com/" },
       ],
       collaborators: [
         {
@@ -459,7 +460,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Linktree Replacement",
       status: "Active",
-      summary: "A personal Linktree-style website built with SvelteKit and hosted on Vercel. Fully customizable and open source.",
+      summary: "A personal Linktree-style website built with Svelte, Vite, and Tailwind CSS, hosted on Vercel. Fully customizable and open source.",
       linkPreview: "https://yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/linktree-replacement",
       linkWriteup: "/",
@@ -472,16 +473,14 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Sitch Replacement",
       status: "Active",
-      summary: "Sitch is a company that provides smart rfid buisness cards. I like the card, but their website desinger is clunky and limited. So, I built my own version of their website using ElysiaJS and hosted on Vercel.",
+      summary: "A custom profile page for my RFID business card, replacing Sitch's limited page builder. Built with SvelteKit and TypeScript, and hosted on Vercel.",
       linkPreview: "https://sitch.yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/sitch-replacement",
       linkWriteup: "/",
       image: "/sitch-clone.webp",
       languages: [
-        { icon: "https://images.seeklogo.com/logo-png/58/2/elysia-logo-png_seeklogo-580325.png",
-           name: "ElysiaJS", languageLink: "https://elysiajs.com/" 
-        },
-        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
+        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
+        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
       ],
     },
   ],
