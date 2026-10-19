@@ -201,7 +201,7 @@ export const SITE_CONTENT: SiteContent = {
       collaborators: [
         { name: "Noah Al-lahabi", image: "/collaborators/noaha.jpg", profileLink: "https://enderhubris.github.io/my_happy_site/" },
         { name: "Ian Rohrbacher", image: "/collaborators/ianr.jpg", profileLink: "http://rohrbacher.cc/" },
-        { name: "Savar Shrestha", image: "/collaborators/savars.jpg", profileLink: "https://github.com/moonshadow2" },
+        { name: "Savar Shrestha", image: "/collaborators/savars.jpg", profileLink: "https://www.linkedin.com/in/savar-shrestha/" },
       ],
     },
     {
@@ -424,7 +424,7 @@ export const SITE_CONTENT: SiteContent = {
         {
           name: "Conner Brunner",
           image: "/collaborators/connerb.jpg",
-          profileLink: "https://github.com/ManOfNeptune27",
+          profileLink: "https://www.linkedin.com/in/conner-brunner/",
         },
       ],
     },
