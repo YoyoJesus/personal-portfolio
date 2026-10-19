@@ -92,9 +92,9 @@
 
   const projectLinks = (project: ProjectProps) =>
     [
-      { label: "View site", href: project.linkPreview },
-      { label: "Source code", href: project.linkSource },
-      { label: "Read writeup", href: project.linkWriteup },
+      { label: "Website", href: project.linkPreview },
+      { label: "Code", href: project.linkSource },
+      { label: "Writeup", href: project.linkWriteup },
     ].filter((link): link is { label: string; href: string } => Boolean(link.href && link.href !== "/"));
 </script>
 
@@ -520,24 +520,22 @@
     outline-offset: 4px;
   }
   .project-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    display: grid;
+    gap: 1.25rem;
     margin-top: auto;
     padding-top: 1.75rem;
   }
   .project-links {
     display: flex;
-    flex: 1;
     min-width: 0;
     flex-wrap: wrap;
-    gap: 0.75rem 1.2rem;
+    gap: 0.75rem 1rem;
   }
   .project-links a {
     color: var(--color-white);
     font-size: 0.8rem;
     font-weight: 600;
+    white-space: nowrap;
     text-decoration: underline;
     text-decoration-color: var(--color-underline);
     text-underline-offset: 0.3rem;
@@ -552,7 +550,7 @@
   }
   .project-team {
     display: flex;
-    flex: none;
+    justify-self: end;
     align-items: center;
     padding-left: 0.3rem;
   }
