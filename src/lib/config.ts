@@ -327,7 +327,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "SCI Smart Badge",
-      status: "Completed",
+      status: "Active",
       summary: "An IOT badge that collects decibel levels and motion data to monitor engagement in small group settings. Built using an Arduino Sense board and integrated with a set of python scripts for data analysis.",
       linkPreview: "/",
       linkSource: "https://github.com/YoyoJesus/SCI-Lab-BadgeSoftware",
