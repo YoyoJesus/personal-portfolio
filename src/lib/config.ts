@@ -148,13 +148,13 @@ export const SITE_CONTENT: SiteContent = {
       name: "BluQ",
       status: "Prototype",
       awards: [
-        { label: "1st place at Hack Dearborn 4", href: "https://www.linkedin.com/posts/austin-sternberg_hackdearborn4-hackathon-innovation-activity-7383574111542886400-I7Io" },
+        { label: "1st place at Hack Dearborn 4", href: "https://devpost.com/software/bluq" },
       ],
       summary: "TCP/IP implemented in Bluetooth to build a simple chat application. Built with python and Angular for user frontend. ",
       linkPreview: "/",
       linkSource: "https://github.com/IanRohrbacher/Dearborn-Hack-2025",
-      linkWriteup: "/",
-      image: "/bluq.png",
+      linkWriteup: "https://devpost.com/software/bluq",
+      image: "/bluq.webp",
       languages: [
         { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
         { icon: "devicon-angularjs-plain colored", name: "Angular", languageLink: "https://angular.io/" },
