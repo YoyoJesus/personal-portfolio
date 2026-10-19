@@ -180,7 +180,7 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "https://toolsmith.online/",
       linkSource: "/",
       linkWriteup: "/",
-      image: "/Toolsmith.png",
+      image: "/toolsmith.webp",
       languages: [
         { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
         { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
@@ -345,7 +345,7 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "https://ksucombat.club",
       linkSource: "https://github.com/CombatRoboticsKSU/KSU-Combat-Robotics-Website",
       linkWriteup: "/",
-      image: "/ksucombat.png",
+      image: "/ksucombat.webp",
       languages: [
         { icon: "devicon-react-original colored", name: "React", languageLink: "https://react.dev/" },
         { icon: "devicon-markdown-plain colored", name: "Markdown", languageLink: "https://www.markdownguide.org/" },
@@ -378,7 +378,7 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "https://ctf.hacksu.com",
       linkSource: "https://github.com/hacksu/kent-hack-it",
       linkWriteup: "/",
-      image: "/khi.png",
+      image: "/khi.webp",
       languages: [
         { icon: "devicon-react-original colored", name: "React", languageLink: "https://react.dev/" },
         { icon: "devicon-mongodb-plain colored", name: "MongoDB", languageLink: "https://www.mongodb.com/" },
@@ -409,7 +409,7 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "https://yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/linktree-replacement",
       linkWriteup: "/",
-      image: "/linktree-clone.png",
+      image: "/linktree-clone.webp",
       languages: [
         { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
         { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
@@ -421,7 +421,7 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "https://sitch.yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/sitch-replacement",
       linkWriteup: "/",
-      image: "/sitch-clone.png",
+      image: "/sitch-clone.webp",
       languages: [
         { icon: "https://images.seeklogo.com/logo-png/58/2/elysia-logo-png_seeklogo-580325.png",
            name: "ElysiaJS", languageLink: "https://elysiajs.com/" 
