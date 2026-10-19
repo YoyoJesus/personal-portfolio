@@ -462,8 +462,6 @@
   }
   .project-awards a {
     display: block;
-    border-left: 2px solid var(--color-accent);
-    padding-left: 0.65rem;
     color: var(--color-accent);
     font-size: 0.75rem;
     font-weight: 500;

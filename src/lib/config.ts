@@ -148,7 +148,7 @@ export const SITE_CONTENT: SiteContent = {
       name: "BluQ",
       status: "Prototype",
       awards: [
-        { label: "1st Place — Hack Dearborn 4", href: "https://www.linkedin.com/posts/austin-sternberg_hackdearborn4-hackathon-innovation-activity-7383574111542886400-I7Io" },
+        { label: "1st place at Hack Dearborn 4", href: "https://www.linkedin.com/posts/austin-sternberg_hackdearborn4-hackathon-innovation-activity-7383574111542886400-I7Io" },
       ],
       summary: "TCP/IP implemented in Bluetooth to build a simple chat application. Built with python and Angular for user frontend. ",
       linkPreview: "/",
@@ -244,7 +244,7 @@ export const SITE_CONTENT: SiteContent = {
       name: "narr0w",
       status: "Prototype",
       awards: [
-        { label: "2× Winner — NexHacks 2026", href: "https://devpost.com/software/triage-flow", details: "DevSwarm — Sponsor Track; The Token Company — Track 2: Innovative Application" },
+        { label: "2 track wins at NexHacks 2026", href: "https://devpost.com/software/triage-flow", details: "DevSwarm and The Token Company" },
       ],
       summary: "An automated ticketing assigment system for IT and DevOps teams. Built with Svelte, FastAPI, n8n, and Open Router.",
       linkPreview: "/",
@@ -357,7 +357,7 @@ export const SITE_CONTENT: SiteContent = {
       name: "SCI Smart Badge",
       status: "Active",
       awards: [
-        { label: "Best Presentation — COF Symposium 2026", href: "https://www.linkedin.com/in/austin-sternberg/", details: "Choose Ohio First Research Symposium at Cleveland State University" },
+        { label: "Best Presentation at COF 2026", href: "https://www.linkedin.com/in/austin-sternberg/", details: "Choose Ohio First Research Symposium" },
       ],
       summary: "An IOT badge that collects decibel levels and motion data to monitor engagement in small group settings. Built using an Arduino Sense board and integrated with a set of python scripts for data analysis.",
       linkPreview: "/",
