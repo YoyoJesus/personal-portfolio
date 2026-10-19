@@ -120,9 +120,14 @@
     </div>
 
     <div class="project-details">
-      <span class="project-status" class:active={project.status === "Active"}>
-        {project.status}
-      </span>
+      <div class="project-labels">
+        <span class="project-status" class:active={project.status === "Active"}>
+          {project.status}
+        </span>
+        {#if project.openSource}
+          <span class="project-status">Open source</span>
+        {/if}
+      </div>
       <div class="project-heading">
         <h3>{project.name}</h3>
       </div>
@@ -418,11 +423,16 @@
     flex-direction: column;
     padding: 1.5rem;
   }
+  .project-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
   .project-status {
     display: inline-flex;
     align-self: flex-start;
     align-items: center;
-    margin-bottom: 0.75rem;
     border: 1px solid var(--color-edge-strong);
     border-radius: 999px;
     padding: 0.25rem 0.6rem;

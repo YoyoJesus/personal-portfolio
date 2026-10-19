@@ -59,6 +59,7 @@ export interface PreviousPositionProps {
 export interface ProjectProps {
   name: string;
   status: "Active" | "Completed" | "Prototype" | "Archived";
+  openSource?: boolean;
   awards?: { label: string; href: string; details?: string }[];
   summary: string;
   image: string;

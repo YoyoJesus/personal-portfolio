@@ -147,6 +147,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "BluQ",
       status: "Prototype",
+      openSource: true,
       awards: [
         { label: "1st place at Hack Dearborn 4", href: "https://devpost.com/software/bluq" },
       ],
@@ -183,6 +184,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Holotrace",
       status: "Prototype",
+      openSource: true,
       summary: "Turns photos of hand-drawn circuits into editable digital circuits. Built with SvelteKit, Tauri, OpenCV, and custom PyTorch models. The AI model server is currently offline.",
       linkPreview: "https://app.ifyousmellityouwilleventuallydie.tech/",
       linkSource: "https://github.com/HappyCoderHackathons/holotrace",
@@ -230,6 +232,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Python INFOSEC",
       status: "Active",
+      openSource: true,
       summary: "A collection of python scripts for various information security and reconnaissance tasks.",
       hacker: {
         summary: "My personal recon toolkit: a collection of python scripts for scanning, enumeration, and other information security tasks.",
@@ -245,6 +248,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "narr0w",
       status: "Prototype",
+      openSource: true,
       awards: [
         { label: "2 track wins at NexHacks 2026", href: "https://devpost.com/software/triage-flow", details: "DevSwarm and The Token Company" },
       ],
@@ -286,6 +290,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "MediTrack",
       status: "Prototype",
+      openSource: true,
       summary: "A website for booking doctor appointments and tracking diagnoses, with workflows for doctors, billing, and insurance. Built with Flask and MySQL.",
       linkPreview: "/",
       linkSource: "https://github.com/EnderHubris/MediTrack",
@@ -317,6 +322,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Ripple Chat",
       status: "Prototype",
+      openSource: true,
       summary: "A real-time chat, voice, and video application using websockets and peer-to-peer connections. Built with React, Node.js, and WebRTC.",
       linkPreview: "/",
       linkSource: "https://github.com/arizotaz/discord_clone",
@@ -368,6 +374,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "SCI Smart Badge",
       status: "Active",
+      openSource: true,
       awards: [
         { label: "Best Presentation at COF 2026", href: "https://www.linkedin.com/in/austin-sternberg/", details: "Choose Ohio First Research Symposium" },
       ],
@@ -460,6 +467,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Linktree Replacement",
       status: "Active",
+      openSource: true,
       summary: "A personal Linktree-style website built with Svelte, Vite, and Tailwind CSS, hosted on Vercel. Fully customizable and open source.",
       linkPreview: "https://yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/linktree-replacement",
@@ -473,6 +481,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "Sitch Replacement",
       status: "Active",
+      openSource: true,
       summary: "A custom profile page for my RFID business card, replacing Sitch's limited page builder. Built with SvelteKit and TypeScript, and hosted on Vercel.",
       linkPreview: "https://sitch.yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/sitch-replacement",
