@@ -127,6 +127,19 @@
         <h3>{project.name}</h3>
       </div>
 
+      {#if project.awards?.length}
+        <ul class="project-awards" aria-label="Project awards">
+          {#each project.awards as award (award.label)}
+            <li>
+              <a href={award.href} target="_blank" rel="noopener noreferrer">
+                <span>{award.label}</span>
+                {#if award.details}<span class="award-details">{award.details}</span>{/if}
+              </a>
+            </li>
+          {/each}
+        </ul>
+      {/if}
+
       <p class="project-summary">{project.summary}</p>
 
       {#if project.languages?.length}
@@ -438,6 +451,38 @@
     color: var(--color-soft);
     font-size: 0.875rem;
     line-height: 1.65;
+  }
+  .project-awards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.9rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .project-awards a {
+    display: block;
+    border-left: 2px solid var(--color-accent);
+    padding-left: 0.65rem;
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .project-awards a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  }
+  .project-awards a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+  .award-details {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--color-soft);
+    font-size: 0.7rem;
+    font-weight: 400;
   }
   .project-tech {
     display: flex;

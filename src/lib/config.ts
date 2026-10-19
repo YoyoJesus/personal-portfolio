@@ -147,6 +147,9 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "BluQ",
       status: "Prototype",
+      awards: [
+        { label: "1st Place — Hack Dearborn 4", href: "https://www.linkedin.com/posts/austin-sternberg_hackdearborn4-hackathon-innovation-activity-7383574111542886400-I7Io" },
+      ],
       summary: "TCP/IP implemented in Bluetooth to build a simple chat application. Built with python and Angular for user frontend. ",
       linkPreview: "/",
       linkSource: "https://github.com/IanRohrbacher/Dearborn-Hack-2025",
@@ -173,6 +176,28 @@ export const SITE_CONTENT: SiteContent = {
           image: "/collaborators/noaha.jpg",
           profileLink: "https://enderhubris.github.io/my_happy_site/",
         },
+      ],
+    },
+    {
+      name: "Holotrace",
+      status: "Prototype",
+      summary: "Turns photos of hand-drawn circuits into editable digital circuits. Built with SvelteKit, Tauri, OpenCV, and custom PyTorch models. The AI model server is currently offline.",
+      linkPreview: "https://app.ifyousmellityouwilleventuallydie.tech/",
+      linkSource: "https://github.com/HappyCoderHackathons/holotrace",
+      linkWriteup: "https://devpost.com/software/holotrace",
+      image: "/holotrace.webp",
+      languages: [
+        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
+        { icon: "devicon-tauri-plain colored", name: "Tauri", languageLink: "https://tauri.app/" },
+        { icon: "devicon-rust-original", name: "Rust", languageLink: "https://www.rust-lang.org/" },
+        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
+        { icon: "devicon-opencv-plain colored", name: "OpenCV", languageLink: "https://opencv.org/" },
+        { icon: "devicon-pytorch-original colored", name: "PyTorch", languageLink: "https://pytorch.org/" },
+      ],
+      collaborators: [
+        { name: "Noah Al-lahabi", image: "/collaborators/noaha.jpg", profileLink: "https://enderhubris.github.io/my_happy_site/" },
+        { name: "Ian Rohrbacher", image: "/collaborators/ianr.jpg", profileLink: "http://rohrbacher.cc/" },
+        { name: "Savar Shrestha", image: "/collaborators/savars.jpg", profileLink: "https://github.com/moonshadow2" },
       ],
     },
     {
@@ -218,6 +243,9 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "narr0w",
       status: "Prototype",
+      awards: [
+        { label: "2× Winner — NexHacks 2026", href: "https://devpost.com/software/triage-flow", details: "DevSwarm — Sponsor Track; The Token Company — Track 2: Innovative Application" },
+      ],
       summary: "An automated ticketing assigment system for IT and DevOps teams. Built with Svelte, FastAPI, n8n, and Open Router.",
       linkPreview: "/",
       linkSource: "https://github.com/nexhacks2026/nexhacks-2026",
@@ -328,6 +356,9 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "SCI Smart Badge",
       status: "Active",
+      awards: [
+        { label: "Best Presentation — COF Symposium 2026", href: "https://www.linkedin.com/in/austin-sternberg/", details: "Choose Ohio First Research Symposium at Cleveland State University" },
+      ],
       summary: "An IOT badge that collects decibel levels and motion data to monitor engagement in small group settings. Built using an Arduino Sense board and integrated with a set of python scripts for data analysis.",
       linkPreview: "/",
       linkSource: "https://github.com/YoyoJesus/SCI-Lab-BadgeSoftware",
@@ -462,6 +493,7 @@ export const SITE_CONTENT: SiteContent = {
     "BluQ",
     "Ripple Chat",
     "SCI Smart Badge",
+    "Holotrace",
     "MediTrack",
     "narr0w",
     "Sitch Replacement",
