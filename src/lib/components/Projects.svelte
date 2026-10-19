@@ -521,6 +521,8 @@
   }
   .project-footer {
     display: grid;
+    /* Keep link baselines aligned even when a card has no collaborators. */
+    grid-template-rows: auto 2rem;
     gap: 1.25rem;
     margin-top: auto;
     padding-top: 1.75rem;
