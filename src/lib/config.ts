@@ -354,6 +354,19 @@ export const SITE_CONTENT: SiteContent = {
       ],
     },
     {
+      name: "TYPO",
+      status: "Archived",
+      summary: "A Simon Says-style memory game with solo challenges, leaderboards, and head-to-head multiplayer. Built with Python and pygame, with browser support through pygbag. No longer maintained; the hosted game is unavailable.",
+      linkSource: "https://github.com/Typ0-SWE-Spring26/Typ0",
+      image: "/typo.webp",
+      languages: [
+        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
+        { icon: "devicon-python-plain colored", name: "pygame", languageLink: "https://www.pygame.org/" },
+        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
+        { icon: "https://webassembly.org/favicon.ico", name: "pygbag", languageLink: "https://github.com/pygame-web/pygbag" },
+      ],
+    },
+    {
       name: "SCI Smart Badge",
       status: "Active",
       awards: [
@@ -471,19 +484,6 @@ export const SITE_CONTENT: SiteContent = {
         { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
       ],
     },
-    {
-      name: "TYPO",
-      status: "Archived",
-      summary: "A Simon Says-style memory game with solo challenges, leaderboards, and head-to-head multiplayer. Built with Python and pygame, with browser support through pygbag. No longer maintained; the hosted game is unavailable.",
-      linkSource: "https://github.com/Typ0-SWE-Spring26/Typ0",
-      image: "/typo.webp",
-      languages: [
-        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
-        { icon: "devicon-python-plain colored", name: "pygame", languageLink: "https://www.pygame.org/" },
-        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
-        { icon: "https://webassembly.org/favicon.ico", name: "pygbag", languageLink: "https://github.com/pygame-web/pygbag" },
-      ],
-    },
   ],
   about: {
     description: `
@@ -505,15 +505,15 @@ export const SITE_CONTENT: SiteContent = {
     "Python INFOSEC",
     "BluQ",
     "Ripple Chat",
+    "MediTrack",
+    "TYPO",
     "SCI Smart Badge",
     "Holotrace",
-    "MediTrack",
     "narr0w",
     "Sitch Replacement",
     "ToolSmith",
     "KSU Combat Robotics Website",
     "Linktree Replacement",
-    "TYPO",
   ],
   hackerAbout: {
     description: `
