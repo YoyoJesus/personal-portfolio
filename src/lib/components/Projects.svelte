@@ -121,7 +121,6 @@
 
     <div class="project-details">
       <span class="project-status" class:active={project.status === "Active"}>
-        <span aria-hidden="true"></span>
         {project.status}
       </span>
       <div class="project-heading">
@@ -410,7 +409,6 @@
     display: inline-flex;
     align-self: flex-start;
     align-items: center;
-    gap: 0.4rem;
     margin-bottom: 0.75rem;
     border: 1px solid var(--color-edge-strong);
     border-radius: 999px;
@@ -419,14 +417,6 @@
     font-size: 0.7rem;
     font-weight: 500;
     line-height: 1.25;
-  }
-
-  .project-status > span {
-    width: 0.35rem;
-    height: 0.35rem;
-    flex: none;
-    border-radius: 50%;
-    background: currentColor;
   }
 
   .project-status.active {
