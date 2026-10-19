@@ -409,7 +409,7 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "https://yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/linktree-replacement",
       linkWriteup: "/",
-      image: "/linktree-clone.png",
+      image: "/linktree-clone.webp",
       languages: [
         { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
         { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
@@ -421,7 +421,7 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "https://sitch.yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/sitch-replacement",
       linkWriteup: "/",
-      image: "/sitch-clone.png",
+      image: "/sitch-clone.webp",
       languages: [
         { icon: "https://images.seeklogo.com/logo-png/58/2/elysia-logo-png_seeklogo-580325.png",
            name: "ElysiaJS", languageLink: "https://elysiajs.com/" 
