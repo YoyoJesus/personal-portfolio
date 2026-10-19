@@ -58,6 +58,7 @@ export interface PreviousPositionProps {
 
 export interface ProjectProps {
   name: string;
+  status: "Active" | "Completed" | "Prototype" | "Archived";
   summary: string;
   image: string;
   linkPreview?: string;

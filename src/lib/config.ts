@@ -146,6 +146,7 @@ export const SITE_CONTENT: SiteContent = {
   projects: [
     {
       name: "BluQ",
+      status: "Prototype",
       summary: "TCP/IP implemented in Bluetooth to build a simple chat application. Built with python and Angular for user frontend. ",
       linkPreview: "/",
       linkSource: "https://github.com/IanRohrbacher/Dearborn-Hack-2025",
@@ -176,6 +177,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "ToolSmith",
+      status: "Active",
       summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface. Some tooling backed by OpenAI's API platform, allowing for uploading of documents to fill in data.",
       linkPreview: "https://toolsmith.online/",
       linkSource: "/",
@@ -200,6 +202,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "Python INFOSEC",
+      status: "Active",
       summary: "A collection of python scripts for various information security and reconnaissance tasks.",
       hacker: {
         summary: "My personal recon toolkit: a collection of python scripts for scanning, enumeration, and other information security tasks.",
@@ -214,6 +217,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "narr0w",
+      status: "Prototype",
       summary: "An automated ticketing assigment system for IT and DevOps teams. Built with Svelte, FastAPI, n8n, and Open Router.",
       linkPreview: "/",
       linkSource: "https://github.com/nexhacks2026/nexhacks-2026",
@@ -254,6 +258,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "MediTrack",
+      status: "Prototype",
       summary: "A website to allow users to make appointments with doctors and track diagoneses. Doctors can manage appointments and send information to billing. Billing puts in claims and insurance can see them. Build with flask and postgressql",
       linkPreview: "/",
       linkSource: "https://github.com/EnderHubris/MediTrack",
@@ -284,6 +289,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "Ripple Chat",
+      status: "Prototype",
       summary: "A real-time chat, voice, and video application using websockets and peer-to-peer connections. Built with React, Node.js, and WebRTC.",
       linkPreview: "/",
       linkSource: "https://github.com/arizotaz/discord_clone",
@@ -321,6 +327,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "SCI Smart Badge",
+      status: "Active",
       summary: "An IOT badge that collects decibel levels and motion data to monitor engagement in small group settings. Built using an Arduino Sense board and integrated with a set of python scripts for data analysis.",
       linkPreview: "/",
       linkSource: "https://github.com/YoyoJesus/SCI-Lab-BadgeSoftware",
@@ -341,6 +348,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "KSU Combat Robotics Website",
+      status: "Active",
       summary: "A basic website to showcase Kent State's Combat Robotics club, built with React and hosted on Vercel. Currently being improved and moved to SvelteKit.",
       linkPreview: "https://ksucombat.club",
       linkSource: "https://github.com/CombatRoboticsKSU/KSU-Combat-Robotics-Website",
@@ -371,6 +379,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "Kent Hack It",
+      status: "Active",
       summary: "Website and Challenges for Kent Hack It, HacKSU's annual CTF event. Built with React & MongoDB. Challenges written using a variety of technologies.",
       hacker: {
         summary: "HacKSU's annual capture-the-flag. The scoring platform is built with React & MongoDB, and the challenges span web, crypto, forensics, and reversing, each one built to be broken.",
@@ -405,6 +414,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "Linktree Replacement",
+      status: "Active",
       summary: "A personal Linktree-style website built with SvelteKit and hosted on Vercel. Fully customizable and open source.",
       linkPreview: "https://yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/linktree-replacement",
@@ -417,6 +427,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       name: "Sitch Replacement",
+      status: "Active",
       summary: "Sitch is a company that provides smart rfid buisness cards. I like the card, but their website desinger is clunky and limited. So, I built my own version of their website using ElysiaJS and hosted on Vercel.",
       linkPreview: "https://sitch.yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/sitch-replacement",

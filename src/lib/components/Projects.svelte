@@ -120,6 +120,9 @@
     </div>
 
     <div class="project-details">
+      <span class="project-status" class:active={project.status === "Active"}>
+        {project.status}
+      </span>
       <div class="project-heading">
         <h3>{project.name}</h3>
       </div>
@@ -402,6 +405,25 @@
     flex-direction: column;
     padding: 1.5rem;
   }
+  .project-status {
+    display: inline-flex;
+    align-self: flex-start;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--color-edge-strong);
+    border-radius: 999px;
+    padding: 0.25rem 0.6rem;
+    color: var(--color-soft);
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .project-status.active {
+    border-color: var(--color-edge-hover);
+    color: var(--color-accent);
+  }
+
   .project-heading h3 {
     color: var(--color-white);
     font-family: var(--font-serif);
