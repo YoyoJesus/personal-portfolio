@@ -375,7 +375,6 @@ export const SITE_CONTENT: SiteContent = {
         { name: "Dipen Thapa", image: "/collaborators/dipent.jpg", profileLink: "https://www.linkedin.com/in/dipen-thapa-7189042a4/" },
         { name: "Charlie Burrows", image: "/collaborators/charlieb.jpg", profileLink: "https://www.linkedin.com/in/charlie-burrows-043414402/" },
         { name: "Jude Skrzat", image: "/collaborators/judes.jpg", profileLink: "https://judeswebsite.netlify.app/" },
-        { name: "Gabriel Parry", image: "/collaborators/gabrielp.jpg", profileLink: "https://www.linkedin.com/in/gabriel-parry-915690285/" },
       ],
     },
     {
