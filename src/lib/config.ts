@@ -374,7 +374,6 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "SCI Smart Badge",
       status: "Active",
-      openSource: true,
       awards: [
         { label: "Best Presentation at COF 2026", href: "https://www.linkedin.com/in/austin-sternberg/", details: "Choose Ohio First Research Symposium" },
       ],
