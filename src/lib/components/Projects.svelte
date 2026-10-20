@@ -92,9 +92,9 @@
 
   const projectLinks = (project: ProjectProps) =>
     [
-      { label: "View site", href: project.linkPreview },
-      { label: "Source code", href: project.linkSource },
-      { label: "Read writeup", href: project.linkWriteup },
+      { label: "Website", href: project.linkPreview },
+      { label: "Code", href: project.linkSource },
+      { label: "Writeup", href: project.linkWriteup },
     ].filter((link): link is { label: string; href: string } => Boolean(link.href && link.href !== "/"));
 </script>
 
@@ -120,12 +120,30 @@
     </div>
 
     <div class="project-details">
-      <span class="project-status" class:active={project.status === "Active"}>
-        {project.status}
-      </span>
+      <div class="project-labels">
+        <span class="project-status" class:active={project.status === "Active"}>
+          {project.status}
+        </span>
+        {#if project.openSource}
+          <span class="project-status">Open source</span>
+        {/if}
+      </div>
       <div class="project-heading">
         <h3>{project.name}</h3>
       </div>
+
+      {#if project.awards?.length}
+        <ul class="project-awards" aria-label="Project awards">
+          {#each project.awards as award (award.label)}
+            <li>
+              <a href={award.href} target="_blank" rel="noopener noreferrer">
+                <span>{award.label}</span>
+                {#if award.details}<span class="award-details">{award.details}</span>{/if}
+              </a>
+            </li>
+          {/each}
+        </ul>
+      {/if}
 
       <p class="project-summary">{project.summary}</p>
 
@@ -167,11 +185,11 @@
                   aria-label={`Visit ${collaborator.name}'s profile`}
                   title={collaborator.name}
                 >
-                  <img src={collaborator.image} alt="" width="32" height="32" loading="lazy" decoding="async" />
+                  <img src={collaborator.image} alt="" width="40" height="40" loading="lazy" decoding="async" />
                 </a>
               {:else}
                 <span title={collaborator.name} aria-label={collaborator.name}>
-                  <img src={collaborator.image} alt="" width="32" height="32" loading="lazy" decoding="async" />
+                  <img src={collaborator.image} alt="" width="40" height="40" loading="lazy" decoding="async" />
                 </span>
               {/if}
             {/each}
@@ -405,11 +423,16 @@
     flex-direction: column;
     padding: 1.5rem;
   }
+  .project-labels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
   .project-status {
     display: inline-flex;
     align-self: flex-start;
     align-items: center;
-    margin-bottom: 0.75rem;
     border: 1px solid var(--color-edge-strong);
     border-radius: 999px;
     padding: 0.25rem 0.6rem;
@@ -438,6 +461,36 @@
     color: var(--color-soft);
     font-size: 0.875rem;
     line-height: 1.65;
+  }
+  .project-awards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.9rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .project-awards a {
+    display: block;
+    color: var(--color-accent);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .project-awards a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  }
+  .project-awards a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+  .award-details {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--color-soft);
+    font-size: 0.7rem;
+    font-weight: 400;
   }
   .project-tech {
     display: flex;
@@ -477,24 +530,24 @@
     outline-offset: 4px;
   }
   .project-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
+    display: grid;
+    /* Keep link baselines aligned even when a card has no collaborators. */
+    grid-template-rows: auto 2.5rem;
+    gap: 1.25rem;
     margin-top: auto;
     padding-top: 1.75rem;
   }
   .project-links {
     display: flex;
-    flex: 1;
     min-width: 0;
     flex-wrap: wrap;
-    gap: 0.75rem 1.2rem;
+    gap: 0.75rem 1rem;
   }
   .project-links a {
     color: var(--color-white);
     font-size: 0.8rem;
     font-weight: 600;
+    white-space: nowrap;
     text-decoration: underline;
     text-decoration-color: var(--color-underline);
     text-underline-offset: 0.3rem;
@@ -509,15 +562,15 @@
   }
   .project-team {
     display: flex;
-    flex: none;
+    justify-self: end;
     align-items: center;
     padding-left: 0.3rem;
   }
   .project-team a,
   .project-team span {
     display: block;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     margin-left: -0.3rem;
     border: 2px solid var(--color-surface);
     border-radius: 50%;
