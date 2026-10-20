@@ -185,11 +185,11 @@
                   aria-label={`Visit ${collaborator.name}'s profile`}
                   title={collaborator.name}
                 >
-                  <img src={collaborator.image} alt="" width="32" height="32" loading="lazy" decoding="async" />
+                  <img src={collaborator.image} alt="" width="40" height="40" loading="lazy" decoding="async" />
                 </a>
               {:else}
                 <span title={collaborator.name} aria-label={collaborator.name}>
-                  <img src={collaborator.image} alt="" width="32" height="32" loading="lazy" decoding="async" />
+                  <img src={collaborator.image} alt="" width="40" height="40" loading="lazy" decoding="async" />
                 </span>
               {/if}
             {/each}
@@ -532,7 +532,7 @@
   .project-footer {
     display: grid;
     /* Keep link baselines aligned even when a card has no collaborators. */
-    grid-template-rows: auto 2rem;
+    grid-template-rows: auto 2.5rem;
     gap: 1.25rem;
     margin-top: auto;
     padding-top: 1.75rem;
@@ -569,8 +569,8 @@
   .project-team a,
   .project-team span {
     display: block;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
     margin-left: -0.3rem;
     border: 2px solid var(--color-surface);
     border-radius: 50%;
