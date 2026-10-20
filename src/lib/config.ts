@@ -370,6 +370,12 @@ export const SITE_CONTENT: SiteContent = {
         { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
         { icon: "https://webassembly.org/favicon.ico", name: "pygbag", languageLink: "https://github.com/pygame-web/pygbag" },
       ],
+      collaborators: [
+        { name: "Benjamin Purdum", image: "/collaborators/benp.jpg", profileLink: "https://benpurdum.github.io/portfolio/" },
+        { name: "Dipen Thapa", image: "/collaborators/dipent.jpg", profileLink: "https://www.linkedin.com/in/dipen-thapa-7189042a4/" },
+        { name: "Charlie Burrows", image: "/collaborators/charlieb.jpg", profileLink: "https://www.linkedin.com/in/charlie-burrows-043414402/" },
+        { name: "Jude Skrzat", image: "/collaborators/judes.jpg", profileLink: "https://judeswebsite.netlify.app/" },
+      ],
     },
     {
       name: "SCI Smart Badge",
