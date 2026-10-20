@@ -375,7 +375,7 @@ export const SITE_CONTENT: SiteContent = {
       name: "SCI Smart Badge",
       status: "Active",
       awards: [
-        { label: "Best Presentation at COF 2026", href: "https://www.linkedin.com/in/austin-sternberg/", details: "Choose Ohio First Research Symposium" },
+        { label: "Best Presentation at COF 2026", href: "https://www.linkedin.com/in/austin-sternberg/overlay/1776200058946/single-media-viewer/?profileId=ACoAADborj0BvR99J5O7JokjCnzGMc21g64HgfY&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3B9%2BLM1ZWBQuKI90dkCQmo4Q%3D%3D", details: "Choose Ohio First Research Symposium" },
       ],
       summary: "An IOT badge that collects decibel levels and motion data to monitor engagement in small group settings. Built using an Arduino Sense board and integrated with a set of python scripts for data analysis.",
       linkPreview: "/",
