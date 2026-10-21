@@ -169,7 +169,7 @@
     </div>
 
     <div class="mt-8 flex gap-2 pt-2" aria-hidden="true">
-      <span class="h-3 w-8 bg-black"></span>
+      <span class="h-3 w-8 bg-muted"></span>
       <span class="h-3 w-8 bg-primary"></span>
       <span class="h-3 w-8 bg-accent"></span>
       <span class="h-3 w-8 bg-neutral"></span>
