@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import Section from "./Section.svelte";
+  import ToolIcon from "./ToolIcon.svelte";
   import type { LanguageProps, ProjectProps } from "$lib/types";
   import { hacker } from "$lib/hacker.svelte";
 
@@ -98,14 +99,6 @@
     ].filter((link): link is { label: string; href: string } => Boolean(link.href && link.href !== "/"));
 </script>
 
-{#snippet toolIcon(language: LanguageProps)}
-  {#if language.icon.startsWith("http://") || language.icon.startsWith("https://")}
-    <img src={language.icon} alt="" loading="lazy" decoding="async" />
-  {:else}
-    <i class={language.icon} aria-hidden="true"></i>
-  {/if}
-{/snippet}
-
 {#snippet projectCard(project: ProjectProps, featured: boolean, duplicate: boolean)}
   <article class:featured class="project-card" inert={duplicate} aria-hidden={duplicate ? "true" : undefined}>
     <div class="project-image">
@@ -153,11 +146,11 @@
             <li>
               {#if language.languageLink}
                 <a href={language.languageLink} target="_blank" rel="noopener noreferrer">
-                  {@render toolIcon(language)}
+                  <ToolIcon icon={language.icon} />
                   <span>{language.name}</span>
                 </a>
               {:else}
-                {@render toolIcon(language)}
+                <ToolIcon icon={language.icon} />
                 <span>{language.name}</span>
               {/if}
             </li>

@@ -19,6 +19,8 @@ export interface SiteContent {
   hackerAbout: Pick<AboutProps, "description">;
   /** Project names shown first, in this order, while hacker mode is on. */
   hackerProjectOrder: string[];
+  workspace: WorkspaceProps;
+  hackerWorkspace: WorkspaceProps;
 }
 
 export interface HeroProps {
@@ -92,4 +94,28 @@ export interface LanguageProps {
   icon: string; // Icon name from devicon or simple-icons (e.g., 'devicon:python', 'simple-icons:react')
   name: string;
   languageLink?: string;
+}
+
+export interface WorkspaceProps {
+  /** Desk/setup photo; omitted when empty. */
+  image?: string;
+  imageAlt?: string;
+  groups: WorkspaceGroup[];
+}
+
+export interface WorkspaceGroup {
+  title: string;
+  items: WorkspaceItem[];
+}
+
+export interface WorkspaceItem {
+  name: string;
+  /** Devicon class or image URL, same as LanguageProps.icon. */
+  icon?: string;
+  detail?: string;
+  href?: string;
+  /** Year or "Mon YYYY" this became part of the setup. */
+  since?: string;
+  /** Marks something still being evaluated. */
+  trying?: boolean;
 }

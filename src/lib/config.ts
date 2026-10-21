@@ -11,6 +11,7 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "Experience", href: "#experience" },
     { text: "Leadership", href: "#leadership" },
     { text: "Projects", href: "#projects" },
+    { text: "Workspace", href: "#workspace" },
     { text: "When I'm Not Coding", href: "#not-coding" },
     { text: "About", href: "#about" },
   ],
@@ -528,6 +529,72 @@ export const SITE_CONTENT: SiteContent = {
     "KSU Combat Robotics Website",
     "Linktree Replacement",
   ],
+  // TODO: fill in real hardware specs, "since" dates, and drop a desk photo at static/workspace.jpg.
+  workspace: {
+    image: "",
+    imageAlt: "My desk setup",
+    groups: [
+      {
+        title: "Hardware",
+        items: [
+          { name: "Desktop", detail: "TODO: CPU / GPU / RAM" },
+          { name: "Laptop", detail: "TODO: model" },
+          { name: "Monitors", detail: "TODO" },
+          { name: "Keyboard", detail: "TODO" },
+        ],
+      },
+      {
+        title: "Editor & Tools",
+        items: [
+          { name: "VS Code", icon: "devicon-vscode-plain colored", href: "https://code.visualstudio.com/" },
+          { name: "Claude Code", icon: "https://claude.ai/favicon.ico", href: "https://claude.com/claude-code" },
+          { name: "Git", icon: "devicon-git-plain colored", href: "https://git-scm.com/" },
+          { name: "Prettier", icon: "https://prettier.io/icon.png", href: "https://prettier.io/" },
+        ],
+      },
+      {
+        title: "Go-To Stack",
+        items: [
+          { name: "SvelteKit", icon: "devicon-svelte-plain colored", href: "https://svelte.dev/" },
+          { name: "TypeScript", icon: "devicon-typescript-plain colored", href: "https://www.typescriptlang.org/" },
+          { name: "TailwindCSS", icon: "devicon-tailwindcss-plain colored", href: "https://tailwindcss.com/" },
+          { name: "Drizzle", icon: "https://orm.drizzle.team/favicon.ico", href: "https://orm.drizzle.team/" },
+          { name: "PostgreSQL", icon: "devicon-postgresql-plain colored", href: "https://www.postgresql.org/" },
+          { name: "Flask", icon: "devicon-flask-original colored", href: "https://flask.palletsprojects.com/" },
+          { name: "Typst", icon: "https://typst.app/favicon.ico", href: "https://typst.app/", trying: true },
+        ],
+      },
+    ],
+  },
+  hackerWorkspace: {
+    image: "",
+    imageAlt: "My hacking setup",
+    groups: [
+      {
+        title: "Rig",
+        items: [
+          { name: "Attack box", detail: "TODO: Kali / Parrot VM, host specs" },
+          { name: "Laptop", detail: "TODO: model" },
+        ],
+      },
+      {
+        title: "Recon & Network",
+        items: [
+          { name: "nmap", icon: "https://nmap.org/favicon.ico", href: "https://nmap.org/" },
+          { name: "Wireshark", icon: "devicon-wireshark-plain colored", href: "https://www.wireshark.org/" },
+          { name: "Scapy", icon: "devicon-python-plain colored", href: "https://scapy.net/" },
+        ],
+      },
+      {
+        title: "Exploitation",
+        items: [
+          { name: "pwntools", icon: "devicon-python-plain colored", href: "https://github.com/Gallopsled/pwntools" },
+          { name: "Python", icon: "devicon-python-plain colored", href: "https://www.python.org/" },
+          { name: "Bash", icon: "devicon-bash-plain", href: "https://www.gnu.org/software/bash/" },
+        ],
+      },
+    ],
+  },
   hackerAbout: {
     description: `
       Hello, friend. Online I go by yoyojesus.
