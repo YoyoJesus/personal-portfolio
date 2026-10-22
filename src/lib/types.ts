@@ -121,6 +121,11 @@ export interface WorkspaceItem {
   since?: string;
   /** Marks something still being evaluated. */
   trying?: boolean;
-  /** Pin position on the photo, as percentages from the top-left. */
-  pin?: { x: number; y: number };
+  /** Pin position(s) on the photo, as percentages from the top-left. Multiple pins highlight together. */
+  pin?: WorkspacePin | WorkspacePin[];
+}
+
+export interface WorkspacePin {
+  x: number;
+  y: number;
 }

@@ -10,16 +10,25 @@
   const current = $derived(hacker.on ? hackerWorkspace : workspace);
   const hasImage = $derived(!!current.image?.trim());
   // Pinned gear lives in the photo popovers; anything else is listed below it.
-  const unpinned = $derived(current.gear.filter((item) => !hasImage || !item.pin));
+  const unpinned = $derived(current.gear.filter((item) => !hasImage || !pinsOf(item).length));
 
   let activeIndex = $state<number | null>(null);
+  // Which of the active item's pins is hovered/focused; only that one shows the popover.
+  let activePin = $state(0);
+
+  const pinsOf = (item: WorkspaceItem) => (Array.isArray(item.pin) ? item.pin : item.pin ? [item.pin] : []);
 
   // Tapping outside any pin closes the popover on touch screens.
   function closeOnOutside(e: MouseEvent) {
     if (!(e.target as Element).closest(".workspace-pin")) activeIndex = null;
   }
 
-  const activate = (i: number) => () => (activeIndex = i);
+  const activate =
+    (i: number, p = 0) =>
+    () => {
+      activeIndex = i;
+      activePin = p;
+    };
   const deactivate = (i: number) => () => {
     if (activeIndex === i) activeIndex = null;
   };
@@ -74,16 +83,17 @@
         ></div>
       {/if}
       {#each current.gear as item, i (item.name)}
-        {#if item.pin}
-          {@const active = activeIndex === i}
+        {@const itemActive = activeIndex === i}
+        {#each pinsOf(item) as pin, p (p)}
+          {@const active = itemActive && activePin === p}
           <!-- Wraps pin + popover so moving the pointer or focus into the popover keeps it open. -->
           <!-- svelte-ignore a11y_no_static_element_interactions -->
           <div
-            class={["workspace-pin absolute size-0", active && "z-20"]}
-            style="left: {item.pin.x}%; top: {item.pin.y}%;"
-            onmouseenter={activate(i)}
+            class={["workspace-pin absolute size-0", itemActive && "z-20"]}
+            style="left: {pin.x}%; top: {pin.y}%;"
+            onmouseenter={activate(i, p)}
             onmouseleave={deactivate(i)}
-            onfocusin={activate(i)}
+            onfocusin={activate(i, p)}
             onfocusout={(e) => {
               if (!e.currentTarget.contains(e.relatedTarget as Node | null)) deactivate(i)();
             }}
@@ -93,31 +103,31 @@
               type="button"
               aria-label="{i + 1}: {item.name}"
               aria-expanded={active}
-              aria-controls="workspace-pop-{i}"
+              aria-controls="workspace-pop-{i}-{p}"
               class={[
-                "absolute top-0 left-0 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center text-xs whitespace-nowrap transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
-                hacker.on ? "h-6 border px-1.5 font-mono font-bold" : "size-7 rounded-full font-semibold shadow-md",
-                active ? "scale-110 bg-accent text-black" : "hover:scale-105",
-                active && (hacker.on ? "border-accent shadow-[0_0_8px_var(--color-accent)]" : "ring-2 ring-white"),
-                !active &&
+                "absolute top-0 left-0 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center text-[0.65rem] whitespace-nowrap transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+                hacker.on ? "h-5 border px-1 font-mono font-bold" : "size-5.5 rounded-full font-semibold shadow-md",
+                itemActive ? "scale-110 bg-accent text-black" : "hover:scale-105",
+                itemActive && (hacker.on ? "border-accent shadow-[0_0_8px_var(--color-accent)]" : "ring-2 ring-white"),
+                !itemActive &&
                   (hacker.on
                     ? "border-primary bg-surface/90 text-primary"
                     : "bg-primary text-white ring-1 ring-white/30"),
               ]}
-              onclick={activate(i)}
+              onclick={activate(i, p)}
             >
               {hacker.on ? `[${i + 1}]` : i + 1}
             </button>
             {#if active}
               <div
-                id="workspace-pop-{i}"
+                id="workspace-pop-{i}-{p}"
                 transition:fade={{ duration: 120 }}
                 class={[
                   "absolute w-56 border p-3 text-left shadow-xl",
-                  item.pin.y < 35
-                    ? "top-5 before:absolute before:inset-x-0 before:-top-3 before:h-3"
-                    : "bottom-5 before:absolute before:inset-x-0 before:-bottom-3 before:h-3",
-                  item.pin.x < 25 ? "-left-4" : item.pin.x > 75 ? "-right-4" : "left-0 -translate-x-1/2",
+                  pin.y < 35
+                    ? "top-4 before:absolute before:inset-x-0 before:-top-3 before:h-3"
+                    : "bottom-4 before:absolute before:inset-x-0 before:-bottom-3 before:h-3",
+                  pin.x < 25 ? "-left-4" : pin.x > 75 ? "-right-4" : "left-0 -translate-x-1/2",
                   hacker.on
                     ? "border-primary bg-surface font-mono"
                     : "rounded-xl border-edge-strong bg-surface-raised/95 backdrop-blur",
@@ -145,7 +155,7 @@
               </div>
             {/if}
           </div>
-        {/if}
+        {/each}
       {/each}
     </div>
   {/if}

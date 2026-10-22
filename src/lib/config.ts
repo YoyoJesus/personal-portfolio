@@ -540,7 +540,14 @@ export const SITE_CONTENT: SiteContent = {
       { name: "Keyboard", detail: "TODO: model, Redragon wrist rest", pin: { x: 62, y: 60 } },
       { name: "Mouse", detail: "Logitech G, TODO: model", pin: { x: 87, y: 62 } },
       { name: "Microphone", detail: "HyperX, TODO: model", pin: { x: 51, y: 46 } },
-      { name: "Speaker", detail: "Anker, TODO: model", pin: { x: 27, y: 60 } },
+      {
+        name: "Speakers",
+        detail: "Anker, TODO: models",
+        pin: [
+          { x: 27, y: 60 },
+          { x: 84, y: 14 },
+        ],
+      },
       { name: "USB-C hub", detail: "Anker, TODO: model", pin: { x: 41, y: 57 } },
       { name: "Desk mat", detail: "Circuit-board print", pin: { x: 33, y: 66 } },
     ],
