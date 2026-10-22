@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fade } from "svelte/transition";
   import Section from "./Section.svelte";
   import ToolIcon from "./ToolIcon.svelte";
   import type { WorkspaceItem, WorkspaceProps } from "$lib/types";
@@ -10,6 +11,11 @@
   const hasImage = $derived(!!current.image?.trim());
 
   let activeIndex = $state<number | null>(null);
+
+  // Tapping outside any pin closes the popover on touch screens.
+  function closeOnOutside(e: MouseEvent) {
+    if (!(e.target as Element).closest(".workspace-pin, [aria-controls^='workspace-pop-']")) activeIndex = null;
+  }
 
   const activate = (i: number) => () => (activeIndex = i);
   const deactivate = (i: number) => () => {
@@ -40,6 +46,8 @@
   {/if}
 {/snippet}
 
+<svelte:window onclick={closeOnOutside} />
+
 <Section text={hacker.on ? "$ neofetch" : "Workspace"} href="workspace">
   {#if hacker.on}
     <div class="mb-6 font-mono text-sm">
@@ -48,126 +56,150 @@
     </div>
   {/if}
 
-  <div class={hasImage ? "grid grid-cols-1 items-start gap-8 lg:grid-cols-5 lg:gap-10" : ""}>
-    {#if hasImage}
-      <div class="relative overflow-hidden rounded-2xl border border-edge bg-surface shadow-sm lg:col-span-3">
-        <img
-          src={current.image}
-          alt={current.imageAlt || (hacker.on ? "Hacking workspace setup" : "Workspace desk setup")}
-          loading="lazy"
-          decoding="async"
-          class="aspect-[4/3] w-full object-cover sm:aspect-[16/10] lg:aspect-[4/3]"
-        />
-        {#if hacker.on}
+  {#if hasImage}
+    <div class="relative">
+      <img
+        src={current.image}
+        alt={current.imageAlt || (hacker.on ? "Hacking workspace setup" : "Workspace desk setup")}
+        loading="lazy"
+        decoding="async"
+        class="h-auto w-full rounded-2xl border border-edge bg-surface shadow-sm"
+      />
+      {#if hacker.on}
+        <div
+          class="pointer-events-none absolute inset-0 rounded-2xl bg-primary/20 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px] mix-blend-multiply ring-1 ring-primary/40 ring-inset"
+          aria-hidden="true"
+        ></div>
+      {/if}
+      {#each current.gear as item, i (item.name)}
+        {#if item.pin}
+          {@const active = activeIndex === i}
+          <!-- Wraps pin + popover so moving the pointer or focus into the popover keeps it open. -->
+          <!-- svelte-ignore a11y_no_static_element_interactions -->
           <div
-            class="pointer-events-none absolute inset-0 bg-primary/20 bg-[linear-gradient(transparent_50%,rgba(0,0,0,0.5)_50%)] bg-[length:100%_4px] mix-blend-multiply ring-1 ring-primary/40 ring-inset"
-            aria-hidden="true"
-          ></div>
-        {/if}
-        {#each current.gear as item, i (item.name)}
-          {#if item.pin}
-            {@const active = activeIndex === i}
+            class={["workspace-pin absolute size-0", active && "z-20"]}
+            style="left: {item.pin.x}%; top: {item.pin.y}%;"
+            onmouseenter={activate(i)}
+            onmouseleave={deactivate(i)}
+            onfocusin={activate(i)}
+            onfocusout={(e) => {
+              if (!e.currentTarget.contains(e.relatedTarget as Node | null)) deactivate(i)();
+            }}
+            onkeydown={(e) => e.key === "Escape" && deactivate(i)()}
+          >
             <button
               type="button"
               aria-label="{i + 1}: {item.name}"
+              aria-expanded={active}
+              aria-controls="workspace-pop-{i}"
               class={[
-                "absolute flex -translate-x-1/2 -translate-y-1/2 items-center justify-center text-xs transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+                "absolute top-0 left-0 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center text-xs whitespace-nowrap transition-all duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
                 hacker.on ? "h-6 border px-1.5 font-mono font-bold" : "size-7 rounded-full font-semibold shadow-md",
-                active ? "z-10 scale-110 bg-accent text-black" : "hover:scale-105",
+                active ? "scale-110 bg-accent text-black" : "hover:scale-105",
                 active && (hacker.on ? "border-accent shadow-[0_0_8px_var(--color-accent)]" : "ring-2 ring-white"),
                 !active &&
                   (hacker.on
                     ? "border-primary bg-surface/90 text-primary"
                     : "bg-primary text-white ring-1 ring-white/30"),
               ]}
-              style="left: {item.pin.x}%; top: {item.pin.y}%;"
-              onmouseenter={activate(i)}
-              onmouseleave={deactivate(i)}
-              onfocus={activate(i)}
-              onblur={deactivate(i)}
               onclick={activate(i)}
             >
               {hacker.on ? `[${i + 1}]` : i + 1}
             </button>
-          {/if}
-        {/each}
-      </div>
-    {/if}
-
-    <ol
-      class={[
-        hacker.on && "font-mono",
-        hasImage
-          ? "flex flex-col gap-2.5 lg:col-span-2"
-          : hacker.on
-            ? "flex max-w-2xl flex-col gap-2.5"
-            : "grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-x-8",
-      ]}
-    >
-      {#each current.gear as item, i (item.name)}
-        {@const active = activeIndex === i}
-        <!-- Unlinked pinned rows need their own focus target so keyboard users can light up the pin. -->
-        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-        <li
-          tabindex={hasImage && item.pin && !item.href ? 0 : undefined}
-          class={[
-            "flex gap-3 transition-colors focus-visible:outline-2 focus-visible:outline-accent",
-            hacker.on
-              ? ["items-baseline rounded px-2.5 py-1.5", active ? "bg-surface-raised" : "hover:bg-surface/50"]
-              : [
-                  "items-start rounded-xl border p-2.5",
-                  active ? "border-edge-hover bg-surface" : "border-transparent hover:border-edge hover:bg-surface/40",
-                ],
-          ]}
-          onmouseenter={activate(i)}
-          onmouseleave={deactivate(i)}
-          onfocusin={activate(i)}
-          onfocusout={deactivate(i)}
-        >
-          {#if hacker.on}
-            <span class={["shrink-0 text-xs font-bold", active ? "text-accent" : "text-primary"]} aria-hidden="true">
-              [{i + 1}]
-            </span>
-            <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                {@render itemName(item, "shrink-0 text-sm font-medium text-white lowercase")}
-                {#if item.detail}
-                  <span class="mx-1 min-w-4 flex-1 border-b border-dotted border-edge-strong" aria-hidden="true"></span>
-                  <span class="ml-auto text-xs text-neutral">{item.detail}</span>
+            {#if active}
+              <div
+                id="workspace-pop-{i}"
+                transition:fade={{ duration: 120 }}
+                class={[
+                  "absolute w-56 border p-3 text-left shadow-xl",
+                  item.pin.y < 35
+                    ? "top-5 before:absolute before:inset-x-0 before:-top-3 before:h-3"
+                    : "bottom-5 before:absolute before:inset-x-0 before:-bottom-3 before:h-3",
+                  item.pin.x < 25 ? "-left-4" : item.pin.x > 75 ? "-right-4" : "left-0 -translate-x-1/2",
+                  hacker.on
+                    ? "border-primary bg-surface font-mono"
+                    : "rounded-xl border-edge-strong bg-surface-raised/95 backdrop-blur",
+                ]}
+              >
+                {@render itemName(
+                  item,
+                  hacker.on
+                    ? "text-sm font-bold text-primary lowercase"
+                    : "font-serif text-base font-semibold text-white",
+                )}
+                {#if item.detail}<p class="mt-1 text-xs text-neutral">{item.detail}</p>{/if}
+                {#if item.since || item.trying}
+                  <p class="mt-1.5 flex flex-wrap gap-x-2 text-xs">
+                    {#if item.since}
+                      <span class="text-neutral/70">{hacker.on ? "# " : ""}since {item.since}</span>
+                    {/if}
+                    {#if item.trying}
+                      <span class={hacker.on ? "text-neutral/70" : "font-medium text-accent"}>
+                        {hacker.on ? "# trying" : "currently trying"}
+                      </span>
+                    {/if}
+                  </p>
                 {/if}
               </div>
-              {#if item.since || item.trying}
-                <p class="mt-0.5 flex gap-x-2 text-xs text-neutral/70">
-                  {#if item.since}<span># since {item.since}</span>{/if}
-                  {#if item.trying}<span># trying</span>{/if}
-                </p>
-              {/if}
-            </div>
-          {:else}
-            <span
-              class={[
-                "flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold shadow-sm transition-all duration-150",
-                active
-                  ? "scale-105 bg-accent text-black ring-2 ring-white"
-                  : "bg-primary text-white ring-1 ring-white/30",
-              ]}
-              aria-hidden="true"
-            >
-              {i + 1}
-            </span>
-            <div class="min-w-0 flex-1">
-              <div class="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                {@render itemName(item, "font-serif text-base font-semibold text-white")}
-                {#if item.since}<span class="text-xs text-neutral/70">since {item.since}</span>{/if}
-                {#if item.trying}<span class="text-xs font-medium text-accent">currently trying</span>{/if}
-              </div>
-              {#if item.detail}<p class="mt-0.5 text-xs text-neutral">{item.detail}</p>{/if}
-            </div>
-          {/if}
-        </li>
+            {/if}
+          </div>
+        {/if}
       {/each}
-    </ol>
-  </div>
+    </div>
+  {/if}
+
+  <ol
+    class={["flex flex-wrap gap-x-5 gap-y-2.5 text-sm", hasImage ? "mt-5" : "flex-col", hacker.on && "font-mono"]}
+    aria-label="Gear"
+  >
+    {#each current.gear as item, i (item.name)}
+      {@const active = activeIndex === i}
+      {@const popover = hasImage && item.pin}
+      <li class="flex items-baseline gap-2">
+        <span
+          class={[
+            "shrink-0 text-xs font-bold",
+            hacker.on
+              ? active
+                ? "text-accent"
+                : "text-primary"
+              : [
+                  "flex size-5 items-center justify-center self-center rounded-full",
+                  active ? "bg-accent text-black" : "bg-primary text-white",
+                ],
+          ]}
+          aria-hidden="true"
+        >
+          {hacker.on ? `[${i + 1}]` : i + 1}
+        </span>
+        {#if popover}
+          <button
+            type="button"
+            class={[
+              "transition-colors focus-visible:outline-2 focus-visible:outline-accent",
+              hacker.on && "lowercase",
+              active ? "text-white" : "text-white/70 hover:text-white",
+            ]}
+            aria-controls="workspace-pop-{i}"
+            onmouseenter={activate(i)}
+            onmouseleave={deactivate(i)}
+            onfocus={activate(i)}
+            onblur={deactivate(i)}
+            onclick={activate(i)}
+          >
+            {item.name}
+          </button>
+        {:else}
+          <span>
+            {@render itemName(item, hacker.on ? "text-white lowercase" : "text-white")}
+            {#if item.detail}<span class="text-xs text-neutral">{item.detail}</span>{/if}
+            {#if item.since}<span class="text-xs text-neutral/70">{hacker.on ? "# " : ""}since {item.since}</span>{/if}
+            {#if item.trying}<span class="text-xs text-accent">{hacker.on ? "# trying" : "currently trying"}</span>{/if}
+          </span>
+        {/if}
+      </li>
+    {/each}
+  </ol>
 
   {#if !hacker.on}
     <div class="mt-12 space-y-6 sm:mt-16 sm:space-y-8">
