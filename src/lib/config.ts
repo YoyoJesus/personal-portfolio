@@ -529,19 +529,19 @@ export const SITE_CONTENT: SiteContent = {
     "KSU Combat Robotics Website",
     "Linktree Replacement",
   ],
-  // TODO: fill in real hardware specs and "since" dates, then replace static/workspace.jpg and re-place the pins.
-  // static/workspace.jpg is a placeholder stock photo from Unsplash (Unsplash License).
+  // TODO: fill in exact models and "since" dates.
   workspace: {
     image: "/workspace.jpg",
-    imageAlt: "My desk setup",
+    imageAlt: "My desk: a laptop and Samsung monitor with a mechanical keyboard, mic, and mouse on a circuit-board desk mat",
     // `pin` is percent from the photo's top-left and places a numbered marker.
     gear: [
-      { name: "Desktop", detail: "TODO: CPU / GPU / RAM", pin: { x: 31, y: 47 } },
-      { name: "Monitor", detail: "TODO", pin: { x: 70, y: 40 } },
-      { name: "Keyboard", detail: "TODO", pin: { x: 52, y: 85 } },
-      { name: "Mouse", detail: "TODO", pin: { x: 91, y: 88 } },
-      { name: "Headphones", detail: "TODO", pin: { x: 13, y: 76 } },
-      { name: "Laptop", detail: "TODO: model" },
+      { name: "Laptop", detail: "TODO: model, RTX GPU", pin: { x: 69, y: 47 } },
+      { name: "Monitor", detail: "Samsung, TODO: size", pin: { x: 20, y: 42 } },
+      { name: "Keyboard", detail: "TODO: model, Redragon wrist rest", pin: { x: 55, y: 64 } },
+      { name: "Mouse", detail: "Logitech G, TODO: model", pin: { x: 80, y: 69 } },
+      { name: "Microphone", detail: "HyperX, TODO: model", pin: { x: 49, y: 47 } },
+      { name: "Speaker", detail: "Anker, TODO: model", pin: { x: 29, y: 13 } },
+      { name: "Desk mat", detail: "Circuit-board print", pin: { x: 24, y: 72 } },
     ],
     groups: [
       {
@@ -571,8 +571,8 @@ export const SITE_CONTENT: SiteContent = {
     image: "/workspace.jpg",
     imageAlt: "My hacking setup",
     gear: [
-      { name: "Attack box", detail: "TODO: Kali / Parrot VM, host specs", pin: { x: 31, y: 47 } },
-      { name: "Laptop", detail: "TODO: model" },
+      { name: "Laptop", detail: "TODO: model", pin: { x: 69, y: 47 } },
+      { name: "Attack box", detail: "TODO: Kali / Parrot VM" },
     ],
     groups: [
       {
