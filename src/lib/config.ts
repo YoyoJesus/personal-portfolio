@@ -601,6 +601,14 @@ export const SITE_CONTENT: SiteContent = {
       { name: "Keyboard", detail: "Redragon K707 PRO", pin: { x: 62, y: 60 } },
       { name: "Monitor", detail: "Samsung, 27-inch", pin: { x: 27, y: 37 } },
       { name: "Microphone", detail: "HyperX Solocast", pin: { x: 51, y: 46 } },
+      {
+        name: "Speakers",
+        detail: "Anker, Soundcore 2",
+        pin: [
+          { x: 27, y: 60 },
+          { x: 84, y: 14 },
+        ],
+      },
       { name: "USB-C hub/dock", detail: "Anker", pin: { x: 41, y: 57 } },
       { name: "Attack box", detail: "Kali / Parrot VM" },
     ],
