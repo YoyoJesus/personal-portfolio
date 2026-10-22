@@ -9,12 +9,14 @@
 
   const current = $derived(hacker.on ? hackerWorkspace : workspace);
   const hasImage = $derived(!!current.image?.trim());
+  // Pinned gear lives in the photo popovers; anything else is listed below it.
+  const unpinned = $derived(current.gear.filter((item) => !hasImage || !item.pin));
 
   let activeIndex = $state<number | null>(null);
 
   // Tapping outside any pin closes the popover on touch screens.
   function closeOnOutside(e: MouseEvent) {
-    if (!(e.target as Element).closest(".workspace-pin, [aria-controls^='workspace-pop-']")) activeIndex = null;
+    if (!(e.target as Element).closest(".workspace-pin")) activeIndex = null;
   }
 
   const activate = (i: number) => () => (activeIndex = i);
@@ -148,58 +150,21 @@
     </div>
   {/if}
 
-  <ol
-    class={["flex flex-wrap gap-x-5 gap-y-2.5 text-sm", hasImage ? "mt-5" : "flex-col", hacker.on && "font-mono"]}
-    aria-label="Gear"
-  >
-    {#each current.gear as item, i (item.name)}
-      {@const active = activeIndex === i}
-      {@const popover = hasImage && item.pin}
-      <li class="flex items-baseline gap-2">
-        <span
-          class={[
-            "shrink-0 text-xs font-bold",
-            hacker.on
-              ? active
-                ? "text-accent"
-                : "text-primary"
-              : [
-                  "flex size-5 items-center justify-center self-center rounded-full",
-                  active ? "bg-accent text-black" : "bg-primary text-white",
-                ],
-          ]}
-          aria-hidden="true"
-        >
-          {hacker.on ? `[${i + 1}]` : i + 1}
-        </span>
-        {#if popover}
-          <button
-            type="button"
-            class={[
-              "transition-colors focus-visible:outline-2 focus-visible:outline-accent",
-              hacker.on && "lowercase",
-              active ? "text-white" : "text-white/70 hover:text-white",
-            ]}
-            aria-controls="workspace-pop-{i}"
-            onmouseenter={activate(i)}
-            onmouseleave={deactivate(i)}
-            onfocus={activate(i)}
-            onblur={deactivate(i)}
-            onclick={activate(i)}
-          >
-            {item.name}
-          </button>
-        {:else}
-          <span>
-            {@render itemName(item, hacker.on ? "text-white lowercase" : "text-white")}
-            {#if item.detail}<span class="text-xs text-neutral">{item.detail}</span>{/if}
-            {#if item.since}<span class="text-xs text-neutral/70">{hacker.on ? "# " : ""}since {item.since}</span>{/if}
-            {#if item.trying}<span class="text-xs text-accent">{hacker.on ? "# trying" : "currently trying"}</span>{/if}
-          </span>
-        {/if}
-      </li>
-    {/each}
-  </ol>
+  {#if unpinned.length}
+    <ul
+      class={["flex flex-wrap gap-x-5 gap-y-2.5 text-sm", hasImage ? "mt-5" : "flex-col", hacker.on && "font-mono"]}
+      aria-label="Gear"
+    >
+      {#each unpinned as item (item.name)}
+        <li class="flex flex-wrap items-baseline gap-x-2">
+          {@render itemName(item, hacker.on ? "text-white lowercase" : "text-white")}
+          {#if item.detail}<span class="text-xs text-neutral">{item.detail}</span>{/if}
+          {#if item.since}<span class="text-xs text-neutral/70">{hacker.on ? "# " : ""}since {item.since}</span>{/if}
+          {#if item.trying}<span class="text-xs text-accent">{hacker.on ? "# trying" : "currently trying"}</span>{/if}
+        </li>
+      {/each}
+    </ul>
+  {/if}
 
   {#if !hacker.on}
     <div class="mt-12 space-y-6 sm:mt-16 sm:space-y-8">
