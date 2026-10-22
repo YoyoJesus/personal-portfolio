@@ -25,6 +25,10 @@
   const linkFocus = "transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-accent";
 </script>
 
+{#snippet status(item: WorkspaceItem)}
+  {#if chipTitle(item)}<span class="sr-only">({chipTitle(item)})</span>{/if}
+{/snippet}
+
 {#snippet itemName(item: WorkspaceItem, cls: string)}
   {#if item.href}
     <a href={item.href} target="_blank" rel="noopener noreferrer" class="{cls} {linkFocus}">
@@ -102,9 +106,12 @@
     >
       {#each current.gear as item, i (item.name)}
         {@const active = activeIndex === i}
+        <!-- Unlinked pinned rows need their own focus target so keyboard users can light up the pin. -->
+        <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
         <li
+          tabindex={hasImage && item.pin && !item.href ? 0 : undefined}
           class={[
-            "flex gap-3 transition-colors",
+            "flex gap-3 transition-colors focus-visible:outline-2 focus-visible:outline-accent",
             hacker.on
               ? ["items-baseline rounded px-2.5 py-1.5", active ? "bg-surface-raised" : "hover:bg-surface/50"]
               : [
@@ -183,6 +190,7 @@
                   {/if}
                   {item.name}
                   {#if item.trying}<span class="size-1.5 rounded-full bg-accent" aria-hidden="true"></span>{/if}
+                  {@render status(item)}
                 {/snippet}
                 {#if item.href}
                   <a
@@ -214,8 +222,9 @@
                   target="_blank"
                   rel="noopener noreferrer"
                   class="underline-offset-4 hover:underline {linkFocus}">{item.name}</a
-                >{:else}{item.name}{/if}{#if item.trying}<span class="text-accent">*</span
-                >{/if}{#if idx < group.items.length - 1}<span class="text-neutral/60">,</span>{/if}</span
+                >{:else}{item.name}{/if}{#if item.trying}<span class="text-accent" aria-hidden="true">*</span
+                >{/if}{@render status(item)}{#if idx < group.items.length - 1}<span class="text-neutral/60">,</span
+                >{/if}</span
             >
           {/each}
         </div>
