@@ -529,26 +529,25 @@ export const SITE_CONTENT: SiteContent = {
     "KSU Combat Robotics Website",
     "Linktree Replacement",
   ],
-  // TODO: fill in exact models and "since" dates.
   workspace: {
     image: "/workspace.jpg",
     imageAlt: "My desk: a laptop and Samsung monitor with a mechanical keyboard, mic, and mouse on a circuit-board desk mat",
     // `pin` is percent from the photo's top-left and places a numbered marker.
     gear: [
-      { name: "Laptop", detail: "TODO: model, RTX GPU", pin: { x: 69, y: 50 } },
-      { name: "Monitor", detail: "Samsung, TODO: size", pin: { x: 27, y: 37 } },
-      { name: "Keyboard", detail: "TODO: model, Redragon wrist rest", pin: { x: 62, y: 60 } },
-      { name: "Mouse", detail: "Logitech G, TODO: model", pin: { x: 87, y: 62 } },
-      { name: "Microphone", detail: "HyperX, TODO: model", pin: { x: 51, y: 46 } },
+      { name: "Laptop", detail: "Dell Inspiron 16 Plus, 32GB DDR5 RAM, RTX 3060 Laptop GPU, Intel Core i7-1700H", pin: { x: 69, y: 50 } },
+      { name: "Monitor", detail: "Samsung, 27-inch", pin: { x: 27, y: 37 } },
+      { name: "Keyboard", detail: "Redragon K707 PRO", pin: { x: 62, y: 60 } },
+      { name: "Mouse", detail: "Logitech G305", pin: { x: 87, y: 62 } },
+      { name: "Microphone", detail: "HyperX Solocast", pin: { x: 51, y: 46 } },
       {
         name: "Speakers",
-        detail: "Anker, TODO: models",
+        detail: "Anker, Soundcore 2",
         pin: [
           { x: 27, y: 60 },
           { x: 84, y: 14 },
         ],
       },
-      { name: "USB-C hub", detail: "Anker, TODO: model", pin: { x: 41, y: 57 } },
+      { name: "USB-C hub/dock", detail: "Anker", pin: { x: 41, y: 57 } },
       { name: "Desk mat", detail: "Circuit-board print", pin: { x: 33, y: 66 } },
     ],
     groups: [
@@ -590,8 +589,8 @@ export const SITE_CONTENT: SiteContent = {
     image: "/workspace.jpg",
     imageAlt: "My hacking setup",
     gear: [
-      { name: "Laptop", detail: "TODO: model", pin: { x: 69, y: 50 } },
-      { name: "Attack box", detail: "TODO: Kali / Parrot VM" },
+      { name: "Laptop", detail: "Dell Inspiron 16 Plus, 32GB DDR5 RAM, RTX 3060 Laptop GPU, Intel Core i7-1700H", pin: { x: 69, y: 50 } },
+      { name: "Attack box", detail: "Kali / Parrot VM" },
     ],
     groups: [
       {
