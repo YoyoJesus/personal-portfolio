@@ -100,6 +100,9 @@ export interface WorkspaceProps {
   /** Desk/setup photo; omitted when empty. */
   image?: string;
   imageAlt?: string;
+  /** Physical setup, numbered and pinned on the photo. */
+  gear: WorkspaceItem[];
+  /** Software, shown as chip rows below. */
   groups: WorkspaceGroup[];
 }
 
@@ -118,4 +121,6 @@ export interface WorkspaceItem {
   since?: string;
   /** Marks something still being evaluated. */
   trying?: boolean;
+  /** Pin position on the photo, as percentages from the top-left. */
+  pin?: { x: number; y: number };
 }

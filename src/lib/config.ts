@@ -533,21 +533,19 @@ export const SITE_CONTENT: SiteContent = {
   workspace: {
     image: "",
     imageAlt: "My desk setup",
+    // Add `pin: { x, y }` (percent from top-left of the photo) to place a numbered marker.
+    gear: [
+      { name: "Desktop", detail: "TODO: CPU / GPU / RAM" },
+      { name: "Laptop", detail: "TODO: model" },
+      { name: "Monitors", detail: "TODO" },
+      { name: "Keyboard", detail: "TODO" },
+    ],
     groups: [
-      {
-        title: "Hardware",
-        items: [
-          { name: "Desktop", detail: "TODO: CPU / GPU / RAM" },
-          { name: "Laptop", detail: "TODO: model" },
-          { name: "Monitors", detail: "TODO" },
-          { name: "Keyboard", detail: "TODO" },
-        ],
-      },
       {
         title: "Editor & Tools",
         items: [
           { name: "VS Code", icon: "devicon-vscode-plain colored", href: "https://code.visualstudio.com/" },
-          { name: "Claude Code", icon: "https://claude.ai/favicon.ico", href: "https://claude.com/claude-code" },
+          { name: "Claude Code", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/claude-ai.svg", href: "https://claude.com/claude-code" },
           { name: "Git", icon: "devicon-git-plain colored", href: "https://git-scm.com/" },
           { name: "Prettier", icon: "https://prettier.io/icon.png", href: "https://prettier.io/" },
         ],
@@ -569,14 +567,11 @@ export const SITE_CONTENT: SiteContent = {
   hackerWorkspace: {
     image: "",
     imageAlt: "My hacking setup",
+    gear: [
+      { name: "Attack box", detail: "TODO: Kali / Parrot VM, host specs" },
+      { name: "Laptop", detail: "TODO: model" },
+    ],
     groups: [
-      {
-        title: "Rig",
-        items: [
-          { name: "Attack box", detail: "TODO: Kali / Parrot VM, host specs" },
-          { name: "Laptop", detail: "TODO: model" },
-        ],
-      },
       {
         title: "Recon & Network",
         items: [
