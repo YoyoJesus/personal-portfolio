@@ -535,13 +535,14 @@ export const SITE_CONTENT: SiteContent = {
     imageAlt: "My desk: a laptop and Samsung monitor with a mechanical keyboard, mic, and mouse on a circuit-board desk mat",
     // `pin` is percent from the photo's top-left and places a numbered marker.
     gear: [
-      { name: "Laptop", detail: "TODO: model, RTX GPU", pin: { x: 69, y: 47 } },
-      { name: "Monitor", detail: "Samsung, TODO: size", pin: { x: 20, y: 42 } },
-      { name: "Keyboard", detail: "TODO: model, Redragon wrist rest", pin: { x: 55, y: 64 } },
-      { name: "Mouse", detail: "Logitech G, TODO: model", pin: { x: 80, y: 69 } },
-      { name: "Microphone", detail: "HyperX, TODO: model", pin: { x: 49, y: 47 } },
-      { name: "Speaker", detail: "Anker, TODO: model", pin: { x: 29, y: 13 } },
-      { name: "Desk mat", detail: "Circuit-board print", pin: { x: 24, y: 72 } },
+      { name: "Laptop", detail: "TODO: model, RTX GPU", pin: { x: 66, y: 44 } },
+      { name: "Monitor", detail: "Samsung, TODO: size", pin: { x: 22, y: 33 } },
+      { name: "Keyboard", detail: "TODO: model, Redragon wrist rest", pin: { x: 59, y: 58 } },
+      { name: "Mouse", detail: "Logitech G, TODO: model", pin: { x: 86, y: 61 } },
+      { name: "Microphone", detail: "HyperX, TODO: model", pin: { x: 47, y: 42 } },
+      { name: "Speaker", detail: "Anker, TODO: model", pin: { x: 21, y: 60 } },
+      { name: "USB-C hub", detail: "Anker, TODO: model", pin: { x: 37, y: 54 } },
+      { name: "Desk mat", detail: "Circuit-board print", pin: { x: 29, y: 68 } },
     ],
     groups: [
       {
@@ -571,7 +572,7 @@ export const SITE_CONTENT: SiteContent = {
     image: "/workspace.jpg",
     imageAlt: "My hacking setup",
     gear: [
-      { name: "Laptop", detail: "TODO: model", pin: { x: 69, y: 47 } },
+      { name: "Laptop", detail: "TODO: model", pin: { x: 66, y: 44 } },
       { name: "Attack box", detail: "TODO: Kali / Parrot VM" },
     ],
     groups: [
