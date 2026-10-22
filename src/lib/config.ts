@@ -11,6 +11,7 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "Experience", href: "#experience" },
     { text: "Leadership", href: "#leadership" },
     { text: "Projects", href: "#projects" },
+    { text: "Workspace", href: "#workspace" },
     { text: "When I'm Not Coding", href: "#not-coding" },
     { text: "About", href: "#about" },
   ],
@@ -528,6 +529,125 @@ export const SITE_CONTENT: SiteContent = {
     "KSU Combat Robotics Website",
     "Linktree Replacement",
   ],
+  workspace: {
+    image: "/workspace.jpg",
+    imageAlt: "My desk: a laptop and Samsung monitor with a mechanical keyboard, mic, and mouse on a circuit-board desk mat",
+    // `pin` is percent from the photo's top-left and places a numbered marker.
+    gear: [
+      { name: "Laptop", detail: "Dell Inspiron 16 Plus, 32GB DDR5 RAM, RTX 3060 Laptop GPU, Intel Core i7-1700H", pin: { x: 69, y: 50 } },
+      { name: "Monitor", detail: "Samsung, 27-inch", pin: { x: 27, y: 37 } },
+      { name: "Keyboard", detail: "Redragon K707 PRO", pin: { x: 62, y: 60 } },
+      { name: "Mouse", detail: "Logitech G305", pin: { x: 87, y: 62 } },
+      { name: "Microphone", detail: "HyperX Solocast", pin: { x: 51, y: 46 } },
+      {
+        name: "Speakers",
+        detail: "Anker, Soundcore 2",
+        pin: [
+          { x: 27, y: 60 },
+          { x: 84, y: 14 },
+        ],
+      },
+      { name: "USB-C hub/dock", detail: "Anker", pin: { x: 41, y: 57 } },
+      { name: "Desk mat", detail: "Circuit-board print", pin: { x: 33, y: 66 } },
+    ],
+    groups: [
+      {
+        title: "Editor & Tools",
+        items: [
+          { name: "VS Code", icon: "devicon-vscode-plain colored", href: "https://code.visualstudio.com/" },
+          { name: "T3 Code", icon: "https://t3.codes/favicon.ico", href: "https://t3.codes/" },
+          { name: "Git", icon: "devicon-git-plain colored", href: "https://git-scm.com/" },
+          { name: "GitHub Desktop", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg", href: "https://desktop.github.com/" },
+          { name: "Docker Desktop", icon: "devicon-docker-plain colored", href: "https://www.docker.com/products/docker-desktop/" },
+          { name: "Podman", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/podman.svg", href: "https://podman.io/" },
+          { name: "PGAdmin", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/pgadmin.svg", href: "https://www.pgadmin.org/" },
+          { name: "Postman", icon: "devicon-postman-plain colored", href: "https://www.postman.com/" },
+        ],
+      },
+      {
+        title: "Go-To Stack",
+        items: [
+          { name: "SvelteKit", icon: "devicon-svelte-plain colored", href: "https://svelte.dev/" },
+          { name: "TypeScript", icon: "devicon-typescript-plain colored", href: "https://www.typescriptlang.org/" },
+          { name: "TailwindCSS", icon: "devicon-tailwindcss-plain colored", href: "https://tailwindcss.com/" },
+          { name: "ShadCN", icon: "https://ui.shadcn.com/favicon.ico", href: "https://ui.shadcn.com/" },
+          { name: "Drizzle", icon: "https://orm.drizzle.team/favicon.ico", href: "https://orm.drizzle.team/" },
+          { name: "PostgreSQL", icon: "devicon-postgresql-plain colored", href: "https://www.postgresql.org/" },
+          { name: "Flask", icon: "devicon-flask-original colored", href: "https://flask.palletsprojects.com/" },
+          { name: "Playwright", icon: "devicon-playwright-plain colored", href: "https://playwright.dev/" },
+          { name: "Typst", icon: "https://typst.app/favicon.ico", href: "https://typst.app/", trying: true },
+          { name: "OpenAI API", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg", href: "https://openai.com/api/", trying: true },
+          { name: "Astro", icon: "devicon-astro-plain colored", href: "https://astro.build/", trying: true },
+        ],
+      },
+      {
+        title: "Everyday",
+        items: [
+          { name: "Zen Browser", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/zen-browser.svg", href: "https://zen-browser.app/" },
+          { name: "Floorp Browser", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/floorp.svg", href: "https://floorp.dev/" },
+          { name: "Spotify", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg", href: "https://open.spotify.com/" },
+          { name: "Obsidian", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/obsidian.svg", href: "https://obsidian.md/" },
+          { name: "Discord", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg", href: "https://discord.com/" },
+        ],
+      },
+    ],
+  },
+  hackerWorkspace: {
+    image: "/workspace.jpg",
+    imageAlt: "My hacking setup",
+    gear: [
+      { name: "Laptop", detail: "Dell Inspiron 16 Plus, 32GB DDR5 RAM, RTX 3060 Laptop GPU, Intel Core i7-1700H", pin: { x: 69, y: 50 } },
+      { name: "Mouse", detail: "Logitech G305", pin: { x: 87, y: 62 } },
+      { name: "Keyboard", detail: "Redragon K707 PRO", pin: { x: 62, y: 60 } },
+      { name: "Monitor", detail: "Samsung, 27-inch", pin: { x: 27, y: 37 } },
+      { name: "Microphone", detail: "HyperX Solocast", pin: { x: 51, y: 46 } },
+      {
+        name: "Speakers",
+        detail: "Anker, Soundcore 2",
+        pin: [
+          { x: 27, y: 60 },
+          { x: 84, y: 14 },
+        ],
+      },
+      { name: "USB-C hub/dock", detail: "Anker", pin: { x: 41, y: 57 } },
+      { name: "Attack box", detail: "Kali / Parrot VM" },
+    ],
+    groups: [
+      {
+        title: "Recon & Network",
+        items: [
+          { name: "nmap", icon: "https://nmap.org/favicon.ico", href: "https://nmap.org/" },
+          { name: "Wireshark", icon: "devicon-wireshark-plain colored", href: "https://www.wireshark.org/" },
+          { name: "Angry IP Scanner", icon: "https://angryip.org/favicon.ico", href: "https://angryip.org/" },
+          { name: "Scapy", icon: "devicon-python-plain colored", href: "https://scapy.net/" },
+        ],
+      },
+      {
+        title: "Web & Cracking",
+        items: [
+          { name: "Burp Suite", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/burpsuite.svg", href: "https://portswigger.net/burp" },
+          { name: "Hashcat", icon: "https://hashcat.net/favicon.ico", href: "https://hashcat.net/hashcat/" },
+          { name: "John the Ripper", icon: "https://www.openwall.com/favicon.ico", href: "https://www.openwall.com/john/" },
+          { name: "CyberChef", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/cyberchef.svg", href: "https://gchq.github.io/CyberChef/" },
+        ],
+      },
+      {
+        title: "Exploitation",
+        items: [
+          { name: "pwntools", icon: "devicon-python-plain colored", href: "https://github.com/Gallopsled/pwntools" },
+          { name: "Python", icon: "devicon-python-plain colored", href: "https://www.python.org/" },
+          { name: "Bash", icon: "devicon-bash-plain", href: "https://www.gnu.org/software/bash/" },
+        ],
+      },
+      {
+        title: "Ops & Privacy",
+        items: [
+          { name: "Proton VPN", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/proton-vpn.svg", href: "https://protonvpn.com/" },
+          { name: "Docker", icon: "devicon-docker-plain colored", href: "https://www.docker.com/" },
+        ],
+      },
+    ],
+  },
   hackerAbout: {
     description: `
       Hello, friend. Online I go by yoyojesus.

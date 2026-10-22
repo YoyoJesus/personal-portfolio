@@ -3,6 +3,7 @@
   import Hero from "$lib/components/Hero.svelte";
   import Experience from "$lib/components/Experience.svelte";
   import Projects from "$lib/components/Projects.svelte";
+  import Workspace from "$lib/components/Workspace.svelte";
   import OffTheClock from "$lib/components/OffTheClock.svelte";
   import About from "$lib/components/About.svelte";
 
@@ -45,5 +46,6 @@
   experience={SITE_CONTENT.leadership}
 />
 <Projects projects={SITE_CONTENT.projects} hackerOrder={SITE_CONTENT.hackerProjectOrder} />
+<Workspace workspace={SITE_CONTENT.workspace} hackerWorkspace={SITE_CONTENT.hackerWorkspace} />
 <OffTheClock {films} {listening} letterboxdUser={letterboxd} lastfmUser={lastfm} gaming={data.gaming} steamId={steam} />
 <About {...SITE_CONTENT.about} hackerDescription={SITE_CONTENT.hackerAbout.description} name={SITE_CONTENT.hero.name} />
