@@ -584,6 +584,7 @@ export const SITE_CONTENT: SiteContent = {
         title: "Everyday",
         items: [
           { name: "Zen Browser", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/zen-browser.svg", href: "https://zen-browser.app/" },
+          { name: "Floorp Browser", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/floorp.svg", href: "https://floorp.dev/" },
           { name: "Spotify", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg", href: "https://open.spotify.com/" },
           { name: "Obsidian", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/obsidian.svg", href: "https://obsidian.md/" },
           { name: "Discord", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg", href: "https://discord.com/" },
