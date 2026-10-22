@@ -111,8 +111,8 @@
                 itemActive && (hacker.on ? "border-accent shadow-[0_0_8px_var(--color-accent)]" : "ring-2 ring-white"),
                 !itemActive &&
                   (hacker.on
-                    ? "border-primary bg-surface/90 text-primary"
-                    : "bg-primary text-white ring-1 ring-white/30"),
+                    ? "border-primary/60 bg-black/40 text-primary backdrop-blur-sm"
+                    : "bg-black/35 text-white ring-1 ring-white/50 backdrop-blur-sm"),
               ]}
               onclick={activate(i, p)}
             >
@@ -235,12 +235,6 @@
             >
           {/each}
         </div>
-      {/each}
-    </div>
-
-    <div class="mt-8 flex gap-2 pt-2" aria-hidden="true">
-      {#each ["bg-muted", "bg-primary", "bg-accent", "bg-neutral", "bg-edge-strong", "bg-white"] as swatch (swatch)}
-        <span class="h-3 w-8 {swatch}"></span>
       {/each}
     </div>
   {/if}
