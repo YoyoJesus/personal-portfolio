@@ -560,8 +560,8 @@ export const SITE_CONTENT: SiteContent = {
           { name: "GitHub Desktop", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg", href: "https://desktop.github.com/" },
           { name: "Docker Desktop", icon: "devicon-docker-plain colored", href: "https://www.docker.com/products/docker-desktop/" },
           { name: "Podman", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/podman.svg", href: "https://podman.io/" },
-          { name: "PGAdmin", icon: "https://www.pgadmin.org/favicon.ico", href: "https://www.pgadmin.org/" },
-          { name: "Postman", icon: "https://www.postman.com/favicon.ico", href: "https://www.postman.com/" },
+          { name: "PGAdmin", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/pgadmin.svg", href: "https://www.pgadmin.org/" },
+          { name: "Postman", icon: "devicon-postman-plain colored", href: "https://www.postman.com/" },
         ],
       },
       {
@@ -574,10 +574,10 @@ export const SITE_CONTENT: SiteContent = {
           { name: "Drizzle", icon: "https://orm.drizzle.team/favicon.ico", href: "https://orm.drizzle.team/" },
           { name: "PostgreSQL", icon: "devicon-postgresql-plain colored", href: "https://www.postgresql.org/" },
           { name: "Flask", icon: "devicon-flask-original colored", href: "https://flask.palletsprojects.com/" },
-          { name: "Playwright", icon: "https://playwright.dev/favicon.ico", href: "https://playwright.dev/" },
+          { name: "Playwright", icon: "devicon-playwright-plain colored", href: "https://playwright.dev/" },
           { name: "Typst", icon: "https://typst.app/favicon.ico", href: "https://typst.app/", trying: true },
-          { name: "OpenAI API", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai.svg", href: "https://openai.com/api/", trying: true },
-          { name: "Astro", icon: "https://astro.build/favicon.ico", href: "https://astro.build/", trying: true },
+          { name: "OpenAI API", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg", href: "https://openai.com/api/", trying: true },
+          { name: "Astro", icon: "devicon-astro-plain colored", href: "https://astro.build/", trying: true },
         ],
       },
       {
@@ -619,8 +619,8 @@ export const SITE_CONTENT: SiteContent = {
         items: [
           { name: "Burp Suite", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/burpsuite.svg", href: "https://portswigger.net/burp" },
           { name: "Hashcat", icon: "https://hashcat.net/favicon.ico", href: "https://hashcat.net/hashcat/" },
-          { name: "John the Ripper", icon: "https://www.openwall.com/john/john.ico", href: "https://www.openwall.com/john/" },
-          { name: "CyberChef", icon: "https://gchq.github.io/CyberChef/favicon.ico", href: "https://gchq.github.io/CyberChef/" },
+          { name: "John the Ripper", icon: "https://www.openwall.com/favicon.ico", href: "https://www.openwall.com/john/" },
+          { name: "CyberChef", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/cyberchef.svg", href: "https://gchq.github.io/CyberChef/" },
         ],
       },
       {
