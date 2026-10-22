@@ -535,23 +535,25 @@ export const SITE_CONTENT: SiteContent = {
     imageAlt: "My desk: a laptop and Samsung monitor with a mechanical keyboard, mic, and mouse on a circuit-board desk mat",
     // `pin` is percent from the photo's top-left and places a numbered marker.
     gear: [
-      { name: "Laptop", detail: "TODO: model, RTX GPU", pin: { x: 66, y: 44 } },
-      { name: "Monitor", detail: "Samsung, TODO: size", pin: { x: 22, y: 33 } },
-      { name: "Keyboard", detail: "TODO: model, Redragon wrist rest", pin: { x: 59, y: 58 } },
-      { name: "Mouse", detail: "Logitech G, TODO: model", pin: { x: 86, y: 61 } },
-      { name: "Microphone", detail: "HyperX, TODO: model", pin: { x: 47, y: 42 } },
-      { name: "Speaker", detail: "Anker, TODO: model", pin: { x: 21, y: 60 } },
-      { name: "USB-C hub", detail: "Anker, TODO: model", pin: { x: 37, y: 54 } },
-      { name: "Desk mat", detail: "Circuit-board print", pin: { x: 29, y: 68 } },
+      { name: "Laptop", detail: "TODO: model, RTX GPU", pin: { x: 69, y: 50 } },
+      { name: "Monitor", detail: "Samsung, TODO: size", pin: { x: 27, y: 37 } },
+      { name: "Keyboard", detail: "TODO: model, Redragon wrist rest", pin: { x: 62, y: 60 } },
+      { name: "Mouse", detail: "Logitech G, TODO: model", pin: { x: 87, y: 62 } },
+      { name: "Microphone", detail: "HyperX, TODO: model", pin: { x: 51, y: 46 } },
+      { name: "Speaker", detail: "Anker, TODO: model", pin: { x: 27, y: 60 } },
+      { name: "USB-C hub", detail: "Anker, TODO: model", pin: { x: 41, y: 57 } },
+      { name: "Desk mat", detail: "Circuit-board print", pin: { x: 33, y: 66 } },
     ],
     groups: [
       {
         title: "Editor & Tools",
         items: [
           { name: "VS Code", icon: "devicon-vscode-plain colored", href: "https://code.visualstudio.com/" },
-          { name: "Claude Code", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/claude-ai.svg", href: "https://claude.com/claude-code" },
+          { name: "T3 Code", icon: "https://t3.codes/favicon.ico", href: "https://t3.codes/" },
           { name: "Git", icon: "devicon-git-plain colored", href: "https://git-scm.com/" },
-          { name: "Prettier", icon: "https://prettier.io/icon.png", href: "https://prettier.io/" },
+          { name: "GitHub Desktop", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg", href: "https://desktop.github.com/" },
+          { name: "Docker Desktop", icon: "devicon-docker-plain colored", href: "https://www.docker.com/products/docker-desktop/" },
+          { name: "Podman", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/podman.svg", href: "https://podman.io/" },
         ],
       },
       {
@@ -566,13 +568,22 @@ export const SITE_CONTENT: SiteContent = {
           { name: "Typst", icon: "https://typst.app/favicon.ico", href: "https://typst.app/", trying: true },
         ],
       },
+      {
+        title: "Everyday",
+        items: [
+          { name: "Zen Browser", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/zen-browser.svg", href: "https://zen-browser.app/" },
+          { name: "Spotify", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg", href: "https://open.spotify.com/" },
+          { name: "Obsidian", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/obsidian.svg", href: "https://obsidian.md/" },
+          { name: "Discord", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg", href: "https://discord.com/" },
+        ],
+      },
     ],
   },
   hackerWorkspace: {
     image: "/workspace.jpg",
     imageAlt: "My hacking setup",
     gear: [
-      { name: "Laptop", detail: "TODO: model", pin: { x: 66, y: 44 } },
+      { name: "Laptop", detail: "TODO: model", pin: { x: 69, y: 50 } },
       { name: "Attack box", detail: "TODO: Kali / Parrot VM" },
     ],
     groups: [
@@ -581,7 +592,15 @@ export const SITE_CONTENT: SiteContent = {
         items: [
           { name: "nmap", icon: "https://nmap.org/favicon.ico", href: "https://nmap.org/" },
           { name: "Wireshark", icon: "devicon-wireshark-plain colored", href: "https://www.wireshark.org/" },
+          { name: "Angry IP Scanner", icon: "https://angryip.org/favicon.ico", href: "https://angryip.org/" },
           { name: "Scapy", icon: "devicon-python-plain colored", href: "https://scapy.net/" },
+        ],
+      },
+      {
+        title: "Web & Cracking",
+        items: [
+          { name: "Burp Suite", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/burpsuite.svg", href: "https://portswigger.net/burp" },
+          { name: "Hashcat", icon: "https://hashcat.net/favicon.ico", href: "https://hashcat.net/hashcat/" },
         ],
       },
       {
@@ -590,6 +609,13 @@ export const SITE_CONTENT: SiteContent = {
           { name: "pwntools", icon: "devicon-python-plain colored", href: "https://github.com/Gallopsled/pwntools" },
           { name: "Python", icon: "devicon-python-plain colored", href: "https://www.python.org/" },
           { name: "Bash", icon: "devicon-bash-plain", href: "https://www.gnu.org/software/bash/" },
+        ],
+      },
+      {
+        title: "Ops & Privacy",
+        items: [
+          { name: "Proton VPN", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/proton-vpn.svg", href: "https://protonvpn.com/" },
+          { name: "Docker", icon: "devicon-docker-plain colored", href: "https://www.docker.com/" },
         ],
       },
     ],
