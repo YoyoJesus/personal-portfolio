@@ -529,16 +529,19 @@ export const SITE_CONTENT: SiteContent = {
     "KSU Combat Robotics Website",
     "Linktree Replacement",
   ],
-  // TODO: fill in real hardware specs, "since" dates, and drop a desk photo at static/workspace.jpg.
+  // TODO: fill in real hardware specs and "since" dates, then replace static/workspace.jpg and re-place the pins.
+  // static/workspace.jpg is a placeholder stock photo from Unsplash (Unsplash License).
   workspace: {
-    image: "",
+    image: "/workspace.jpg",
     imageAlt: "My desk setup",
-    // Add `pin: { x, y }` (percent from top-left of the photo) to place a numbered marker.
+    // `pin` is percent from the photo's top-left and places a numbered marker.
     gear: [
-      { name: "Desktop", detail: "TODO: CPU / GPU / RAM" },
+      { name: "Desktop", detail: "TODO: CPU / GPU / RAM", pin: { x: 31, y: 47 } },
+      { name: "Monitor", detail: "TODO", pin: { x: 70, y: 40 } },
+      { name: "Keyboard", detail: "TODO", pin: { x: 52, y: 85 } },
+      { name: "Mouse", detail: "TODO", pin: { x: 91, y: 88 } },
+      { name: "Headphones", detail: "TODO", pin: { x: 13, y: 76 } },
       { name: "Laptop", detail: "TODO: model" },
-      { name: "Monitors", detail: "TODO" },
-      { name: "Keyboard", detail: "TODO" },
     ],
     groups: [
       {
@@ -565,10 +568,10 @@ export const SITE_CONTENT: SiteContent = {
     ],
   },
   hackerWorkspace: {
-    image: "",
+    image: "/workspace.jpg",
     imageAlt: "My hacking setup",
     gear: [
-      { name: "Attack box", detail: "TODO: Kali / Parrot VM, host specs" },
+      { name: "Attack box", detail: "TODO: Kali / Parrot VM, host specs", pin: { x: 31, y: 47 } },
       { name: "Laptop", detail: "TODO: model" },
     ],
     groups: [
