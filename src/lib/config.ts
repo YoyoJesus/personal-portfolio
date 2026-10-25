@@ -206,6 +206,31 @@ export const SITE_CONTENT: SiteContent = {
       ],
     },
     {
+      name: "Dependency Domino",
+      status: "Prototype",
+      openSource: true,
+      summary: "Turns a project's lockfile into an interactive dependency graph. Pick any package to simulate a compromise and see everything that depends on it, with known advisories pulled from OSV.dev. Built at HackOHI/O 2026 with SvelteKit and Cytoscape.",
+      hacker: {
+        summary: "A supply-chain blast radius mapper. Feed it an npm, pnpm, Yarn, or Bun lockfile, mark any package as compromised, and trace every dependent back to the project root, with OSV.dev advisories layered on top. Built at HackOHI/O 2026.",
+      },
+      linkPreview: "https://dependency.toolsmith.online/",
+      linkSource: "https://github.com/YoyoJesus/Dependency-Domino",
+      linkWriteup: "https://devpost.com/software/dependency-domino",
+      image: "/dependency-domino.webp",
+      languages: [
+        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
+        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
+        { icon: "https://js.cytoscape.org/img/cytoscape-logo.svg", name: "Cytoscape.js", languageLink: "https://js.cytoscape.org/" },
+        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
+        { icon: "https://osv.dev/static/img/favicon-32x32.png", name: "OSV.dev", languageLink: "https://osv.dev/" },
+        { icon: "devicon-vitest-plain colored", name: "Vitest", languageLink: "https://vitest.dev/" },
+      ],
+      collaborators: [
+        { name: "Savar Shrestha", image: "/collaborators/savars.jpg", profileLink: "https://www.linkedin.com/in/savar-shrestha/" },
+        { name: "Conner Brunner", image: "/collaborators/connerb.jpg", profileLink: "https://www.linkedin.com/in/conner-brunner/" },
+      ],
+    },
+    {
       name: "ToolSmith",
       status: "Active",
       summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface. Some tooling backed by OpenAI's API platform, allowing for uploading of documents to fill in data.",
@@ -516,6 +541,7 @@ export const SITE_CONTENT: SiteContent = {
   // Security work first, then networking/protocols, hardware, and apps handling sensitive data; plain web builds last.
   hackerProjectOrder: [
     "Kent Hack It",
+    "Dependency Domino",
     "Python INFOSEC",
     "BluQ",
     "Ripple Chat",
