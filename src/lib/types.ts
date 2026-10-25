@@ -63,6 +63,8 @@ export interface ProjectProps {
   status: "Active" | "Completed" | "Prototype" | "Archived";
   openSource?: boolean;
   awards?: { label: string; href: string; details?: string }[];
+  /** Hackathon the project was submitted to, for entries without an award. */
+  hackathon?: { name: string; href: string };
   summary: string;
   image: string;
   linkPreview?: string;

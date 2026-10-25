@@ -125,6 +125,12 @@
         <h3>{project.name}</h3>
       </div>
 
+      {#if project.hackathon}
+        <p class="project-hackathon">
+          Built at <a href={project.hackathon.href} target="_blank" rel="noopener noreferrer">{project.hackathon.name}</a>
+        </p>
+      {/if}
+
       {#if project.awards?.length}
         <ul class="project-awards" aria-label="Project awards">
           {#each project.awards as award (award.label)}
@@ -475,6 +481,24 @@
     text-underline-offset: 0.2rem;
   }
   .project-awards a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+  .project-hackathon {
+    margin-top: 0.9rem;
+    color: var(--color-soft);
+    font-size: 0.75rem;
+    line-height: 1.5;
+  }
+  .project-hackathon a {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+  .project-hackathon a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+  }
+  .project-hackathon a:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 4px;
   }
