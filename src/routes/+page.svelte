@@ -46,6 +46,6 @@
   experience={SITE_CONTENT.leadership}
 />
 <Projects projects={SITE_CONTENT.projects} hackerOrder={SITE_CONTENT.hackerProjectOrder} />
-<Workspace workspace={SITE_CONTENT.workspace} hackerWorkspace={SITE_CONTENT.hackerWorkspace} />
+<Workspace workspace={SITE_CONTENT.workspace} hackerWorkspace={SITE_CONTENT.hackerWorkspace} mobile={SITE_CONTENT.mobile} />
 <OffTheClock {films} {listening} letterboxdUser={letterboxd} lastfmUser={lastfm} gaming={data.gaming} steamId={steam} />
 <About {...SITE_CONTENT.about} hackerDescription={SITE_CONTENT.hackerAbout.description} name={SITE_CONTENT.hero.name} />

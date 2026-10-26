@@ -21,6 +21,7 @@ export interface SiteContent {
   hackerProjectOrder: string[];
   workspace: WorkspaceProps;
   hackerWorkspace: WorkspaceProps;
+  mobile: MobileProps;
 }
 
 export interface HeroProps {
@@ -106,6 +107,16 @@ export interface WorkspaceProps {
   gear: WorkspaceItem[];
   /** Software, shown as chip rows below. */
   groups: WorkspaceGroup[];
+}
+
+/** Phone and on-the-go gear, shown in both modes below the desk setup. */
+export interface MobileProps {
+  phone: WorkspaceItem;
+  /** Home screen grid, in display order. `label` shortens the name under the icon. */
+  apps: (WorkspaceItem & { label?: string })[];
+  /** Pinned row at the bottom of the home screen; four fits best. */
+  dock: WorkspaceItem[];
+  gear: WorkspaceItem[];
 }
 
 export interface WorkspaceGroup {
