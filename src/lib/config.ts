@@ -291,6 +291,31 @@ export const SITE_CONTENT: SiteContent = {
       ],
     },
     {
+      name: "ToolSmith",
+      status: "Active",
+      summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface. Some tooling backed by OpenAI's API platform, allowing for uploading of documents to fill in data.",
+      linkPreview: "https://toolsmith.online/",
+      linkSource: "/",
+      linkWriteup: "/",
+      image: "/toolsmith.webp",
+      languages: [
+        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
+        { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
+        { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
+        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
+        { icon: "https://ui.shadcn.com/favicon.ico", name: "ShadCN", languageLink: "https://ui.shadcn.com/"},
+        { icon: "https://github.com/naptha/tesseract.js/raw/master/docs/images/tesseract_dark.png", name: "Tesseract JS", languageLink: "https://tesseract.projectnaptha.com/"},
+        {icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai.svg", name: "OpenAI API", languageLink: "https://openai.com/api/"},
+      ],
+     collaborators: [
+        {
+          name: "TJ Raklovits",
+          image: "/collaborators/tjk.jpeg",
+          profileLink: "https://monster0506.dev/",
+        },
+     ],
+    },
+    {
       name: "Kent Hack It",
       status: "Active",
       summary: "The competition platform and challenges for Kent Hack It, HacKSU's annual CTF event. Built with SvelteKit, PostgreSQL, and Drizzle, with challenges spanning a variety of technologies.",
@@ -471,31 +496,6 @@ export const SITE_CONTENT: SiteContent = {
         { name: "Charlie Burrows", image: "/collaborators/charlieb.jpg", profileLink: "https://www.linkedin.com/in/charlie-burrows-043414402/" },
         { name: "Jude Skrzat", image: "/collaborators/judes.jpg", profileLink: "https://judeswebsite.netlify.app/" },
       ],
-    },
-    {
-      name: "ToolSmith",
-      status: "Active",
-      summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface. Some tooling backed by OpenAI's API platform, allowing for uploading of documents to fill in data.",
-      linkPreview: "https://toolsmith.online/",
-      linkSource: "/",
-      linkWriteup: "/",
-      image: "/toolsmith.webp",
-      languages: [
-        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
-        { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
-        { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
-        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
-        { icon: "https://ui.shadcn.com/favicon.ico", name: "ShadCN", languageLink: "https://ui.shadcn.com/"},
-        { icon: "https://github.com/naptha/tesseract.js/raw/master/docs/images/tesseract_dark.png", name: "Tesseract JS", languageLink: "https://tesseract.projectnaptha.com/"},
-        {icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai.svg", name: "OpenAI API", languageLink: "https://openai.com/api/"},
-      ],
-     collaborators: [
-        {
-          name: "TJ Raklovits",
-          image: "/collaborators/tjk.jpeg",
-          profileLink: "https://monster0506.dev/",
-        },
-     ],
     },
     {
       name: "Sitch Replacement",
