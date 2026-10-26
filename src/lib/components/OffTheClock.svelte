@@ -271,18 +271,17 @@
     {/if}
   </div>
 
-  <ul class="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-neutral/20 pt-5 text-xs text-neutral">
-    <li class="flex items-center gap-1.5"><span class="text-accent">★★★½</span> My rating</li>
-    <li class="flex items-center gap-1.5">
-      <IconReview class="size-3.5 text-accent" /> Reviewed (click to read)
-    </li>
-    <li class="flex items-center gap-1.5"><IconHeart class="size-3.5 text-primary" /> Liked</li>
-    <li class="flex items-center gap-1.5"><IconRewatch class="size-3.5" /> Rewatch</li>
-    <li class="flex items-center gap-1.5">
-      <IconPlaying class="size-4 text-accent" /> Playing right now
-    </li>
-    <li class="flex items-center gap-1.5">
-      <IconController class="size-3.5 text-accent" /> Played in the last 2 weeks
+  <!-- One row: labels stay short, and narrow screens scroll the row sideways instead of wrapping. -->
+  <ul
+    class="mt-12 flex [scrollbar-width:none] gap-x-4 overflow-x-auto border-t border-neutral/20 pt-5 text-xs whitespace-nowrap text-neutral sm:justify-between [&::-webkit-scrollbar]:hidden"
+  >
+    <li class="flex shrink-0 items-center gap-1.5"><span class="text-accent">★★★½</span> My rating</li>
+    <li class="flex shrink-0 items-center gap-1.5"><IconReview class="size-3.5 text-accent" /> Review</li>
+    <li class="flex shrink-0 items-center gap-1.5"><IconHeart class="size-3.5 text-primary" /> Liked</li>
+    <li class="flex shrink-0 items-center gap-1.5"><IconRewatch class="size-3.5" /> Rewatch</li>
+    <li class="flex shrink-0 items-center gap-1.5"><IconPlaying class="size-4 text-accent" /> Now playing</li>
+    <li class="flex shrink-0 items-center gap-1.5">
+      <IconController class="size-3.5 text-accent" /> Played in last 2 weeks
     </li>
   </ul>
 </Section>
