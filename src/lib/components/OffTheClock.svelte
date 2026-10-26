@@ -44,9 +44,10 @@
   const popoverSide = (i: number) => `${mobileSide[i % 3]} ${i % 5 === 0 ? "sm:left-0" : "sm:right-0"}`;
 </script>
 
+<!-- composedPath keeps the original ancestors, so clicks on buttons that remove themselves (like the spoiler reveal) still count as inside. -->
 <svelte:window
   onclick={(e) => {
-    if (!(e.target as Element).closest(".review-pop")) openReview = null;
+    if (!e.composedPath().some((el) => el instanceof Element && el.classList.contains("review-pop"))) openReview = null;
   }}
 />
 
