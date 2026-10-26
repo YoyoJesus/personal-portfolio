@@ -8,6 +8,7 @@
   import IconController from "~icons/ph/game-controller-fill";
   import IconPlaying from "~icons/svg-spinners/bars-scale-middle";
   import IconReview from "~icons/ph/chat-text-fill";
+  import IconClose from "~icons/ph/x-bold";
   import { fade } from "svelte/transition";
   import Section from "./Section.svelte";
   import type { Film } from "$lib/server/letterboxd";
@@ -37,10 +38,6 @@
   // Index of the film whose review popover is open; spoiler reviews stay blurred until revealed.
   let openReview = $state<number | null>(null);
   let revealed = $state<number | null>(null);
-
-  const closeReview = (i: number) => () => {
-    if (openReview === i) openReview = null;
-  };
 
   // Keep popovers on screen: the first column opens rightward, the last leftward, and the phone's middle column centers.
   const mobileSide = ["max-sm:left-0", "max-sm:left-1/2 max-sm:-translate-x-1/2", "max-sm:right-0"];
@@ -83,24 +80,15 @@
               <span class="text-accent">{stars(f.rating)}</span>
               <span class="flex items-center gap-1 text-neutral">
                 {#if f.review}
-                  <!-- Hovering the icon or the popover keeps it open; the popover anchors to the whole poster column. -->
+                  <!-- Opens on click and stays open until the X, Escape, or a click elsewhere; anchors to the poster column. -->
                   <!-- svelte-ignore a11y_no_static_element_interactions -->
-                  <span
-                    class="review-pop inline-flex"
-                    onmouseenter={() => (openReview = i)}
-                    onmouseleave={closeReview(i)}
-                    onfocusin={() => (openReview = i)}
-                    onfocusout={(e) => {
-                      if (!e.currentTarget.contains(e.relatedTarget as Node | null)) closeReview(i)();
-                    }}
-                    onkeydown={(e) => e.key === "Escape" && closeReview(i)()}
-                  >
+                  <span class="review-pop inline-flex" onkeydown={(e) => e.key === "Escape" && (openReview = null)}>
                     <button
                       type="button"
                       aria-label={`Read my review of ${f.title}`}
                       aria-expanded={openReview === i}
                       aria-controls="review-{i}"
-                      onclick={() => (openReview = i)}
+                      onclick={() => (openReview = openReview === i ? null : i)}
                       class="rounded-sm text-accent transition-transform hover:scale-125 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                     >
                       <IconReview class="size-3.5" />
@@ -110,16 +98,26 @@
                         id="review-{i}"
                         transition:fade={{ duration: 120 }}
                         class={[
-                          "absolute top-full z-20 mt-2 w-72 max-w-[80vw] border p-4 text-left shadow-xl before:absolute before:inset-x-0 before:-top-3 before:h-3",
+                          "absolute top-full z-20 mt-2 w-72 max-w-[80vw] border p-4 text-left shadow-xl",
                           popoverSide(i),
                           hacker.on
                             ? "border-primary bg-surface font-mono"
                             : "rounded-xl border-edge-strong bg-surface-raised/95 backdrop-blur",
                         ]}
                       >
-                        <p class="text-sm font-semibold text-white">
-                          {f.title} <span class="font-normal text-neutral">({f.year})</span>
-                        </p>
+                        <div class="flex items-start justify-between gap-3">
+                          <p class="text-sm font-semibold text-white">
+                            {f.title} <span class="font-normal text-neutral">({f.year})</span>
+                          </p>
+                          <button
+                            type="button"
+                            aria-label="Close review"
+                            onclick={() => (openReview = null)}
+                            class="-mt-0.5 -mr-1 shrink-0 rounded p-1 text-neutral transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-accent"
+                          >
+                            <IconClose class="size-3.5" />
+                          </button>
+                        </div>
                         {#if f.rating != null}<p class="mt-0.5 text-xs text-accent">{stars(f.rating)}</p>{/if}
                         <div class="relative mt-2.5">
                           <div
@@ -276,7 +274,7 @@
   <ul class="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-neutral/20 pt-5 text-xs text-neutral">
     <li class="flex items-center gap-1.5"><span class="text-accent">★★★½</span> My rating</li>
     <li class="flex items-center gap-1.5">
-      <IconReview class="size-3.5 text-accent" /> Reviewed (hover or tap to read)
+      <IconReview class="size-3.5 text-accent" /> Reviewed (click to read)
     </li>
     <li class="flex items-center gap-1.5"><IconHeart class="size-3.5 text-primary" /> Liked</li>
     <li class="flex items-center gap-1.5"><IconRewatch class="size-3.5" /> Rewatch</li>
