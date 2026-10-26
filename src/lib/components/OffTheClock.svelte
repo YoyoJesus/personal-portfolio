@@ -78,90 +78,85 @@
                 loading="lazy"
                 class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
               />
-              <span class="mt-1.5 flex items-center justify-between text-xs">
-                <span class="text-accent">{stars(f.rating)}</span>
-                <span class="flex items-center gap-1 text-neutral">
-                  {#if f.liked}<IconHeart class="size-3 text-primary" />{/if}
-                  {#if f.rewatch}<IconRewatch class="size-3" />{/if}
-                  {#if f.watched}{watchedOn(f.watched)}{/if}
-                </span>
-              </span>
             </a>
-            {#if f.review}
-              <!-- Spans the poster width so the popover can align to either edge; hovering the icon or popover keeps it open. -->
-              <!-- svelte-ignore a11y_no_static_element_interactions -->
-              <div
-                class={["review-pop absolute inset-x-0 top-2 h-0", openReview === i && "z-20"]}
-                onmouseenter={() => (openReview = i)}
-                onmouseleave={closeReview(i)}
-                onfocusin={() => (openReview = i)}
-                onfocusout={(e) => {
-                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) closeReview(i)();
-                }}
-                onkeydown={(e) => e.key === "Escape" && closeReview(i)()}
-              >
-                <button
-                  type="button"
-                  aria-label={`Read my review of ${f.title}`}
-                  aria-expanded={openReview === i}
-                  aria-controls="review-{i}"
-                  onclick={() => (openReview = i)}
-                  class={[
-                    "absolute top-0 right-2 grid size-7 place-items-center shadow-md backdrop-blur-sm transition-transform hover:scale-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
-                    hacker.on
-                      ? "border border-primary/60 bg-black/70 text-primary"
-                      : "rounded-full bg-black/60 text-accent ring-1 ring-white/25",
-                  ]}
-                >
-                  <IconReview class="size-4" />
-                </button>
-                {#if openReview === i}
-                  <div
-                    id="review-{i}"
-                    transition:fade={{ duration: 120 }}
-                    class={[
-                      "absolute top-9 w-72 max-w-[80vw] border p-4 text-left shadow-xl before:absolute before:inset-x-0 before:-top-3 before:h-3",
-                      popoverSide(i),
-                      hacker.on
-                        ? "border-primary bg-surface font-mono"
-                        : "rounded-xl border-edge-strong bg-surface-raised/95 backdrop-blur",
-                    ]}
+            <div class="mt-1.5 flex items-center justify-between text-xs">
+              <span class="text-accent">{stars(f.rating)}</span>
+              <span class="flex items-center gap-1 text-neutral">
+                {#if f.review}
+                  <!-- Hovering the icon or the popover keeps it open; the popover anchors to the whole poster column. -->
+                  <!-- svelte-ignore a11y_no_static_element_interactions -->
+                  <span
+                    class="review-pop inline-flex"
+                    onmouseenter={() => (openReview = i)}
+                    onmouseleave={closeReview(i)}
+                    onfocusin={() => (openReview = i)}
+                    onfocusout={(e) => {
+                      if (!e.currentTarget.contains(e.relatedTarget as Node | null)) closeReview(i)();
+                    }}
+                    onkeydown={(e) => e.key === "Escape" && closeReview(i)()}
                   >
-                    <p class="text-sm font-semibold text-white">
-                      {f.title} <span class="font-normal text-neutral">({f.year})</span>
-                    </p>
-                    {#if f.rating != null}<p class="mt-0.5 text-xs text-accent">{stars(f.rating)}</p>{/if}
-                    <div class="relative mt-2.5">
-                      <div
-                        class={[
-                          "max-h-56 space-y-2 overflow-y-auto pr-1 text-xs leading-relaxed whitespace-pre-line text-soft",
-                          f.spoilers && revealed !== i && "pointer-events-none blur-sm select-none",
-                        ]}
-                        aria-hidden={f.spoilers && revealed !== i}
-                      >
-                        {#each f.review as paragraph}<p>{paragraph}</p>{/each}
-                      </div>
-                      {#if f.spoilers && revealed !== i}
-                        <button
-                          type="button"
-                          onclick={() => (revealed = i)}
-                          class="absolute inset-0 m-auto h-fit w-fit rounded-full border border-edge-strong bg-surface px-3 py-1.5 text-xs font-medium text-white transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-accent"
-                        >
-                          Contains spoilers. Show review
-                        </button>
-                      {/if}
-                    </div>
-                    <a
-                      href={f.link}
-                      target="_blank"
-                      class="mt-3 inline-block text-xs text-neutral transition-colors hover:text-accent"
+                    <button
+                      type="button"
+                      aria-label={`Read my review of ${f.title}`}
+                      aria-expanded={openReview === i}
+                      aria-controls="review-{i}"
+                      onclick={() => (openReview = i)}
+                      class="rounded-sm text-accent transition-transform hover:scale-125 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                     >
-                      Read on Letterboxd <span aria-hidden="true">↗</span>
-                    </a>
-                  </div>
+                      <IconReview class="size-3.5" />
+                    </button>
+                    {#if openReview === i}
+                      <div
+                        id="review-{i}"
+                        transition:fade={{ duration: 120 }}
+                        class={[
+                          "absolute top-full z-20 mt-2 w-72 max-w-[80vw] border p-4 text-left shadow-xl before:absolute before:inset-x-0 before:-top-3 before:h-3",
+                          popoverSide(i),
+                          hacker.on
+                            ? "border-primary bg-surface font-mono"
+                            : "rounded-xl border-edge-strong bg-surface-raised/95 backdrop-blur",
+                        ]}
+                      >
+                        <p class="text-sm font-semibold text-white">
+                          {f.title} <span class="font-normal text-neutral">({f.year})</span>
+                        </p>
+                        {#if f.rating != null}<p class="mt-0.5 text-xs text-accent">{stars(f.rating)}</p>{/if}
+                        <div class="relative mt-2.5">
+                          <div
+                            class={[
+                              "max-h-56 [scrollbar-width:none] space-y-2 overflow-y-auto [mask-image:linear-gradient(to_bottom,black_80%,transparent)] pb-6 text-xs leading-relaxed whitespace-pre-line text-soft [&::-webkit-scrollbar]:hidden",
+                              f.spoilers && revealed !== i && "pointer-events-none blur-sm select-none",
+                            ]}
+                            aria-hidden={f.spoilers && revealed !== i}
+                          >
+                            {#each f.review as paragraph}<p>{paragraph}</p>{/each}
+                          </div>
+                          {#if f.spoilers && revealed !== i}
+                            <button
+                              type="button"
+                              onclick={() => (revealed = i)}
+                              class="absolute inset-0 m-auto h-fit w-fit rounded-full border border-edge-strong bg-surface px-3 py-1.5 text-xs font-medium text-white transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-accent"
+                            >
+                              Contains spoilers. Show review
+                            </button>
+                          {/if}
+                        </div>
+                        <a
+                          href={f.link}
+                          target="_blank"
+                          class="mt-3 inline-block text-xs text-neutral transition-colors hover:text-accent"
+                        >
+                          Read on Letterboxd <span aria-hidden="true">↗</span>
+                        </a>
+                      </div>
+                    {/if}
+                  </span>
                 {/if}
-              </div>
-            {/if}
+                {#if f.liked}<IconHeart class="size-3 text-primary" />{/if}
+                {#if f.rewatch}<IconRewatch class="size-3" />{/if}
+                {#if f.watched}{watchedOn(f.watched)}{/if}
+              </span>
+            </div>
           </li>
         {/each}
       </ul>
@@ -280,8 +275,11 @@
 
   <ul class="mt-12 flex flex-wrap gap-x-6 gap-y-2 border-t border-neutral/20 pt-5 text-xs text-neutral">
     <li class="flex items-center gap-1.5"><span class="text-accent">★★★½</span> My rating</li>
+    <li class="flex items-center gap-1.5">
+      <IconReview class="size-3.5 text-accent" /> Reviewed (hover or tap to read)
+    </li>
+    <li class="flex items-center gap-1.5"><IconHeart class="size-3.5 text-primary" /> Liked</li>
     <li class="flex items-center gap-1.5"><IconRewatch class="size-3.5" /> Rewatch</li>
-    <li class="flex items-center gap-1.5"><IconReview class="size-3.5 text-accent" /> I wrote a review</li>
     <li class="flex items-center gap-1.5">
       <IconPlaying class="size-4 text-accent" /> Playing right now
     </li>
