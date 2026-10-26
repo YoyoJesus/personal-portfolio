@@ -183,6 +183,48 @@ export const SITE_CONTENT: SiteContent = {
       ],
     },
     {
+      name: "narr0w",
+      status: "Prototype",
+      openSource: true,
+      awards: [
+        { label: "2 track wins at NexHacks 2026", href: "https://devpost.com/software/triage-flow", details: "DevSwarm and The Token Company" },
+      ],
+      summary: "An automated ticketing assignment system for IT and DevOps teams. Built with SvelteKit, FastAPI, n8n, and OpenRouter.",
+      linkPreview: "/",
+      linkSource: "https://github.com/nexhacks2026/nexhacks-2026",
+      linkWriteup: "https://devpost.com/software/triage-flow",
+      image: "/narrow.png",
+      languages: [
+        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
+        { icon: "devicon-fastapi-plain colored", name: "FastAPI", languageLink: "https://fastapi.tiangolo.com/" },
+        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
+        { icon: "devicon-docker-plain colored", name: "Docker", languageLink: "https://www.docker.com/" },
+        { icon : "https://n8n.io/favicon.ico", name: "n8n", languageLink: "https://n8n.io/" },
+        { icon: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/openrouter-icon.png",
+          name: "OpenRouter", languageLink: "https://openrouter.ai/"
+        },
+        { icon: "devicon-digitalocean-plain colored", name: "DigitalOcean", languageLink: "https://www.digitalocean.com/" }
+        
+      ],
+      collaborators: [
+        {
+          name: "Andrew Roddy",
+          image: "/collaborators/andrewr.jpg",
+          profileLink: "https://andrewroddy.com/",
+        },
+        {
+          name: "TJ Raklovits",
+          image: "/collaborators/tjk.jpeg",
+          profileLink: "https://monster0506.dev/",
+        },
+        {
+          name: "Mason Bair",
+          image: "/collaborators/masonb.jpg",
+          profileLink: "https://www.masonbair.com/",
+        },
+      ],
+    },
+    {
       name: "Holotrace",
       status: "Prototype",
       openSource: true,
@@ -233,31 +275,6 @@ export const SITE_CONTENT: SiteContent = {
       ],
     },
     {
-      name: "ToolSmith",
-      status: "Active",
-      summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface. Some tooling backed by OpenAI's API platform, allowing for uploading of documents to fill in data.",
-      linkPreview: "https://toolsmith.online/",
-      linkSource: "/",
-      linkWriteup: "/",
-      image: "/toolsmith.webp",
-      languages: [
-        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
-        { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
-        { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
-        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
-        { icon: "https://ui.shadcn.com/favicon.ico", name: "ShadCN", languageLink: "https://ui.shadcn.com/"},
-        { icon: "https://github.com/naptha/tesseract.js/raw/master/docs/images/tesseract_dark.png", name: "Tesseract JS", languageLink: "https://tesseract.projectnaptha.com/"},
-        {icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai.svg", name: "OpenAI API", languageLink: "https://openai.com/api/"},
-      ],
-     collaborators: [
-        {
-          name: "TJ Raklovits",
-          image: "/collaborators/tjk.jpeg",
-          profileLink: "https://monster0506.dev/",
-        },
-     ],
-    },
-    {
       name: "Python INFOSEC",
       status: "Active",
       openSource: true,
@@ -274,45 +291,95 @@ export const SITE_CONTENT: SiteContent = {
       ],
     },
     {
-      name: "narr0w",
-      status: "Prototype",
-      openSource: true,
-      awards: [
-        { label: "2 track wins at NexHacks 2026", href: "https://devpost.com/software/triage-flow", details: "DevSwarm and The Token Company" },
-      ],
-      summary: "An automated ticketing assignment system for IT and DevOps teams. Built with SvelteKit, FastAPI, n8n, and OpenRouter.",
-      linkPreview: "/",
-      linkSource: "https://github.com/nexhacks2026/nexhacks-2026",
-      linkWriteup: "https://devpost.com/software/triage-flow",
-      image: "/narrow.png",
+      name: "Kent Hack It",
+      status: "Active",
+      summary: "The competition platform and challenges for Kent Hack It, HacKSU's annual CTF event. Built with SvelteKit, PostgreSQL, and Drizzle, with challenges spanning a variety of technologies.",
+      hacker: {
+        summary: "HacKSU's annual capture-the-flag. The scoring platform is built with SvelteKit and PostgreSQL, and the challenges span web, crypto, forensics, and reversing, each one built to be broken.",
+      },
+      linkPreview: "https://ctf.hacksu.com",
+      linkSource: "https://github.com/hacksu/kent-hack-it",
+      linkWriteup: "/",
+      image: "/khi.webp",
       languages: [
-        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
-        { icon: "devicon-fastapi-plain colored", name: "FastAPI", languageLink: "https://fastapi.tiangolo.com/" },
         { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
-        { icon: "devicon-docker-plain colored", name: "Docker", languageLink: "https://www.docker.com/" },
-        { icon : "https://n8n.io/favicon.ico", name: "n8n", languageLink: "https://n8n.io/" },
-        { icon: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/openrouter-icon.png",
-          name: "OpenRouter", languageLink: "https://openrouter.ai/"
-        },
-        { icon: "devicon-digitalocean-plain colored", name: "DigitalOcean", languageLink: "https://www.digitalocean.com/" }
-        
+        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
+        { icon: "devicon-postgresql-plain colored", name: "PostgreSQL", languageLink: "https://www.postgresql.org/" },
+        { icon: "https://orm.drizzle.team/favicon.ico", name: "Drizzle", languageLink: "https://orm.drizzle.team/" },
+        { icon: "devicon-tailwindcss-plain colored", name: "Tailwind CSS", languageLink: "https://tailwindcss.com/" },
       ],
       collaborators: [
         {
-          name: "Andrew Roddy",
-          image: "/collaborators/andrewr.jpg",
-          profileLink: "https://andrewroddy.com/",
+          name: "Noah Al-lahabi",
+          image: "/collaborators/noaha.jpg",
+          profileLink: "https://enderhubris.github.io/my_happy_site/",
+        },
+        {
+          name: "Ian Rohrbacher",
+          image: "/collaborators/ianr.jpg",
+          profileLink: "http://rohrbacher.cc/",
         },
         {
           name: "TJ Raklovits",
           image: "/collaborators/tjk.jpeg",
           profileLink: "https://monster0506.dev/",
         },
+      ],
+    },
+    {
+      name: "KSU Combat Robotics Website",
+      status: "Active",
+      summary: "Kent State's Combat Robotics club website, with event registration, team updates, and club information. Built with SvelteKit, PostgreSQL, and Drizzle, and hosted on Vercel.",
+      linkPreview: "https://ksucombat.club",
+      linkSource: "https://github.com/CombatRoboticsKSU/KSU-Combat-Robotics-Website",
+      linkWriteup: "/",
+      image: "/ksucombat.webp",
+      languages: [
+        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
+        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
+        { icon: "devicon-postgresql-plain colored", name: "PostgreSQL", languageLink: "https://www.postgresql.org/" },
+        { icon: "https://orm.drizzle.team/favicon.ico", name: "Drizzle", languageLink: "https://orm.drizzle.team/" },
+      ],
+      collaborators: [
         {
-          name: "Mason Bair",
-          image: "/collaborators/masonb.jpg",
-          profileLink: "https://www.masonbair.com/",
+          name: "Noah Al-lahabi",
+          image: "/collaborators/noaha.jpg",
+          profileLink: "https://enderhubris.github.io/my_happy_site/",
         },
+        {
+          name: "Ian Rohrbacher",
+          image: "/collaborators/ianr.jpg",
+          profileLink: "http://rohrbacher.cc/",
+        },
+        {
+          name: "Conner Brunner",
+          image: "/collaborators/connerb.jpg",
+          profileLink: "https://www.linkedin.com/in/conner-brunner/",
+        },
+      ],
+    },
+    {
+      name: "SCI Smart Badge",
+      status: "Active",
+      awards: [
+        { label: "Best Presentation at COF 2026", href: "https://www.linkedin.com/in/austin-sternberg/overlay/1776200058946/single-media-viewer/?profileId=ACoAADborj0BvR99J5O7JokjCnzGMc21g64HgfY&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3B9%2BLM1ZWBQuKI90dkCQmo4Q%3D%3D", details: "Choose Ohio First Research Symposium" },
+      ],
+      summary: "An IOT badge that collects decibel levels and motion data to monitor engagement in small group settings. Built using an Arduino Sense board and integrated with a set of python scripts for data analysis.",
+      linkPreview: "/",
+      linkSource: "https://github.com/YoyoJesus/SCI-Lab-BadgeSoftware",
+      linkWriteup: "/",
+      image: "/bage.jpg",
+      languages: [
+        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
+        { icon: "devicon-arduino-plain colored", name: "Arduino", languageLink: "https://www.arduino.cc/" },
+        { icon: "devicon-c-plain colored", name: "C/C++", languageLink: "https://isocpp.org/" },
+      ],
+      collaborators: [
+        {
+          name: "Bishop Kliskey",
+          image: "/collaborators/bishopk.jpg",
+          profileLink: "https://www.linkedin.com/in/bishop-kliskey-0074251b1/",
+        }
       ],
     },
     {
@@ -406,95 +473,42 @@ export const SITE_CONTENT: SiteContent = {
       ],
     },
     {
-      name: "SCI Smart Badge",
+      name: "ToolSmith",
       status: "Active",
-      awards: [
-        { label: "Best Presentation at COF 2026", href: "https://www.linkedin.com/in/austin-sternberg/overlay/1776200058946/single-media-viewer/?profileId=ACoAADborj0BvR99J5O7JokjCnzGMc21g64HgfY&lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_projects_details%3B9%2BLM1ZWBQuKI90dkCQmo4Q%3D%3D", details: "Choose Ohio First Research Symposium" },
-      ],
-      summary: "An IOT badge that collects decibel levels and motion data to monitor engagement in small group settings. Built using an Arduino Sense board and integrated with a set of python scripts for data analysis.",
-      linkPreview: "/",
-      linkSource: "https://github.com/YoyoJesus/SCI-Lab-BadgeSoftware",
+      summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface. Some tooling backed by OpenAI's API platform, allowing for uploading of documents to fill in data.",
+      linkPreview: "https://toolsmith.online/",
+      linkSource: "/",
       linkWriteup: "/",
-      image: "/bage.jpg",
+      image: "/toolsmith.webp",
       languages: [
-        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
-        { icon: "devicon-arduino-plain colored", name: "Arduino", languageLink: "https://www.arduino.cc/" },
-        { icon: "devicon-c-plain colored", name: "C/C++", languageLink: "https://isocpp.org/" },
+        { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
+        { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
+        { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
+        { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
+        { icon: "https://ui.shadcn.com/favicon.ico", name: "ShadCN", languageLink: "https://ui.shadcn.com/"},
+        { icon: "https://github.com/naptha/tesseract.js/raw/master/docs/images/tesseract_dark.png", name: "Tesseract JS", languageLink: "https://tesseract.projectnaptha.com/"},
+        {icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai.svg", name: "OpenAI API", languageLink: "https://openai.com/api/"},
       ],
-      collaborators: [
-        {
-          name: "Bishop Kliskey",
-          image: "/collaborators/bishopk.jpg",
-          profileLink: "https://www.linkedin.com/in/bishop-kliskey-0074251b1/",
-        }
-      ],
-    },
-    {
-      name: "KSU Combat Robotics Website",
-      status: "Active",
-      summary: "Kent State's Combat Robotics club website, with event registration, team updates, and club information. Built with SvelteKit, PostgreSQL, and Drizzle, and hosted on Vercel.",
-      linkPreview: "https://ksucombat.club",
-      linkSource: "https://github.com/CombatRoboticsKSU/KSU-Combat-Robotics-Website",
-      linkWriteup: "/",
-      image: "/ksucombat.webp",
-      languages: [
-        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
-        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
-        { icon: "devicon-postgresql-plain colored", name: "PostgreSQL", languageLink: "https://www.postgresql.org/" },
-        { icon: "https://orm.drizzle.team/favicon.ico", name: "Drizzle", languageLink: "https://orm.drizzle.team/" },
-      ],
-      collaborators: [
-        {
-          name: "Noah Al-lahabi",
-          image: "/collaborators/noaha.jpg",
-          profileLink: "https://enderhubris.github.io/my_happy_site/",
-        },
-        {
-          name: "Ian Rohrbacher",
-          image: "/collaborators/ianr.jpg",
-          profileLink: "http://rohrbacher.cc/",
-        },
-        {
-          name: "Conner Brunner",
-          image: "/collaborators/connerb.jpg",
-          profileLink: "https://www.linkedin.com/in/conner-brunner/",
-        },
-      ],
-    },
-    {
-      name: "Kent Hack It",
-      status: "Active",
-      summary: "The competition platform and challenges for Kent Hack It, HacKSU's annual CTF event. Built with SvelteKit, PostgreSQL, and Drizzle, with challenges spanning a variety of technologies.",
-      hacker: {
-        summary: "HacKSU's annual capture-the-flag. The scoring platform is built with SvelteKit and PostgreSQL, and the challenges span web, crypto, forensics, and reversing, each one built to be broken.",
-      },
-      linkPreview: "https://ctf.hacksu.com",
-      linkSource: "https://github.com/hacksu/kent-hack-it",
-      linkWriteup: "/",
-      image: "/khi.webp",
-      languages: [
-        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
-        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
-        { icon: "devicon-postgresql-plain colored", name: "PostgreSQL", languageLink: "https://www.postgresql.org/" },
-        { icon: "https://orm.drizzle.team/favicon.ico", name: "Drizzle", languageLink: "https://orm.drizzle.team/" },
-        { icon: "devicon-tailwindcss-plain colored", name: "Tailwind CSS", languageLink: "https://tailwindcss.com/" },
-      ],
-      collaborators: [
-        {
-          name: "Noah Al-lahabi",
-          image: "/collaborators/noaha.jpg",
-          profileLink: "https://enderhubris.github.io/my_happy_site/",
-        },
-        {
-          name: "Ian Rohrbacher",
-          image: "/collaborators/ianr.jpg",
-          profileLink: "http://rohrbacher.cc/",
-        },
+     collaborators: [
         {
           name: "TJ Raklovits",
           image: "/collaborators/tjk.jpeg",
           profileLink: "https://monster0506.dev/",
         },
+     ],
+    },
+    {
+      name: "Sitch Replacement",
+      status: "Active",
+      openSource: true,
+      summary: "A custom profile page for my RFID business card, replacing Sitch's limited page builder. Built with SvelteKit and TypeScript, and hosted on Vercel.",
+      linkPreview: "https://sitch.yoyojesus.xyz",
+      linkSource: "https://github.com/YoyoJesus/sitch-replacement",
+      linkWriteup: "/",
+      image: "/sitch-clone.webp",
+      languages: [
+        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
+        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
       ],
     },
     {
@@ -509,20 +523,6 @@ export const SITE_CONTENT: SiteContent = {
       languages: [
         { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
         { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
-      ],
-    },
-    {
-      name: "Sitch Replacement",
-      status: "Active",
-      openSource: true,
-      summary: "A custom profile page for my RFID business card, replacing Sitch's limited page builder. Built with SvelteKit and TypeScript, and hosted on Vercel.",
-      linkPreview: "https://sitch.yoyojesus.xyz",
-      linkSource: "https://github.com/YoyoJesus/sitch-replacement",
-      linkWriteup: "/",
-      image: "/sitch-clone.webp",
-      languages: [
-        { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
-        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
       ],
     },
   ],
