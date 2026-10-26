@@ -2,10 +2,15 @@
   import { fade } from "svelte/transition";
   import Section from "./Section.svelte";
   import ToolIcon from "./ToolIcon.svelte";
-  import type { WorkspaceItem, WorkspaceProps } from "$lib/types";
+  import MobileSetup from "./MobileSetup.svelte";
+  import type { MobileProps, WorkspaceItem, WorkspaceProps } from "$lib/types";
   import { HACKER_ALIAS, HACKER_HOST, hacker } from "$lib/hacker.svelte";
 
-  let { workspace, hackerWorkspace }: { workspace: WorkspaceProps; hackerWorkspace: WorkspaceProps } = $props();
+  let {
+    workspace,
+    hackerWorkspace,
+    mobile,
+  }: { workspace: WorkspaceProps; hackerWorkspace: WorkspaceProps; mobile: MobileProps } = $props();
 
   const current = $derived(hacker.on ? hackerWorkspace : workspace);
   const hasImage = $derived(!!current.image?.trim());
@@ -238,4 +243,6 @@
       {/each}
     </div>
   {/if}
+
+  <MobileSetup {mobile} />
 </Section>

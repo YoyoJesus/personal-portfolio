@@ -676,6 +676,49 @@ export const SITE_CONTENT: SiteContent = {
       },
     ],
   },
+  mobile: {
+    phone: { name: "Google Pixel 7", detail: "Android", href: "https://store.google.com/product/pixel_7" },
+    apps: [
+      // Dev & AI
+      { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg", href: "https://github.com/yoyojesus" },
+      { name: "Termius", icon: "https://api.iconify.design/simple-icons/termius.svg?color=%23ffffff", href: "https://termius.com/" },
+      { name: "ChatGPT", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/chatgpt.svg", href: "https://chatgpt.com/" },
+      { name: "Claude", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/claude-ai.svg", href: "https://claude.ai/" },
+      // Social
+      { name: "Instagram", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/instagram.svg", href: "https://www.instagram.com/yoyoje_sus/" },
+      { name: "X", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/x-light.svg", href: "https://x.com/CBooted25144" },
+      { name: "Bluesky", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bluesky.svg", href: "https://bsky.app/profile/yoyojesus.bsky.social" },
+      { name: "Discord", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg", href: "https://discord.com/" },
+      // Media
+      { name: "Spotify", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg", href: "https://open.spotify.com/user/austinplaysmms12" },
+      { name: "YouTube", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/youtube.svg", href: "https://www.youtube.com/@yoyojesus" },
+      { name: "F1", icon: "https://api.iconify.design/simple-icons/f1.svg?color=%23e10600", href: "https://www.formula1.com/" },
+      { name: "Xbox", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/xbox.svg", href: "https://www.xbox.com/" },
+      // Security & money
+      { name: "Google Authenticator", label: "G Auth", icon: "https://api.iconify.design/simple-icons/googleauthenticator.svg?color=%23ffffff", href: "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" },
+      { name: "Microsoft Authenticator", label: "MS Auth", icon: "https://api.iconify.design/arcticons/microsoft-authenticator.svg?color=%234ea1ff", href: "https://www.microsoft.com/security/mobile-authenticator-app" },
+      { name: "Huntington", icon: "https://www.google.com/s2/favicons?domain=huntington.com&sz=64", href: "https://www.huntington.com/" },
+      { name: "Fidelity", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/fidelity.svg", href: "https://www.fidelity.com/" },
+      // Everyday
+      { name: "ClickUp", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/clickup.svg", href: "https://clickup.com/" },
+      { name: "Waze", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/waze.svg", href: "https://www.waze.com/" },
+      { name: "Nothing X", icon: "https://api.iconify.design/arcticons/nothing-x.svg?color=%23ffffff", href: "https://play.google.com/store/apps/details?id=com.nothing.smartcenter" },
+      { name: "Taco Bell", icon: "https://api.iconify.design/simple-icons/tacobell.svg?color=%23b98ae0", href: "https://www.tacobell.com/" },
+    ],
+    dock: [
+      { name: "Gmail", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/gmail.svg", href: "https://mail.google.com/" },
+      { name: "Outlook", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/microsoft-outlook.svg", href: "https://www.microsoft.com/microsoft-365/outlook/outlook-for-android" },
+      { name: "LinkedIn", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linkedin.svg", href: "https://www.linkedin.com/in/austin-sternberg/" },
+      { name: "Teams", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/microsoft-teams.svg", href: "https://www.microsoft.com/microsoft-teams" },
+    ],
+    gear: [
+      { name: "CMF Watch Pro 2", detail: "Smartwatch", href: "https://us.nothing.tech/collections/cmf" },
+      { name: "CMF Headphone Pro", detail: "Over-ear ANC headphones", href: "https://us.nothing.tech/products/cmf-headphone-pro" },
+      { name: "Shokz OpenRun", detail: "Bone-conduction headphones", href: "https://shokz.com/products/openrun" },
+      { name: "LTT Transparent Screwdriver", detail: "Ratcheting", href: "https://www.lttstore.com/products/transparent-screwdriver" },
+      { name: "Heltec WiFi LoRa 32 V3", detail: "Meshtastic node", href: "https://heltec.org/project/wifi-lora-32-v3/" },
+    ],
+  },
   hackerAbout: {
     description: `
       Hello, friend. Online I go by yoyojesus.
