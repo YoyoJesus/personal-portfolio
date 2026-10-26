@@ -248,7 +248,7 @@
 
   <div class="projects-grid">
     {#each projects as project, index (project.name)}
-      {@render projectCard(project, index === 0, false)}
+      {@render projectCard(project, index === 0 || (projects.length % 2 === 0 && index === projects.length - 1), false)}
     {/each}
   </div>
 </Section>
