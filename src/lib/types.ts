@@ -128,6 +128,8 @@ export interface WorkspaceItem {
   name: string;
   /** Devicon class or image URL, same as LanguageProps.icon. */
   icon?: string;
+  /** Product photo, shown as a thumbnail beside the name. */
+  image?: string;
   detail?: string;
   href?: string;
   /** Year or "Mon YYYY" this became part of the setup. */

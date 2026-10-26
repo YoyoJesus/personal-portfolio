@@ -712,11 +712,13 @@ export const SITE_CONTENT: SiteContent = {
       { name: "Teams", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/microsoft-teams.svg", href: "https://www.microsoft.com/microsoft-teams" },
     ],
     gear: [
-      { name: "CMF Watch Pro 2", detail: "Smartwatch", href: "https://us.nothing.tech/collections/cmf" },
-      { name: "CMF Headphone Pro", detail: "Over-ear ANC headphones", href: "https://us.nothing.tech/products/cmf-headphone-pro" },
-      { name: "Shokz OpenRun", detail: "Bone-conduction headphones", href: "https://shokz.com/products/openrun" },
-      { name: "LTT Transparent Screwdriver", detail: "Ratcheting", href: "https://www.lttstore.com/products/transparent-screwdriver" },
-      { name: "Heltec WiFi LoRa 32 V3", detail: "Meshtastic node", href: "https://heltec.org/project/wifi-lora-32-v3/" },
+      { name: "CMF Watch Pro 2", image: "/gear/cmf-watch-pro-2.webp", detail: "Smartwatch", href: "https://us.nothing.tech/collections/cmf" },
+      { name: "CMF Headphone Pro", image: "/gear/cmf-headphone-pro.webp", detail: "Over-ear ANC headphones", href: "https://us.nothing.tech/products/cmf-headphone-pro" },
+      { name: "Shokz OpenRun", image: "/gear/shokz-openrun.webp", detail: "Bone-conduction headphones", href: "https://shokz.com/products/openrun" },
+      { name: "LTT Transparent Screwdriver", image: "/gear/ltt-screwdriver.webp", detail: "Ratcheting", href: "https://www.lttstore.com/products/transparent-screwdriver" },
+      { name: "Heltec WiFi LoRa 32 V3", image: "/gear/heltec-lora-v3.webp", detail: "Meshtastic node", href: "https://heltec.org/project/wifi-lora-32-v3/" },
+      { name: "Moleskine Classic Notebook", image: "/gear/moleskine-pocket.webp", detail: "Pocket, hard cover", href: "https://www.moleskine.com/en-us/" },
+      { name: "Pilot G2", image: "/gear/pilot-g2.webp", detail: "0.7mm gel pen", href: "https://pilotpen.us/" },
     ],
   },
   hackerAbout: {

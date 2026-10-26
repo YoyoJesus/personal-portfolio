@@ -146,18 +146,33 @@
         </h4>
         <ul class="mt-3 space-y-2 text-sm" aria-label="On-the-go gear">
           {#each mobile.gear as item (item.name)}
-            <li class="flex flex-wrap items-baseline gap-x-2">
-              {#if item.href}
-                <a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class={["text-white", hacker.on && "lowercase", linkFocus]}>{item.name}</a
+            <li class="flex items-center gap-3">
+              {#if item.image}
+                <span
+                  class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/5 p-1 ring-1 ring-white/10"
                 >
-              {:else}
-                <span class={["text-white", hacker.on && "lowercase"]}>{item.name}</span>
+                  <img
+                    src={item.image}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    class="max-h-full max-w-full object-contain"
+                  />
+                </span>
               {/if}
-              {#if item.detail}<span class="text-xs text-neutral">{item.detail}</span>{/if}
+              <div class="flex flex-wrap items-baseline gap-x-2">
+                {#if item.href}
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={["text-white", hacker.on && "lowercase", linkFocus]}>{item.name}</a
+                  >
+                {:else}
+                  <span class={["text-white", hacker.on && "lowercase"]}>{item.name}</span>
+                {/if}
+                {#if item.detail}<span class="text-xs text-neutral">{item.detail}</span>{/if}
+              </div>
             </li>
           {/each}
         </ul>
