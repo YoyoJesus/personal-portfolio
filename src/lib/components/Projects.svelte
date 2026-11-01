@@ -96,6 +96,7 @@
       { label: "Website", href: project.linkPreview },
       { label: "Code", href: project.linkSource },
       { label: "Writeup", href: project.linkWriteup },
+      { label: "Video", href: project.linkVideo },
     ].filter((link): link is { label: string; href: string } => Boolean(link.href && link.href !== "/"));
 </script>
 

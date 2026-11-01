@@ -71,6 +71,7 @@ export interface ProjectProps {
   linkPreview?: string;
   linkSource?: string;
   linkWriteup?: string;
+  linkVideo?: string;
   languages: LanguageProps[];
   collaborators?: CollaboratorProps[];
   /** Fields swapped in while hacker mode is on. */

@@ -260,6 +260,7 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "https://dependency.toolsmith.online/",
       linkSource: "https://github.com/YoyoJesus/Dependency-Domino",
       linkWriteup: "https://devpost.com/software/dependency-domino",
+      linkVideo: "https://youtu.be/YfDgcvHxvYQ",
       image: "/dependency-domino.webp",
       languages: [
         { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
@@ -297,6 +298,7 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "https://toolsmith.online/",
       linkSource: "/",
       linkWriteup: "/",
+      linkVideo: "https://youtu.be/qOHqvrDJuM8",
       image: "/toolsmith.webp",
       languages: [
         { icon: "devicon-svelte-plain colored", name: "Svelte", languageLink: "https://svelte.dev/" },
