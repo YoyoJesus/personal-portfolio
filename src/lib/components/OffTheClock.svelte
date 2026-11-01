@@ -1,4 +1,5 @@
 <script lang="ts">
+  import LinkIcon from "$lib/icons/LinkIcon.svelte";
   import IconLetterboxd from "~icons/simple-icons/letterboxd";
   import IconLastfm from "~icons/simple-icons/lastdotfm";
   import IconSteam from "~icons/simple-icons/steam";
@@ -64,7 +65,7 @@
         target="_blank"
         class="text-sm text-neutral hover:text-primary"
       >
-        View All <span aria-hidden="true">↗</span>
+        View All <span aria-hidden="true"><LinkIcon /></span>
       </a>
     </div>
     {#if films.length}
@@ -167,7 +168,7 @@
                       target="_blank"
                       class="mt-3 inline-block text-xs text-neutral transition-colors hover:text-accent"
                     >
-                      Read on Letterboxd <span aria-hidden="true">↗</span>
+                      Read on Letterboxd <span aria-hidden="true"><LinkIcon /></span>
                     </a>
                   </div>
                 </div>
@@ -191,7 +192,7 @@
         target="_blank"
         class="text-sm text-neutral hover:text-primary"
       >
-        Last.fm <span aria-hidden="true">↗</span>
+        Last.fm <span aria-hidden="true"><LinkIcon /></span>
       </a>
     </div>
     {#if listening.recent.length === 0}
@@ -255,7 +256,7 @@
         target="_blank"
         class="text-sm text-neutral hover:text-primary"
       >
-        Steam <span aria-hidden="true">↗</span>
+        Steam <span aria-hidden="true"><LinkIcon /></span>
       </a>
     </div>
     {#if gaming.games.length}

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import LinkIcon from "$lib/icons/LinkIcon.svelte";
   import { onMount } from "svelte";
   import Section from "./Section.svelte";
   import ToolIcon from "./ToolIcon.svelte";
@@ -169,7 +170,7 @@
         <div class="project-links">
           {#each projectLinks(project) as link (link.label)}
             <a href={link.href} target="_blank" rel="noopener noreferrer">
-              {link.label} <span aria-hidden="true">↗</span>
+              {link.label} <span aria-hidden="true"><LinkIcon /></span>
             </a>
           {/each}
         </div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import LinkIcon from "$lib/icons/LinkIcon.svelte";
   import type { SiteConfig } from "$lib/types";
   import { HACKER_ALIAS, HACKER_HOST, hacker } from "$lib/hacker.svelte";
 
@@ -15,7 +16,7 @@
           target="_blank"
           class="inline-block px-4 py-3 hover:text-primary"
         >
-          {text} <span aria-hidden="true">↗</span>
+          {text} <span aria-hidden="true"><LinkIcon /></span>
         </a>
       </li>
     {/each}

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import LinkIcon from "$lib/icons/LinkIcon.svelte";
   import { fade } from "svelte/transition";
   import Section from "./Section.svelte";
   import ToolIcon from "./ToolIcon.svelte";
@@ -55,7 +56,7 @@
   {#if item.href}
     <a href={item.href} target="_blank" rel="noopener noreferrer" class="{cls} {linkFocus}">
       {item.name}
-      {#if !hacker.on}<span class="text-xs text-white/50" aria-hidden="true">↗</span>{/if}
+      {#if !hacker.on}<span class="text-xs text-white/50" aria-hidden="true"><LinkIcon /></span>{/if}
     </a>
   {:else}
     <span class={cls}>{item.name}</span>
