@@ -29,7 +29,6 @@
   let { films, listening, letterboxdUser, lastfmUser, gaming, steamId }: Props = $props();
 
   // Phones only get the first three films and games.
-  const mobileHide = (i: number) => (i >= 3 ? "max-sm:hidden" : "");
   const maxPlays = $derived(Math.max(...listening.topArtists.map((a) => a.plays), 1));
   const watchedOn = (d: string) =>
     new Date(`${d}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
@@ -42,8 +41,8 @@
   const toggleReview = (i: number) => (openReview = openReview === i ? null : i);
 
   // Keep popovers on screen: the first column opens rightward, the last leftward, and the phone's middle column centers.
-  const mobileSide = ["max-sm:left-0", "max-sm:left-1/2 max-sm:-translate-x-1/2", "max-sm:right-0"];
-  const popoverSide = (i: number) => `${mobileSide[i % 3]} ${i % 5 === 0 ? "sm:left-0" : "sm:right-0"}`;
+  const mobileSide = (i: number) => i === 0 || i % 2 === 1 ? "max-sm:left-0" : "max-sm:right-0";
+  const popoverSide = (i: number) => `${mobileSide(i)} ${i % 5 === 0 ? "sm:left-0" : "sm:right-0"}`;
 </script>
 
 <!-- composedPath keeps the original ancestors, so clicks on buttons that remove themselves (like the spoiler reveal) still count as inside. -->
@@ -55,7 +54,8 @@
 />
 
 <Section text={hacker.on ? "$ ps aux --afk" : "When I'm Not Coding"} href="not-coding">
-  <div class="activity-section">
+  <div class="media-journal">
+  <div class="activity-section film-journal">
     <div class="activity-heading">
       <h3 class="activity-title">
         <IconLetterboxd class="size-6 text-accent" /> Recently <span>Watched</span>
@@ -69,9 +69,9 @@
       </a>
     </div>
     {#if films.length}
-      <ul class="grid grid-cols-3 gap-3 sm:grid-cols-5">
+      <ul class="film-shelf">
         {#each films as f, i}
-          <li class={["relative", mobileHide(i)]}>
+          <li class="film-entry relative">
             <a href={f.link} target="_blank" class="group block" title={`${f.title} (${f.year})`}>
               <img
                 src={f.poster}
@@ -80,6 +80,7 @@
                 class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
               />
             </a>
+            <p class="film-name">{f.title} <span>({f.year})</span></p>
             <div class="mt-1.5 flex flex-wrap items-center justify-between gap-x-1 text-xs whitespace-nowrap">
               <span class="text-accent">{stars(f.rating)}</span>
               <span class="flex items-center gap-1 text-neutral">
@@ -182,7 +183,7 @@
     {/if}
   </div>
 
-  <div class="activity-section">
+  <div class="activity-section music-journal">
     <div class="activity-heading">
       <h3 class="activity-title">
         <IconLastfm class="size-6 text-accent" /> Listening <span>Activity</span>
@@ -202,7 +203,7 @@
           : "Last.fm didn't respond. Try refreshing in a minute."}
       </p>
     {:else}
-      <div class="grid grid-cols-1 gap-10 sm:grid-cols-2">
+      <div class="music-columns">
         <ol class="min-w-0 space-y-3">
           {#each listening.recent as t}
             <li>
@@ -246,7 +247,8 @@
     {/if}
   </div>
 
-  <div class="activity-section">
+  </div>
+  <div class="activity-section games-journal">
     <div class="activity-heading">
       <h3 class="activity-title">
         <IconSteam class="size-6 text-accent" /> Most <span>Played</span>
@@ -260,17 +262,18 @@
       </a>
     </div>
     {#if gaming.games.length}
-      <ul class="grid grid-cols-3 gap-3 sm:grid-cols-5">
+      <ul class="game-shelf">
         {#each gaming.games as g, i}
-          <li class={mobileHide(i)}>
-            <a href={g.link} target="_blank" class="group block" title={g.name}>
+          <li>
+            <a href={g.link} target="_blank" class="game-entry group" title={g.name}>
               <img
                 src={g.cover}
                 alt={`${g.name} cover`}
                 loading="lazy"
                 class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
               />
-              <span class="mt-1.5 flex items-center justify-between text-xs">
+              <span class="game-info">
+                <strong>{g.name}</strong>
                 <span class="text-accent tabular-nums">{g.hours.toLocaleString("en-US")} hrs</span>
                 <span class="flex items-center gap-1 text-neutral">
                   {#if g.recent}<IconController class="size-3.5 text-accent" />{/if}
@@ -306,7 +309,22 @@
 </Section>
 
 <style>
-  .activity-section + .activity-section { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--color-edge-strong); }
+  .media-journal { display: grid; gap: 3rem; align-items: start; }
+  .film-shelf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1rem; }
+  .film-entry:first-child { grid-column: 1 / -1; }
+  .film-entry:first-child > a { max-width: 22rem; }
+  .film-name { margin-top: 0.75rem; color: var(--color-white); font-family: var(--font-serif); font-size: 1.15rem; line-height: 1.25; }
+  .film-name span { color: var(--color-neutral); font-size: 0.8rem; }
+  .music-columns { display: grid; gap: 2.5rem; min-width: 0; }
+  .games-journal { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--color-edge-strong); }
+  .game-shelf { display: grid; gap: 1rem 2rem; }
+  .game-entry { display: grid; grid-template-columns: 4rem minmax(0, 1fr); align-items: center; gap: 1rem; padding-block: 1rem; border-top: 1px solid var(--color-edge); }
+  .game-entry img { width: 4rem; height: 5.5rem; }
+  .game-info { display: flex; flex-direction: column; align-items: start; gap: 0.4rem; font-size: 0.8rem; }
+  .game-info strong { font-family: var(--font-serif); color: var(--color-white); font-size: 1.3rem; font-weight: 500; }
+  @media (min-width: 640px) { .film-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .film-entry:first-child { grid-column: span 2; grid-row: span 2; } .game-shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (min-width: 1100px) { .media-journal { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 3rem; } .music-journal { padding-left: 2.5rem; border-left: 1px solid var(--color-edge-strong); } }
+
   .activity-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem 1.5rem; margin-bottom: 1.75rem; }
   .activity-title { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; color: var(--color-white); font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; font-weight: 750; letter-spacing: -0.035em; }
   :global(#not-coding .group img) { border-radius: 0.75rem; }

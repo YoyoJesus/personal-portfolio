@@ -16,7 +16,6 @@
   const current = $derived(hacker.on ? hackerWorkspace : workspace);
   const hasImage = $derived(!!current.image?.trim());
   // Pinned gear lives in the photo popovers; anything else is listed below it.
-  const unpinned = $derived(current.gear.filter((item) => !hasImage || !pinsOf(item).length));
 
   let activeIndex = $state<number | null>(null);
   // Which of the active item's pins is hovered/focused; only that one shows the popover.
@@ -26,7 +25,7 @@
 
   // Tapping outside any pin closes the popover on touch screens.
   function closeOnOutside(e: MouseEvent) {
-    if (!(e.target as Element).closest(".workspace-pin")) activeIndex = null;
+    if (!(e.target as Element).closest(".workspace-pin, .gear-item")) activeIndex = null;
   }
 
   const activate =
@@ -63,7 +62,7 @@
   {/if}
 {/snippet}
 
-<svelte:window onclick={closeOnOutside} />
+<svelte:window onclick={closeOnOutside} onkeydown={(e) => { if (e.key === "Escape") activeIndex = null; }} />
 
 <Section text={hacker.on ? "$ neofetch" : "Workspace"} href="workspace">
   {#if hacker.on}
@@ -73,8 +72,9 @@
     </div>
   {/if}
 
+  <div class="desk-spread">
   {#if hasImage}
-    <div class="relative">
+    <div class="desk-photo relative">
       <img
         src={current.image}
         alt={current.imageAlt || (hacker.on ? "Hacking workspace setup" : "Workspace desk setup")}
@@ -166,31 +166,35 @@
     </div>
   {/if}
 
-  {#if unpinned.length}
-    <ul
-      class={["flex flex-wrap gap-x-5 gap-y-2.5 text-sm", hasImage ? "mt-5" : "flex-col", hacker.on && "font-mono"]}
-      aria-label="Gear"
-    >
-      {#each unpinned as item (item.name)}
-        <li class="flex flex-wrap items-baseline gap-x-2">
-          {@render itemName(item, hacker.on ? "text-white lowercase" : "text-white")}
-          {#if item.detail}<span class="text-xs text-neutral">{item.detail}</span>{/if}
-          {#if item.since}<span class="text-xs text-neutral/70">{hacker.on ? "# " : ""}since {item.since}</span>{/if}
-          {#if item.trying}<span class="text-xs text-accent">{hacker.on ? "# trying" : "currently trying"}</span>{/if}
+  <aside class="gear-index" aria-label="Desk equipment">
+    <h3>On my <span>desk</span></h3>
+    <ol>
+      {#each current.gear as item, i (item.name)}
+        <li class="gear-item" class:selected={activeIndex === i}>
+          {#if hasImage && pinsOf(item).length}
+            <button type="button" class="gear-number" aria-label="Show {item.name} in photo" aria-pressed={activeIndex === i} onclick={() => activeIndex === i ? activeIndex = null : activate(i)()}>{i + 1}</button>
+          {:else}<span class="gear-number">{i + 1}</span>{/if}
+          <div>
+            {@render itemName(item, "gear-name")}
+            {#if item.detail}<p>{item.detail}</p>{/if}
+            {#if item.since}<small>Since {item.since}</small>{/if}
+            {#if item.trying}<small class="text-accent">Currently trying</small>{/if}
+          </div>
         </li>
       {/each}
-    </ul>
-  {/if}
+    </ol>
+  </aside>
+  </div>
 
   {#if !hacker.on}
-    <div class="mt-12 space-y-6 sm:mt-16 sm:space-y-8">
+    <div class="tool-library">
       {#each current.groups as group (group.title)}
         <div class="setup-group">
           <h3 class="setup-group-title">{group.title}</h3>
           <ul class="flex min-w-0 flex-1 flex-wrap items-center gap-2" aria-label="{group.title} tools">
             {#each group.items as item (item.name)}
               <li
-                class="inline-flex items-center rounded-full border border-edge-strong bg-black/40 px-4 py-2 text-sm leading-tight text-chip"
+                class="tool-item"
                 title={chipTitle(item)}
               >
                 {#snippet chip()}
@@ -249,7 +253,22 @@
 </Section>
 
 <style>
-  .setup-group { display: flex; flex-direction: column; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--color-edge); }
-  .setup-group-title { flex-shrink: 0; width: 11rem; font-family: var(--font-serif); font-size: 1.75rem; font-weight: 450; line-height: 1.1; color: var(--color-neutral); letter-spacing: -0.025em; }
-  @media (min-width: 800px) { .setup-group { flex-direction: row; align-items: baseline; gap: 3rem; } }
+  .desk-spread { display: grid; gap: 2rem; align-items: start; }
+  .desk-photo { min-width: 0; }
+  .gear-index h3 { font-family: var(--font-serif); font-size: 2.75rem; letter-spacing: -0.035em; line-height: 1; margin-bottom: 1.5rem; font-weight: 750; }
+  .gear-index h3 span { color: var(--color-neutral); font-weight: 400; }
+  .gear-item { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.75rem; padding: 1rem 0; border-top: 1px solid var(--color-edge); }
+  .gear-item.selected { border-color: var(--color-volt-soft); }
+  .gear-number { width: 1.75rem; height: 1.75rem; display: grid; place-items: center; border: 1px solid var(--color-edge-strong); border-radius: 50%; color: var(--color-neutral); font-size: 0.75rem; }
+  button.gear-number { cursor: pointer; }
+  .selected .gear-number { background: var(--color-accent); color: var(--color-black); }
+  .gear-item :global(.gear-name) { font-family: var(--font-serif); color: var(--color-white); font-size: 1.25rem; font-weight: 550; }
+  .gear-item p { margin-top: 0.3rem; color: var(--color-neutral); font-size: 0.8rem; line-height: 1.6; }
+  .gear-item small { display: block; margin-top: 0.3rem; color: var(--color-neutral); font-size: 0.7rem; }
+  .tool-library { display: grid; gap: 2.5rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--color-edge-strong); }
+  .setup-group { min-width: 0; }
+  .setup-group-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 450; line-height: 1.1; color: var(--color-neutral); letter-spacing: -0.025em; margin-bottom: 1.25rem; }
+  .tool-item { width: 100%; padding-block: 0.65rem; border-bottom: 1px solid var(--color-edge); color: var(--color-chip); font-size: 0.9rem; }
+  @media (min-width: 700px) { .tool-library { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 1000px) { .desk-spread { grid-template-columns: minmax(0, 1.8fr) minmax(16rem, 1fr); gap: 3rem; } .desk-photo { position: sticky; top: 7rem; } }
 </style>
