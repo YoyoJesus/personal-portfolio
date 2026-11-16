@@ -5,8 +5,9 @@
   import ContactForm from "./ContactForm.svelte";
   let contactOpen = $state(false);
 
-  let { name, specialty, summary, resume, blog, hackerHero }: HeroProps & { hackerHero: HackerHeroProps } = $props();
+  let { name, summary, resume, blog, hackerHero }: HeroProps & { hackerHero: HackerHeroProps } = $props();
 
+  const summaryLines = $derived((hacker.on ? hackerHero.summary : summary).split(/(?<=[.!?])\s+/));
   const displayName = $derived(hacker.on ? HACKER_ALIAS : name);
   // Each word on its own line, each letter its own span so it can stagger in and react to the cursor.
   const words = $derived(displayName.split(" "));
@@ -55,13 +56,6 @@
   <div class="scrim" aria-hidden="true"></div>
 
   <div class="shell hero-inner">
-    <div class="hero-top">
-      <p class="eyebrow hero-eyebrow">
-        <span class="pulse" aria-hidden="true"></span>
-        {hacker.on ? hackerHero.specialty : specialty}
-      </p>
-    </div>
-
     {#key displayName}
       <h1 id="hero-name" class="display hero-name glitch" data-text={displayName} aria-label={displayName} bind:this={nameEl}>
         {#each words as word, w}
@@ -76,7 +70,9 @@
 
     <div class="hero-bottom">
       <div class="hero-copy">
-        <p class="hero-summary">{hacker.on ? hackerHero.summary : summary}</p>
+        <div class="hero-summary">
+          {#each summaryLines as line}<p>{line}</p>{/each}
+        </div>
         {#if hacker.on}
           <div class="wins">
             <p class="text-faint">$ cat wins.txt</p>
@@ -126,33 +122,10 @@
     position: relative;
     z-index: 3;
     display: grid;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: 1fr auto;
     gap: 2rem;
     padding-block: 7.5rem 2rem;
   }
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    color: var(--color-dim);
-  }
-  .pulse {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background: var(--color-ember);
-    box-shadow: 0 0 0 0 rgb(var(--rgb-ember) / 0.6);
-    animation: pulse 2.4s ease-out infinite;
-  }
-  @keyframes pulse {
-    70% {
-      box-shadow: 0 0 0 10px rgb(var(--rgb-ember) / 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgb(var(--rgb-ember) / 0);
-    }
-  }
-
   .hero-name {
     align-self: end;
     display: flex;
@@ -217,11 +190,12 @@
     }
   }
   .hero-summary {
-    max-width: 38ch;
+    max-width: none;
     color: var(--color-dim);
     font-size: clamp(1rem, 1.6vw, 1.2rem);
     line-height: 1.6;
   }
+  .hero-summary p + p { margin-top: 0.35rem; }
   .wins {
     margin-top: 1.25rem;
     font-size: 0.875rem;
@@ -243,8 +217,7 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .hero-name,
-    .ch,
-    .pulse {
+    .ch {
       animation: none;
     }
   }
