@@ -16,11 +16,16 @@
 </script>
 
 <Section text={hacker.on ? hackerText : text} {href}>
-  {#each entries as { company, position, startDate, workType, endDate, summary, previousPositions }}
+  {#each entries as { company, logo, position, startDate, workType, endDate, summary, previousPositions }}
     <div class="mb-10">
-      <h3 class="mb-1.5 font-serif text-2xl font-semibold text-white">
-        {company}
-      </h3>
+      <div class="mb-1.5 flex items-center gap-3">
+        {#if logo}
+          <img src={logo} alt="" class="h-10 w-auto max-w-24 shrink-0 object-contain" loading="lazy" />
+        {/if}
+        <h3 class="font-serif text-2xl font-semibold text-white">
+          {company}
+        </h3>
+      </div>
       <div class="flex flex-col items-start pb-5">
         <h4 class="mb-0.5 font-serif text-2xl font-medium text-primary">
           {position}

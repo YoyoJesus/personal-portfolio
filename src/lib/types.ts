@@ -42,6 +42,8 @@ export interface HackerHeroProps {
 
 export interface ExperienceProps {
   company: string;
+  /** Path to the organization's logo in /static. */
+  logo?: string;
   position: string;
   startDate: string;
   endDate: string;

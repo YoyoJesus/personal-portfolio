@@ -52,6 +52,7 @@ export const SITE_CONTENT: SiteContent = {
   experience: [
     {
       company: "Awetomaton Ltd",
+      logo: "/logos/awetomaton.svg",
       position: "Information Technology Intern",
       startDate: "May 2026",
       endDate: "August 2026",
@@ -64,6 +65,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       company: "Riverside Local Schools",
+      logo: "/logos/riverside.svg",
       position: "IT Intern",
       startDate: "May 2025",
       endDate: "Jan 2026",
@@ -78,6 +80,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       company: "Riverside Local Schools",
+      logo: "/logos/riverside.svg",
       position: "IT Student",
       startDate: "Jun 2022",
       endDate: "Feb 2025",
@@ -93,6 +96,7 @@ export const SITE_CONTENT: SiteContent = {
   leadership: [
     {
       company: "HacKSU",
+      logo: "/logos/hacksu.svg",
       position: "President",
       startDate: "August 2026",
       endDate: "Present",
@@ -125,6 +129,7 @@ export const SITE_CONTENT: SiteContent = {
     },
     {
       company: "KSU Combat Robotics",
+      logo: "/logos/ksucombat.webp",
       hackerHidden: true,
       position: "President",
       startDate: "May 2025",
