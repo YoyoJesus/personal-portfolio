@@ -53,7 +53,7 @@ export const SITE_CONTENT: SiteContent = {
   experience: [
     {
       company: "Kent State University",
-      logo: "/logos/kent-state.jpg",
+      logo: "/logos/kent-state-cs.png",
       position: "Undergraduate Researcher",
       startDate: "October 2026",
       endDate: "Present",
