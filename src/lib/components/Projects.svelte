@@ -287,7 +287,7 @@
   .carousel-viewport:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 4px;
-    border-radius: 1.25rem;
+    border-radius: 1rem;
   }
 
   .carousel-viewport::-webkit-scrollbar {
@@ -387,7 +387,7 @@
     min-width: 0;
     overflow: hidden;
     border: 1px solid var(--color-edge);
-    border-radius: 1.25rem;
+    border-radius: 1rem;
     background: var(--color-surface);
     transition:
       border-color 180ms ease,
@@ -452,8 +452,8 @@
     color: var(--color-white);
     font-family: var(--font-serif);
     font-size: clamp(1.6rem, 4vw, 2rem);
-    font-weight: 600;
-    letter-spacing: -0.04em;
+    font-weight: 700;
+    letter-spacing: -0.03em;
     line-height: 1.1;
   }
 
@@ -551,7 +551,7 @@
   .project-footer {
     display: grid;
     /* Keep link baselines aligned even when a card has no collaborators. */
-    grid-template-rows: auto 2.5rem;
+    grid-template-rows: auto auto;
     gap: 1.25rem;
     margin-top: auto;
     padding-top: 1.75rem;
@@ -567,9 +567,10 @@
     font-size: 0.8rem;
     font-weight: 600;
     white-space: nowrap;
-    text-decoration: underline;
-    text-decoration-color: var(--color-underline);
-    text-underline-offset: 0.3rem;
+    border: 1px solid var(--color-edge-strong);
+    border-radius: 999px;
+    padding: 0.55rem 0.85rem;
+    text-decoration: none;
   }
   .project-links a:hover {
     color: var(--color-accent);

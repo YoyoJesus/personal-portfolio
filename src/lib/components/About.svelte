@@ -16,12 +16,12 @@
     <p class="w-auto text-base text-neutral md:pr-5">{hacker.on ? hackerDescription : description}</p>
     <div
       class={[
-        "h-80 w-64 flex-shrink-0 rotate-[5deg] p-4 md:rotate-[7deg]",
-        hacker.on ? "border border-primary/60 bg-surface" : "bg-white",
+        "w-64 shrink-0 rounded-2xl border border-edge p-3",
+        hacker.on ? "border border-primary/60 bg-surface" : "bg-surface",
       ]}
     >
       <img
-        class="object-cover"
+        class="rounded-xl object-cover"
         src={hacker.on ? HACKER_AVATAR : image}
         width="260"
         height="260"

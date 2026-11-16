@@ -99,10 +99,7 @@
       </div>
     </div>
 
-    <a href="#experience" class="scroll-cue" aria-label="Scroll to Work Experience">
-      <span class="eyebrow">Scroll</span>
-      <span class="cue-line" aria-hidden="true"></span>
-    </a>
+
   </div>
 </section>
 
@@ -129,7 +126,7 @@
     position: relative;
     z-index: 3;
     display: grid;
-    grid-template-rows: auto 1fr auto auto;
+    grid-template-rows: auto 1fr auto;
     gap: 2rem;
     padding-block: 7.5rem 2rem;
   }
@@ -235,36 +232,6 @@
     flex-wrap: wrap;
     gap: 0.75rem;
   }
-  .scroll-cue {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    justify-self: start;
-    padding-block: 0.5rem;
-  }
-  .cue-line {
-    position: relative;
-    width: 4rem;
-    height: 1px;
-    overflow: hidden;
-    background: var(--color-line-strong);
-  }
-  .cue-line::after {
-    position: absolute;
-    inset: 0;
-    background: var(--color-volt-soft);
-    content: "";
-    animation: cue 2.2s var(--ease-out-expo) infinite;
-  }
-  @keyframes cue {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(100%);
-    }
-  }
-
   :global(html.hacker) .hero-name {
     font-size: clamp(3rem, 13vw, 11rem);
   }
@@ -277,8 +244,7 @@
   @media (prefers-reduced-motion: reduce) {
     .hero-name,
     .ch,
-    .pulse,
-    .cue-line::after {
+    .pulse {
       animation: none;
     }
   }
