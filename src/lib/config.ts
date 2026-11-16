@@ -217,6 +217,7 @@ export const SITE_CONTENT: SiteContent = {
       linkPreview: "/",
       linkSource: "https://github.com/nexhacks2026/nexhacks-2026",
       linkWriteup: "https://devpost.com/software/triage-flow",
+      linkVideo: "https://youtu.be/ljD6mwbQLj0",
       image: "/narrow.png",
       languages: [
         { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
