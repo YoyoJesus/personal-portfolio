@@ -12,26 +12,27 @@
 </script>
 
 <Section text={hacker.on ? "$ whoami" : "About Me"} href="about">
-  <div class="flex flex-col items-center gap-12 md:flex-row md:gap-8">
-    <p class="w-auto text-base text-neutral md:pr-5">{hacker.on ? hackerDescription : description}</p>
-    <div
-      class={[
-        "w-64 shrink-0 rounded-2xl border border-edge p-3",
-        hacker.on ? "border border-primary/60 bg-surface" : "bg-surface",
-      ]}
-    >
+  <div class="about-layout">
+    <p class="about-copy">{hacker.on ? hackerDescription : description}</p>
+    <figure class="portrait">
       <img
-        class="rounded-xl object-cover"
         src={hacker.on ? HACKER_AVATAR : image}
         width="260"
-        height="260"
+        height="320"
         alt={hacker.on ? HACKER_ALIAS : name}
         loading="lazy"
         decoding="async"
       />
-      {#if hacker.on}
-        <p class="mt-4 text-sm text-primary">&gt; {HACKER_ALIAS}<span class="animate-pulse">_</span></p>
-      {/if}
-    </div>
+      {#if hacker.on}<figcaption>&gt; {HACKER_ALIAS}</figcaption>{/if}
+    </figure>
   </div>
 </Section>
+
+<style>
+  .about-layout { display: grid; align-items: center; gap: 2rem; }
+  .about-copy { max-width: 42ch; font-size: clamp(1.125rem, 2vw, 1.35rem); line-height: 1.7; color: var(--color-neutral); }
+  .portrait { width: min(100%, 16rem); overflow: hidden; border-radius: 0.75rem; }
+  .portrait img { display: block; width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; object-position: center 30%; }
+  figcaption { padding-top: 0.75rem; color: var(--color-volt-soft); font-size: 0.875rem; }
+  @media (min-width: 640px) { .about-layout { grid-template-columns: minmax(0, 1fr) 14rem; gap: 3rem; } }
+</style>

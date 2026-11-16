@@ -8,7 +8,7 @@
   --color-neutral: #a3a2b8;
   --color-white: #ecebf5;
   --color-black: #07070b;
-  --color-accent: #ffb38a;
+  --color-accent: #a5b4ff;
   --color-muted: #6e6d85;
   --color-surface: #0f0f16;
   --color-surface-raised: #16161f;
@@ -167,7 +167,7 @@ html.hacker .glitch::after {
   --font-display: var(--font-serif);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --rgb-volt: 109 107 255;
-  --rgb-ember: 255 179 138;
+  --rgb-ember: 165 180 255;
   --rgb-ink: 7 7 11;
 }
 html { background: var(--color-black); scroll-padding-top: 6rem; }
@@ -186,8 +186,11 @@ a { text-underline-offset: 0.2em; }
 .btn-primary:hover { background: var(--color-volt-soft); color: var(--color-black); }
 .btn-ghost { border: 1px solid var(--color-edge-strong); background: var(--color-black); color: var(--color-white); }
 .btn-ghost:hover { border-color: var(--color-volt-soft); color: var(--color-volt-soft); }
-html.hacker { --rgb-volt: 224 17 27; --rgb-ember: 255 90 90; --rgb-ink: 5 5 5; --color-volt-soft: #ff7474; }
+html.hacker { --rgb-volt: 224 17 27; --rgb-ember: 255 90 90; --rgb-ink: 5 5 5; --color-volt-soft: #ff4d4d; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
 }
+
+.ambient-field { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.14; }
+main, footer { position: relative; }

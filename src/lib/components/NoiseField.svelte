@@ -4,8 +4,9 @@
 
   // A domain-warped noise field, quantized with ordered (Bayer) dithering and rendered at 1/3 resolution
   // so each dither cell reads as a crisp pixel. The cursor pushes the field apart and leaves a faint glow.
-  // Paused whenever the hero is offscreen or the tab is hidden; reduced motion gets one still frame.
+  // Quiet mode shares the hero texture at lower resolution and speed, without pointer distortion.
 
+  let { quiet = false }: { quiet?: boolean } = $props();
   let canvas: HTMLCanvasElement;
   let failed = $state(false);
 
@@ -135,7 +136,7 @@ void main() {
       uBg = u("u_bg");
 
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const PIXEL = 3; // CSS pixels per dither cell
+    const PIXEL = quiet ? 5 : 3; // CSS pixels per dither cell
     let width = 1,
       height = 1;
     const mouse = { x: 0.7, y: 0.6, tx: 0.7, ty: 0.6, hover: 0, thover: 0 };
@@ -156,9 +157,9 @@ void main() {
       mouse.x += (mouse.tx - mouse.x) * 0.06;
       mouse.y += (mouse.ty - mouse.y) * 0.06;
       mouse.hover += (mouse.thover - mouse.hover) * 0.04;
-      const p = palette ?? { a: [0.43, 0.42, 1], b: [1, 0.7, 0.54], bg: [0.03, 0.03, 0.04] };
+      const p = palette ?? { a: [0.43, 0.42, 1], b: [0.65, 0.71, 1], bg: [0.03, 0.03, 0.04] };
       gl.uniform2f(uRes, width, height);
-      gl.uniform1f(uTime, reduced ? 12 : (now - start) / 1000);
+      gl.uniform1f(uTime, reduced ? 12 : ((now - start) / 1000) * (quiet ? 0.2 : 1));
       gl.uniform2f(uMouse, mouse.x * width, (1 - mouse.y) * height);
       gl.uniform1f(uHover, mouse.hover);
       gl.uniform3fv(uA, p.a);
@@ -167,10 +168,14 @@ void main() {
       gl.drawArrays(gl.TRIANGLES, 0, 3);
     };
 
+    let lastDraw = 0;
     const loop = (now: number) => {
       frame = 0;
       if (!visible || document.hidden) return;
-      draw(now);
+      if (!quiet || now - lastDraw >= 50) {
+        draw(now);
+        lastDraw = now;
+      }
       frame = requestAnimationFrame(loop);
     };
     const play = () => {
@@ -193,7 +198,7 @@ void main() {
     });
     io.observe(canvas);
     document.addEventListener("visibilitychange", play);
-    if (!reduced) {
+    if (!reduced && !quiet) {
       window.addEventListener("pointermove", onMove, { passive: true });
       document.documentElement.addEventListener("pointerleave", onLeave);
     }

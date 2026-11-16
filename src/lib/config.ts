@@ -559,17 +559,7 @@ export const SITE_CONTENT: SiteContent = {
     },
   ],
   about: {
-    description: `
-      Hi, I'm Austin Sternberg 👋. I'm a Computer Science senior at Kent State with a passion for cybersecurity and networking.
-
-      This past summer I interned at Awetomaton, a small but growing defense contractor based in Beavercreek, Ohio, where I built internal tools for the IT department to help streamline operations.
-
-      On campus, I serve as President of HacKSU, Kent State's computer science club, and as President of Kent State's Combat Robotics club.
-
-      Outside of class, I spend my time on personal projects, hackathons, and CTFs. Recently I placed first at Hack Dearborn 4 and the Quantum CTF at BSidesCLE 2026, and won two tracks at NexHacks 2026. The python INFOSEC repository is still a personal favorite of mine.
-
-      I'm always working on something or learning new skills. Feel free to reach out if you'd like to connect!
-    `,
+    description: "I'm drawn to cybersecurity and networking: understanding how systems work, finding weak spots, and making them stronger. I build tools, compete in CTFs, and turn hackathon ideas into working projects.",
     image: "/austin-big.JPG",
   },
   // Security work first, then networking/protocols, hardware, and apps handling sensitive data; plain web builds last.
@@ -755,15 +745,7 @@ export const SITE_CONTENT: SiteContent = {
     ],
   },
   hackerAbout: {
-    description: `
-      Hello, friend. Online I go by yoyojesus.
-
-      I got into security because every system has an edge case someone forgot about, and finding it is the best kind of puzzle. Networks, web apps, and CTF challenges are where I spend most of that curiosity.
-
-      Most of my free time goes to capture-the-flag competitions and to writing my own tooling for recon and automation. The python INFOSEC repository is a personal favorite.
-
-      If you're building something and want a second pair of eyes on how it might break, feel free to reach out.
-    `,
+    description: "I go by yoyojesus. I explore networks, web apps, and the edge cases people miss. Most of my spare time goes to CTFs and building tools for recon and automation.",
   },
 };
 
