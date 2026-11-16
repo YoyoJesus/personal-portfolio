@@ -13,6 +13,7 @@ export interface SiteContent {
   hero: HeroProps;
   hackerHero: HackerHeroProps;
   experience: ExperienceProps[];
+  education: EducationProps[];
   leadership: ExperienceProps[];
   projects: ProjectProps[];
   about: AboutProps;
@@ -146,4 +147,13 @@ export interface WorkspaceItem {
 export interface WorkspacePin {
   x: number;
   y: number;
+}
+
+export interface EducationProps {
+  institution: string;
+  logo: string;
+  degree: string;
+  startYear: string;
+  expectedEndYear: string;
+  distinctions: string[];
 }

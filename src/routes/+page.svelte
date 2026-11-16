@@ -1,6 +1,7 @@
 <script lang="ts">
   import { SITE_CONFIG, SITE_CONTENT } from "$lib/config";
   import Hero from "$lib/components/Hero.svelte";
+  import Education from "$lib/components/Education.svelte";
   import Experience from "$lib/components/Experience.svelte";
   import Projects from "$lib/components/Projects.svelte";
   import Workspace from "$lib/components/Workspace.svelte";
@@ -42,6 +43,7 @@
 <div class="content-column">
 <HeroActivity contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
 <Experience text="Work Experience" href="experience" experience={SITE_CONTENT.experience} />
+<Education entries={SITE_CONTENT.education} />
 <Experience
   text="Leadership / Volunteering"
   hackerText="$ cat leadership.log"

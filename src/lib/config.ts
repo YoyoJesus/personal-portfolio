@@ -9,6 +9,7 @@ export const SITE_CONFIG: SiteConfig = {
   siteLogo: "/austin-small.jpg",
   navLinks: [
     { text: "Experience", href: "#experience" },
+    { text: "Education", href: "#education" },
     { text: "Leadership", href: "#leadership" },
     { text: "Projects", href: "#projects" },
     { text: "Workspace", href: "#workspace" },
@@ -52,6 +53,7 @@ export const SITE_CONTENT: SiteContent = {
   experience: [
     {
       company: "Kent State University",
+      logo: "/logos/kent-state.jpg",
       position: "Undergraduate Researcher",
       startDate: "October 2026",
       endDate: "Present",
@@ -99,6 +101,16 @@ export const SITE_CONTENT: SiteContent = {
         "Prepared devices for sale or disposal, primarily through the deletion and destruction of data to DOTD standards.",
         "Took inventory of all technology assets in the district, and set up equipment for classroom use.",
       ],
+    },
+  ],
+  education: [
+    {
+      institution: "Kent State University",
+      logo: "/logos/kent-state.jpg",
+      degree: "B.S. in Computer Science",
+      startYear: "2023",
+      expectedEndYear: "2027",
+      distinctions: ["Honors", "Choose Ohio First Scholar"],
     },
   ],
   leadership: [
