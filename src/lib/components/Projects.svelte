@@ -124,7 +124,7 @@
         {/if}
       </div>
       <div class="project-heading">
-        <h3>{project.name}</h3>
+        <h3>{project.name.split(" ")[0]}<span>{project.name.slice(project.name.split(" ")[0].length)}</span></h3>
       </div>
 
       {#if project.hackathon}
@@ -268,7 +268,7 @@
   }
   .projects-grid {
     display: none;
-    gap: 1.25rem;
+    gap: 3rem;
   }
 
   .mobile-carousel {
@@ -386,9 +386,10 @@
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
-    border: 1px solid var(--color-edge);
-    border-radius: 1rem;
-    background: color-mix(in srgb, var(--color-surface) 86%, transparent);
+    border-top: 1px solid var(--color-edge-strong);
+    border-radius: 0;
+    background: transparent;
+    padding-top: 1.25rem;
     transition:
       border-color 180ms ease,
       transform 180ms ease;
@@ -402,6 +403,7 @@
     position: relative;
     overflow: hidden;
     aspect-ratio: 16 / 10;
+    border-radius: 0.75rem;
     background: var(--color-surface-raised);
   }
   .project-image::after {
@@ -424,7 +426,7 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 1.5rem 0 2rem;
   }
   .project-labels {
     display: flex;
@@ -459,6 +461,7 @@
     line-height: 1.1;
   }
 
+  .project-heading h3 span { font-weight: 400; color: var(--color-neutral); }
   .project-summary {
     margin-top: 0.9rem;
     color: var(--color-soft);
@@ -626,10 +629,10 @@
       min-height: 23rem;
     }
     .featured .project-details {
-      padding: 2rem;
+      padding: 1rem 2.5rem 1rem 0;
     }
     .featured .project-heading h3 {
-      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
     }
     .featured .project-image,
     .featured .project-details {

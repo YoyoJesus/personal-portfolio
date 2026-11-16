@@ -185,12 +185,12 @@
   {#if !hacker.on}
     <div class="mt-12 space-y-6 sm:mt-16 sm:space-y-8">
       {#each current.groups as group (group.title)}
-        <div class="flex flex-col gap-2.5 sm:flex-row sm:items-start sm:gap-6">
-          <h3 class="w-40 shrink-0 pt-1 text-xs font-semibold tracking-wider text-white/50 uppercase">{group.title}</h3>
-          <ul class="flex flex-1 flex-wrap items-center gap-1.5" aria-label="{group.title} tools">
+        <div class="setup-group">
+          <h3 class="setup-group-title">{group.title}</h3>
+          <ul class="flex min-w-0 flex-1 flex-wrap items-center gap-2" aria-label="{group.title} tools">
             {#each group.items as item (item.name)}
               <li
-                class="inline-flex items-center rounded-full border border-edge-strong px-2.5 py-1 text-[0.7rem] leading-tight text-chip"
+                class="inline-flex items-center rounded-full border border-edge-strong bg-black/40 px-4 py-2 text-sm leading-tight text-chip"
                 title={chipTitle(item)}
               >
                 {#snippet chip()}
@@ -247,3 +247,9 @@
 
   <MobileSetup {mobile} />
 </Section>
+
+<style>
+  .setup-group { display: flex; flex-direction: column; gap: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--color-edge); }
+  .setup-group-title { flex-shrink: 0; width: 11rem; font-family: var(--font-serif); font-size: 1.75rem; font-weight: 450; line-height: 1.1; color: var(--color-neutral); letter-spacing: -0.025em; }
+  @media (min-width: 800px) { .setup-group { flex-direction: row; align-items: baseline; gap: 3rem; } }
+</style>

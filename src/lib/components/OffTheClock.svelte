@@ -55,7 +55,7 @@
 />
 
 <Section text={hacker.on ? "$ ps aux --afk" : "When I'm Not Coding"} href="not-coding">
-  <div class="mb-16">
+  <div class="activity-section">
     <div class="activity-heading">
       <h3 class="activity-title">
         <IconLetterboxd class="size-6 text-accent" /> Recently <span>Watched</span>
@@ -182,7 +182,7 @@
     {/if}
   </div>
 
-  <div>
+  <div class="activity-section">
     <div class="activity-heading">
       <h3 class="activity-title">
         <IconLastfm class="size-6 text-accent" /> Listening <span>Activity</span>
@@ -246,7 +246,7 @@
     {/if}
   </div>
 
-  <div class="mt-16">
+  <div class="activity-section">
     <div class="activity-heading">
       <h3 class="activity-title">
         <IconSteam class="size-6 text-accent" /> Most <span>Played</span>
@@ -306,8 +306,10 @@
 </Section>
 
 <style>
+  .activity-section + .activity-section { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--color-edge-strong); }
   .activity-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem 1.5rem; margin-bottom: 1.75rem; }
-  .activity-title { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; color: var(--color-white); font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.75rem); line-height: 1.1; font-weight: 750; letter-spacing: -0.035em; }
+  .activity-title { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; color: var(--color-white); font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; font-weight: 750; letter-spacing: -0.035em; }
+  :global(#not-coding .group img) { border-radius: 0.75rem; }
   .activity-title span { color: var(--color-neutral); font-weight: 400; }
   :global(#not-coding .group img) { transition: transform 500ms var(--ease-out-expo), border-color 200ms; }
   :global(#not-coding .group:hover img) { transform: translateY(-4px); }
