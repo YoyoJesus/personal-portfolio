@@ -388,7 +388,7 @@
     overflow: hidden;
     border: 1px solid var(--color-edge);
     border-radius: 1rem;
-    background: var(--color-surface);
+    background: color-mix(in srgb, var(--color-surface) 86%, transparent);
     transition:
       border-color 180ms ease,
       transform 180ms ease;
@@ -417,7 +417,9 @@
     height: 100%;
     object-fit: cover;
     object-position: top center;
+    transition: transform 650ms var(--ease-out-expo);
   }
+  .project-card:hover .project-image img { transform: scale(1.025); }
   .project-details {
     display: flex;
     flex: 1;
@@ -451,9 +453,9 @@
   .project-heading h3 {
     color: var(--color-white);
     font-family: var(--font-serif);
-    font-size: clamp(1.6rem, 4vw, 2rem);
-    font-weight: 700;
-    letter-spacing: -0.03em;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 780;
+    letter-spacing: -0.04em;
     line-height: 1.1;
   }
 

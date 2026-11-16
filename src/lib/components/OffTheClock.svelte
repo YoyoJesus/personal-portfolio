@@ -56,9 +56,9 @@
 
 <Section text={hacker.on ? "$ ps aux --afk" : "When I'm Not Coding"} href="not-coding">
   <div class="mb-16">
-    <div class="mb-5 flex items-baseline justify-between">
-      <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
-        <IconLetterboxd class="size-6 text-accent" /> Recently Watched
+    <div class="activity-heading">
+      <h3 class="activity-title">
+        <IconLetterboxd class="size-6 text-accent" /> Recently <span>Watched</span>
       </h3>
       <a
         href={`https://letterboxd.com/${letterboxdUser}/`}
@@ -183,9 +183,9 @@
   </div>
 
   <div>
-    <div class="mb-5 flex items-baseline justify-between">
-      <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
-        <IconLastfm class="size-6 text-accent" /> Listening Activity
+    <div class="activity-heading">
+      <h3 class="activity-title">
+        <IconLastfm class="size-6 text-accent" /> Listening <span>Activity</span>
       </h3>
       <a
         href={`https://www.last.fm/user/${lastfmUser}`}
@@ -247,9 +247,9 @@
   </div>
 
   <div class="mt-16">
-    <div class="mb-5 flex items-baseline justify-between">
-      <h3 class="flex items-center gap-2 font-serif text-2xl font-semibold text-white">
-        <IconSteam class="size-6 text-accent" /> Most Played
+    <div class="activity-heading">
+      <h3 class="activity-title">
+        <IconSteam class="size-6 text-accent" /> Most <span>Played</span>
       </h3>
       <a
         href={`https://steamcommunity.com/profiles/${steamId}`}
@@ -304,3 +304,12 @@
     </li>
   </ul>
 </Section>
+
+<style>
+  .activity-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem 1.5rem; margin-bottom: 1.75rem; }
+  .activity-title { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; color: var(--color-white); font-family: var(--font-serif); font-size: clamp(1.8rem, 4vw, 2.75rem); line-height: 1.1; font-weight: 750; letter-spacing: -0.035em; }
+  .activity-title span { color: var(--color-neutral); font-weight: 400; }
+  :global(#not-coding .group img) { transition: transform 500ms var(--ease-out-expo), border-color 200ms; }
+  :global(#not-coding .group:hover img) { transform: translateY(-4px); }
+  :global(#not-coding .review-pop[id]) { border-radius: 1rem; background: var(--color-surface-raised); }
+</style>
