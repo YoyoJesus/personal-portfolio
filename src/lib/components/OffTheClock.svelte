@@ -202,8 +202,8 @@
           : "Last.fm didn't respond. Try refreshing in a minute."}
       </p>
     {:else}
-      <div class="grid gap-10 sm:grid-cols-2">
-        <ol class="space-y-3">
+      <div class="grid grid-cols-1 gap-10 sm:grid-cols-2">
+        <ol class="min-w-0 space-y-3">
           {#each listening.recent as t}
             <li>
               <a href={t.link} target="_blank" class="group flex items-center gap-3">

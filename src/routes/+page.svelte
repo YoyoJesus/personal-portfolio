@@ -5,6 +5,7 @@
   import Projects from "$lib/components/Projects.svelte";
   import Workspace from "$lib/components/Workspace.svelte";
   import OffTheClock from "$lib/components/OffTheClock.svelte";
+  import HeroActivity from "$lib/components/HeroActivity.svelte";
   import About from "$lib/components/About.svelte";
 
   let { data } = $props();
@@ -37,7 +38,9 @@
   });
 </script>
 
-<Hero {...SITE_CONTENT.hero} hackerHero={SITE_CONTENT.hackerHero} contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
+<Hero {...SITE_CONTENT.hero} hackerHero={SITE_CONTENT.hackerHero} />
+<div class="content-column">
+<HeroActivity contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
 <Experience text="Work Experience" href="experience" experience={SITE_CONTENT.experience} />
 <Experience
   text="Leadership / Volunteering"
@@ -49,3 +52,5 @@
 <Workspace workspace={SITE_CONTENT.workspace} hackerWorkspace={SITE_CONTENT.hackerWorkspace} mobile={SITE_CONTENT.mobile} />
 <OffTheClock {films} {listening} letterboxdUser={letterboxd} lastfmUser={lastfm} gaming={data.gaming} steamId={steam} />
 <About {...SITE_CONTENT.about} hackerDescription={SITE_CONTENT.hackerAbout.description} name={SITE_CONTENT.hero.name} />
+
+</div>

@@ -4,20 +4,20 @@
   --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
   --font-serif: "Gabarito Variable", ui-serif, serif;
 
-  --color-primary: #628141;
-  --color-neutral: #94a3b8;
-  --color-white: #e2e8f0;
-  --color-black: #1B211A;
-  --color-accent: #b8db80;
-  --color-muted: #5a7863;
-  --color-surface: #243328;
-  --color-surface-raised: #34473a;
-  --color-edge: #3c503d;
-  --color-edge-strong: #53684f;
-  --color-edge-hover: #71945d;
-  --color-underline: #91b876;
-  --color-soft: #b9c5bf;
-  --color-chip: #c7d8bd;
+  --color-primary: #6d6bff;
+  --color-neutral: #a3a2b8;
+  --color-white: #ecebf5;
+  --color-black: #07070b;
+  --color-accent: #ffb38a;
+  --color-muted: #6e6d85;
+  --color-surface: #0f0f16;
+  --color-surface-raised: #16161f;
+  --color-edge: #20202c;
+  --color-edge-strong: #33334a;
+  --color-edge-hover: #a5a4ff;
+  --color-underline: #a5a4ff;
+  --color-soft: #bab9cd;
+  --color-chip: #cecded;
 
   --text-xs: 0.875rem;
   --text-xs--line-height: 1.125rem;
@@ -153,4 +153,41 @@ html.hacker .glitch::after {
   html.hacker .glitch::after {
     display: none;
   }
+}
+
+/* Shared palette from the kinetic hero; existing content keeps its reading layout. */
+:root {
+  color-scheme: dark;
+  --color-ink: var(--color-black);
+  --color-fg: var(--color-white);
+  --color-dim: var(--color-neutral);
+  --color-ember: var(--color-accent);
+  --color-volt-soft: #a5a4ff;
+  --color-line-strong: var(--color-edge-strong);
+  --font-display: var(--font-serif);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --rgb-volt: 109 107 255;
+  --rgb-ember: 255 179 138;
+  --rgb-ink: 7 7 11;
+}
+html { background: var(--color-black); scroll-padding-top: 6rem; }
+body { color: var(--color-white); -webkit-font-smoothing: antialiased; }
+::selection { background: var(--color-primary); color: #fff; }
+:focus-visible { outline: 2px solid var(--color-volt-soft); outline-offset: 4px; }
+input, textarea { caret-color: var(--color-volt-soft); }
+a { text-underline-offset: 0.2em; }
+.content-column { max-width: 48rem; margin-inline: auto; padding-inline: 1.25rem; }
+.content-column > section { border-bottom: 1px solid var(--color-edge); }
+.shell { width: 100%; max-width: 88rem; margin-inline: auto; padding-inline: clamp(1.25rem, 4vw, 3.5rem); }
+.display { font-family: var(--font-display); letter-spacing: -0.04em; line-height: 0.88; }
+.eyebrow { font-size: 0.8rem; font-weight: 500; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; border-radius: 999px; padding: 1rem 1.5rem; font-size: 0.9rem; font-weight: 500; line-height: 1.2; cursor: pointer; transition: background-color 200ms, color 200ms, border-color 200ms; }
+.btn-primary { background: var(--color-primary); color: #fff; }
+.btn-primary:hover { background: var(--color-volt-soft); color: var(--color-black); }
+.btn-ghost { border: 1px solid var(--color-edge-strong); background: var(--color-black); color: var(--color-white); }
+.btn-ghost:hover { border-color: var(--color-volt-soft); color: var(--color-volt-soft); }
+html.hacker { --rgb-volt: 224 17 27; --rgb-ember: 255 90 90; --rgb-ink: 5 5 5; --color-volt-soft: #ff7474; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
 }

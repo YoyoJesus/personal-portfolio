@@ -46,7 +46,7 @@
   class={["fixed inset-0 z-50 items-center justify-center bg-black/70 backdrop-blur-sm", open ? "flex" : "hidden"]}
   onclick={(e) => e.target === e.currentTarget && closeModal()}
 >
-  <div class="relative w-full max-w-md rounded-2xl border border-neutral/20 bg-[#1a1a1a] p-8 shadow-2xl">
+  <div class="relative w-full max-w-md rounded-2xl border border-neutral/20 bg-surface p-8 shadow-2xl">
     <button
       id="close-modal"
       class="absolute top-4 right-4 text-2xl text-neutral transition-colors hover:text-white"

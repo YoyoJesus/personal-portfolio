@@ -34,7 +34,7 @@
   });
 </script>
 
-<header class="sticky top-0 z-50 mx-auto flex max-w-5xl animate-slide-in justify-between bg-black px-5 py-6">
+<header class="fixed inset-x-0 top-0 z-50 mx-auto flex w-full justify-between border-b border-edge/60 bg-black/95 px-5 py-4 sm:px-8">
   <a href="/" aria-label="Home link">
     <img
       class={["rounded-full", hacker.on && "ring-2 ring-primary/70"]}
@@ -50,7 +50,7 @@
   <button
     type="button"
     id="menu-button"
-    class="px-1.5 text-neutral sm:hidden"
+    class="px-1.5 text-neutral lg:hidden"
     aria-expanded={menuOpen}
     aria-controls="main-menu"
     onclick={toggleMenu}
@@ -60,12 +60,12 @@
 
   <nav
     class={[
-      "absolute top-20 right-5 rounded-xl border border-neutral/40 bg-black px-4 py-5 text-neutral sm:static sm:block sm:border-0 sm:bg-transparent sm:p-0",
+      "absolute top-20 right-5 rounded-xl border border-neutral/40 bg-black px-4 py-5 text-neutral lg:static lg:block lg:border-0 lg:bg-transparent lg:p-0",
       !menuOpen && "hidden",
     ]}
     id="main-menu"
   >
-    <ul class="gap-2 sm:flex">
+    <ul class="gap-2 lg:flex">
       {#each navLinks as link}
         <li class="relative">
           <a
@@ -74,7 +74,7 @@
               active === link.href && "text-white md:after:opacity-100",
             ]}
             href={link.href}
-            onclick={toggleMenu}
+            onclick={() => (menuOpen = false)}
           >
             {link.text}
           </a>
