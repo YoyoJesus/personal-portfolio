@@ -12,7 +12,7 @@
       <div>
         <p class="institution">{entry.institution}</p>
         <h3>{entry.degree}</h3>
-        <p class="dates">{entry.startYear} to expected {entry.expectedEndYear}</p>
+        <p class="dates">{entry.startYear}-{entry.expectedEndYear} (expected)</p>
         <ul aria-label="Academic distinctions">
           {#each entry.distinctions as distinction}<li>{distinction}</li>{/each}
         </ul>
