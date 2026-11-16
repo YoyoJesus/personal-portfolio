@@ -183,12 +183,6 @@
     gap: 1.75rem;
     align-items: end;
   }
-  @media (min-width: 900px) {
-    .hero-bottom {
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 3rem;
-    }
-  }
   .hero-summary {
     max-width: none;
     color: var(--color-dim);
