@@ -42,6 +42,7 @@ export const SITE_CONTENT: SiteContent = {
     summary:
       "I take systems apart to see how they break, then put them back together stronger. Web apps, networks, and whatever the next challenge throws at me.",
     wins: [
+      { place: "1st", event: "Hack The Nest 2026 CTF" },
       { place: "1st", event: "Hack Dearborn 4" },
       { place: "1st", event: "Nex Hacks 2026 - DevSwarm & Token Company Tracks" },
       { place: "1st", event: "Quantum CTF @ BSidesCLE 2026" },
@@ -145,6 +146,29 @@ export const SITE_CONTENT: SiteContent = {
     },
   ],
   projects: [
+    {
+      name: "Inquisitor",
+      status: "Prototype",
+      openSource: true,
+      hackathon: { name: "Hack The Nest 2026", href: "https://hackthenest.tech/" },
+      summary: "A continuous authentication prototype that uses keyboard and mouse timing to flag unfamiliar users. A background Rust agent collects timing summaries for a per-user machine learning model, with a web dashboard for alerts.",
+      linkSource: "https://github.com/hack-the-nest-but-happier/Inquisitor",
+      linkWriteup: "https://devpost.com/software/inquisitor-io",
+      linkVideo: "https://youtu.be/tqeCtaJPcYo",
+      image: "/inquisitor.webp",
+      languages: [
+        { icon: "devicon-rust-original", name: "Rust", languageLink: "https://www.rust-lang.org/" },
+        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
+        { icon: "devicon-flask-original colored", name: "Flask", languageLink: "https://flask.palletsprojects.com/" },
+        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
+        { icon: "devicon-pytorch-original colored", name: "PyTorch", languageLink: "https://pytorch.org/" },
+      ],
+      collaborators: [
+        { name: "Ian Rohrbacher", image: "/collaborators/ianr.jpg", profileLink: "http://rohrbacher.cc/" },
+        { name: "Conner Brunner", image: "/collaborators/connerb.jpg", profileLink: "https://www.linkedin.com/in/conner-brunner/" },
+        { name: "Colin Grant", image: "/collaborators/coling.jpg", profileLink: "https://www.linkedin.com/in/colin-grant-3062cg/" },
+      ],
+    },
     {
       name: "BluQ",
       status: "Prototype",
@@ -544,6 +568,7 @@ export const SITE_CONTENT: SiteContent = {
   },
   // Security work first, then networking/protocols, hardware, and apps handling sensitive data; plain web builds last.
   hackerProjectOrder: [
+    "Inquisitor",
     "Kent Hack It",
     "Dependency Domino",
     "Python INFOSEC",
