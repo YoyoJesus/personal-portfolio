@@ -51,6 +51,14 @@ export const SITE_CONTENT: SiteContent = {
   },
   experience: [
     {
+      company: "Kent State University",
+      position: "Undergraduate Researcher",
+      startDate: "October 2026",
+      endDate: "Present",
+      workType: "Research",
+      summary: "",
+    },
+    {
       company: "Awetomaton Ltd",
       logo: "/logos/awetomaton.svg",
       position: "Information Technology Intern",
@@ -559,7 +567,7 @@ export const SITE_CONTENT: SiteContent = {
     },
   ],
   about: {
-    description: "I'm drawn to cybersecurity and networking: understanding how systems work, finding weak spots, and making them stronger. I build tools, compete in CTFs, and turn hackathon ideas into working projects.",
+    description: "I'm drawn to cybersecurity and networking: understanding how systems work, finding weak spots, and making them stronger. I build tools, compete in CTFs, and turn hackathon ideas into working projects. I'm preparing to return to Awetomaton as a software engineer after interning there this past summer.",
     image: "/austin-big.JPG",
   },
   // Security work first, then networking/protocols, hardware, and apps handling sensitive data; plain web builds last.

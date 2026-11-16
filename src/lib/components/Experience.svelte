@@ -47,7 +47,7 @@
             </li>
           {/each}
         </ul>
-      {:else}
+      {:else if summary}
         <p class="text-base text-neutral">{summary}</p>
       {/if}
       {#if previousPositions && previousPositions.length > 0}
