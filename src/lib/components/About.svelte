@@ -11,14 +11,12 @@
     name,
   }: AboutProps & Pick<HeroProps, "name"> & { hackerDescription: string } = $props();
   let portrait: HTMLElement;
-  let revealed = $state(false);
+  let inView = $state(false);
 
   onMount(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return;
-      revealed = true;
-      observer.disconnect();
-    }, { threshold: 0.25 });
+      inView = entry.isIntersecting;
+    }, { threshold: 0.15 });
     observer.observe(portrait);
     return () => observer.disconnect();
   });
@@ -27,7 +25,7 @@
 <Section text={hacker.on ? "$ whoami" : "About Me"} href="about">
   <div class="about-layout">
     <p class="about-copy">{hacker.on ? hackerDescription : description}</p>
-    <figure class="portrait" class:revealed bind:this={portrait}>
+    <figure class="portrait" class:in-view={inView} bind:this={portrait}>
       <img
         src={hacker.on ? HACKER_AVATAR : image}
         width="260"
@@ -47,16 +45,15 @@
   .portrait { width: min(100%, 16rem); overflow: hidden; border-radius: 0.75rem; }
   .portrait img { display: block; width: 100%; aspect-ratio: 4 / 5; height: auto; object-fit: cover; object-position: center 30%; }
   figcaption { padding-top: 0.75rem; color: var(--color-volt-soft); font-size: 0.875rem; }
-  @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-    .portrait { transition: transform 600ms var(--ease-out-expo); }
-    .portrait img { transition: transform 700ms var(--ease-out-expo); }
-    .portrait.revealed img { animation: portrait-reveal 1000ms var(--ease-out-expo) both; }
-    .portrait:hover { transform: perspective(800px) rotateY(-5deg) rotateX(2deg); }
-    .portrait:hover img { transform: scale(1.035); }
+  @media (prefers-reduced-motion: no-preference) {
+    .portrait { animation: portrait-sway 6s ease-in-out infinite; animation-play-state: paused; transform-origin: 50% 60%; }
+    .portrait.in-view { animation-play-state: running; }
   }
-  @keyframes portrait-reveal {
-    from { clip-path: inset(0 0 16% 0 round 0.75rem); filter: blur(5px) saturate(0.65); }
-    to { clip-path: inset(0 round 0.75rem); filter: blur(0) saturate(1); }
+  @keyframes portrait-sway {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    25% { transform: translateY(-4px) rotate(0.6deg); }
+    50% { transform: translateY(-2px) rotate(1deg); }
+    75% { transform: translateY(2px) rotate(-0.5deg); }
   }
   @media (min-width: 640px) { .about-layout { grid-template-columns: minmax(0, 1fr) 14rem; gap: 3rem; } }
 </style>
