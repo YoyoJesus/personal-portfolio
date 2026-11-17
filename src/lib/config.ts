@@ -59,10 +59,10 @@ export const SITE_CONTENT: SiteContent = {
       endDate: "Present",
       workType: "Research - Paid",
       summary: [
-        "Contribute to a state-funded applied AI research project with a faculty-led team, working under a confidentiality agreement.",
-        "Develop and evaluate machine learning code for the project in Python as part of a multi-person research team.",
-        "Collaborate with faculty principal investigators and student researchers on planning, documentation, and task tracking, reporting progress in regular team meetings.",
-        "Follow sponsored-research confidentiality and data-handling requirements, keeping project data and code on approved project systems.",
+        "Serve on the ML/AI team of a state-funded applied AI research project, one of three faculty-led teams alongside full-stack development and security.",
+        "Develop and evaluate machine learning code for the project in Python.",
+        "Coordinate with the full-stack and security teams on planning, documentation, and task tracking, reporting progress in regular team meetings.",
+        "Work under a confidentiality agreement, following sponsored-research data-handling requirements and keeping project data and code on approved project systems.",
       ],
     },
     {
