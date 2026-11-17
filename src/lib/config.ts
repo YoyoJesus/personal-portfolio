@@ -6,7 +6,7 @@ export const SITE_CONFIG: SiteConfig = {
   description:
     "CS Senior @ Kent State, with a passion for web development & cybersecurity.",
   lang: "en",
-  siteLogo: "/favicon.svg",
+  siteLogo: "/austin-small.jpg",
   navLinks: [
     { text: "Experience", href: "#experience" },
     { text: "Education", href: "#education" },

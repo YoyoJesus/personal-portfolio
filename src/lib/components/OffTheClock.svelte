@@ -78,11 +78,10 @@
                 class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
               />
             </a>
-            <p class="film-name" title={f.title}>{f.title}</p>
-            <p class="film-year">{f.year || "Year unavailable"}</p>
+            <p class="film-name" title={f.year ? `${f.title} (${f.year})` : f.title}>{f.title}{#if f.year}{" "}<span class="film-year">({f.year})</span>{/if}</p>
             <div class="film-rating">
-              <span class="text-accent" aria-label={f.rating == null ? "Not rated" : `${f.rating} out of 5 stars`}>{f.rating == null ? "Not rated" : stars(f.rating)}</span>
-              <span class="flex items-center gap-1 text-neutral">
+              <span class="text-accent" aria-label={f.rating == null ? "Not rated" : `${f.rating} out of 5 stars`}>{f.rating == null ? "NR" : stars(f.rating)}</span>
+              <span class="film-signals">
                 {#if f.review}
                   <button
                     type="button"
@@ -98,8 +97,8 @@
                 {#if f.liked}<IconHeart class="size-3 text-primary" />{/if}
                 {#if f.rewatch}<IconRewatch class="size-3" />{/if}
               </span>
+              <span class="film-watched">{#if f.watched}<time datetime={f.watched}>{watchedOn(f.watched)}</time>{/if}</span>
             </div>
-            <p class="film-watched">{#if f.watched}<time datetime={f.watched}>{watchedOn(f.watched)}</time>{:else}Not logged{/if}</p>
             {#if f.review}
               <!-- Phones get a full-width button; the info row is too narrow for the inline icon. -->
               <button
@@ -274,10 +273,11 @@
   .film-shelf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 0.75rem; }
   .film-entry { min-width: 0; }
   .film-name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; height: 2.7em; overflow-wrap: anywhere; margin-top: 0.6rem; color: var(--color-white); font-family: var(--font-serif); font-size: 0.9rem; line-height: 1.35; }
-  .film-year, .film-watched { font-size: 0.7rem; line-height: 1.4; color: var(--color-neutral); font-variant-numeric: tabular-nums; }
-  .film-year { margin-top: 0.3rem; }
-  .film-rating { display: flex; align-items: center; justify-content: space-between; gap: 0.25rem; min-height: 1.4rem; margin-top: 0.35rem; font-size: 0.72rem; white-space: nowrap; }
-  .film-watched { margin-top: 0.2rem; }
+  .film-year { color: var(--color-neutral); font-size: 0.7rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .film-rating { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.1rem; min-height: 1.4rem; margin-top: 0.25rem; font-size: 0.65rem; white-space: nowrap; }
+  .film-signals { display: flex; align-items: center; gap: 0.1rem; color: var(--color-neutral); }
+  .film-signals :global(svg) { width: 0.7rem; height: 0.7rem; }
+  .film-watched { color: var(--color-neutral); font-variant-numeric: tabular-nums; }
   .game-shelf { display: grid; gap: 0.9rem; }
   .game-entry { display: flex; gap: 0.75rem; align-items: center; }
   .game-entry img { width: 1.8rem; height: 2.5rem; border-radius: 0.25rem; flex-shrink: 0; }
