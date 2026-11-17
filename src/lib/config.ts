@@ -129,7 +129,13 @@ export const SITE_CONTENT: SiteContent = {
       degree: "B.S. in Computer Science",
       startYear: "2023",
       expectedEndYear: "2027",
+      concentration: "Cybersecurity",
+      gpa: "3.88",
       distinctions: ["Honors", "Choose Ohio First Scholar"],
+      honorRolls: [
+        { name: "President's List", terms: ["Fall 2024", "Spring 2025", "Fall 2025", "Spring 2026"] },
+        { name: "Dean's List", terms: ["Fall 2023", "Spring 2024"] },
+      ],
     },
   ],
   leadership: [
