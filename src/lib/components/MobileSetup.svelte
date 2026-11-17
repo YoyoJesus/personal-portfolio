@@ -1,182 +1,124 @@
 <script lang="ts">
-  import IconWifi from "~icons/ph/wifi-high-fill";
-  import IconSignal from "~icons/ph/cell-signal-full-fill";
-  import IconBattery from "~icons/ph/battery-high-fill";
-  import IconGoogle from "~icons/simple-icons/google";
-  import IconMic from "~icons/ph/microphone-fill";
+  import { onMount } from "svelte";
   import ToolIcon from "./ToolIcon.svelte";
-  import type { MobileProps, WorkspaceItem } from "$lib/types";
-  import { hacker } from "$lib/hacker.svelte";
-
+  import IconExpand from "~icons/ph/arrows-out-simple";
+  import IconClose from "~icons/ph/x-bold";
+  import type { MobileProps } from "$lib/types";
   let { mobile }: { mobile: MobileProps } = $props();
+  const appNames = ["GitHub", "Termius", "Discord", "Spotify", "Waze", "Google Authenticator"];
+  const gearNames = ["CMF Watch Pro 2", "CMF Headphone Pro", "Shokz OpenRun", "Heltec WiFi LoRa 32 V3", "Moleskine Classic Notebook"];
+  const apps = $derived(appNames.flatMap(name => mobile.apps.filter(item => item.name === name)));
+  const gear = $derived(gearNames.flatMap(name => mobile.gear.filter(item => item.name === name)));
+  const phoneApps = $derived(mobile.apps.filter(item => item.name !== "Claude"));
+  let canExpand = $state(false);
+  let phonePopover: HTMLDivElement;
 
-  // Filled in on the client so the status bar shows the visitor's local time without a hydration mismatch.
-  let now = $state<Date | null>(null);
-  $effect(() => {
-    now = new Date();
-    const id = setInterval(() => (now = new Date()), 30_000);
-    return () => clearInterval(id);
+  onMount(() => {
+    const desktop = matchMedia("(min-width: 768px) and (hover: hover) and (pointer: fine)");
+    const sync = () => {
+      canExpand = desktop.matches;
+      if (!canExpand && phonePopover.matches(":popover-open")) phonePopover.hidePopover();
+    };
+    sync();
+    desktop.addEventListener("change", sync);
+    return () => desktop.removeEventListener("change", sync);
   });
-
-  const time = $derived(
-    now ? now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }).replace(/\s?[AP]M$/i, "") : "9:41",
-  );
-  const date = $derived(now ? now.toLocaleDateString([], { weekday: "short", month: "short", day: "numeric" }) : "");
-
-  const linkFocus = "transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-accent";
 </script>
 
-{#snippet app(item: WorkspaceItem & { label?: string }, showLabel: boolean)}
-  {#snippet tile()}
-    <span
-      class="flex size-10 items-center justify-center rounded-full bg-neutral-900 shadow-sm ring-1 ring-white/10 [&>i]:text-2xl [&>img]:size-6 [&>img]:object-contain"
-    >
-      {#if item.icon}<ToolIcon icon={item.icon} />{/if}
-    </span>
-    {#if showLabel}
-      <span class="w-full truncate text-center text-[0.58rem] leading-tight tracking-tight text-white/90"
-        >{item.label ?? item.name}</span
-      >
-    {:else}
-      <span class="sr-only">{item.name}</span>
-    {/if}
-  {/snippet}
-  {#if item.href}
-    <a
-      href={item.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      title={item.name}
-      class="flex flex-col items-center gap-1 rounded-xl transition-transform hover:scale-105 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-    >
-      {@render tile()}
-    </a>
-  {:else}
-    <span class="flex flex-col items-center gap-1" title={item.name}>{@render tile()}</span>
-  {/if}
-{/snippet}
-
-<div class="mt-16 sm:mt-20">
-  <h3
-    class={hacker.on
-      ? "mb-6 font-mono text-sm font-bold text-primary"
-      : "mb-8 text-xs font-semibold tracking-wider text-white/50 uppercase"}
-  >
-    {hacker.on ? "$ adb shell getprop ro.product.model" : "On the Go"}
-  </h3>
-
-  <div class="flex flex-col items-center gap-10 sm:flex-row sm:items-center sm:gap-14">
-    <div
-      class={[
-        "relative aspect-[9/19.5] w-64 shrink-0 overflow-hidden rounded-[2.5rem] border-[5px] shadow-2xl",
-        hacker.on
-          ? "border-neutral-900 bg-[radial-gradient(circle_at_30%_20%,#3a0507,#050505_70%)] ring-1 ring-primary/50"
-          : "border-neutral-900 bg-[linear-gradient(165deg,#4a7fd8_0%,#2c4f96_40%,#15233f_80%,#0b1222_100%)] ring-1 ring-edge-strong",
-      ]}
-      role="img"
-      aria-label="Home screen of my {mobile.phone.name}"
-    >
-      <div class="flex h-full flex-col px-4 pt-2 pb-2.5" aria-hidden="false">
-        <div class="relative flex items-center justify-between text-[0.6rem] font-medium text-white/90">
-          <span class="tabular-nums">{time}</span>
-          <span
-            class="absolute left-1/2 size-2.5 -translate-x-1/2 rounded-full bg-black ring-1 ring-white/10"
-            aria-hidden="true"
-          ></span>
-          <span class="flex items-center gap-0.5" aria-hidden="true">
-            <IconWifi /><IconSignal /><IconBattery />
-          </span>
-        </div>
-
-        <div class="mt-7 text-white">
-          <p class={["text-base leading-tight font-medium", hacker.on && "font-mono"]}>{date || " "}</p>
-          {#if hacker.on}<p class="font-mono text-[0.65rem] text-white/70">root@pixel:~#</p>{/if}
-        </div>
-
-        <ul class="mt-auto grid grid-cols-4 gap-x-1 gap-y-3" aria-label="Home screen apps">
-          {#each mobile.apps as item (item.name)}
-            <li>{@render app(item, true)}</li>
-          {/each}
-        </ul>
-
-        <div
-          class="mt-4 flex h-8 items-center gap-2 rounded-full bg-white/15 px-3 text-white/80 backdrop-blur"
-          aria-hidden="true"
-        >
-          <IconGoogle class="size-3.5" />
-          <span class="flex-1"></span>
-          <IconMic class="size-3.5" />
-        </div>
-
-        <ul class="mt-3 grid grid-cols-4 gap-x-2" aria-label="Dock">
-          {#each mobile.dock as item (item.name)}
-            <li>{@render app(item, false)}</li>
-          {/each}
-        </ul>
-
-        <span class="mx-auto mt-2.5 h-1 w-20 rounded-full bg-white/70" aria-hidden="true"></span>
-      </div>
-    </div>
-
-    <div class={["w-full max-w-md", hacker.on && "font-mono"]}>
-      {#if mobile.phone.href}
-        <a
-          href={mobile.phone.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          class={[
-            hacker.on ? "text-lg font-bold text-primary lowercase" : "font-serif text-2xl font-semibold text-white",
-            linkFocus,
-          ]}>{mobile.phone.name}</a
-        >
-      {:else}
-        <p
-          class={hacker.on
-            ? "text-lg font-bold text-primary lowercase"
-            : "font-serif text-2xl font-semibold text-white"}
-        >
-          {mobile.phone.name}
-        </p>
-      {/if}
-      {#if mobile.phone.detail}<p class="mt-1 text-sm text-neutral">{mobile.phone.detail}</p>{/if}
-
-      {#if mobile.gear.length}
-        <h4 class="mt-8 text-xs font-semibold tracking-wider text-white/50 uppercase">
-          {hacker.on ? "# also carrying" : "Also in the bag"}
-        </h4>
-        <ul class="mt-3 space-y-2 text-sm" aria-label="On-the-go gear">
-          {#each mobile.gear as item (item.name)}
-            <li class="flex items-center gap-3">
-              {#if item.image}
-                <span
-                  class="flex size-9 shrink-0 items-center justify-center rounded-lg bg-white/5 p-1 ring-1 ring-white/10"
-                >
-                  <img
-                    src={item.image}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    class="max-h-full max-w-full object-contain"
-                  />
-                </span>
-              {/if}
-              <div class="flex flex-wrap items-baseline gap-x-2">
-                {#if item.href}
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class={["text-white", hacker.on && "lowercase", linkFocus]}>{item.name}</a
-                  >
-                {:else}
-                  <span class={["text-white", hacker.on && "lowercase"]}>{item.name}</span>
-                {/if}
-                {#if item.detail}<span class="text-xs text-neutral">{item.detail}</span>{/if}
-              </div>
-            </li>
-          {/each}
-        </ul>
-      {/if}
+<div class="mobile-setup">
+  <h3>On the <span>go</span></h3>
+  <div class="mobile-layout">
+    <button type="button" class="phone-summary" popovertarget="phone-apps" disabled={!canExpand} aria-label={canExpand ? `Explore apps on my ${mobile.phone.name}` : `${mobile.phone.name}: ${apps.map(item => item.name).join(", ")}`}>
+      <span class="phone-heading"><strong>{mobile.phone.name}</strong><IconExpand aria-hidden="true" /></span>
+      {#if mobile.phone.detail}<span class="phone-detail">{mobile.phone.detail}</span>{/if}
+      <span class="apps" aria-hidden="true">
+        {#each apps as item}
+          <span class="app"><span class="app-icon">{#if item.icon}<ToolIcon icon={item.icon} />{/if}</span><span>{item.label ?? item.name}</span></span>
+        {/each}
+      </span>
+      <span class="explore-apps">Explore phone apps</span>
+    </button>
+    <div class="gear-summary">
+      <h4>Mobile <span>gear</span></h4>
+      <ul class="gear" aria-label="Selected mobile gear">
+        {#each gear as item}
+          <li>
+            {#snippet content()}{#if item.image}<img src={item.image} alt="" loading="lazy" width="30" height="34" />{/if}<strong>{item.name}</strong>{#if item.detail}<small>{item.detail}</small>{/if}{/snippet}
+            {#if item.href}<a href={item.href} target="_blank" rel="noopener noreferrer">{@render content()}</a>{:else}<span>{@render content()}</span>{/if}
+          </li>
+        {/each}
+      </ul>
     </div>
   </div>
 </div>
+
+<div id="phone-apps" class="phone-popover" popover="auto" role="dialog" aria-labelledby="phone-title" bind:this={phonePopover}>
+  <div class="phone-frame">
+    <div class="phone-camera" aria-hidden="true"></div>
+    <div class="phone-top">
+      <div><h4 id="phone-title">{mobile.phone.name}</h4><p>{mobile.phone.detail}</p></div>
+      <button type="button" class="phone-close" popovertarget="phone-apps" popovertargetaction="hide" aria-label="Close phone apps"><IconClose /></button>
+    </div>
+    <ul class="full-apps" aria-label="Phone apps">
+      {#each phoneApps as item}
+        <li>
+          {#snippet appContent()}<span class="full-app-icon">{#if item.icon}<ToolIcon icon={item.icon} />{/if}</span><span>{item.label ?? item.name}</span>{/snippet}
+          {#if item.href}<a href={item.href} target="_blank" rel="noopener noreferrer" aria-label={item.name}>{@render appContent()}</a>{:else}<span class="full-app">{@render appContent()}</span>{/if}
+        </li>
+      {/each}
+    </ul>
+    <ul class="phone-dock" aria-label="Pinned phone apps">
+      {#each mobile.dock as item}
+        <li>
+          {#snippet dockContent()}<span class="full-app-icon">{#if item.icon}<ToolIcon icon={item.icon} />{/if}</span><span>{item.name}</span>{/snippet}
+          {#if item.href}<a href={item.href} target="_blank" rel="noopener noreferrer">{@render dockContent()}</a>{:else}<span class="full-app">{@render dockContent()}</span>{/if}
+        </li>
+      {/each}
+    </ul>
+    <div class="gesture-bar" aria-hidden="true"></div>
+  </div>
+</div>
+
+<style>
+  .mobile-setup { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-edge-strong); }
+  h3 { font-family: var(--font-serif); font-size: 2rem; line-height: 1.1; margin-bottom: 1.25rem; font-weight: 650; letter-spacing: -0.03em; }
+  h3 span, h4 span { font-weight: 400; color: var(--color-neutral); }
+  .mobile-layout { display: grid; gap: 1.5rem; align-items: start; }
+  .phone-summary { background: var(--color-surface); padding: 1.25rem; border-radius: 0.75rem; min-width: 0; width: 100%; text-align: left; cursor: pointer; }
+  .phone-summary:enabled:hover { background: var(--color-surface-raised); }
+  .phone-summary:disabled { cursor: default; }
+  .phone-summary:disabled .phone-heading :global(svg), .phone-summary:disabled .explore-apps { display: none; }
+  .phone-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .phone-heading strong { font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.2; font-weight: 550; }
+  .phone-heading :global(svg) { width: 1.1rem; height: 1.1rem; color: var(--color-accent); }
+  .phone-detail { display: block; color: var(--color-neutral); font-size: 0.8rem; margin-top: 0.3rem; }
+  .explore-apps { display: block; margin-top: 1rem; font-size: 0.7rem; color: var(--color-accent); }
+  h4 { font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.2; font-weight: 550; }
+  p { color: var(--color-neutral); font-size: 0.8rem; margin-top: 0.3rem; }
+  .apps { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 0.5rem; margin-top: 1.25rem; }
+  .app { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; font-size: 0.6rem; color: var(--color-soft); text-align: center; overflow-wrap: anywhere; }
+  .app-icon { display: flex; width: 1.4rem; height: 1.4rem; align-items: center; justify-content: center; }
+  .app-icon :global(img), .app-icon :global(i) { width: 1.4rem; height: 1.4rem; font-size: 1.4rem; object-fit: contain; }
+  .gear-summary { min-width: 0; }
+  .gear { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.65rem; margin-top: 1.25rem; }
+  .gear li { min-width: 0; }
+  .gear a, .gear li > span { display: flex; flex-direction: column; align-items: start; gap: 0.45rem; }
+  .gear img { width: 30px; height: 34px; object-fit: contain; }
+  strong { font-size: 0.7rem; line-height: 1.4; font-weight: 500; overflow-wrap: anywhere; }
+  small { font-size: 0.65rem; line-height: 1.4; color: var(--color-neutral); }
+  a:hover { color: var(--color-accent); }
+  .phone-popover { position: fixed; inset: 0; margin: auto; width: min(22rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); padding: 0.4rem; border: 1px solid var(--color-edge-strong); border-radius: 2.5rem; background: var(--color-black); color: var(--color-white); overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--color-edge-strong) transparent; box-shadow: 0 18px 60px rgb(0 0 0 / 0.45); }
+  .phone-frame { padding: 1rem 1rem 0.75rem; border-radius: 2rem; background: var(--color-surface); }
+  .phone-camera { width: 0.65rem; height: 0.65rem; margin: 0 auto 1.25rem; border-radius: 50%; background: var(--color-black); }
+  .phone-top { display: flex; justify-content: space-between; align-items: start; gap: 0.5rem; }
+  .phone-top h4 { font-size: 1.3rem; }
+  .phone-close { display: grid; place-items: center; min-width: 2.75rem; min-height: 2.75rem; border-radius: 50%; cursor: pointer; color: var(--color-neutral); }
+  .phone-close:hover { background: var(--color-black); color: var(--color-accent); }
+  .full-apps, .phone-dock { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.25rem 0.3rem; margin-top: 1.75rem; }
+  .full-apps a, .phone-dock a, .full-app { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; font-size: 0.65rem; line-height: 1.4; overflow-wrap: anywhere; }
+  .full-app-icon { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; }
+  .full-app-icon :global(img), .full-app-icon :global(i) { width: 2rem; height: 2rem; font-size: 2rem; object-fit: contain; }
+  .phone-dock { padding-top: 1.25rem; border-top: 1px solid var(--color-edge-strong); }
+  .gesture-bar { width: 5rem; height: 0.2rem; border-radius: 1rem; margin: 1.5rem auto 0; background: var(--color-neutral); }
+  @media (min-width: 850px) { .mobile-layout { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.8fr); gap: 2rem; } }
+</style>

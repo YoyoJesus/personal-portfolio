@@ -17,17 +17,17 @@
 
 <Section text={hacker.on ? hackerText : text} {href}>
   {#each entries as { company, logo, position, startDate, workType, endDate, summary, previousPositions }}
-    <div class="mb-10">
-      <div class="mb-1.5 flex items-center gap-3">
+    <article class="role">
+      <div class="role-company">
         {#if logo}
-          <img src={logo} alt="" class="h-10 w-auto max-w-24 shrink-0 object-contain" loading="lazy" />
+          <img src={logo} alt="" class="role-logo" loading="lazy" />
         {/if}
-        <h3 class="font-serif text-2xl font-semibold text-white">
+        <h3 class="role-name">
           {company}
         </h3>
       </div>
       <div class="flex flex-col items-start pb-5">
-        <h4 class="mb-0.5 font-serif text-2xl font-medium text-primary">
+        <h4 class="role-position">
           {position}
         </h4>
         <span class="pb-[2px] text-sm text-white/70">
@@ -41,13 +41,13 @@
         <ul class="list-none">
           {#each summary as log}
             <li
-              class="relative mb-3 pl-8 text-base text-neutral before:absolute before:top-1 before:left-0 before:content-[url(/check.svg)]"
+              class="role-point"
             >
               {log}
             </li>
           {/each}
         </ul>
-      {:else}
+      {:else if summary}
         <p class="text-base text-neutral">{summary}</p>
       {/if}
       {#if previousPositions && previousPositions.length > 0}
@@ -67,6 +67,18 @@
           </ul>
         </div>
       {/if}
-    </div>
+    </article>
   {/each}
 </Section>
+
+<style>
+  .role { padding-block: 2.5rem; border-top: 1px solid var(--color-edge); }
+  .role:first-of-type { border-top: 0; padding-top: 0; }
+  .role:last-of-type { padding-bottom: 0; }
+  .role-company { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+  .role-logo { width: 3.25rem; height: 3.25rem; flex-shrink: 0; padding: 0.4rem; border-radius: 0.75rem; object-fit: contain; background: #ecebf5; }
+  .role-name { font-family: var(--font-serif); font-size: clamp(1.75rem, 4vw, 2.25rem); font-weight: 650; letter-spacing: -0.025em; line-height: 1.15; color: var(--color-white); }
+  .role-position { font-family: var(--font-serif); font-size: 1.5rem; line-height: 1.3; margin-bottom: 0.5rem; color: var(--color-volt-soft); }
+  .role-point { position: relative; padding-left: 1.25rem; margin-bottom: 0.75rem; color: var(--color-neutral); line-height: 1.7; }
+  .role-point::before { position: absolute; top: 0.7em; left: 0; width: 0.3rem; height: 0.3rem; border-radius: 50%; background: var(--color-accent); content: ""; }
+</style>

@@ -1,16 +1,17 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import NoiseField from "./NoiseField.svelte";
   import { HACKER_ALIAS, HACKER_FAVICON, HACKER_HASHES, HACKER_HOST, finishSequence, hacker, restoreHacker, setHacker } from "$lib/hacker.svelte";
 
   const KONAMI = ["arrowup", "arrowup", "arrowdown", "arrowdown", "arrowleft", "arrowright", "arrowleft", "arrowright", "b", "a"];
   const PASSPHRASE = "hacker";
 
   const BOOT = [
-    `${HACKER_ALIAS}@${HACKER_HOST}:~$ ssh yoyojesus@dev.asternberg.xyz`,
-    "[+] connection established",
-    "[+] loading profile .............. done",
-    "[+] compiling projects ........... done",
-    "[+] applying terminal theme ...... done",
+    `${HACKER_ALIAS}@${HACKER_HOST}:~$ theme hacker`,
+    "[+] dark palette",
+    "[+] monospace typography",
+    "[+] keyboard shortcuts ready",
+    "[+] hacker profile selected",
     "$ whoami",
     HACKER_ALIAS,
     "",
@@ -19,13 +20,13 @@
 
   const SHUTDOWN = [
     "$ logout",
-    "[+] saving session ............... done",
+    "[+] leaving hacker profile",
     "[+] restoring default theme ...... done",
-    "[+] closing connection ........... done",
+    "[+] restoring typography",
     "",
     "goodbye, friend.",
     "",
-    "Connection to dev.asternberg.xyz closed.",
+    "Default profile selected.",
     `${HACKER_ALIAS}@${HACKER_HOST}:~$ `,
   ];
   const SIGN_OFFS = ["hello, friend.", "goodbye, friend."];
@@ -102,11 +103,11 @@
 <svelte:window {onkeydown} onhashchange={checkHash} />
 
 {#if hacker.on}
-  <div class="scanlines" aria-hidden="true"></div>
+  <div class="interference" aria-hidden="true"></div>
 
   <button
     type="button"
-    class="fixed bottom-4 left-4 z-[70] cursor-pointer border border-primary/60 bg-black/80 px-3 py-1.5 text-xs text-primary backdrop-blur-sm transition-colors hover:bg-primary hover:text-white"
+    class="fixed bottom-4 left-4 z-[70] cursor-pointer border border-primary/60 bg-black/80 px-3 py-1.5 text-xs text-primary backdrop-blur-sm transition-colors hover:bg-primary hover:text-black"
     onclick={() => setHacker(false)}
   >
     exit hacker mode
@@ -115,26 +116,46 @@
 
 {#if hacker.sequence}
   <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-  <div class="boot fixed inset-0 z-[100] flex items-center justify-center bg-black p-6" onclick={finishSequence}>
-    <pre class="w-full max-w-xl text-sm leading-7 whitespace-pre-wrap text-white sm:text-base">{#each lines.slice(0, shown) as line, i}{i ? "\n" : ""}<span
-          class={[line.startsWith("[+]") && "text-neutral", SIGN_OFFS.includes(line) && "text-2xl text-primary sm:text-3xl"]}
-          >{line}</span
-        >{/each}<span class="cursor">█</span></pre>
-    <p class="absolute bottom-6 text-xs text-neutral">click or press any key to skip</p>
+  <div class="boot fixed inset-0 z-[100] bg-black" onclick={finishSequence}>
+    <div class="boot-field" aria-hidden="true"><NoiseField quiet /></div>
+    <div class="boot-content">
+      <h2 class="boot-title">{hacker.sequence === "shutdown" ? "goodbye," : "hello,"}<br /><span>friend.</span></h2>
+      <pre class="boot-log" aria-hidden="true">{#each lines.slice(0, shown).filter(line => !SIGN_OFFS.includes(line)) as line, i}{i ? "\n" : ""}<span class:log-command={!line.startsWith("[+]")}>{line}</span>{/each}<span class="cursor">_</span></pre>
+    </div>
+    <button type="button" class="boot-skip" onclick={finishSequence}>Skip transition</button>
   </div>
 {/if}
 
 <style>
-  .scanlines {
+  .interference {
     position: fixed;
     inset: 0;
     z-index: 60;
     pointer-events: none;
-    background:
-      repeating-linear-gradient(to bottom, transparent 0 2px, rgb(0 0 0 / 0.25) 2px 3px),
-      radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / 0.6) 100%);
+    overflow: hidden;
   }
-
+  .interference::after {
+    position: absolute;
+    inset: -30% 0;
+    content: "";
+    background: linear-gradient(transparent 46%, rgb(var(--rgb-volt) / 0.035) 49.8%, rgb(var(--rgb-ember) / 0.07) 50%, transparent 50.3%);
+    animation: signal-sweep 18s linear infinite;
+  }
+  @keyframes signal-sweep {
+    0% { transform: translateY(-65%); }
+    85%, 100% { transform: translateY(65%); }
+  }
+  .boot { overflow-y: auto; }
+  .boot-field { position: absolute; inset: 0; opacity: 0.3; pointer-events: none; }
+  .boot-content { position: relative; display: grid; align-content: center; gap: 2rem; max-width: 88rem; min-height: 100svh; margin-inline: auto; padding: 5rem clamp(1.25rem, 4vw, 3.5rem) 7rem; }
+  .boot-title { font-family: var(--font-serif); font-size: clamp(3.5rem, 9vw, 9rem); font-weight: 800; letter-spacing: -0.04em; line-height: 0.95; color: var(--color-white); }
+  .boot-title span { font-weight: 400; color: var(--color-neutral); }
+  .boot-log { min-height: 15rem; font-size: clamp(0.75rem, 1.1vw, 0.95rem); line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--color-neutral); }
+  .log-command { color: var(--color-white); }
+  .boot-skip { position: absolute; bottom: 1.5rem; right: clamp(1.25rem, 4vw, 3.5rem); border: 1px solid var(--color-edge-strong); border-radius: 999px; padding: 0.75rem 1.25rem; font-size: 0.8rem; color: var(--color-white); cursor: pointer; }
+  .boot-skip:hover { border-color: var(--color-primary); }
+  @media (min-width: 900px) { .boot-content { grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem; } }
+  @media (prefers-reduced-motion: reduce) { .interference { display: none; } }
   .cursor {
     color: var(--color-primary);
     animation: blink 1s steps(1) infinite;

@@ -16,7 +16,6 @@
   const current = $derived(hacker.on ? hackerWorkspace : workspace);
   const hasImage = $derived(!!current.image?.trim());
   // Pinned gear lives in the photo popovers; anything else is listed below it.
-  const unpinned = $derived(current.gear.filter((item) => !hasImage || !pinsOf(item).length));
 
   let activeIndex = $state<number | null>(null);
   // Which of the active item's pins is hovered/focused; only that one shows the popover.
@@ -26,7 +25,7 @@
 
   // Tapping outside any pin closes the popover on touch screens.
   function closeOnOutside(e: MouseEvent) {
-    if (!(e.target as Element).closest(".workspace-pin")) activeIndex = null;
+    if (!(e.target as Element).closest(".workspace-pin, .gear-item")) activeIndex = null;
   }
 
   const activate =
@@ -63,7 +62,7 @@
   {/if}
 {/snippet}
 
-<svelte:window onclick={closeOnOutside} />
+<svelte:window onclick={closeOnOutside} onkeydown={(e) => { if (e.key === "Escape") activeIndex = null; }} />
 
 <Section text={hacker.on ? "$ neofetch" : "Workspace"} href="workspace">
   {#if hacker.on}
@@ -73,8 +72,9 @@
     </div>
   {/if}
 
+  <div class="desk-spread">
   {#if hasImage}
-    <div class="relative">
+    <div class="desk-photo relative">
       <img
         src={current.image}
         alt={current.imageAlt || (hacker.on ? "Hacking workspace setup" : "Workspace desk setup")}
@@ -166,31 +166,29 @@
     </div>
   {/if}
 
-  {#if unpinned.length}
-    <ul
-      class={["flex flex-wrap gap-x-5 gap-y-2.5 text-sm", hasImage ? "mt-5" : "flex-col", hacker.on && "font-mono"]}
-      aria-label="Gear"
-    >
-      {#each unpinned as item (item.name)}
-        <li class="flex flex-wrap items-baseline gap-x-2">
-          {@render itemName(item, hacker.on ? "text-white lowercase" : "text-white")}
-          {#if item.detail}<span class="text-xs text-neutral">{item.detail}</span>{/if}
-          {#if item.since}<span class="text-xs text-neutral/70">{hacker.on ? "# " : ""}since {item.since}</span>{/if}
-          {#if item.trying}<span class="text-xs text-accent">{hacker.on ? "# trying" : "currently trying"}</span>{/if}
-        </li>
+  <aside class="gear-index" aria-label="Desk equipment">
+    <h3>The <span>hardware</span></h3>
+    <dl>
+      {#each current.gear as item (item.name)}
+        <div class="hardware-row">
+          <dt>{@render itemName(item, "gear-name")}</dt>
+          <dd>{item.detail || ""}{#if item.since}<small>Since {item.since}</small>{/if}{#if item.trying}<small class="text-accent">Currently trying</small>{/if}</dd>
+        </div>
       {/each}
-    </ul>
-  {/if}
+    </dl>
+  </aside>
+  </div>
 
-  {#if !hacker.on}
-    <div class="mt-12 space-y-6 sm:mt-16 sm:space-y-8">
+  <div class="tool-library">
+    <h3 class="library-title">Software <span>& tools</span></h3>
+    <div class="tool-groups">
       {#each current.groups as group (group.title)}
-        <div class="flex flex-col gap-2.5 sm:flex-row sm:items-start sm:gap-6">
-          <h3 class="w-40 shrink-0 pt-1 text-xs font-semibold tracking-wider text-white/50 uppercase">{group.title}</h3>
-          <ul class="flex flex-1 flex-wrap items-center gap-1.5" aria-label="{group.title} tools">
+        <div class="setup-group">
+          <h3 class="setup-group-title">{group.title}</h3>
+          <ul class="flex min-w-0 flex-1 flex-wrap items-center gap-2" aria-label="{group.title} tools">
             {#each group.items as item (item.name)}
               <li
-                class="inline-flex items-center rounded-full border border-edge-strong px-2.5 py-1 text-[0.7rem] leading-tight text-chip"
+                class="tool-item"
                 title={chipTitle(item)}
               >
                 {#snippet chip()}
@@ -223,27 +221,24 @@
         </div>
       {/each}
     </div>
-  {:else}
-    <div class="mt-10 space-y-2.5 font-mono text-sm sm:mt-12">
-      {#each current.groups as group (group.title)}
-        <div class="flex flex-wrap items-baseline gap-x-1.5 text-white lowercase">
-          <span><span class="font-bold text-primary">{group.title}</span><span class="text-neutral">:</span></span>
-          {#each group.items as item, idx (item.name)}
-            <span title={chipTitle(item)}
-              >{#if item.href}<a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="underline-offset-4 hover:underline {linkFocus}">{item.name}</a
-                >{:else}{item.name}{/if}{#if item.trying}<span class="text-accent" aria-hidden="true">*</span
-                >{/if}{@render status(item)}{#if idx < group.items.length - 1}<span class="text-neutral/60">,</span
-                >{/if}</span
-            >
-          {/each}
-        </div>
-      {/each}
-    </div>
-  {/if}
-
+  </div>
   <MobileSetup {mobile} />
 </Section>
+
+<style>
+  .desk-spread { display: grid; gap: 2rem; align-items: start; }
+  .desk-photo { min-width: 0; }
+  .gear-index h3, .library-title { font-family: var(--font-serif); font-size: clamp(1.6rem, 3vw, 2rem); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.25rem; font-weight: 650; }
+  .gear-index h3 span, .library-title span { color: var(--color-neutral); font-weight: 400; }
+  .hardware-row { display: grid; grid-template-columns: minmax(5rem, 0.8fr) minmax(0, 1.3fr); gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--color-edge); font-size: 0.85rem; line-height: 1.5; }
+  .hardware-row :global(.gear-name) { color: var(--color-white); font-weight: 500; }
+  dd { color: var(--color-neutral); }
+  dd small { display: block; font-size: 0.75rem; }
+  .tool-library { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-edge-strong); }
+  .tool-groups { display: grid; gap: 1.5rem; }
+  .setup-group { min-width: 0; }
+  .setup-group-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 450; color: var(--color-neutral); margin-bottom: 0.6rem; }
+  .tool-item { display: inline-flex; padding: 0.2rem 0; color: var(--color-chip); font-size: 0.8rem; line-height: 1.4; }
+  @media (min-width: 700px) { .tool-groups { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 1000px) { .desk-spread { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 2rem; } }
+</style>

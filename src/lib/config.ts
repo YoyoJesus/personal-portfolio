@@ -9,6 +9,7 @@ export const SITE_CONFIG: SiteConfig = {
   siteLogo: "/austin-small.jpg",
   navLinks: [
     { text: "Experience", href: "#experience" },
+    { text: "Education", href: "#education" },
     { text: "Leadership", href: "#leadership" },
     { text: "Projects", href: "#projects" },
     { text: "Workspace", href: "#workspace" },
@@ -51,6 +52,15 @@ export const SITE_CONTENT: SiteContent = {
   },
   experience: [
     {
+      company: "Kent State University",
+      logo: "/logos/kent-state-cs.png",
+      position: "Undergraduate Researcher",
+      startDate: "October 2026",
+      endDate: "Present",
+      workType: "Research",
+      summary: "",
+    },
+    {
       company: "Awetomaton Ltd",
       logo: "/logos/awetomaton.svg",
       position: "Information Technology Intern",
@@ -91,6 +101,16 @@ export const SITE_CONTENT: SiteContent = {
         "Prepared devices for sale or disposal, primarily through the deletion and destruction of data to DOTD standards.",
         "Took inventory of all technology assets in the district, and set up equipment for classroom use.",
       ],
+    },
+  ],
+  education: [
+    {
+      institution: "Kent State University",
+      logo: "/logos/kent-state.jpg",
+      degree: "B.S. in Computer Science",
+      startYear: "2023",
+      expectedEndYear: "2027",
+      distinctions: ["Honors", "Choose Ohio First Scholar"],
     },
   ],
   leadership: [
@@ -559,17 +579,7 @@ export const SITE_CONTENT: SiteContent = {
     },
   ],
   about: {
-    description: `
-      Hi, I'm Austin Sternberg 👋. I'm a Computer Science senior at Kent State with a passion for cybersecurity and networking.
-
-      This past summer I interned at Awetomaton, a small but growing defense contractor based in Beavercreek, Ohio, where I built internal tools for the IT department to help streamline operations.
-
-      On campus, I serve as President of HacKSU, Kent State's computer science club, and as President of Kent State's Combat Robotics club.
-
-      Outside of class, I spend my time on personal projects, hackathons, and CTFs. Recently I placed first at Hack Dearborn 4 and the Quantum CTF at BSidesCLE 2026, and won two tracks at NexHacks 2026. The python INFOSEC repository is still a personal favorite of mine.
-
-      I'm always working on something or learning new skills. Feel free to reach out if you'd like to connect!
-    `,
+    description: "I'm drawn to cybersecurity and networking: understanding how systems work, finding weak spots, and making them stronger. I build tools, compete in CTFs, and turn hackathon ideas into working projects. I'm preparing to return to Awetomaton as a software engineer after interning there this past summer.",
     image: "/austin-big.JPG",
   },
   // Security work first, then networking/protocols, hardware, and apps handling sensitive data; plain web builds last.
@@ -755,15 +765,7 @@ export const SITE_CONTENT: SiteContent = {
     ],
   },
   hackerAbout: {
-    description: `
-      Hello, friend. Online I go by yoyojesus.
-
-      I got into security because every system has an edge case someone forgot about, and finding it is the best kind of puzzle. Networks, web apps, and CTF challenges are where I spend most of that curiosity.
-
-      Most of my free time goes to capture-the-flag competitions and to writing my own tooling for recon and automation. The python INFOSEC repository is a personal favorite.
-
-      If you're building something and want a second pair of eyes on how it might break, feel free to reach out.
-    `,
+    description: "I go by yoyojesus. I explore networks, web apps, and the edge cases people miss. Most of my spare time goes to CTFs and building tools for recon and automation.",
   },
 };
 

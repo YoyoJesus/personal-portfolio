@@ -3,8 +3,8 @@
   import "@fontsource-variable/gabarito";
   import "../app.css";
   import { SITE_CONFIG } from "$lib/config";
+  import NoiseField from "$lib/components/NoiseField.svelte";
   import Header from "$lib/components/Header.svelte";
-  import SideAnimations from "$lib/components/SideAnimations.svelte";
   import Footer from "$lib/components/Footer.svelte";
   import HackerMode from "$lib/components/HackerMode.svelte";
 
@@ -31,9 +31,9 @@
   <meta property="twitter:image" content={ogImgUrl} />
 </svelte:head>
 
-<SideAnimations />
+<div class="ambient-field" aria-hidden="true"><NoiseField quiet /></div>
 <Header {siteLogo} {navLinks} />
-<main class="mx-auto max-w-3xl px-5">
+<main>
   {@render children()}
 </main>
 <Footer {author} {socialLinks} />
