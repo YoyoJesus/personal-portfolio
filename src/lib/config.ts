@@ -54,11 +54,30 @@ export const SITE_CONTENT: SiteContent = {
     {
       company: "Kent State University",
       logo: "/logos/kent-state-cs.png",
-      position: "Undergraduate Researcher",
+      position: "Undergraduate Research Assistant",
       startDate: "October 2026",
       endDate: "Present",
-      workType: "Research",
-      summary: "",
+      workType: "Research - Paid",
+      summary: [
+        "Serve on the ML/AI team of a state-funded applied AI research project, one of three faculty-led teams alongside full-stack development and security.",
+        "Develop and evaluate machine learning code for the project in Python.",
+        "Coordinate with the full-stack and security teams on planning, documentation, and task tracking, reporting progress in regular team meetings.",
+        "Work under a confidentiality agreement, following sponsored-research data-handling requirements and keeping project data and code on approved project systems.",
+      ],
+    },
+    {
+      company: "Kent State University",
+      logo: "/logos/kent-state-cs.png",
+      position: "Choose Ohio First Undergraduate Researcher",
+      startDate: "August 2023",
+      endDate: "Present",
+      workType: "Research - Scholarship",
+      summary: [
+        "Built Bluetooth wearable badges and a Python pipeline that classify meeting effectiveness, reaching 93.8% accuracy with Random Forest on 16 recorded meetings and winning Best Presentation at the 2026 Choose Ohio First Research Symposium.",
+        "Compared dashcam video and wristband GSR for detecting driving stress, fine-tuning YOLOv11 on BDD100K and benchmarking six classifiers; the video and OBD model reached 91.5% accuracy and 0.98 AUC.",
+        "Ran VR driving-simulator studies with Empatica E4 wristbands and analyzed motion and electrodermal activity data to model driving stress and cybersickness susceptibility in WEKA.",
+        "Moved the badges' speaker detection on-device as TinyML scoring and built an observer panel that records ground-truth labels for evaluation.",
+      ],
     },
     {
       company: "Awetomaton Ltd",
@@ -110,7 +129,13 @@ export const SITE_CONTENT: SiteContent = {
       degree: "B.S. in Computer Science",
       startYear: "2023",
       expectedEndYear: "2027",
+      concentration: "Cybersecurity",
+      gpa: "3.88",
       distinctions: ["Honors", "Choose Ohio First Scholar"],
+      honorRolls: [
+        { name: "President's List", terms: ["Fall 2024", "Spring 2025", "Fall 2025", "Spring 2026"] },
+        { name: "Dean's List", terms: ["Fall 2023", "Spring 2024"] },
+      ],
     },
   ],
   leadership: [

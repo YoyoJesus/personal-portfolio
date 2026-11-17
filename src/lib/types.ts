@@ -155,5 +155,8 @@ export interface EducationProps {
   degree: string;
   startYear: string;
   expectedEndYear: string;
+  concentration?: string;
+  gpa?: string;
   distinctions: string[];
+  honorRolls?: { name: string; terms: string[] }[];
 }
