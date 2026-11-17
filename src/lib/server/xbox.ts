@@ -16,6 +16,8 @@ interface Stat {
 const API = "https://xbl.io/api/v2";
 // OpenXBL's free tier allows 150 requests an hour and each refresh costs two.
 const TTL = 30 * 60 * 1000;
+// Played before the account was handed over: Destiny, Destiny 2, Titanfall 2, Rainbow Six Siege, Warframe.
+const HIDDEN = new Set(["247546985", "144389848", "1145574011", "926771636", "1482870140"]);
 // shortcut: cache is per server instance, move to a shared store if cold starts burn the rate limit.
 let cache: { at: number; games: Game[] } | null = null;
 
@@ -50,7 +52,7 @@ export async function getXboxGames(limit = 5): Promise<Game[]> {
     const minutes = new Map(stats.statlistscollection[0]?.stats.map((s) => [s.titleid, Number(s.value ?? 0)]));
     const twoWeeksAgo = Date.now() - 14 * 24 * 60 * 60 * 1000;
     const games = titles
-      .filter((t) => (minutes.get(t.titleId) ?? 0) > 0)
+      .filter((t) => !HIDDEN.has(t.titleId) && (minutes.get(t.titleId) ?? 0) > 0)
       .sort((a, b) => (minutes.get(b.titleId) ?? 0) - (minutes.get(a.titleId) ?? 0))
       .slice(0, limit)
       .map((t) => {
