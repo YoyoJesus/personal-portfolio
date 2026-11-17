@@ -29,7 +29,6 @@
   let { films, listening, letterboxdUser, lastfmUser, gaming, steamId }: Props = $props();
 
   // Phones only get the first three films and games.
-  const maxPlays = $derived(Math.max(...listening.topArtists.map((a) => a.plays), 1));
   const watchedOn = (d: string) =>
     new Date(`${d}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
   const stars = (rating: number | null) =>
@@ -58,7 +57,7 @@
   <div class="activity-section film-journal">
     <div class="activity-heading">
       <h3 class="activity-title">
-        <IconLetterboxd class="size-6 text-accent" /> Recently <span>Watched</span>
+        <IconLetterboxd class="size-6 text-accent" /> Watched <span>recently</span>
       </h3>
       <a
         href={`https://letterboxd.com/${letterboxdUser}/`}
@@ -183,75 +182,10 @@
     {/if}
   </div>
 
-  <div class="activity-section music-journal">
-    <div class="activity-heading">
-      <h3 class="activity-title">
-        <IconLastfm class="size-6 text-accent" /> Listening <span>Activity</span>
-      </h3>
-      <a
-        href={`https://www.last.fm/user/${lastfmUser}`}
-        target="_blank"
-        class="text-sm text-neutral hover:text-primary"
-      >
-        Last.fm <span aria-hidden="true"><LinkIcon /></span>
-      </a>
-    </div>
-    {#if listening.recent.length === 0}
-      <p class="rounded-2xl border border-neutral/20 p-5 text-neutral">
-        {listening.missingKey
-          ? "Scrobbles appear here once LASTFM_API_KEY is set in .env."
-          : "Last.fm didn't respond. Try refreshing in a minute."}
-      </p>
-    {:else}
-      <div class="music-columns">
-        <ol class="min-w-0 space-y-3">
-          {#each listening.recent as t}
-            <li>
-              <a href={t.link} target="_blank" class="group flex items-center gap-3">
-                {#if t.art}
-                  <img src={t.art} alt="" class="size-11 rounded-md object-cover" />
-                {:else}
-                  <span class="grid size-11 place-items-center rounded-md bg-muted/60 text-neutral">
-                    <IconMusicNote class="size-4" />
-                  </span>
-                {/if}
-                <span class="min-w-0 flex-1">
-                  <span class="block truncate text-sm font-medium text-white group-hover:text-accent">
-                    {t.name}
-                  </span>
-                  <span class="block truncate text-xs text-neutral">{t.artist}</span>
-                </span>
-                {#if t.nowPlaying}
-                  <IconPlaying class="size-5 shrink-0 text-accent" aria-label="Playing now" />
-                {/if}
-              </a>
-            </li>
-          {/each}
-        </ol>
-        <div>
-          <p class="mb-3 text-sm text-white/50">Top artists this month</p>
-          <ul class="space-y-2">
-            {#each listening.topArtists as a}
-              <li class="relative overflow-hidden rounded-md">
-                <span class="absolute inset-y-0 left-0 bg-primary/35" style={`width: ${(a.plays / maxPlays) * 100}%`}
-                ></span>
-                <a href={a.link} target="_blank" class="relative flex justify-between px-3 py-1.5 text-sm text-white">
-                  <span>{a.name}</span>
-                  <span class="text-neutral tabular-nums">{a.plays} plays</span>
-                </a>
-              </li>
-            {/each}
-          </ul>
-        </div>
-      </div>
-    {/if}
-  </div>
-
-  </div>
   <div class="activity-section games-journal">
     <div class="activity-heading">
       <h3 class="activity-title">
-        <IconSteam class="size-6 text-accent" /> Most <span>Played</span>
+        <IconSteam class="size-6 text-accent" /> Games in the <span>rotation</span>
       </h3>
       <a
         href={`https://steamcommunity.com/profiles/${steamId}`}
@@ -293,6 +227,30 @@
     {/if}
   </div>
 
+  </div>
+  <div class="activity-section music-journal">
+    <div class="activity-heading">
+      <h3 class="activity-title"><IconLastfm class="size-6 text-accent" /> Listening <span>lately</span></h3>
+      <a href={`https://www.last.fm/user/${lastfmUser}`} target="_blank" rel="noopener noreferrer" class="text-sm text-neutral hover:text-primary">Last.fm <span aria-hidden="true"><LinkIcon /></span></a>
+    </div>
+    {#if listening.recent.length}
+      <ul class="album-gallery" aria-label="Recently played tracks">
+        {#each listening.recent as track}
+          <li>
+            <a href={track.link} target="_blank" rel="noopener noreferrer" class="album-link group">
+              {#if track.art}<img src={track.art} alt="" loading="lazy" width="220" height="220" />{:else}<span class="album-fallback"><IconMusicNote /></span>{/if}
+              <h4 title={track.name}>{track.name.split(" (")[0]}</h4><p>{track.artist}</p>
+              {#if track.nowPlaying}<span class="playing"><IconPlaying /> Playing now</span>{/if}
+            </a>
+          </li>
+        {/each}
+      </ul>
+      {#if listening.topArtists.length}
+        <div class="artist-line"><p>Top artists this month</p><ul>{#each listening.topArtists as artist}<li><a href={artist.link} target="_blank" rel="noopener noreferrer" title={`${artist.plays} plays`}>{artist.name}</a></li>{/each}</ul></div>
+      {/if}
+    {:else}<p class="text-neutral">Recent listening is unavailable. Try again in a minute or visit Last.fm.</p>{/if}
+  </div>
+
   <!-- One row: labels stay short, and narrow screens scroll the row sideways instead of wrapping. -->
   <ul
     class="mt-12 flex [scrollbar-width:none] gap-x-4 overflow-x-auto border-t border-neutral/20 pt-5 text-xs whitespace-nowrap text-neutral sm:justify-between [&::-webkit-scrollbar]:hidden"
@@ -309,27 +267,33 @@
 </Section>
 
 <style>
-  .media-journal { display: grid; gap: 3rem; align-items: start; }
-  .film-shelf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1rem; }
-  .film-entry:first-child { grid-column: 1 / -1; }
-  .film-entry:first-child > a { max-width: 22rem; }
-  .film-name { margin-top: 0.75rem; color: var(--color-white); font-family: var(--font-serif); font-size: 1.15rem; line-height: 1.25; }
-  .film-name span { color: var(--color-neutral); font-size: 0.8rem; }
-  .music-columns { display: grid; gap: 2.5rem; min-width: 0; }
-  .games-journal { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--color-edge-strong); }
-  .game-shelf { display: grid; gap: 1rem 2rem; }
-  .game-entry { display: grid; grid-template-columns: 4rem minmax(0, 1fr); align-items: center; gap: 1rem; padding-block: 1rem; border-top: 1px solid var(--color-edge); }
-  .game-entry img { width: 4rem; height: 5.5rem; }
-  .game-info { display: flex; flex-direction: column; align-items: start; gap: 0.4rem; font-size: 0.8rem; }
-  .game-info strong { font-family: var(--font-serif); color: var(--color-white); font-size: 1.3rem; font-weight: 500; }
-  @media (min-width: 640px) { .film-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .film-entry:first-child { grid-column: span 2; grid-row: span 2; } .game-shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (min-width: 1100px) { .media-journal { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 3rem; } .music-journal { padding-left: 2.5rem; border-left: 1px solid var(--color-edge-strong); } }
-
-  .activity-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem 1.5rem; margin-bottom: 1.75rem; }
-  .activity-title { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; color: var(--color-white); font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; font-weight: 750; letter-spacing: -0.035em; }
-  :global(#not-coding .group img) { border-radius: 0.75rem; }
+  .media-journal { display: grid; gap: 2.5rem; align-items: start; }
+  .activity-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.75rem 1rem; margin-bottom: 1.5rem; }
+  .activity-title { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; color: var(--color-white); font-family: var(--font-serif); font-size: clamp(1.7rem, 2.8vw, 2.25rem); line-height: 1.1; font-weight: 650; letter-spacing: -0.03em; }
   .activity-title span { color: var(--color-neutral); font-weight: 400; }
-  :global(#not-coding .group img) { transition: transform 500ms var(--ease-out-expo), border-color 200ms; }
-  :global(#not-coding .group:hover img) { transform: translateY(-4px); }
-  :global(#not-coding .review-pop[id]) { border-radius: 1rem; background: var(--color-surface-raised); }
+  .film-shelf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 0.75rem; }
+  .film-name { margin-top: 0.6rem; color: var(--color-white); font-family: var(--font-serif); font-size: 0.9rem; line-height: 1.35; }
+  .film-name span { font-size: 0.7rem; color: var(--color-neutral); }
+  .game-shelf { display: grid; gap: 0.9rem; }
+  .game-entry { display: flex; gap: 0.75rem; align-items: center; }
+  .game-entry img { width: 1.8rem; height: 2.5rem; border-radius: 0.25rem; flex-shrink: 0; }
+  .game-info { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.75rem; }
+  .game-info strong { font-size: 0.95rem; color: var(--color-white); font-weight: 500; }
+  .music-journal { border-top: 1px solid var(--color-edge-strong); margin-top: 2rem; padding-top: 2rem; }
+  .album-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1rem; }
+  .album-gallery li { min-width: 0; }
+  .album-link { display: block; }
+  .album-link img, .album-fallback { display: grid; place-items: center; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 0.5rem; margin-bottom: 0.8rem; background: var(--color-surface); }
+  .album-link h4 { font-size: 1rem; line-height: 1.3; color: var(--color-white); font-weight: 550; overflow-wrap: anywhere; }
+  .album-link p { margin-top: 0.3rem; color: var(--color-neutral); font-size: 0.85rem; }
+  .playing { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--color-accent); font-size: 0.75rem; margin-top: 0.4rem; }
+  .playing :global(svg) { width: 1rem; height: 1rem; }
+  .artist-line { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: baseline; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--color-edge); font-size: 0.85rem; }
+  .artist-line p { color: var(--color-neutral); }
+  .artist-line ul { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; }
+  .artist-line a:hover { color: var(--color-accent); }
+  :global(#not-coding .group img) { transition: transform 400ms var(--ease-out-expo); }
+  :global(#not-coding .group:hover img) { transform: translateY(-3px); }
+  @media (min-width: 640px) { .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  @media (min-width: 1100px) { .media-journal { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
 </style>

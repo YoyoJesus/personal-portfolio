@@ -167,27 +167,21 @@
   {/if}
 
   <aside class="gear-index" aria-label="Desk equipment">
-    <h3>On my <span>desk</span></h3>
-    <ol>
-      {#each current.gear as item, i (item.name)}
-        <li class="gear-item" class:selected={activeIndex === i}>
-          {#if hasImage && pinsOf(item).length}
-            <button type="button" class="gear-number" aria-label="Show {item.name} in photo" aria-pressed={activeIndex === i} onclick={() => activeIndex === i ? activeIndex = null : activate(i)()}>{i + 1}</button>
-          {:else}<span class="gear-number">{i + 1}</span>{/if}
-          <div>
-            {@render itemName(item, "gear-name")}
-            {#if item.detail}<p>{item.detail}</p>{/if}
-            {#if item.since}<small>Since {item.since}</small>{/if}
-            {#if item.trying}<small class="text-accent">Currently trying</small>{/if}
-          </div>
-        </li>
+    <h3>The <span>hardware</span></h3>
+    <dl>
+      {#each current.gear as item (item.name)}
+        <div class="hardware-row">
+          <dt>{@render itemName(item, "gear-name")}</dt>
+          <dd>{item.detail || ""}{#if item.since}<small>Since {item.since}</small>{/if}{#if item.trying}<small class="text-accent">Currently trying</small>{/if}</dd>
+        </div>
       {/each}
-    </ol>
+    </dl>
   </aside>
   </div>
 
-  {#if !hacker.on}
-    <div class="tool-library">
+  <div class="tool-library">
+    <h3 class="library-title">Software <span>& tools</span></h3>
+    <div class="tool-groups">
       {#each current.groups as group (group.title)}
         <div class="setup-group">
           <h3 class="setup-group-title">{group.title}</h3>
@@ -227,48 +221,24 @@
         </div>
       {/each}
     </div>
-  {:else}
-    <div class="mt-10 space-y-2.5 font-mono text-sm sm:mt-12">
-      {#each current.groups as group (group.title)}
-        <div class="flex flex-wrap items-baseline gap-x-1.5 text-white lowercase">
-          <span><span class="font-bold text-primary">{group.title}</span><span class="text-neutral">:</span></span>
-          {#each group.items as item, idx (item.name)}
-            <span title={chipTitle(item)}
-              >{#if item.href}<a
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="underline-offset-4 hover:underline {linkFocus}">{item.name}</a
-                >{:else}{item.name}{/if}{#if item.trying}<span class="text-accent" aria-hidden="true">*</span
-                >{/if}{@render status(item)}{#if idx < group.items.length - 1}<span class="text-neutral/60">,</span
-                >{/if}</span
-            >
-          {/each}
-        </div>
-      {/each}
-    </div>
-  {/if}
-
+  </div>
   <MobileSetup {mobile} />
 </Section>
 
 <style>
   .desk-spread { display: grid; gap: 2rem; align-items: start; }
   .desk-photo { min-width: 0; }
-  .gear-index h3 { font-family: var(--font-serif); font-size: 2.75rem; letter-spacing: -0.035em; line-height: 1; margin-bottom: 1.5rem; font-weight: 750; }
-  .gear-index h3 span { color: var(--color-neutral); font-weight: 400; }
-  .gear-item { display: grid; grid-template-columns: 2rem minmax(0, 1fr); gap: 0.75rem; padding: 1rem 0; border-top: 1px solid var(--color-edge); }
-  .gear-item.selected { border-color: var(--color-volt-soft); }
-  .gear-number { width: 1.75rem; height: 1.75rem; display: grid; place-items: center; border: 1px solid var(--color-edge-strong); border-radius: 50%; color: var(--color-neutral); font-size: 0.75rem; }
-  button.gear-number { cursor: pointer; }
-  .selected .gear-number { background: var(--color-accent); color: var(--color-black); }
-  .gear-item :global(.gear-name) { font-family: var(--font-serif); color: var(--color-white); font-size: 1.25rem; font-weight: 550; }
-  .gear-item p { margin-top: 0.3rem; color: var(--color-neutral); font-size: 0.8rem; line-height: 1.6; }
-  .gear-item small { display: block; margin-top: 0.3rem; color: var(--color-neutral); font-size: 0.7rem; }
-  .tool-library { display: grid; gap: 2.5rem; margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--color-edge-strong); }
+  .gear-index h3, .library-title { font-family: var(--font-serif); font-size: clamp(1.6rem, 3vw, 2rem); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 1.25rem; font-weight: 650; }
+  .gear-index h3 span, .library-title span { color: var(--color-neutral); font-weight: 400; }
+  .hardware-row { display: grid; grid-template-columns: minmax(5rem, 0.8fr) minmax(0, 1.3fr); gap: 1rem; padding: 0.8rem 0; border-bottom: 1px solid var(--color-edge); font-size: 0.85rem; line-height: 1.5; }
+  .hardware-row :global(.gear-name) { color: var(--color-white); font-weight: 500; }
+  dd { color: var(--color-neutral); }
+  dd small { display: block; font-size: 0.75rem; }
+  .tool-library { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-edge-strong); }
+  .tool-groups { display: grid; gap: 1.5rem; }
   .setup-group { min-width: 0; }
-  .setup-group-title { font-family: var(--font-serif); font-size: 2rem; font-weight: 450; line-height: 1.1; color: var(--color-neutral); letter-spacing: -0.025em; margin-bottom: 1.25rem; }
-  .tool-item { width: 100%; padding-block: 0.65rem; border-bottom: 1px solid var(--color-edge); color: var(--color-chip); font-size: 0.9rem; }
-  @media (min-width: 700px) { .tool-library { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-  @media (min-width: 1000px) { .desk-spread { grid-template-columns: minmax(0, 1.8fr) minmax(16rem, 1fr); gap: 3rem; } .desk-photo { position: sticky; top: 7rem; } }
+  .setup-group-title { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 450; color: var(--color-neutral); margin-bottom: 0.6rem; }
+  .tool-item { display: inline-flex; padding: 0.2rem 0; color: var(--color-chip); font-size: 0.8rem; line-height: 1.4; }
+  @media (min-width: 700px) { .tool-groups { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (min-width: 1000px) { .desk-spread { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 2rem; } }
 </style>
