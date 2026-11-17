@@ -3,6 +3,7 @@
   import IconLetterboxd from "~icons/simple-icons/letterboxd";
   import IconLastfm from "~icons/simple-icons/lastdotfm";
   import IconSteam from "~icons/simple-icons/steam";
+  import IconXbox from "~icons/simple-icons/xbox";
   import IconHeart from "~icons/ph/heart-fill";
   import IconRewatch from "~icons/ph/arrows-clockwise-bold";
   import IconMusicNote from "~icons/ph/music-note-bold";
@@ -14,7 +15,7 @@
   import Section from "./Section.svelte";
   import type { Film } from "$lib/server/letterboxd";
   import type { Listening } from "$lib/server/lastfm";
-  import type { Gaming } from "$lib/server/steam";
+  import type { Game, Gaming } from "$lib/server/steam";
   import { hacker } from "$lib/hacker.svelte";
 
   interface Props {
@@ -24,9 +25,11 @@
     lastfmUser: string;
     gaming: Gaming;
     steamId: string;
+    xboxGames: Game[];
+    xboxGamertag: string;
   }
 
-  let { films, listening, letterboxdUser, lastfmUser, gaming, steamId }: Props = $props();
+  let { films, listening, letterboxdUser, lastfmUser, gaming, steamId, xboxGames, xboxGamertag }: Props = $props();
 
   const watchedOn = (d: string) =>
     new Date(`${d}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
@@ -50,6 +53,31 @@
   }}
   onkeydown={(e) => e.key === "Escape" && (openReview = null)}
 />
+
+{#snippet shelf(games: Game[])}
+  <ul class="game-shelf">
+    {#each games as g}
+      <li>
+        <a href={g.link} target="_blank" class="game-entry group" title={g.name}>
+          <img
+            src={g.cover}
+            alt={`${g.name} cover`}
+            loading="lazy"
+            class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
+          />
+          <span class="game-info">
+            <strong>{g.name}</strong>
+            <span class="text-accent tabular-nums">{g.hours.toLocaleString("en-US")} hrs</span>
+            <span class="flex items-center gap-1 text-neutral">
+              {#if g.recent}<IconController class="size-3.5 text-accent" />{/if}
+              {#if g.lastPlayed}{watchedOn(g.lastPlayed)}{/if}
+            </span>
+          </span>
+        </a>
+      </li>
+    {/each}
+  </ul>
+{/snippet}
 
 <Section text={hacker.on ? "$ ps aux --afk" : "When I'm Not Coding"} href="not-coding" compactEnd>
   <div class="media-journal">
@@ -184,46 +212,43 @@
   <div class="activity-section games-journal">
     <div class="activity-heading">
       <h3 class="activity-title">
-        <IconSteam class="size-6 text-accent" /> Games in the <span>rotation</span>
+        <IconController class="size-6 text-accent" /> Games in the <span>rotation</span>
       </h3>
-      <a
-        href={`https://steamcommunity.com/profiles/${steamId}`}
-        target="_blank"
-        class="text-sm text-neutral hover:text-primary"
-      >
-        Steam <span aria-hidden="true"><LinkIcon /></span>
-      </a>
     </div>
-    {#if gaming.games.length}
-      <ul class="game-shelf">
-        {#each gaming.games as g, i}
-          <li>
-            <a href={g.link} target="_blank" class="game-entry group" title={g.name}>
-              <img
-                src={g.cover}
-                alt={`${g.name} cover`}
-                loading="lazy"
-                class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
-              />
-              <span class="game-info">
-                <strong>{g.name}</strong>
-                <span class="text-accent tabular-nums">{g.hours.toLocaleString("en-US")} hrs</span>
-                <span class="flex items-center gap-1 text-neutral">
-                  {#if g.recent}<IconController class="size-3.5 text-accent" />{/if}
-                  {#if g.lastPlayed}{watchedOn(g.lastPlayed)}{/if}
-                </span>
-              </span>
-            </a>
-          </li>
-        {/each}
-      </ul>
-    {:else}
-      <p class="rounded-2xl border border-neutral/20 p-5 text-neutral">
-        {gaming.missingKey
-          ? "Games appear here once STEAM_API_KEY is set in .env."
-          : "Steam didn't respond. Try refreshing in a minute."}
-      </p>
-    {/if}
+    <div class="game-columns">
+      <div>
+        <a
+          href={`https://steamcommunity.com/profiles/${steamId}`}
+          target="_blank"
+          class="game-platform"
+        >
+          <IconSteam class="size-4 text-accent" /> Steam <span aria-hidden="true"><LinkIcon /></span>
+        </a>
+        {#if gaming.games.length}
+          {@render shelf(gaming.games)}
+        {:else}
+          <p class="text-sm text-neutral">
+            {gaming.missingKey
+              ? "Games appear here once STEAM_API_KEY is set in .env."
+              : "Steam didn't respond. Try refreshing in a minute."}
+          </p>
+        {/if}
+      </div>
+      <div>
+        <a
+          href={`https://www.xbox.com/en-US/play/user/${encodeURIComponent(xboxGamertag)}`}
+          target="_blank"
+          class="game-platform"
+        >
+          <IconXbox class="size-4 text-accent" /> Xbox <span aria-hidden="true"><LinkIcon /></span>
+        </a>
+        {#if xboxGames.length}
+          {@render shelf(xboxGames)}
+        {:else}
+          <p class="text-sm text-neutral">Xbox didn't respond. Try refreshing in a minute.</p>
+        {/if}
+      </div>
+    </div>
   </div>
 
   </div>
@@ -278,6 +303,9 @@
   .film-signals { display: flex; align-items: center; gap: 0.1rem; color: var(--color-neutral); }
   .film-signals :global(svg) { width: 0.7rem; height: 0.7rem; }
   .film-watched { color: var(--color-neutral); font-variant-numeric: tabular-nums; }
+  .game-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  .game-platform { display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1rem; color: var(--color-neutral); font-size: 0.85rem; }
+  .game-platform:hover { color: var(--color-primary); }
   .game-shelf { display: grid; gap: 0.9rem; }
   .game-entry { display: flex; gap: 0.75rem; align-items: center; }
   .game-entry img { width: 1.8rem; height: 2.5rem; border-radius: 0.25rem; flex-shrink: 0; }

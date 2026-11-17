@@ -25,7 +25,7 @@ export const SITE_CONFIG: SiteConfig = {
   ],
   socialImage: "/zen-og.png",
   canonicalURL: "https://dev.asternberg.xyz",
-  activity: { letterboxd: "yoyojesus", lastfm: "yoyojesus", steam: "76561198820308988", github: "yoyojesus" },
+  activity: { letterboxd: "yoyojesus", lastfm: "yoyojesus", steam: "76561198820308988", xbox: "Yoyojesus", github: "yoyojesus" },
 };
 
 export const SITE_CONTENT: SiteContent = {
@@ -642,9 +642,12 @@ export const SITE_CONTENT: SiteContent = {
           { name: "TypeScript", icon: "devicon-typescript-plain colored", href: "https://www.typescriptlang.org/" },
           { name: "TailwindCSS", icon: "devicon-tailwindcss-plain colored", href: "https://tailwindcss.com/" },
           { name: "ShadCN", icon: "https://ui.shadcn.com/favicon.ico", href: "https://ui.shadcn.com/" },
+          { name: "Lucide", icon: "https://api.iconify.design/simple-icons/lucide.svg?color=%23f56565", href: "https://lucide.dev/" },
           { name: "Drizzle", icon: "https://orm.drizzle.team/favicon.ico", href: "https://orm.drizzle.team/" },
           { name: "PostgreSQL", icon: "devicon-postgresql-plain colored", href: "https://www.postgresql.org/" },
+          { name: "Python", icon: "devicon-python-plain colored", href: "https://www.python.org/" },
           { name: "Flask", icon: "devicon-flask-original colored", href: "https://flask.palletsprojects.com/" },
+          { name: "PyTorch", icon: "devicon-pytorch-original colored", href: "https://pytorch.org/" },
           { name: "Playwright", icon: "devicon-playwright-plain colored", href: "https://playwright.dev/" },
           { name: "Typst", icon: "https://typst.app/favicon.ico", href: "https://typst.app/", trying: true },
           { name: "OpenAI API", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg", href: "https://openai.com/api/", trying: true },
@@ -659,6 +662,7 @@ export const SITE_CONTENT: SiteContent = {
           { name: "Spotify", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg", href: "https://open.spotify.com/" },
           { name: "Obsidian", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/obsidian.svg", href: "https://obsidian.md/" },
           { name: "Discord", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg", href: "https://discord.com/" },
+          { name: "Steam", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/steam.svg", href: "https://store.steampowered.com/" },
         ],
       },
     ],
@@ -737,6 +741,7 @@ export const SITE_CONTENT: SiteContent = {
       { name: "YouTube", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/youtube.svg", href: "https://www.youtube.com/@yoyojesus" },
       { name: "F1", icon: "https://api.iconify.design/simple-icons/f1.svg?color=%23e10600", href: "https://www.formula1.com/" },
       { name: "Xbox", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/xbox.svg", href: "https://www.xbox.com/" },
+      { name: "Fire Emblem Heroes", label: "FE Heroes", icon: "https://www.google.com/s2/favicons?domain=fire-emblem-heroes.com&sz=64", href: "https://fire-emblem-heroes.com/" },
       // Security & money
       { name: "Google Authenticator", label: "G Auth", icon: "https://api.iconify.design/simple-icons/googleauthenticator.svg?color=%23ffffff", href: "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" },
       { name: "Microsoft Authenticator", label: "MS Auth", icon: "https://api.iconify.design/arcticons/microsoft-authenticator.svg?color=%234ea1ff", href: "https://www.microsoft.com/security/mobile-authenticator-app" },

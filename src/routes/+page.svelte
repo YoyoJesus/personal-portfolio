@@ -11,7 +11,7 @@
 
   let { data } = $props();
 
-  const { letterboxd, lastfm, steam } = SITE_CONFIG.activity;
+  const { letterboxd, lastfm, steam, xbox } = SITE_CONFIG.activity;
 
   // svelte-ignore state_referenced_locally
   let films = $state(data.films);
@@ -41,18 +41,34 @@
 
 <Hero {...SITE_CONTENT.hero} hackerHero={SITE_CONTENT.hackerHero} />
 <div class="content-column">
-<HeroActivity contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
-<Experience text="Work Experience" href="experience" experience={SITE_CONTENT.experience} />
-<Education entries={SITE_CONTENT.education} />
-<Experience
-  text="Leadership / Volunteering"
-  hackerText="$ cat leadership.log"
-  href="leadership"
-  experience={SITE_CONTENT.leadership}
-/>
-<Projects projects={SITE_CONTENT.projects} hackerOrder={SITE_CONTENT.hackerProjectOrder} />
-<Workspace workspace={SITE_CONTENT.workspace} hackerWorkspace={SITE_CONTENT.hackerWorkspace} mobile={SITE_CONTENT.mobile} />
-<OffTheClock {films} {listening} letterboxdUser={letterboxd} lastfmUser={lastfm} gaming={data.gaming} steamId={steam} />
-<About {...SITE_CONTENT.about} hackerDescription={SITE_CONTENT.hackerAbout.description} name={SITE_CONTENT.hero.name} />
-
+  <HeroActivity contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
+  <Experience text="Work Experience" href="experience" experience={SITE_CONTENT.experience} />
+  <Education entries={SITE_CONTENT.education} />
+  <Experience
+    text="Leadership / Volunteering"
+    hackerText="$ cat leadership.log"
+    href="leadership"
+    experience={SITE_CONTENT.leadership}
+  />
+  <Projects projects={SITE_CONTENT.projects} hackerOrder={SITE_CONTENT.hackerProjectOrder} />
+  <Workspace
+    workspace={SITE_CONTENT.workspace}
+    hackerWorkspace={SITE_CONTENT.hackerWorkspace}
+    mobile={SITE_CONTENT.mobile}
+  />
+  <OffTheClock
+    {films}
+    {listening}
+    letterboxdUser={letterboxd}
+    lastfmUser={lastfm}
+    gaming={data.gaming}
+    steamId={steam}
+    xboxGames={data.xboxGames}
+    xboxGamertag={xbox}
+  />
+  <About
+    {...SITE_CONTENT.about}
+    hackerDescription={SITE_CONTENT.hackerAbout.description}
+    name={SITE_CONTENT.hero.name}
+  />
 </div>
