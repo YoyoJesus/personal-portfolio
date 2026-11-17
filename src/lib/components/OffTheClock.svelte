@@ -51,7 +51,7 @@
   onkeydown={(e) => e.key === "Escape" && (openReview = null)}
 />
 
-<Section text={hacker.on ? "$ ps aux --afk" : "When I'm Not Coding"} href="not-coding">
+<Section text={hacker.on ? "$ ps aux --afk" : "When I'm Not Coding"} href="not-coding" compactEnd>
   <div class="media-journal">
   <div class="activity-section film-journal">
     <div class="activity-heading">
@@ -245,14 +245,14 @@
         {/each}
       </ul>
       {#if listening.topArtists.length}
-        <div class="artist-line"><p>Top artists this month</p><ul>{#each listening.topArtists as artist}<li><a href={artist.link} target="_blank" rel="noopener noreferrer" title={`${artist.plays} plays`}>{artist.name}</a></li>{/each}</ul></div>
+        <div class="artist-line"><p>Top artists this month</p><ul>{#each listening.topArtists as artist}<li><a href={artist.link} target="_blank" rel="noopener noreferrer" title={`${artist.plays} plays`}>{#if artist.art}<img src={artist.art} alt="" loading="lazy" width="48" height="48" onerror={(event) => { event.currentTarget.setAttribute("hidden", ""); }} />{/if}<span>{artist.name}</span></a></li>{/each}</ul></div>
       {/if}
     {:else}<p class="text-neutral">Recent listening is unavailable. Try again in a minute or visit Last.fm.</p>{/if}
   </div>
 
   <!-- One row: labels stay short, and narrow screens scroll the row sideways instead of wrapping. -->
   <ul
-    class="mt-12 flex [scrollbar-width:none] gap-x-4 overflow-x-auto border-t border-neutral/20 pt-5 text-xs whitespace-nowrap text-neutral sm:justify-between [&::-webkit-scrollbar]:hidden"
+    class="mt-6 flex [scrollbar-width:none] gap-x-4 overflow-x-auto border-t border-neutral/20 pt-5 text-xs whitespace-nowrap text-neutral sm:justify-between [&::-webkit-scrollbar]:hidden"
   >
     <li class="flex shrink-0 items-center gap-1.5"><span class="text-accent">★★★½</span> My rating</li>
     <li class="flex shrink-0 items-center gap-1.5"><IconReview class="size-3.5 text-accent" /> Review</li>
@@ -292,9 +292,11 @@
   .album-link p { margin-top: 0.3rem; color: var(--color-neutral); font-size: 0.85rem; }
   .playing { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--color-accent); font-size: 0.75rem; margin-top: 0.4rem; }
   .playing :global(svg) { width: 1rem; height: 1rem; }
-  .artist-line { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: baseline; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--color-edge); font-size: 0.85rem; }
+  .artist-line { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--color-edge); font-size: 0.85rem; }
   .artist-line p { color: var(--color-neutral); }
   .artist-line ul { display: flex; flex-wrap: wrap; gap: 0.75rem 1.5rem; }
+  .artist-line a { display: flex; align-items: center; gap: 0.65rem; }
+  .artist-line img { width: 3rem; height: 3rem; border-radius: 50%; object-fit: cover; }
   .artist-line a:hover { color: var(--color-accent); }
   :global(#not-coding .group img) { transition: transform 400ms var(--ease-out-expo); }
   :global(#not-coding .group:hover img) { transform: translateY(-3px); }

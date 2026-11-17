@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { kineticLetters } from "$lib/actions/kineticLetters";
   import NoiseField from "./NoiseField.svelte";
   import type { HackerHeroProps, HeroProps } from "$lib/types";
   import { HACKER_ALIAS, hacker } from "$lib/hacker.svelte";
@@ -12,43 +13,6 @@
   // Each word on its own line, each letter its own span so it can stagger in and react to the cursor.
   const words = $derived(displayName.split(" "));
 
-  let nameEl: HTMLElement | undefined = $state();
-
-  // Letters swell toward the cursor: the variable font's weight axis follows pointer distance.
-  $effect(() => {
-    const el = nameEl;
-    if (!el || hacker.on) return;
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (!matchMedia("(hover: hover) and (pointer: fine)").matches) return;
-
-    let frame = 0;
-    const letters = () => el.querySelectorAll<HTMLElement>(".ch");
-    const move = (e: PointerEvent) => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        for (const el of letters()) {
-          const r = el.getBoundingClientRect();
-          const dx = e.clientX - (r.left + r.width / 2);
-          const dy = e.clientY - (r.top + r.height / 2);
-          const reach = r.height * 1.1;
-          const pull = Math.exp(-(dx * dx + dy * dy) / (2 * reach * reach));
-          el.style.setProperty("--w", String(Math.round(480 + 420 * pull)));
-        }
-      });
-    };
-    const reset = () => {
-      cancelAnimationFrame(frame);
-      for (const el of letters()) el.style.removeProperty("--w");
-    };
-    const hero = el.closest("section")!;
-    hero.addEventListener("pointermove", move);
-    hero.addEventListener("pointerleave", reset);
-    return () => {
-      cancelAnimationFrame(frame);
-      hero.removeEventListener("pointermove", move);
-      hero.removeEventListener("pointerleave", reset);
-    };
-  });
 </script>
 
 <section id="hero" class="hero" aria-labelledby="hero-name">
@@ -57,11 +21,11 @@
 
   <div class="shell hero-inner">
     {#key displayName}
-      <h1 id="hero-name" class="display hero-name glitch" data-text={displayName} aria-label={displayName} bind:this={nameEl}>
+      <h1 id="hero-name" class="display hero-name glitch" data-text={displayName} aria-label={displayName} use:kineticLetters={{ enabled: !hacker.on, baseline: 480 }}>
         {#each words as word, w}
           <span class="word" aria-hidden="true">
             {#each word.split("") as ch, i}
-              <span class="ch" style="--i: {w * 7 + i}">{ch}</span>
+              <span class="ch" data-kinetic-letter style="--i: {w * 7 + i}">{ch}</span>
             {/each}
           </span>
         {/each}
