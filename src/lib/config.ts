@@ -54,11 +54,27 @@ export const SITE_CONTENT: SiteContent = {
     {
       company: "Kent State University",
       logo: "/logos/kent-state-cs.png",
-      position: "Undergraduate Researcher",
+      position: "Undergraduate Research Assistant",
       startDate: "October 2026",
       endDate: "Present",
-      workType: "Research",
-      summary: "",
+      workType: "Research - Paid",
+      summary: [
+        "Contribute to a state-funded applied AI research project with a faculty-led team, working under a confidentiality agreement.",
+      ],
+    },
+    {
+      company: "Kent State University",
+      logo: "/logos/kent-state-cs.png",
+      position: "Choose Ohio First Undergraduate Researcher",
+      startDate: "August 2023",
+      endDate: "Present",
+      workType: "Research - Scholarship",
+      summary: [
+        "Built Bluetooth wearable badges and a Python pipeline that classify meeting effectiveness, reaching 93.8% accuracy with Random Forest on 16 recorded meetings and winning Best Presentation at the 2026 Choose Ohio First Research Symposium.",
+        "Compared dashcam video and wristband GSR for detecting driving stress, fine-tuning YOLOv11 on BDD100K and benchmarking six classifiers; the video and OBD model reached 91.5% accuracy and 0.98 AUC.",
+        "Ran VR driving-simulator studies with Empatica E4 wristbands and analyzed motion and electrodermal activity data to model driving stress and cybersickness susceptibility in WEKA.",
+        "Moved the badges' speaker detection on-device as TinyML scoring and built an observer panel that records ground-truth labels for evaluation.",
+      ],
     },
     {
       company: "Awetomaton Ltd",
