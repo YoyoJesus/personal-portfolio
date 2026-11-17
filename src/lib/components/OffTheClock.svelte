@@ -262,7 +262,7 @@
         {#each listening.recent as track}
           <li>
             <a href={track.link} target="_blank" rel="noopener noreferrer" class="album-link group">
-              {#if track.art}<img src={track.art} alt="" loading="lazy" width="220" height="220" />{:else}<span class="album-fallback"><IconMusicNote /></span>{/if}
+              {#if track.art}<img src={track.art} alt="" loading="lazy" width="220" height="220" class="border border-neutral/20 transition-all group-hover:ring-2 group-hover:ring-accent" />{:else}<span class="album-fallback border border-neutral/20 transition-all group-hover:ring-2 group-hover:ring-accent"><IconMusicNote /></span>{/if}
               <h4 title={track.name}>{track.name.split(" (")[0]}</h4><p>{track.artist}</p>
               {#if track.nowPlaying}<span class="playing"><IconPlaying /> Playing now</span>{/if}
             </a>
