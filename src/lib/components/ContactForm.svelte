@@ -99,7 +99,7 @@
         type="submit"
         id="submit-btn"
         disabled={sending}
-        class="w-full rounded-full bg-primary px-8 py-4 font-medium text-white transition-all hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
+        class="w-full rounded-full bg-primary px-8 py-4 font-medium text-black transition-all hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
       >
         {sending ? "Sending..." : "Send Message"}
       </button>

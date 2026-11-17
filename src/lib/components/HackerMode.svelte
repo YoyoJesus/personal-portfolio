@@ -103,11 +103,11 @@
 <svelte:window {onkeydown} onhashchange={checkHash} />
 
 {#if hacker.on}
-  <div class="scanlines" aria-hidden="true"></div>
+  <div class="interference" aria-hidden="true"></div>
 
   <button
     type="button"
-    class="fixed bottom-4 left-4 z-[70] cursor-pointer border border-primary/60 bg-black/80 px-3 py-1.5 text-xs text-primary backdrop-blur-sm transition-colors hover:bg-primary hover:text-white"
+    class="fixed bottom-4 left-4 z-[70] cursor-pointer border border-primary/60 bg-black/80 px-3 py-1.5 text-xs text-primary backdrop-blur-sm transition-colors hover:bg-primary hover:text-black"
     onclick={() => setHacker(false)}
   >
     exit hacker mode
@@ -127,18 +127,24 @@
 {/if}
 
 <style>
-  .scanlines {
+  .interference {
     position: fixed;
     inset: 0;
     z-index: 60;
     pointer-events: none;
-    background:
-      repeating-linear-gradient(to bottom, transparent 0 2px, rgb(0 0 0 / 0.1) 2px 3px),
-      radial-gradient(ellipse at center, transparent 65%, rgb(0 0 0 / 0.3) 100%);
+    overflow: hidden;
   }
-
-  .scanlines::after { position: absolute; inset: 0; content: ""; background: linear-gradient(transparent 45%, rgb(224 17 27 / 0.035) 50%, transparent 55%); animation: scan-drift 14s linear infinite; }
-  @keyframes scan-drift { from { transform: translateY(-100%); } to { transform: translateY(100%); } }
+  .interference::after {
+    position: absolute;
+    inset: -30% 0;
+    content: "";
+    background: linear-gradient(transparent 46%, rgb(var(--rgb-volt) / 0.035) 49.8%, rgb(var(--rgb-ember) / 0.07) 50%, transparent 50.3%);
+    animation: signal-sweep 18s linear infinite;
+  }
+  @keyframes signal-sweep {
+    0% { transform: translateY(-65%); }
+    85%, 100% { transform: translateY(65%); }
+  }
   .boot { overflow-y: auto; }
   .boot-field { position: absolute; inset: 0; opacity: 0.3; pointer-events: none; }
   .boot-content { position: relative; display: grid; align-content: center; gap: 2rem; max-width: 88rem; min-height: 100svh; margin-inline: auto; padding: 5rem clamp(1.25rem, 4vw, 3.5rem) 7rem; }
@@ -149,7 +155,7 @@
   .boot-skip { position: absolute; bottom: 1.5rem; right: clamp(1.25rem, 4vw, 3.5rem); border: 1px solid var(--color-edge-strong); border-radius: 999px; padding: 0.75rem 1.25rem; font-size: 0.8rem; color: var(--color-white); cursor: pointer; }
   .boot-skip:hover { border-color: var(--color-primary); }
   @media (min-width: 900px) { .boot-content { grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem; } }
-  @media (prefers-reduced-motion: reduce) { .scanlines::after { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .interference { display: none; } }
   .cursor {
     color: var(--color-primary);
     animation: blink 1s steps(1) infinite;

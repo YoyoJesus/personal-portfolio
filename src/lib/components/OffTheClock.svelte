@@ -28,7 +28,6 @@
 
   let { films, listening, letterboxdUser, lastfmUser, gaming, steamId }: Props = $props();
 
-  // Phones only get the first three films and games.
   const watchedOn = (d: string) =>
     new Date(`${d}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
   const stars = (rating: number | null) =>
@@ -71,7 +70,7 @@
       <ul class="film-shelf">
         {#each films as f, i}
           <li class="film-entry relative">
-            <a href={f.link} target="_blank" class="group block" title={`${f.title} (${f.year})`}>
+            <a href={f.link} target="_blank" class="group block" title={f.year ? `${f.title} (${f.year})` : f.title}>
               <img
                 src={f.poster}
                 alt={`${f.title} poster`}
@@ -79,9 +78,10 @@
                 class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
               />
             </a>
-            <p class="film-name">{f.title} <span>({f.year})</span></p>
-            <div class="mt-1.5 flex flex-wrap items-center justify-between gap-x-1 text-xs whitespace-nowrap">
-              <span class="text-accent">{stars(f.rating)}</span>
+            <p class="film-name" title={f.title}>{f.title}</p>
+            <p class="film-year">{f.year || "Year unavailable"}</p>
+            <div class="film-rating">
+              <span class="text-accent" aria-label={f.rating == null ? "Not rated" : `${f.rating} out of 5 stars`}>{f.rating == null ? "Not rated" : stars(f.rating)}</span>
               <span class="flex items-center gap-1 text-neutral">
                 {#if f.review}
                   <button
@@ -97,9 +97,9 @@
                 {/if}
                 {#if f.liked}<IconHeart class="size-3 text-primary" />{/if}
                 {#if f.rewatch}<IconRewatch class="size-3" />{/if}
-                {#if f.watched}{watchedOn(f.watched)}{/if}
               </span>
             </div>
+            <p class="film-watched">{#if f.watched}<time datetime={f.watched}>{watchedOn(f.watched)}</time>{:else}Not logged{/if}</p>
             {#if f.review}
               <!-- Phones get a full-width button; the info row is too narrow for the inline icon. -->
               <button
@@ -131,7 +131,7 @@
                   >
                     <div class="flex items-start justify-between gap-3">
                       <p class="text-sm font-semibold text-white">
-                        {f.title} <span class="font-normal text-neutral">({f.year})</span>
+                        {f.title}{#if f.year} <span class="font-normal text-neutral">({f.year})</span>{/if}
                       </p>
                       <button
                         type="button"
@@ -272,8 +272,12 @@
   .activity-title { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; color: var(--color-white); font-family: var(--font-serif); font-size: clamp(1.7rem, 2.8vw, 2.25rem); line-height: 1.1; font-weight: 650; letter-spacing: -0.03em; }
   .activity-title span { color: var(--color-neutral); font-weight: 400; }
   .film-shelf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 0.75rem; }
-  .film-name { margin-top: 0.6rem; color: var(--color-white); font-family: var(--font-serif); font-size: 0.9rem; line-height: 1.35; }
-  .film-name span { font-size: 0.7rem; color: var(--color-neutral); }
+  .film-entry { min-width: 0; }
+  .film-name { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; height: 2.7em; overflow-wrap: anywhere; margin-top: 0.6rem; color: var(--color-white); font-family: var(--font-serif); font-size: 0.9rem; line-height: 1.35; }
+  .film-year, .film-watched { font-size: 0.7rem; line-height: 1.4; color: var(--color-neutral); font-variant-numeric: tabular-nums; }
+  .film-year { margin-top: 0.3rem; }
+  .film-rating { display: flex; align-items: center; justify-content: space-between; gap: 0.25rem; min-height: 1.4rem; margin-top: 0.35rem; font-size: 0.72rem; white-space: nowrap; }
+  .film-watched { margin-top: 0.2rem; }
   .game-shelf { display: grid; gap: 0.9rem; }
   .game-entry { display: flex; gap: 0.75rem; align-items: center; }
   .game-entry img { width: 1.8rem; height: 2.5rem; border-radius: 0.25rem; flex-shrink: 0; }

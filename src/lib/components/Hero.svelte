@@ -148,7 +148,7 @@
   /* The surname sits at the light end of the weight axis; the cursor pulls letters back to heavy. */
   .word:nth-child(2) {
     --base: 400;
-    color: var(--color-dim);
+    color: var(--color-accent);
   }
   .ch {
     display: inline-block;

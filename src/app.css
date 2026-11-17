@@ -4,20 +4,20 @@
   --font-sans: "Be Vietnam Pro", system-ui, sans-serif;
   --font-serif: "Gabarito Variable", ui-serif, serif;
 
-  --color-primary: #6d6bff;
-  --color-neutral: #a3a2b8;
-  --color-white: #ecebf5;
-  --color-black: #07070b;
-  --color-accent: #a5b4ff;
-  --color-muted: #6e6d85;
-  --color-surface: #0f0f16;
-  --color-surface-raised: #16161f;
-  --color-edge: #20202c;
-  --color-edge-strong: #33334a;
-  --color-edge-hover: #a5a4ff;
-  --color-underline: #a5a4ff;
-  --color-soft: #bab9cd;
-  --color-chip: #cecded;
+  --color-primary: #69b9ac;
+  --color-neutral: #b3b6c0;
+  --color-white: #efedf2;
+  --color-black: #10141c;
+  --color-accent: #69b9ac;
+  --color-muted: #8c93a5;
+  --color-surface: #242833;
+  --color-surface-raised: #30343f;
+  --color-edge: #343a47;
+  --color-edge-strong: #414653;
+  --color-edge-hover: #8bd0c3;
+  --color-underline: #8bd0c3;
+  --color-soft: #c3c6cf;
+  --color-chip: #d6d9df;
 
   --text-xs: 0.875rem;
   --text-xs--line-height: 1.125rem;
@@ -78,22 +78,22 @@ html::-webkit-scrollbar {
   scrollbar-width: none;  /* Firefox */
 }
 
-/* Hacker mode easter egg (Konami code, typing "hacker", or /#hacker) — Mr. Robot palette */
+/* Hacker mode uses phosphor green on blue-black. */
 html.hacker {
-  --color-primary: #e0111b;
-  --color-neutral: #8f8f8f;
-  --color-white: #f2f2f2;
-  --color-black: #050505;
-  --color-accent: #ff2d2d;
-  --color-muted: #5c0b0e;
-  --color-surface: #0e0e0e;
-  --color-surface-raised: #171717;
-  --color-edge: #2b0d0e;
-  --color-edge-strong: #4d1417;
-  --color-edge-hover: #e0111b;
-  --color-underline: #e0111b;
-  --color-soft: #b5b5b5;
-  --color-chip: #d9d9d9;
+  --color-primary: #a6ef67;
+  --color-neutral: #a9bfb2;
+  --color-white: #e5f2e7;
+  --color-black: #050e14;
+  --color-accent: #a6ef67;
+  --color-muted: #7c9e8b;
+  --color-surface: #0c1b21;
+  --color-surface-raised: #14282d;
+  --color-edge: #233b37;
+  --color-edge-strong: #35564a;
+  --color-edge-hover: #a6ef67;
+  --color-underline: #a6ef67;
+  --color-soft: #bacfc0;
+  --color-chip: #d1e5d6;
 
   --font-sans: ui-monospace, "JetBrains Mono", "Fira Code", SFMono-Regular, Menlo, Consolas, monospace;
   --font-serif: ui-monospace, "JetBrains Mono", "Fira Code", SFMono-Regular, Menlo, Consolas, monospace;
@@ -101,7 +101,7 @@ html.hacker {
 
 html.hacker ::selection {
   background: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-black);
 }
 
 /* Split-channel glitch on elements with a data-text attribute */
@@ -124,7 +124,7 @@ html.hacker .glitch::before {
 }
 
 html.hacker .glitch::after {
-  color: #3fd0ff;
+  color: #69c9c1;
   animation: glitch 2.3s infinite reverse steps(1);
   mix-blend-mode: screen;
 }
@@ -162,17 +162,17 @@ html.hacker .glitch::after {
   --color-fg: var(--color-white);
   --color-dim: var(--color-neutral);
   --color-ember: var(--color-accent);
-  --color-volt-soft: #a5a4ff;
+  --color-volt-soft: #8bd0c3;
   --color-line-strong: var(--color-edge-strong);
   --font-display: var(--font-serif);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --rgb-volt: 109 107 255;
-  --rgb-ember: 165 180 255;
-  --rgb-ink: 7 7 11;
+  --rgb-volt: 116 124 146;
+  --rgb-ember: 105 185 172;
+  --rgb-ink: 16 20 28;
 }
 html { background: var(--color-black); scroll-padding-top: 6rem; }
 body { color: var(--color-white); -webkit-font-smoothing: antialiased; }
-::selection { background: var(--color-primary); color: #fff; }
+::selection { background: var(--color-primary); color: var(--color-black); }
 :focus-visible { outline: 2px solid var(--color-volt-soft); outline-offset: 4px; }
 input, textarea { caret-color: var(--color-volt-soft); }
 a { text-underline-offset: 0.2em; }
@@ -182,11 +182,11 @@ a { text-underline-offset: 0.2em; }
 .display { font-family: var(--font-display); letter-spacing: -0.04em; line-height: 0.88; }
 .eyebrow { font-size: 0.8rem; font-weight: 500; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; border-radius: 999px; padding: 1rem 1.5rem; font-size: 0.9rem; font-weight: 500; line-height: 1.2; cursor: pointer; transition: background-color 200ms, color 200ms, border-color 200ms; }
-.btn-primary { background: var(--color-primary); color: #fff; }
+.btn-primary { background: var(--color-primary); color: var(--color-black); }
 .btn-primary:hover { background: var(--color-volt-soft); color: var(--color-black); }
 .btn-ghost { border: 1px solid var(--color-edge-strong); background: var(--color-black); color: var(--color-white); }
 .btn-ghost:hover { border-color: var(--color-volt-soft); color: var(--color-volt-soft); }
-html.hacker { --rgb-volt: 224 17 27; --rgb-ember: 255 90 90; --rgb-ink: 5 5 5; --color-volt-soft: #ff4d4d; }
+html.hacker { --rgb-volt: 166 239 103; --rgb-ember: 105 201 193; --rgb-ink: 5 14 20; --color-volt-soft: #baf88a; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }

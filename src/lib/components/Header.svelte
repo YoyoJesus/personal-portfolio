@@ -37,7 +37,7 @@
 <header class="fixed inset-x-0 top-0 z-50 mx-auto flex w-full justify-between border-b border-edge/60 bg-black/95 px-5 py-4 sm:px-8">
   <a href="/" aria-label="Home link">
     <img
-      class={["rounded-full", hacker.on && "ring-2 ring-primary/70"]}
+      class="rounded-xl"
       src={hacker.on ? HACKER_LOGO : siteLogo}
       width="45"
       height="45"

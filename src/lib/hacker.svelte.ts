@@ -4,7 +4,7 @@ export const HACKER_HOST = "Cr1tical0verflow";
 // Photo by Bermix Studio on Unsplash (Unsplash License), recolored red:
 // https://unsplash.com/photos/a-man-in-a-hoodie-using-a-laptop-computer-bCrM2e1M0a4
 export const HACKER_AVATAR = "/hacker-avatar.jpg";
-export const HACKER_LOGO = "/hacker-avatar-small.jpg";
+export const HACKER_LOGO = "/hacker-favicon.svg";
 export const HACKER_FAVICON = "/hacker-favicon.svg";
 export const HACKER_HASHES = ["#hacker", "#robot"];
 const STORAGE_KEY = "hackermode";
