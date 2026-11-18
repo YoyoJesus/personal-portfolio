@@ -73,7 +73,7 @@
             <strong>{g.name}</strong>
             <span class="text-accent tabular-nums">{g.hours.toLocaleString("en-US")} hrs</span>
             <span class="flex items-center gap-1 text-neutral">
-              {#if g.recent}<IconController class="size-3.5 text-accent" />{/if}
+              {#if g.recent}<span class="tip tip-start" role="img" aria-label="Played in the last 2 weeks" data-tip="Played in the last 2 weeks"><IconController class="size-3.5 text-accent" /></span>{/if}
               {#if g.lastPlayed}{watchedOn(g.lastPlayed)}{/if}
             </span>
           </span>
@@ -112,7 +112,12 @@
             </a>
             <p class="film-name" title={f.year ? `${f.title} (${f.year})` : f.title}>{f.title}{#if f.year}{" "}<span class="film-year">({f.year})</span>{/if}</p>
             <div class="film-rating">
-              <span class="text-accent" aria-label={f.rating == null ? "Not rated" : `${f.rating} out of 5 stars`}>{f.rating == null ? "NR" : stars(f.rating)}</span>
+              <span
+                class="tip tip-start text-accent"
+                role="img"
+                aria-label={f.rating == null ? "Not rated" : `My rating: ${f.rating} out of 5`}
+                data-tip={f.rating == null ? "Not rated" : `My rating: ${f.rating} / 5`}>{f.rating == null ? "NR" : stars(f.rating)}</span
+              >
               <span class="film-signals">
                 {#if f.review}
                   <button
@@ -121,13 +126,14 @@
                     aria-expanded={openReview === i}
                     aria-controls="review-{i}"
                     onclick={() => toggleReview(i)}
-                    class="review-pop rounded-sm text-accent transition-transform hover:scale-125 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent max-sm:hidden"
+                    data-tip="Read my review"
+                    class="review-pop tip rounded-sm text-accent transition-transform hover:scale-125 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent max-sm:hidden"
                   >
                     <IconReview class="size-3.5" />
                   </button>
                 {/if}
-                {#if f.liked}<IconHeart class="size-3 text-primary" />{/if}
-                {#if f.rewatch}<IconRewatch class="size-3" />{/if}
+                {#if f.liked}<span class="tip" role="img" aria-label="Liked" data-tip="Liked"><IconHeart class="size-3 text-primary" /></span>{/if}
+                {#if f.rewatch}<span class="tip" role="img" aria-label="Rewatch" data-tip="Rewatch"><IconRewatch class="size-3" /></span>{/if}
               </span>
               <span class="film-watched">{#if f.watched}<time datetime={f.watched}>{watchedOn(f.watched)}</time>{/if}</span>
             </div>
@@ -282,7 +288,7 @@
     <div class="activity-section favorites-journal">
       <div class="activity-heading">
         <h3 class="activity-title">
-          {#if hacker.on}<span class="font-mono text-accent">$ sort -r favorites</span>{:else}<IconTrophy class="size-6 text-accent" /> All-time <span>favorites</span>{/if}
+          {#if hacker.on}<span class="font-mono text-accent">$ sort -r favorites</span>{:else}<IconTrophy class="size-6 text-accent" /> All-time <span>favorite games</span>{/if}
         </h3>
       </div>
       <ol class="favorite-shelf">
@@ -329,19 +335,6 @@
     {:else}<p class="text-neutral">Recent listening is unavailable. Try again in a minute or visit Last.fm.</p>{/if}
   </div>
 
-  <!-- One row: labels stay short, and narrow screens scroll the row sideways instead of wrapping. -->
-  <ul
-    class="mt-6 flex [scrollbar-width:none] gap-x-4 overflow-x-auto border-t border-neutral/20 pt-5 text-xs whitespace-nowrap text-neutral sm:justify-between [&::-webkit-scrollbar]:hidden"
-  >
-    <li class="flex shrink-0 items-center gap-1.5"><span class="text-accent">★★★½</span> My rating</li>
-    <li class="flex shrink-0 items-center gap-1.5"><IconReview class="size-3.5 text-accent" /> Review</li>
-    <li class="flex shrink-0 items-center gap-1.5"><IconHeart class="size-3.5 text-primary" /> Liked</li>
-    <li class="flex shrink-0 items-center gap-1.5"><IconRewatch class="size-3.5" /> Rewatch</li>
-    <li class="flex shrink-0 items-center gap-1.5"><IconPlaying class="size-4 text-accent" /> Now playing</li>
-    <li class="flex shrink-0 items-center gap-1.5">
-      <IconController class="size-3.5 text-accent" /> Played in last 2 weeks
-    </li>
-  </ul>
 </Section>
 
 <style>
@@ -359,6 +352,13 @@
   .top-four { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-edge); }
   .top-four-title { margin-bottom: 1rem; color: var(--color-neutral); font-size: 0.85rem; }
   .top-four-shelf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 0.75rem; }
+  .tip { position: relative; }
+  span.tip { display: inline-flex; }
+  .tip::after { content: attr(data-tip); position: absolute; bottom: calc(100% + 6px); left: 50%; z-index: 30; translate: -50% 2px; padding: 0.3rem 0.5rem; border: 1px solid var(--color-edge-strong); border-radius: 0.375rem; background: var(--color-surface-raised); color: var(--color-white); font-size: 0.7rem; line-height: 1.2; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 120ms, translate 120ms; }
+  .tip-start::after { left: 0; translate: 0 2px; }
+  .tip:hover::after, .tip:focus-visible::after { opacity: 1; translate: -50% 0; }
+  .tip-start:hover::after, .tip-start:focus-visible::after { translate: 0 0; }
+  :global(html.hacker) .tip::after { border-radius: 0; border-color: var(--color-primary); }
   .film-watched { color: var(--color-neutral); font-variant-numeric: tabular-nums; }
   .game-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
   .game-platform { display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1rem; color: var(--color-neutral); font-size: 0.85rem; }
