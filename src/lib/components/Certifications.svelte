@@ -33,7 +33,7 @@
             {/if}
             <h4>{cert.name}</h4>
             <p class="dates">
-              {cert.issued}{#if cert.expires}<span class="expires">, expires {cert.expires}</span>{/if}
+              {cert.issued}{#if cert.expires}<span class="expires">Expires {cert.expires}</span>{/if}
             </p>
             {#if cert.summary}<p class="summary">{cert.summary}</p>{/if}
             {#if cert.credentialId || cert.credentialUrl}
@@ -118,6 +118,7 @@
     white-space: nowrap;
   }
   .expires {
+    display: block;
     color: var(--color-muted);
   }
   .summary {
@@ -166,7 +167,6 @@
       margin-top: 0;
       padding-top: 0.3rem;
       text-align: right;
-      white-space: normal;
     }
     .issuer {
       grid-template-columns: 11rem minmax(0, 1fr);
