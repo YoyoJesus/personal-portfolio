@@ -1,5 +1,5 @@
 import { SITE_CONFIG } from "$lib/config";
-import { getRecentFilms } from "$lib/server/letterboxd";
+import { getFavoriteFilms, getRecentFilms } from "$lib/server/letterboxd";
 import { getListening } from "$lib/server/lastfm";
 import { getTopGames } from "$lib/server/steam";
 import { getXboxGames } from "$lib/server/xbox";
@@ -7,9 +7,10 @@ import { getContributions } from "$lib/server/github";
 import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ setHeaders }) => {
-  const { letterboxd, lastfm, steam, github } = SITE_CONFIG.activity;
-  const [films, listening, gaming, xboxGames, contributions] = await Promise.all([
+  const { letterboxd, letterboxdFavorites, lastfm, steam, github } = SITE_CONFIG.activity;
+  const [films, favoriteFilms, listening, gaming, xboxGames, contributions] = await Promise.all([
     getRecentFilms(letterboxd, 5),
+    getFavoriteFilms(letterboxdFavorites),
     getListening(lastfm),
     getTopGames(steam),
     getXboxGames(),
@@ -20,5 +21,5 @@ export const load: PageServerLoad = async ({ setHeaders }) => {
   setHeaders({
     "cache-control": listening.failed ? "no-store" : "public, max-age=0, s-maxage=60, stale-while-revalidate=300",
   });
-  return { films, listening, gaming, xboxGames, contributions };
+  return { films, favoriteFilms, listening, gaming, xboxGames, contributions };
 };

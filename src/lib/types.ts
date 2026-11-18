@@ -6,7 +6,15 @@ export interface SiteConfig extends HeaderProps {
   socialLinks: { text: string; href: string }[];
   socialImage: string;
   canonicalURL?: string;
-  activity: { letterboxd: string; lastfm: string; steam: string; xbox: string; github: string };
+  activity: {
+    letterboxd: string;
+    /** Letterboxd film slugs for the profile's top four, in display order. */
+    letterboxdFavorites: string[];
+    lastfm: string;
+    steam: string;
+    xbox: string;
+    github: string;
+  };
 }
 
 export interface SiteContent {
@@ -23,6 +31,17 @@ export interface SiteContent {
   workspace: WorkspaceProps;
   hackerWorkspace: WorkspaceProps;
   mobile: MobileProps;
+  /** All-time favorite games, in ranked order. */
+  favoriteGames: FavoriteGame[];
+}
+
+export interface FavoriteGame {
+  name: string;
+  year: number;
+  platform: string;
+  /** Path to a 2:3 cover in /static. */
+  cover: string;
+  href: string;
 }
 
 export interface HeroProps {

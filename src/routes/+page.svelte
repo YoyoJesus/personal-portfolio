@@ -58,6 +58,7 @@
   />
   <OffTheClock
     {films}
+    favoriteFilms={data.favoriteFilms}
     {listening}
     letterboxdUser={letterboxd}
     lastfmUser={lastfm}
@@ -65,6 +66,7 @@
     steamId={steam}
     xboxGames={data.xboxGames}
     xboxGamertag={xbox}
+    favoriteGames={SITE_CONTENT.favoriteGames}
   />
   <About
     {...SITE_CONTENT.about}

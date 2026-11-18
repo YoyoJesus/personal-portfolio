@@ -60,3 +60,42 @@ export async function getRecentFilms(user: string, limit = 10): Promise<Film[]> 
     return [];
   }
 }
+
+export interface FavoriteFilm {
+  title: string;
+  year: string;
+  poster: string;
+  link: string;
+}
+
+// The posters and titles rarely change, so keep requests to Letterboxd low.
+const FAVORITES_TTL = 6 * 60 * 60 * 1000;
+let favoritesCache: { at: number; key: string; films: FavoriteFilm[] } | null = null;
+
+async function getFilmDetails(slug: string): Promise<FavoriteFilm | null> {
+  try {
+    const link = `https://letterboxd.com/film/${slug}/`;
+    const res = await fetch(link, { headers: { "User-Agent": "Mozilla/5.0" }, signal: AbortSignal.timeout(8000) });
+    if (!res.ok) return null;
+    const html = await res.text();
+    const ld = html.match(/<script type="application\/ld\+json">[\s\S]*?(\{[\s\S]*?\})\s*(?:\/\*[\s\S]*?\*\/\s*)?<\/script>/)?.[1];
+    const data: { name?: string; image?: string } = ld ? JSON.parse(ld) : {};
+    const ogTitle = decode(html.match(/<meta property="og:title" content="([^"]*)"/)?.[1] ?? "");
+    const year = ogTitle.match(/\((\d{4})\)$/)?.[1] ?? "";
+    const title = data.name ?? ogTitle.replace(/\s*\(\d{4}\)$/, "");
+    if (!title || !data.image) return null;
+    return { title, year, poster: data.image, link };
+  } catch {
+    return null;
+  }
+}
+
+/** Slugs come from config because the profile page, where the top four lives, sits behind a Cloudflare challenge. */
+export async function getFavoriteFilms(slugs: string[]): Promise<FavoriteFilm[]> {
+  const key = slugs.join(",");
+  if (favoritesCache?.key === key && Date.now() - favoritesCache.at < FAVORITES_TTL) return favoritesCache.films;
+  const films = (await Promise.all(slugs.map(getFilmDetails))).filter((f): f is FavoriteFilm => f !== null);
+  // Only cache a complete result so a Letterboxd hiccup doesn't stick for hours.
+  if (films.length === slugs.length) favoritesCache = { at: Date.now(), key, films };
+  return films;
+}
