@@ -25,7 +25,14 @@ export const SITE_CONFIG: SiteConfig = {
   ],
   socialImage: "/zen-og.png",
   canonicalURL: "https://dev.asternberg.xyz",
-  activity: { letterboxd: "yoyojesus", lastfm: "yoyojesus", steam: "76561198820308988", xbox: "Yoyojesus", github: "yoyojesus" },
+  activity: {
+    letterboxd: "yoyojesus",
+    letterboxdFavorites: ["the-martian", "scott-pilgrim-vs-the-world", "the-social-network", "ford-v-ferrari"],
+    lastfm: "yoyojesus",
+    steam: "76561198820308988",
+    xbox: "Yoyojesus",
+    github: "yoyojesus",
+  },
 };
 
 export const SITE_CONTENT: SiteContent = {

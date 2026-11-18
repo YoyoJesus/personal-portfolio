@@ -14,7 +14,7 @@
   import IconClose from "~icons/ph/x-bold";
   import { fade } from "svelte/transition";
   import Section from "./Section.svelte";
-  import type { Film } from "$lib/server/letterboxd";
+  import type { FavoriteFilm, Film } from "$lib/server/letterboxd";
   import type { Listening } from "$lib/server/lastfm";
   import type { Game, Gaming } from "$lib/server/steam";
   import type { FavoriteGame } from "$lib/types";
@@ -22,6 +22,7 @@
 
   interface Props {
     films: Film[];
+    favoriteFilms: FavoriteFilm[];
     listening: Listening;
     letterboxdUser: string;
     lastfmUser: string;
@@ -32,7 +33,7 @@
     favoriteGames: FavoriteGame[];
   }
 
-  let { films, listening, letterboxdUser, lastfmUser, gaming, steamId, xboxGames, xboxGamertag, favoriteGames }: Props = $props();
+  let { films, favoriteFilms, listening, letterboxdUser, lastfmUser, gaming, steamId, xboxGames, xboxGamertag, favoriteGames }: Props = $props();
 
   const watchedOn = (d: string) =>
     new Date(`${d}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
@@ -210,6 +211,28 @@
     {:else}
       <p class="text-neutral">The Letterboxd feed didn't load. Try refreshing in a minute.</p>
     {/if}
+    {#if favoriteFilms.length}
+      <div class="top-four">
+        <h4 class="top-four-title">{hacker.on ? "$ head -4 favorites" : "Top four"}</h4>
+        <ol class="top-four-shelf">
+          {#each favoriteFilms as f}
+            <li class="film-entry">
+              <a href={f.link} target="_blank" rel="noopener noreferrer" class="group block" title={f.year ? `${f.title} (${f.year})` : f.title}>
+                <img
+                  src={f.poster}
+                  alt={`${f.title} poster`}
+                  loading="lazy"
+                  width="600"
+                  height="900"
+                  class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
+                />
+              </a>
+              <p class="film-name">{f.title}{#if f.year}{" "}<span class="film-year">({f.year})</span>{/if}</p>
+            </li>
+          {/each}
+        </ol>
+      </div>
+    {/if}
   </div>
 
   <div class="activity-section games-journal">
@@ -333,6 +356,9 @@
   .film-rating { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0.1rem; min-height: 1.4rem; margin-top: 0.25rem; font-size: 0.65rem; white-space: nowrap; }
   .film-signals { display: flex; align-items: center; gap: 0.1rem; color: var(--color-neutral); }
   .film-signals :global(svg) { width: 0.7rem; height: 0.7rem; }
+  .top-four { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--color-edge); }
+  .top-four-title { margin-bottom: 1rem; color: var(--color-neutral); font-size: 0.85rem; }
+  .top-four-shelf { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 0.75rem; }
   .film-watched { color: var(--color-neutral); font-variant-numeric: tabular-nums; }
   .game-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
   .game-platform { display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1rem; color: var(--color-neutral); font-size: 0.85rem; }
@@ -367,6 +393,6 @@
   .artist-line a:hover { color: var(--color-accent); }
   :global(#not-coding .group img) { transition: transform 400ms var(--ease-out-expo); }
   :global(#not-coding .group:hover img) { transform: translateY(-3px); }
-  @media (min-width: 640px) { .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
+  @media (min-width: 640px) { .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
   @media (min-width: 1100px) { .media-journal { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
 </style>

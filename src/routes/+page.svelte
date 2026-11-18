@@ -58,6 +58,7 @@
   />
   <OffTheClock
     {films}
+    favoriteFilms={data.favoriteFilms}
     {listening}
     letterboxdUser={letterboxd}
     lastfmUser={lastfm}

@@ -6,7 +6,15 @@ export interface SiteConfig extends HeaderProps {
   socialLinks: { text: string; href: string }[];
   socialImage: string;
   canonicalURL?: string;
-  activity: { letterboxd: string; lastfm: string; steam: string; xbox: string; github: string };
+  activity: {
+    letterboxd: string;
+    /** Letterboxd film slugs for the profile's top four, in display order. */
+    letterboxdFavorites: string[];
+    lastfm: string;
+    steam: string;
+    xbox: string;
+    github: string;
+  };
 }
 
 export interface SiteContent {
