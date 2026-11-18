@@ -213,7 +213,7 @@
     {/if}
     {#if favoriteFilms.length}
       <div class="top-four">
-        <h4 class="top-four-title">{hacker.on ? "$ head -4 favorites" : "Top four"}</h4>
+        <h4 class="top-four-title">{hacker.on ? "$ head -4 favorites" : "Top Four Movies"}</h4>
         <ol class="top-four-shelf">
           {#each favoriteFilms as f}
             <li class="film-entry">
