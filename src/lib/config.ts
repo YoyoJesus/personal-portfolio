@@ -187,6 +187,7 @@ export const SITE_CONTENT: SiteContent = {
       issued: "Oct 2024",
       expires: "Oct 2027",
       credentialId: "65936957",
+      credentialUrl: "https://www.citiprogram.org/verify/?wd6fd270b-d214-498b-a7bd-8e04aa6af11e-65936957",
     },
     {
       name: "Biomedical Responsible Conduct of Research Course 1",
