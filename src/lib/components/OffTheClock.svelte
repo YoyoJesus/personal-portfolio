@@ -8,6 +8,7 @@
   import IconRewatch from "~icons/ph/arrows-clockwise-bold";
   import IconMusicNote from "~icons/ph/music-note-bold";
   import IconController from "~icons/ph/game-controller-fill";
+  import IconTrophy from "~icons/ph/trophy-fill";
   import IconPlaying from "~icons/svg-spinners/bars-scale-middle";
   import IconReview from "~icons/ph/chat-text-fill";
   import IconClose from "~icons/ph/x-bold";
@@ -16,6 +17,7 @@
   import type { Film } from "$lib/server/letterboxd";
   import type { Listening } from "$lib/server/lastfm";
   import type { Game, Gaming } from "$lib/server/steam";
+  import type { FavoriteGame } from "$lib/types";
   import { hacker } from "$lib/hacker.svelte";
 
   interface Props {
@@ -27,9 +29,10 @@
     steamId: string;
     xboxGames: Game[];
     xboxGamertag: string;
+    favoriteGames: FavoriteGame[];
   }
 
-  let { films, listening, letterboxdUser, lastfmUser, gaming, steamId, xboxGames, xboxGamertag }: Props = $props();
+  let { films, listening, letterboxdUser, lastfmUser, gaming, steamId, xboxGames, xboxGamertag, favoriteGames }: Props = $props();
 
   const watchedOn = (d: string) =>
     new Date(`${d}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
@@ -252,6 +255,34 @@
   </div>
 
   </div>
+  {#if favoriteGames.length}
+    <div class="activity-section favorites-journal">
+      <div class="activity-heading">
+        <h3 class="activity-title">
+          {#if hacker.on}<span class="font-mono text-accent">$ sort -r favorites</span>{:else}<IconTrophy class="size-6 text-accent" /> All-time <span>favorites</span>{/if}
+        </h3>
+      </div>
+      <ol class="favorite-shelf">
+        {#each favoriteGames as g, i}
+          <li>
+            <a href={g.href} target="_blank" rel="noopener noreferrer" class="group block" title={g.name}>
+              <span class="favorite-rank" aria-hidden="true">{hacker.on ? `[${i + 1}]` : String(i + 1).padStart(2, "0")}</span>
+              <img
+                src={g.cover}
+                alt={`${g.name} cover`}
+                loading="lazy"
+                width="400"
+                height="600"
+                class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
+              />
+              <p class="favorite-name">{g.name}</p>
+              <p class="favorite-meta">{g.year} · {g.platform}</p>
+            </a>
+          </li>
+        {/each}
+      </ol>
+    </div>
+  {/if}
   <div class="activity-section music-journal">
     <div class="activity-heading">
       <h3 class="activity-title"><IconLastfm class="size-6 text-accent" /> Listening <span>lately</span></h3>
@@ -311,6 +342,14 @@
   .game-entry img { width: 1.8rem; height: 2.5rem; border-radius: 0.25rem; flex-shrink: 0; }
   .game-info { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.75rem; }
   .game-info strong { font-size: 0.95rem; color: var(--color-white); font-weight: 500; }
+  .favorites-journal { border-top: 1px solid var(--color-edge-strong); margin-top: 2rem; padding-top: 2rem; }
+  .favorite-shelf { display: grid; grid-auto-flow: column; grid-auto-columns: 42%; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-top: 0.25rem; }
+  .favorite-shelf::-webkit-scrollbar { display: none; }
+  .favorite-shelf li { min-width: 0; scroll-snap-align: start; }
+  .favorite-rank { display: block; margin-bottom: 0.4rem; color: var(--color-accent); font-family: var(--font-serif); font-size: 1.5rem; font-weight: 650; line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  :global(html.hacker) .favorite-rank { font-size: 1rem; }
+  .favorite-name { margin-top: 0.6rem; color: var(--color-white); font-family: var(--font-serif); font-size: 0.9rem; line-height: 1.35; overflow-wrap: anywhere; }
+  .favorite-meta { margin-top: 0.2rem; color: var(--color-neutral); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
   .music-journal { border-top: 1px solid var(--color-edge-strong); margin-top: 2rem; padding-top: 2rem; }
   .album-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1rem; }
   .album-gallery li { min-width: 0; }
@@ -328,6 +367,6 @@
   .artist-line a:hover { color: var(--color-accent); }
   :global(#not-coding .group img) { transition: transform 400ms var(--ease-out-expo); }
   :global(#not-coding .group:hover img) { transform: translateY(-3px); }
-  @media (min-width: 640px) { .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+  @media (min-width: 640px) { .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
   @media (min-width: 1100px) { .media-journal { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
 </style>

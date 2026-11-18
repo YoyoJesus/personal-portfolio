@@ -23,6 +23,17 @@ export interface SiteContent {
   workspace: WorkspaceProps;
   hackerWorkspace: WorkspaceProps;
   mobile: MobileProps;
+  /** All-time favorite games, in ranked order. */
+  favoriteGames: FavoriteGame[];
+}
+
+export interface FavoriteGame {
+  name: string;
+  year: number;
+  platform: string;
+  /** Path to a 2:3 cover in /static. */
+  cover: string;
+  href: string;
 }
 
 export interface HeroProps {

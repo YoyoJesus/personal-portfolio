@@ -794,6 +794,13 @@ export const SITE_CONTENT: SiteContent = {
       { name: "Pilot G2", image: "/gear/pilot-g2.webp", detail: "0.7mm gel pen", href: "https://pilotpen.us/" },
     ],
   },
+  favoriteGames: [
+    { name: "BioShock", year: 2007, platform: "Xbox", cover: "/games/bioshock.webp", href: "https://www.xbox.com/en-US/games/store/x/BTBMZQ3FM2V8" },
+    { name: "Detroit: Become Human", year: 2018, platform: "PC", cover: "/games/detroit-become-human.webp", href: "https://store.steampowered.com/app/1222140/" },
+    { name: "Forza Horizon 3", year: 2016, platform: "Xbox", cover: "/games/forza-horizon-3.webp", href: "https://www.xbox.com/en-US/games/store/x/9NBLGGH1Z7TW" },
+    { name: "Halo: Reach", year: 2010, platform: "Xbox", cover: "/games/halo-reach.webp", href: "https://www.xbox.com/en-US/games/store/x/9NLGW5MXWKJ6" },
+    { name: "Watch Dogs", year: 2014, platform: "Xbox", cover: "/games/watch-dogs.webp", href: "https://www.xbox.com/en-US/games/store/x/C4DMGRPNSHXG" },
+  ],
   hackerAbout: {
     description: "I go by yoyojesus. I explore networks, web apps, and the edge cases people miss. Most of my spare time goes to CTFs and building tools for recon and automation.",
   },
