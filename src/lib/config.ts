@@ -157,7 +157,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "TestOut Security Pro",
       issuer: "CompTIA",
-      issued: "Nov 2025",
+      issued: "Dec 2025",
       credentialId: "6-1C6-2VV94E",
       credentialUrl: "https://certification.testout.com/verifycert/6-1C6-2VV94E",
       badge: "/badges/testout-security-pro.png",
@@ -167,7 +167,7 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "TestOut Hybrid Server Pro: Core",
       issuer: "CompTIA",
-      issued: "Nov 2025",
+      issued: "Dec 2025",
       credentialId: "6-1C6-2VV3D4",
       credentialUrl: "https://certification.testout.com/verifycert/6-1C6-2VV3D4",
       badge: "/badges/testout-hybrid-server-pro.png",
