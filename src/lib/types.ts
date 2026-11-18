@@ -22,6 +22,7 @@ export interface SiteContent {
   hackerHero: HackerHeroProps;
   experience: ExperienceProps[];
   education: EducationProps[];
+  certifications: CertificationProps[];
   leadership: ExperienceProps[];
   projects: ProjectProps[];
   about: AboutProps;
@@ -178,4 +179,17 @@ export interface EducationProps {
   gpa?: string;
   distinctions: string[];
   honorRolls?: { name: string; terms: string[] }[];
+}
+
+export interface CertificationProps {
+  name: string;
+  issuer: string;
+  issued: string;
+  expires?: string;
+  credentialId?: string;
+  summary?: string;
+  credentialUrl?: string;
+  badge?: string;
+  /** Background behind a logo used as a badge, so it fills the same square tile. */
+  badgeTile?: string;
 }
