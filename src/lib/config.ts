@@ -152,12 +152,15 @@ export const SITE_CONTENT: SiteContent = {
       issuer: "Cisco",
       issued: "Dec 2025",
       credentialUrl: "https://www.credly.com/badges/f8a719db-2ce8-4ca8-8f05-78e4cbe9a12a",
+      badge: "/badges/ccna-srwe.png",
     },
     {
       name: "TestOut Security Pro",
       issuer: "CompTIA",
       issued: "Nov 2025",
       credentialId: "6-1C6-2VV94E",
+      credentialUrl: "https://certification.testout.com/verifycert/6-1C6-2VV94E",
+      badge: "/badges/testout-security-pro.png",
       summary:
         "Securing Windows and Linux endpoints: user configuration, Active Directory group policy enforcement, and basic Cisco network security. Earned through Information Technology Security.",
     },
@@ -166,6 +169,8 @@ export const SITE_CONTENT: SiteContent = {
       issuer: "CompTIA",
       issued: "Nov 2025",
       credentialId: "6-1C6-2VV3D4",
+      credentialUrl: "https://certification.testout.com/verifycert/6-1C6-2VV3D4",
+      badge: "/badges/testout-hybrid-server-pro.png",
       summary:
         "Windows Server administration: Active Directory, Server Manager, trusts, DHCP and DNS, plus Linux security basics. Earned through Server Administration and Configuration 1.",
     },
@@ -174,6 +179,7 @@ export const SITE_CONTENT: SiteContent = {
       issuer: "Cisco",
       issued: "Oct 2025",
       credentialUrl: "https://www.credly.com/badges/fc867185-1dcb-4e8e-83c6-5048750e1319",
+      badge: "/badges/ccna-itn.png",
     },
     {
       name: "General Mobile Radio Service (GMRS) License",

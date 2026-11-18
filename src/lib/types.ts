@@ -189,4 +189,5 @@ export interface CertificationProps {
   credentialId?: string;
   summary?: string;
   credentialUrl?: string;
+  badge?: string;
 }
