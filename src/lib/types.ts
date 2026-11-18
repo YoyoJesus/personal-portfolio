@@ -190,4 +190,6 @@ export interface CertificationProps {
   summary?: string;
   credentialUrl?: string;
   badge?: string;
+  /** Background behind a logo used as a badge, so it fills the same square tile. */
+  badgeTile?: string;
 }

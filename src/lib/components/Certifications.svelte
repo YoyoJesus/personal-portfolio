@@ -18,28 +18,35 @@
       <h3>{issuer}</h3>
       <ul>
         {#each certs as cert}
-          <li class:has-badge={cert.badge}>
-            {#if cert.badge}<img class="badge" src={cert.badge} alt="" width="72" height="72" loading="lazy" />{/if}
-            <div>
-              <div class="title-row">
-                <h4>{cert.name}</h4>
-                <p class="dates">
-                  {cert.issued}{#if cert.expires}<span class="expires">, expires {cert.expires}</span>{/if}
-                </p>
-              </div>
-              {#if cert.summary}<p class="summary">{cert.summary}</p>{/if}
-              {#if cert.credentialId || cert.credentialUrl}
-                <p class="credential">
-                  {#if cert.credentialId}<span>ID <code>{cert.credentialId}</code></span>{/if}
-                  {#if cert.credentialUrl}
-                    <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer">
-                      Verify<span class="sr-only"> {cert.name}</span>
-                      <IconArrow aria-hidden="true" />
-                    </a>
-                  {/if}
-                </p>
-              {/if}
-            </div>
+          <li class="cert" class:has-badge={cert.badge}>
+            {#if cert.badge}
+              <img
+                class="badge"
+                class:tile={cert.badgeTile}
+                style:background={cert.badgeTile}
+                src={cert.badge}
+                alt=""
+                width="72"
+                height="72"
+                loading="lazy"
+              />
+            {/if}
+            <h4>{cert.name}</h4>
+            <p class="dates">
+              {cert.issued}{#if cert.expires}<span class="expires">, expires {cert.expires}</span>{/if}
+            </p>
+            {#if cert.summary}<p class="summary">{cert.summary}</p>{/if}
+            {#if cert.credentialId || cert.credentialUrl}
+              <p class="credential">
+                {#if cert.credentialId}<span>ID <code>{cert.credentialId}</code></span>{/if}
+                {#if cert.credentialUrl}
+                  <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer">
+                    Verify<span class="sr-only"> {cert.name}</span>
+                    <IconArrow aria-hidden="true" />
+                  </a>
+                {/if}
+              </p>
+            {/if}
           </li>
         {/each}
       </ul>
@@ -72,23 +79,28 @@
     display: grid;
     gap: 1.75rem;
   }
-  .has-badge {
+  .cert {
     display: grid;
-    grid-template-columns: 4.5rem minmax(0, 1fr);
-    gap: 1.25rem;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(4, auto) 1fr;
+    column-gap: 1.25rem;
     align-items: start;
   }
+  .cert > :not(.badge) {
+    grid-column: -2;
+  }
+  .has-badge {
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+  }
   .badge {
+    grid-row: 1 / span 5;
     width: 4.5rem;
     height: 4.5rem;
     border-radius: 0.6rem;
   }
-  .title-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 0.25rem 1.5rem;
+  .tile {
+    padding: 0.5rem;
+    object-fit: contain;
   }
   h4 {
     font-family: var(--font-serif);
@@ -99,6 +111,7 @@
     color: var(--color-white);
   }
   .dates {
+    margin-top: 0.25rem;
     color: var(--color-neutral);
     font-size: 0.875rem;
     font-variant-numeric: tabular-nums;
@@ -138,6 +151,23 @@
     text-decoration: underline;
   }
   @media (min-width: 768px) {
+    .cert {
+      grid-template-columns: minmax(0, 1fr) 8.5rem;
+    }
+    .has-badge {
+      grid-template-columns: 4.5rem minmax(0, 1fr) 8.5rem;
+    }
+    .cert > :not(.badge, .dates) {
+      grid-column: -3;
+    }
+    .dates {
+      grid-column: -2;
+      grid-row: 1 / span 5;
+      margin-top: 0;
+      padding-top: 0.3rem;
+      text-align: right;
+      white-space: normal;
+    }
     .issuer {
       grid-template-columns: 11rem minmax(0, 1fr);
       gap: 2.5rem;

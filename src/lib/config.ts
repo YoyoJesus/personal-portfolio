@@ -186,6 +186,8 @@ export const SITE_CONTENT: SiteContent = {
       issuer: "Federal Communications Commission",
       issued: "Mar 2025",
       expires: "Mar 2035",
+      badge: "/badges/fcc-seal.png",
+      badgeTile: "#16325c",
     },
     {
       name: "Social and Behavioral Research",
@@ -193,6 +195,8 @@ export const SITE_CONTENT: SiteContent = {
       issued: "Oct 2024",
       expires: "Oct 2027",
       credentialId: "65936957",
+      badge: "/badges/citi-program.svg",
+      badgeTile: "#ffffff",
       credentialUrl: "https://www.citiprogram.org/verify/?wd6fd270b-d214-498b-a7bd-8e04aa6af11e-65936957",
     },
     {
@@ -200,6 +204,8 @@ export const SITE_CONTENT: SiteContent = {
       issuer: "CITI Program",
       issued: "Oct 2024",
       credentialId: "65936958",
+      badge: "/badges/citi-program.svg",
+      badgeTile: "#ffffff",
       credentialUrl: "https://www.citiprogram.org/verify/?w46cdd6c9-a846-456c-b9e2-290aa4c8c269-65936958",
     },
   ],
