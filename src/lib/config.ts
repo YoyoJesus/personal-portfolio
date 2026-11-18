@@ -10,6 +10,7 @@ export const SITE_CONFIG: SiteConfig = {
   navLinks: [
     { text: "Experience", href: "#experience" },
     { text: "Education", href: "#education" },
+    { text: "Certifications", href: "#certifications" },
     { text: "Leadership", href: "#leadership" },
     { text: "Projects", href: "#projects" },
     { text: "Workspace", href: "#workspace" },
@@ -143,6 +144,22 @@ export const SITE_CONTENT: SiteContent = {
         { name: "President's List", terms: ["Fall 2024", "Spring 2025", "Fall 2025", "Spring 2026"] },
         { name: "Dean's List", terms: ["Fall 2023", "Spring 2024"] },
       ],
+    },
+  ],
+  certifications: [
+    {
+      name: "TestOut Hybrid Server Pro: Core",
+      issuer: "TestOut",
+      issued: "Nov 2025",
+      summary:
+        "Windows Server administration: Active Directory, Server Manager, trusts, DHCP and DNS, plus Linux security basics. Earned through Server Administration and Configuration 1.",
+    },
+    {
+      name: "TestOut Security Pro",
+      issuer: "TestOut",
+      issued: "Nov 2025",
+      summary:
+        "Securing Windows and Linux endpoints: user configuration, Active Directory group policy enforcement, and basic Cisco network security. Earned through Information Technology Security.",
     },
   ],
   leadership: [
