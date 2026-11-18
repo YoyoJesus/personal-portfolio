@@ -151,6 +151,7 @@ export const SITE_CONTENT: SiteContent = {
       name: "CCNA: Switching, Routing, and Wireless Essentials",
       issuer: "Cisco",
       issued: "Dec 2025",
+      credentialUrl: "https://www.credly.com/badges/f8a719db-2ce8-4ca8-8f05-78e4cbe9a12a",
     },
     {
       name: "TestOut Security Pro",
@@ -172,6 +173,7 @@ export const SITE_CONTENT: SiteContent = {
       name: "CCNA: Introduction to Networks",
       issuer: "Cisco",
       issued: "Oct 2025",
+      credentialUrl: "https://www.credly.com/badges/fc867185-1dcb-4e8e-83c6-5048750e1319",
     },
     {
       name: "General Mobile Radio Service (GMRS) License",
@@ -191,6 +193,7 @@ export const SITE_CONTENT: SiteContent = {
       issuer: "CITI Program",
       issued: "Oct 2024",
       credentialId: "65936958",
+      credentialUrl: "https://www.citiprogram.org/verify/?w46cdd6c9-a846-456c-b9e2-290aa4c8c269-65936958",
     },
   ],
   leadership: [
