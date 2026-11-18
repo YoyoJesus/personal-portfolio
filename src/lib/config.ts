@@ -148,18 +148,49 @@ export const SITE_CONTENT: SiteContent = {
   ],
   certifications: [
     {
-      name: "TestOut Hybrid Server Pro: Core",
-      issuer: "TestOut",
+      name: "CCNA: Switching, Routing, and Wireless Essentials",
+      issuer: "Cisco",
+      issued: "Dec 2025",
+    },
+    {
+      name: "TestOut Security Pro",
+      issuer: "CompTIA",
       issued: "Nov 2025",
+      credentialId: "6-1C6-2VV94E",
+      summary:
+        "Securing Windows and Linux endpoints: user configuration, Active Directory group policy enforcement, and basic Cisco network security. Earned through Information Technology Security.",
+    },
+    {
+      name: "TestOut Hybrid Server Pro: Core",
+      issuer: "CompTIA",
+      issued: "Nov 2025",
+      credentialId: "6-1C6-2VV3D4",
       summary:
         "Windows Server administration: Active Directory, Server Manager, trusts, DHCP and DNS, plus Linux security basics. Earned through Server Administration and Configuration 1.",
     },
     {
-      name: "TestOut Security Pro",
-      issuer: "TestOut",
-      issued: "Nov 2025",
-      summary:
-        "Securing Windows and Linux endpoints: user configuration, Active Directory group policy enforcement, and basic Cisco network security. Earned through Information Technology Security.",
+      name: "CCNA: Introduction to Networks",
+      issuer: "Cisco",
+      issued: "Oct 2025",
+    },
+    {
+      name: "General Mobile Radio Service (GMRS) License",
+      issuer: "Federal Communications Commission",
+      issued: "Mar 2025",
+      expires: "Mar 2035",
+    },
+    {
+      name: "Social and Behavioral Research",
+      issuer: "CITI Program",
+      issued: "Oct 2024",
+      expires: "Oct 2027",
+      credentialId: "65936957",
+    },
+    {
+      name: "Biomedical Responsible Conduct of Research Course 1",
+      issuer: "CITI Program",
+      issued: "Oct 2024",
+      credentialId: "65936958",
     },
   ],
   leadership: [

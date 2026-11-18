@@ -185,6 +185,8 @@ export interface CertificationProps {
   name: string;
   issuer: string;
   issued: string;
-  summary: string;
+  expires?: string;
+  credentialId?: string;
+  summary?: string;
   credentialUrl?: string;
 }
