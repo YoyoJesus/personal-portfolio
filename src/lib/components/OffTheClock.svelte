@@ -8,7 +8,6 @@
   import IconRewatch from "~icons/ph/arrows-clockwise-bold";
   import IconMusicNote from "~icons/ph/music-note-bold";
   import IconController from "~icons/ph/game-controller-fill";
-  import IconTrophy from "~icons/ph/trophy-fill";
   import IconPlaying from "~icons/svg-spinners/bars-scale-middle";
   import IconReview from "~icons/ph/chat-text-fill";
   import IconClose from "~icons/ph/x-bold";
@@ -40,6 +39,16 @@
   const stars = (rating: number | null) =>
     rating == null ? "" : "★".repeat(Math.floor(rating)) + (rating % 1 ? "½" : "");
 
+  // Recently played games lead, then the most hours across both platforms.
+  const rotation = $derived(
+    [
+      ...gaming.games.map((g) => ({ ...g, platform: "Steam" })),
+      ...xboxGames.map((g) => ({ ...g, platform: "Xbox" })),
+    ]
+      .sort((a, b) => Number(b.recent) - Number(a.recent) || b.hours - a.hours)
+      .slice(0, 5),
+  );
+
   // Index of the film whose review popover is open; spoiler reviews stay blurred until revealed.
   let openReview = $state<number | null>(null);
   let revealed = $state<number | null>(null);
@@ -58,34 +67,10 @@
   onkeydown={(e) => e.key === "Escape" && (openReview = null)}
 />
 
-{#snippet shelf(games: Game[])}
-  <ul class="game-shelf">
-    {#each games as g}
-      <li>
-        <a href={g.link} target="_blank" class="game-entry group" title={g.name}>
-          <img
-            src={g.cover}
-            alt={`${g.name} cover`}
-            loading="lazy"
-            class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
-          />
-          <span class="game-info">
-            <strong>{g.name}</strong>
-            <span class="text-accent tabular-nums">{g.hours.toLocaleString("en-US")} hrs</span>
-            <span class="flex items-center gap-1 text-neutral">
-              {#if g.recent}<span class="tip tip-start" role="img" aria-label="Played in the last 2 weeks" data-tip="Played in the last 2 weeks"><IconController class="size-3.5 text-accent" /></span>{/if}
-              {#if g.lastPlayed}{watchedOn(g.lastPlayed)}{/if}
-            </span>
-          </span>
-        </a>
-      </li>
-    {/each}
-  </ul>
-{/snippet}
-
 <Section text={hacker.on ? "$ ps aux --afk" : "When I'm Not Coding"} href="not-coding" compactEnd>
   <div class="media-journal">
   <div class="activity-section film-journal">
+    <p class="media-label">Movies</p>
     <div class="activity-heading">
       <h3 class="activity-title">
         <IconLetterboxd class="size-6 text-accent" /> Watched <span>recently</span>
@@ -242,77 +227,78 @@
   </div>
 
   <div class="activity-section games-journal">
+    <p class="media-label">Games</p>
     <div class="activity-heading">
       <h3 class="activity-title">
         <IconController class="size-6 text-accent" /> Games in the <span>rotation</span>
       </h3>
-    </div>
-    <div class="game-columns">
-      <div>
-        <a
-          href={`https://steamcommunity.com/profiles/${steamId}`}
-          target="_blank"
-          class="game-platform"
-        >
-          <IconSteam class="size-4 text-accent" /> Steam <span aria-hidden="true"><LinkIcon /></span>
+      <span class="flex gap-4 text-sm text-neutral">
+        <a href={`https://steamcommunity.com/profiles/${steamId}`} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 hover:text-primary">
+          <IconSteam class="size-3.5" /> Steam <span aria-hidden="true"><LinkIcon /></span>
         </a>
-        {#if gaming.games.length}
-          {@render shelf(gaming.games)}
-        {:else}
-          <p class="text-sm text-neutral">
-            {gaming.missingKey
-              ? "Games appear here once STEAM_API_KEY is set in .env."
-              : "Steam didn't respond. Try refreshing in a minute."}
-          </p>
-        {/if}
-      </div>
-      <div>
-        <a
-          href={`https://www.xbox.com/en-US/play/user/${encodeURIComponent(xboxGamertag)}`}
-          target="_blank"
-          class="game-platform"
-        >
-          <IconXbox class="size-4 text-accent" /> Xbox <span aria-hidden="true"><LinkIcon /></span>
+        <a href={`https://www.xbox.com/en-US/play/user/${encodeURIComponent(xboxGamertag)}`} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 hover:text-primary">
+          <IconXbox class="size-3.5" /> Xbox <span aria-hidden="true"><LinkIcon /></span>
         </a>
-        {#if xboxGames.length}
-          {@render shelf(xboxGames)}
-        {:else}
-          <p class="text-sm text-neutral">Xbox didn't respond. Try refreshing in a minute.</p>
-        {/if}
-      </div>
+      </span>
     </div>
-  </div>
-
-  </div>
-  {#if favoriteGames.length}
-    <div class="activity-section favorites-journal">
-      <div class="activity-heading">
-        <h3 class="activity-title">
-          {#if hacker.on}<span class="font-mono text-accent">$ sort -r favorites</span>{:else}<IconTrophy class="size-6 text-accent" /> All-time <span>favorite games</span>{/if}
-        </h3>
-      </div>
-      <ol class="favorite-shelf">
-        {#each favoriteGames as g, i}
-          <li>
-            <a href={g.href} target="_blank" rel="noopener noreferrer" class="group block" title={g.name}>
-              <span class="favorite-rank" aria-hidden="true">{hacker.on ? `[${i + 1}]` : String(i + 1).padStart(2, "0")}</span>
+    {#if rotation.length}
+      <ul class="film-shelf">
+        {#each rotation as g}
+          <li class="film-entry">
+            <a href={g.link} target="_blank" rel="noopener noreferrer" class="group block" title={g.name}>
               <img
                 src={g.cover}
                 alt={`${g.name} cover`}
                 loading="lazy"
-                width="400"
-                height="600"
                 class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
               />
-              <p class="favorite-name">{g.name}</p>
-              <p class="favorite-meta">{g.year} · {g.platform}</p>
             </a>
+            <p class="film-name" title={g.name}>{g.name}</p>
+            <div class="film-rating">
+              <span class="text-accent tabular-nums">{g.hours.toLocaleString("en-US")} hrs</span>
+              <span class="film-signals">
+                {#if g.recent}<span class="tip" role="img" aria-label="Played in the last 2 weeks" data-tip="Played in the last 2 weeks"><IconController class="size-3 text-accent" /></span>{/if}
+              </span>
+              <span class="film-watched">{g.platform}</span>
+            </div>
           </li>
         {/each}
-      </ol>
-    </div>
-  {/if}
+      </ul>
+    {:else}
+      <p class="text-sm text-neutral">
+        {gaming.missingKey && !xboxGames.length
+          ? "Games appear here once STEAM_API_KEY is set in .env."
+          : "Steam and Xbox didn't respond. Try refreshing in a minute."}
+      </p>
+    {/if}
+    {#if favoriteGames.length}
+      <div class="top-four">
+        <h4 class="top-four-title">{hacker.on ? "$ sort -r favorites" : "All-time favorite games"}</h4>
+        <ol class="favorite-shelf">
+          {#each favoriteGames as g, i}
+            <li>
+              <a href={g.href} target="_blank" rel="noopener noreferrer" class="group block" title={g.name}>
+                <span class="favorite-rank" aria-hidden="true">{hacker.on ? `[${i + 1}]` : String(i + 1).padStart(2, "0")}</span>
+                <img
+                  src={g.cover}
+                  alt={`${g.name} cover`}
+                  loading="lazy"
+                  width="400"
+                  height="600"
+                  class="aspect-[2/3] w-full rounded-lg border border-neutral/20 object-cover transition-all group-hover:ring-2 group-hover:ring-accent"
+                />
+                <p class="favorite-name">{g.name}</p>
+                <p class="favorite-meta">{g.year} · {g.platform}</p>
+              </a>
+            </li>
+          {/each}
+        </ol>
+      </div>
+    {/if}
+  </div>
+  </div>
   <div class="activity-section music-journal">
+    <p class="media-label">Music</p>
     <div class="activity-heading">
       <h3 class="activity-title"><IconLastfm class="size-6 text-accent" /> Listening <span>lately</span></h3>
       <a href={`https://www.last.fm/user/${lastfmUser}`} target="_blank" rel="noopener noreferrer" class="text-sm text-neutral hover:text-primary">Last.fm <span aria-hidden="true"><LinkIcon /></span></a>
@@ -360,15 +346,6 @@
   .tip-start:hover::after, .tip-start:focus-visible::after { translate: 0 0; }
   :global(html.hacker) .tip::after { border-radius: 0; border-color: var(--color-primary); }
   .film-watched { color: var(--color-neutral); font-variant-numeric: tabular-nums; }
-  .game-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
-  .game-platform { display: inline-flex; align-items: center; gap: 0.4rem; margin-bottom: 1rem; color: var(--color-neutral); font-size: 0.85rem; }
-  .game-platform:hover { color: var(--color-primary); }
-  .game-shelf { display: grid; gap: 0.9rem; }
-  .game-entry { display: flex; gap: 0.75rem; align-items: center; }
-  .game-entry img { width: 1.8rem; height: 2.5rem; border-radius: 0.25rem; flex-shrink: 0; }
-  .game-info { display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.75rem; }
-  .game-info strong { font-size: 0.95rem; color: var(--color-white); font-weight: 500; }
-  .favorites-journal { border-top: 1px solid var(--color-edge-strong); margin-top: 2rem; padding-top: 2rem; }
   .favorite-shelf { display: grid; grid-auto-flow: column; grid-auto-columns: 42%; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-top: 0.25rem; }
   .favorite-shelf::-webkit-scrollbar { display: none; }
   .favorite-shelf li { min-width: 0; scroll-snap-align: start; }
@@ -376,7 +353,9 @@
   :global(html.hacker) .favorite-rank { font-size: 1rem; }
   .favorite-name { margin-top: 0.6rem; color: var(--color-white); font-family: var(--font-serif); font-size: 0.9rem; line-height: 1.35; overflow-wrap: anywhere; }
   .favorite-meta { margin-top: 0.2rem; color: var(--color-neutral); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
-  .music-journal { border-top: 1px solid var(--color-edge-strong); margin-top: 2rem; padding-top: 2rem; }
+  .music-journal { margin-top: 3rem; }
+  .media-label { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.1rem; color: var(--color-accent); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+  .media-label::after { content: ""; flex: 1; height: 1px; background: var(--color-edge-strong); }
   .album-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1rem; }
   .album-gallery li { min-width: 0; }
   .album-link { display: block; }
@@ -394,5 +373,5 @@
   :global(#not-coding .group img) { transition: transform 400ms var(--ease-out-expo); }
   :global(#not-coding .group:hover img) { transform: translateY(-3px); }
   @media (min-width: 640px) { .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
-  @media (min-width: 1100px) { .media-journal { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
+  @media (min-width: 1100px) { .media-journal { grid-template-columns: repeat(2, minmax(0, 1fr)); } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
 </style>
