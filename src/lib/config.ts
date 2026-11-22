@@ -10,6 +10,7 @@ export const SITE_CONFIG: SiteConfig = {
   navLinks: [
     { text: "Experience", href: "#experience" },
     { text: "Education", href: "#education" },
+    { text: "Certifications", href: "#certifications" },
     { text: "Leadership", href: "#leadership" },
     { text: "Projects", href: "#projects" },
     { text: "Workspace", href: "#workspace" },
@@ -25,7 +26,14 @@ export const SITE_CONFIG: SiteConfig = {
   ],
   socialImage: "/zen-og.png",
   canonicalURL: "https://dev.asternberg.xyz",
-  activity: { letterboxd: "yoyojesus", lastfm: "yoyojesus", steam: "76561198820308988", xbox: "Yoyojesus", github: "yoyojesus" },
+  activity: {
+    letterboxd: "yoyojesus",
+    letterboxdFavorites: ["the-martian", "scott-pilgrim-vs-the-world", "the-social-network", "ford-v-ferrari"],
+    lastfm: "yoyojesus",
+    steam: "76561198820308988",
+    xbox: "Yoyojesus",
+    github: "yoyojesus",
+  },
 };
 
 export const SITE_CONTENT: SiteContent = {
@@ -54,11 +62,30 @@ export const SITE_CONTENT: SiteContent = {
     {
       company: "Kent State University",
       logo: "/logos/kent-state-cs.png",
-      position: "Undergraduate Researcher",
+      position: "Undergraduate Research Assistant",
       startDate: "October 2026",
       endDate: "Present",
-      workType: "Research",
-      summary: "",
+      workType: "Research - Paid",
+      summary: [
+        "Serve on the ML/AI team of a state-funded applied AI research project, one of three faculty-led teams alongside full-stack development and security.",
+        "Develop and evaluate machine learning code for the project in Python.",
+        "Coordinate with the full-stack and security teams on planning, documentation, and task tracking, reporting progress in regular team meetings.",
+        "Work under a confidentiality agreement, following sponsored-research data-handling requirements and keeping project data and code on approved project systems.",
+      ],
+    },
+    {
+      company: "Kent State University",
+      logo: "/logos/kent-state-cs.png",
+      position: "Choose Ohio First Undergraduate Researcher",
+      startDate: "August 2023",
+      endDate: "Present",
+      workType: "Research - Scholarship",
+      summary: [
+        "Built Bluetooth wearable badges and a Python pipeline that classify meeting effectiveness, reaching 93.8% accuracy with Random Forest on 16 recorded meetings and winning Best Presentation at the 2026 Choose Ohio First Research Symposium.",
+        "Compared dashcam video and wristband GSR for detecting driving stress, fine-tuning YOLOv11 on BDD100K and benchmarking six classifiers; the video and OBD model reached 91.5% accuracy and 0.98 AUC.",
+        "Ran VR driving-simulator studies with Empatica E4 wristbands and analyzed motion and electrodermal activity data to model driving stress and cybersickness susceptibility in WEKA.",
+        "Moved the badges' speaker detection on-device as TinyML scoring and built an observer panel that records ground-truth labels for evaluation.",
+      ],
     },
     {
       company: "Awetomaton Ltd",
@@ -110,7 +137,76 @@ export const SITE_CONTENT: SiteContent = {
       degree: "B.S. in Computer Science",
       startYear: "2023",
       expectedEndYear: "2027",
+      concentration: "Cybersecurity",
+      gpa: "3.88",
       distinctions: ["Honors", "Choose Ohio First Scholar"],
+      honorRolls: [
+        { name: "President's List", terms: ["Fall 2024", "Spring 2025", "Fall 2025", "Spring 2026"] },
+        { name: "Dean's List", terms: ["Fall 2023", "Spring 2024"] },
+      ],
+    },
+  ],
+  certifications: [
+    {
+      name: "CCNA: Switching, Routing, and Wireless Essentials",
+      issuer: "Cisco",
+      issued: "Dec 2025",
+      credentialUrl: "https://www.credly.com/badges/f8a719db-2ce8-4ca8-8f05-78e4cbe9a12a",
+      badge: "/badges/ccna-srwe.png",
+    },
+    {
+      name: "TestOut Security Pro",
+      issuer: "CompTIA",
+      issued: "Dec 2025",
+      credentialId: "6-1C6-2VV94E",
+      credentialUrl: "https://certification.testout.com/verifycert/6-1C6-2VV94E",
+      badge: "/badges/testout-security-pro.png",
+      summary:
+        "Securing Windows and Linux endpoints: user configuration, Active Directory group policy enforcement, and basic Cisco network security. Earned through Information Technology Security.",
+    },
+    {
+      name: "TestOut Hybrid Server Pro: Core",
+      issuer: "CompTIA",
+      issued: "Dec 2025",
+      credentialId: "6-1C6-2VV3D4",
+      credentialUrl: "https://certification.testout.com/verifycert/6-1C6-2VV3D4",
+      badge: "/badges/testout-hybrid-server-pro.png",
+      summary:
+        "Windows Server administration: Active Directory, Server Manager, trusts, DHCP and DNS, plus Linux security basics. Earned through Server Administration and Configuration 1.",
+    },
+    {
+      name: "CCNA: Introduction to Networks",
+      issuer: "Cisco",
+      issued: "Oct 2025",
+      credentialUrl: "https://www.credly.com/badges/fc867185-1dcb-4e8e-83c6-5048750e1319",
+      badge: "/badges/ccna-itn.png",
+    },
+    {
+      name: "General Mobile Radio Service (GMRS) License",
+      issuer: "Federal Communications Commission",
+      issued: "Mar 2025",
+      expires: "Mar 2035",
+      badge: "/badges/fcc-seal.png",
+      badgeTile: "#16325c",
+    },
+    {
+      name: "Social and Behavioral Research",
+      issuer: "CITI Program",
+      issued: "Oct 2024",
+      expires: "Oct 2027",
+      credentialId: "65936957",
+      badge: "/badges/citi-program.svg",
+      badgeTile: "#ffffff",
+      credentialUrl: "https://www.citiprogram.org/verify/?wd6fd270b-d214-498b-a7bd-8e04aa6af11e-65936957",
+    },
+    {
+      name: "Biomedical Responsible Conduct of Research Course 1",
+      issuer: "CITI Program",
+      issued: "Oct 2024",
+      credentialId: "65936958",
+      badge: "/badges/citi-program.svg",
+      badgeTile: "#ffffff",
+      credentialUrl: "https://www.citiprogram.org/verify/?w46cdd6c9-a846-456c-b9e2-290aa4c8c269-65936958",
     },
   ],
   leadership: [
@@ -769,6 +865,13 @@ export const SITE_CONTENT: SiteContent = {
       { name: "Pilot G2", image: "/gear/pilot-g2.webp", detail: "0.7mm gel pen", href: "https://pilotpen.us/" },
     ],
   },
+  favoriteGames: [
+    { name: "BioShock", year: 2007, platform: "Xbox", cover: "/games/bioshock.webp", href: "https://www.xbox.com/en-US/games/store/x/BTBMZQ3FM2V8" },
+    { name: "Detroit: Become Human", year: 2018, platform: "PC", cover: "/games/detroit-become-human.webp", href: "https://store.steampowered.com/app/1222140/" },
+    { name: "Forza Horizon 3", year: 2016, platform: "Xbox", cover: "/games/forza-horizon-3.webp", href: "https://www.xbox.com/en-US/games/store/x/9NBLGGH1Z7TW" },
+    { name: "Halo: Reach", year: 2010, platform: "Xbox", cover: "/games/halo-reach.webp", href: "https://www.xbox.com/en-US/games/store/x/9NLGW5MXWKJ6" },
+    { name: "Watch Dogs", year: 2014, platform: "Xbox", cover: "/games/watch-dogs.webp", href: "https://www.xbox.com/en-US/games/store/x/C4DMGRPNSHXG" },
+  ],
   hackerAbout: {
     description: "I go by yoyojesus. I explore networks, web apps, and the edge cases people miss. Most of my spare time goes to CTFs and building tools for recon and automation.",
   },

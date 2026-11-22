@@ -6,7 +6,15 @@ export interface SiteConfig extends HeaderProps {
   socialLinks: { text: string; href: string }[];
   socialImage: string;
   canonicalURL?: string;
-  activity: { letterboxd: string; lastfm: string; steam: string; xbox: string; github: string };
+  activity: {
+    letterboxd: string;
+    /** Letterboxd film slugs for the profile's top four, in display order. */
+    letterboxdFavorites: string[];
+    lastfm: string;
+    steam: string;
+    xbox: string;
+    github: string;
+  };
 }
 
 export interface SiteContent {
@@ -14,6 +22,7 @@ export interface SiteContent {
   hackerHero: HackerHeroProps;
   experience: ExperienceProps[];
   education: EducationProps[];
+  certifications: CertificationProps[];
   leadership: ExperienceProps[];
   projects: ProjectProps[];
   about: AboutProps;
@@ -23,6 +32,17 @@ export interface SiteContent {
   workspace: WorkspaceProps;
   hackerWorkspace: WorkspaceProps;
   mobile: MobileProps;
+  /** All-time favorite games, in ranked order. */
+  favoriteGames: FavoriteGame[];
+}
+
+export interface FavoriteGame {
+  name: string;
+  year: number;
+  platform: string;
+  /** Path to a 2:3 cover in /static. */
+  cover: string;
+  href: string;
 }
 
 export interface HeroProps {
@@ -155,5 +175,21 @@ export interface EducationProps {
   degree: string;
   startYear: string;
   expectedEndYear: string;
+  concentration?: string;
+  gpa?: string;
   distinctions: string[];
+  honorRolls?: { name: string; terms: string[] }[];
+}
+
+export interface CertificationProps {
+  name: string;
+  issuer: string;
+  issued: string;
+  expires?: string;
+  credentialId?: string;
+  summary?: string;
+  credentialUrl?: string;
+  badge?: string;
+  /** Background behind a logo used as a badge, so it fills the same square tile. */
+  badgeTile?: string;
 }

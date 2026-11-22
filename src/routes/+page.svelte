@@ -2,6 +2,7 @@
   import { SITE_CONFIG, SITE_CONTENT } from "$lib/config";
   import Hero from "$lib/components/Hero.svelte";
   import Education from "$lib/components/Education.svelte";
+  import Certifications from "$lib/components/Certifications.svelte";
   import Experience from "$lib/components/Experience.svelte";
   import Projects from "$lib/components/Projects.svelte";
   import Workspace from "$lib/components/Workspace.svelte";
@@ -44,6 +45,7 @@
   <HeroActivity contributions={data.contributions} githubUser={SITE_CONFIG.activity.github} />
   <Experience text="Work Experience" href="experience" experience={SITE_CONTENT.experience} />
   <Education entries={SITE_CONTENT.education} />
+  <Certifications certifications={SITE_CONTENT.certifications} />
   <Experience
     text="Leadership / Volunteering"
     hackerText="$ cat leadership.log"
@@ -58,6 +60,7 @@
   />
   <OffTheClock
     {films}
+    favoriteFilms={data.favoriteFilms}
     {listening}
     letterboxdUser={letterboxd}
     lastfmUser={lastfm}
@@ -65,6 +68,7 @@
     steamId={steam}
     xboxGames={data.xboxGames}
     xboxGamertag={xbox}
+    favoriteGames={SITE_CONTENT.favoriteGames}
   />
   <About
     {...SITE_CONTENT.about}
