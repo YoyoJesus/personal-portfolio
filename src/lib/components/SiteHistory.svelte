@@ -12,33 +12,29 @@
       <li>
         <div class="details">
           <h2>{name}</h2>
-          {#if period}<p class="period">{period}</p>{/if}
+          <p class="period">{period}</p>
           <p class="summary">{summary}</p>
         </div>
-        {#if screenshots}
-          <div class="screens">
-            <img
-              class="desktop"
-              src={screenshots.desktop}
-              alt="{name} on a desktop screen"
-              width="1440"
-              height="900"
-              loading={i < 2 ? "eager" : "lazy"}
-              decoding="async"
-            />
-            <img
-              class="phone"
-              src={screenshots.phone}
-              alt="{name} on a phone"
-              width="390"
-              height="844"
-              loading={i < 2 ? "eager" : "lazy"}
-              decoding="async"
-            />
-          </div>
-        {:else}
-          <p class="missing">No screenshot yet. This site is no longer public.</p>
-        {/if}
+        <div class="screens">
+          <img
+            class="desktop"
+            src={screenshots.desktop}
+            alt="{name} on a desktop screen"
+            width="1440"
+            height="900"
+            loading={i < 2 ? "eager" : "lazy"}
+            decoding="async"
+          />
+          <img
+            class="phone"
+            src={screenshots.phone}
+            alt="{name} on a phone"
+            width="390"
+            height="844"
+            loading={i < 2 ? "eager" : "lazy"}
+            decoding="async"
+          />
+        </div>
       </li>
     {/each}
   </ol>
@@ -91,15 +87,6 @@
     bottom: 0;
     width: 22%;
     border-radius: 0.75rem;
-  }
-  .missing {
-    align-self: start;
-    border: 1px dashed var(--color-edge-strong);
-    border-radius: 0.5rem;
-    padding: 2.5rem 1.5rem;
-    text-align: center;
-    font-size: var(--text-xs);
-    color: var(--color-neutral);
   }
   @media (min-width: 900px) {
     li {

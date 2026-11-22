@@ -40,10 +40,9 @@ export interface SiteContent {
 
 export interface SiteVersion {
   name: string;
-  period?: string;
+  period: string;
   summary: string;
-  /** Left out when there is no capture of that version. */
-  screenshots?: { desktop: string; phone: string };
+  screenshots: { desktop: string; phone: string };
 }
 
 export interface FavoriteGame {

@@ -875,7 +875,10 @@ export const SITE_CONTENT: SiteContent = {
   history: [
     {
       name: "My first site",
-      summary: "The first website I ever made, hosted on W3Schools Spaces.",
+      period: "2023",
+      summary:
+        "The first website I ever made: six very orange pages on W3Schools Spaces for my projects, from 3D printing to combat robotics. It never stopped being under construction.",
+      screenshots: { desktop: "/history/first-desktop.webp", phone: "/history/first-phone.webp" },
     },
     {
       name: "The class port",
