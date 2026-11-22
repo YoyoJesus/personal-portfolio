@@ -872,6 +872,32 @@ export const SITE_CONTENT: SiteContent = {
     { name: "Halo: Reach", year: 2010, platform: "Xbox", cover: "/games/halo-reach.webp", href: "https://www.xbox.com/en-US/games/store/x/9NLGW5MXWKJ6" },
     { name: "Watch Dogs", year: 2014, platform: "Xbox", cover: "/games/watch-dogs.webp", href: "https://www.xbox.com/en-US/games/store/x/C4DMGRPNSHXG" },
   ],
+  history: [
+    {
+      name: "My first site",
+      summary: "The first website I ever made, hosted on W3Schools Spaces.",
+    },
+    {
+      name: "The class port",
+      period: "February - November 2025",
+      summary:
+        "I ported my site for a web development class at Kent State. It grew into several pages with Bootstrap, a typing effect, and a PHP guestbook.",
+      screenshots: { desktop: "/history/class-desktop.webp", phone: "/history/class-phone.webp" },
+    },
+    {
+      name: "The green one",
+      period: "January - November 2026",
+      summary:
+        "A single-page portfolio that started from the Astro Zen template and turned green two days later. It moved to SvelteKit in September and picked up hacker mode along the way.",
+      screenshots: { desktop: "/history/green-desktop.webp", phone: "/history/green-phone.webp" },
+    },
+    {
+      name: "The current site",
+      period: "November 2026 - Present",
+      summary: "A redesign around oversized type that reacts to the cursor, a dithered noise field, and slate with teal in place of the green.",
+      screenshots: { desktop: "/history/current-desktop.webp", phone: "/history/current-phone.webp" },
+    },
+  ],
   hackerAbout: {
     description: "I go by yoyojesus. I explore networks, web apps, and the edge cases people miss. Most of my spare time goes to CTFs and building tools for recon and automation.",
   },
