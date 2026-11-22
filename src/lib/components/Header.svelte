@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from "svelte";
+  import { page } from "$app/state";
   import Menu from "$lib/icons/Menu.svelte";
   import type { HeaderProps } from "$lib/types";
   import { HACKER_LOGO, hacker } from "$lib/hacker.svelte";
@@ -8,11 +8,14 @@
 
   let menuOpen = $state(false);
   let active = $state("");
+  const home = $derived(page.url.pathname === "/");
 
   const toggleMenu = () => (menuOpen = !menuOpen);
 
   // Update navigation based on scroll position with Intersection Observer
-  onMount(() => {
+  $effect(() => {
+    active = "";
+    if (!home) return;
     const sections = document.querySelectorAll("section");
     const observer = new IntersectionObserver(
       (entries) => {
@@ -73,7 +76,7 @@
               "nav-item relative block p-2 text-sm font-medium transition-all duration-500 after:absolute after:bottom-0 after:left-2/4 after:h-2 after:w-1 after:-translate-x-2/4 after:text-primary after:opacity-0 after:content-['•'] hover:text-white",
               active === link.href && "text-white md:after:opacity-100",
             ]}
-            href={link.href}
+            href={home ? link.href : `/${link.href}`}
             onclick={() => (menuOpen = false)}
           >
             {link.text}
