@@ -872,6 +872,103 @@ export const SITE_CONTENT: SiteContent = {
     { name: "Halo: Reach", year: 2010, platform: "Xbox", cover: "/games/halo-reach.webp", href: "https://www.xbox.com/en-US/games/store/x/9NLGW5MXWKJ6" },
     { name: "Watch Dogs", year: 2014, platform: "Xbox", cover: "/games/watch-dogs.webp", href: "https://www.xbox.com/en-US/games/store/x/C4DMGRPNSHXG" },
   ],
+  history: [
+    {
+      name: "My first site",
+      period: "2023",
+      summary:
+        "The first website I ever made: six very orange pages on W3Schools Spaces for my projects, from 3D printing to combat robotics. It never stopped being under construction.",
+      screenshots: { desktop: "/history/first-desktop.webp", phone: "/history/first-phone.webp" },
+      details: [
+        {
+          title: "3D printing",
+          caption: "The projects page was built around YouTube embeds, starting with time-lapses from my printer.",
+          image: "/history/first-printing.webp",
+        },
+        {
+          title: "Combat robotics",
+          caption: "My high school seasons had videos. The college team was still just a heading.",
+          image: "/history/first-robotics.webp",
+        },
+        {
+          title: "Downloads",
+          caption: "This page, like the resume, never got past coming soon.",
+          image: "/history/first-downloads.webp",
+        },
+      ],
+    },
+    {
+      name: "The class port",
+      period: "February - November 2025",
+      summary:
+        "I ported my site for a web development class at Kent State. It grew into several pages with Bootstrap, a typing effect, and a PHP guestbook.",
+      screenshots: { desktop: "/history/class-desktop.webp", phone: "/history/class-phone.webp" },
+      details: [
+        {
+          title: "About",
+          caption: "The bio got more specific about security, robotics, and IT work, and gained social media highlights.",
+          image: "/history/class-about.webp",
+        },
+        {
+          title: "Projects",
+          caption: "Tables organized the work, and research joined the programming and robotics projects.",
+          image: "/history/class-projects.webp",
+        },
+        {
+          title: "Downloads",
+          caption: "The empty page filled up with C++ examples, CTF write-ups, and battlebot files.",
+          image: "/history/class-downloads.webp",
+        },
+      ],
+    },
+    {
+      name: "The green one",
+      period: "January - November 2026",
+      summary:
+        "A single-page portfolio that started from the Astro Zen template and turned green two days later. It moved to SvelteKit in September and picked up hacker mode along the way.",
+      screenshots: { desktop: "/history/green-desktop.webp", phone: "/history/green-phone.webp" },
+      details: [
+        {
+          title: "Projects",
+          caption: "Projects became cards with screenshots, tech stacks, and links to code, write-ups, and videos.",
+          image: "/history/green-projects.webp",
+        },
+        {
+          title: "Workspace",
+          caption: "Added in October, with numbered markers for the gear on my desk.",
+          image: "/history/green-workspace.webp",
+        },
+        {
+          title: "Hacker mode",
+          caption: "An easter egg that swapped the green for a red terminal theme and my CTF results.",
+          image: "/history/green-hacker.webp",
+        },
+      ],
+    },
+    {
+      name: "The current site",
+      period: "November 2026 - Present",
+      summary: "A redesign around oversized type that reacts to the cursor, a dithered noise field, and slate with teal in place of the green.",
+      screenshots: { desktop: "/history/current-desktop.webp", phone: "/history/current-phone.webp" },
+      details: [
+        {
+          title: "Certifications",
+          caption: "A new section that groups credentials by issuer, with links to verify them.",
+          image: "/history/current-certifications.webp",
+        },
+        {
+          title: "Projects",
+          caption: "The cards opened up into a wider layout with much larger type.",
+          image: "/history/current-projects.webp",
+        },
+        {
+          title: "Workspace",
+          caption: "The desk photo now shares the screen with its hardware list.",
+          image: "/history/current-workspace.webp",
+        },
+      ],
+    },
+  ],
   hackerAbout: {
     description: "I go by yoyojesus. I explore networks, web apps, and the edge cases people miss. Most of my spare time goes to CTFs and building tools for recon and automation.",
   },

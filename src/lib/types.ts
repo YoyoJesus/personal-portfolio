@@ -34,6 +34,17 @@ export interface SiteContent {
   mobile: MobileProps;
   /** All-time favorite games, in ranked order. */
   favoriteGames: FavoriteGame[];
+  /** Major versions of this site, oldest first. */
+  history: SiteVersion[];
+}
+
+export interface SiteVersion {
+  name: string;
+  period: string;
+  summary: string;
+  screenshots: { desktop: string; phone: string };
+  /** Other pages or sections of that version. */
+  details: { title: string; caption: string; image: string }[];
 }
 
 export interface FavoriteGame {

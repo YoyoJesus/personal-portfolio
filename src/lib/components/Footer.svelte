@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { page } from "$app/state";
   import LinkIcon from "$lib/icons/LinkIcon.svelte";
   import type { SiteConfig } from "$lib/types";
   import { HACKER_ALIAS, HACKER_HOST, hacker } from "$lib/hacker.svelte";
@@ -21,7 +22,14 @@
       </li>
     {/each}
   </ul>
-  <p class="mt-8 text-xs text-neutral">
+  <a
+    href="/history"
+    aria-current={page.url.pathname === "/history" ? "page" : undefined}
+    class="inline-block py-3 text-xs text-soft underline transition-colors hover:text-white"
+  >
+    Site history
+  </a>
+  <p class="mt-4 text-xs text-neutral">
     {hacker.on ? `${HACKER_ALIAS}@${HACKER_HOST}` : author} - {currentYear}
   </p>
 </footer>

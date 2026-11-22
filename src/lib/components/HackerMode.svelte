@@ -65,16 +65,13 @@
     checkHash();
   });
 
-  // A second <title> in svelte:head doesn't revert the tab title when removed, so swap it (and the favicon) directly.
   $effect(() => {
     if (!hacker.on) return;
     const icon = document.querySelector<HTMLLinkElement>("link[rel='icon']");
-    const previous = { title: document.title, icon: icon?.href };
-    document.title = `${HACKER_ALIAS} :: terminal`;
+    const previous = icon?.href;
     if (icon) icon.href = HACKER_FAVICON;
     return () => {
-      document.title = previous.title;
-      if (icon && previous.icon) icon.href = previous.icon;
+      if (icon && previous) icon.href = previous;
     };
   });
 
