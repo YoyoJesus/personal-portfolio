@@ -43,6 +43,8 @@ export interface SiteVersion {
   period: string;
   summary: string;
   screenshots: { desktop: string; phone: string };
+  /** Other pages or sections of that version. */
+  details: { title: string; caption: string; image: string }[];
 }
 
 export interface FavoriteGame {
