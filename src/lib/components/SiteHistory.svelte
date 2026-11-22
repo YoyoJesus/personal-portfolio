@@ -42,7 +42,6 @@
       </li>
     {/each}
   </ol>
-  <p class="note">Screenshots were taken in November 2026 by running each version's source code.</p>
 </Section>
 
 <style>
@@ -99,10 +98,6 @@
     border-radius: 0.5rem;
     padding: 2.5rem 1.5rem;
     text-align: center;
-    font-size: var(--text-xs);
-    color: var(--color-neutral);
-  }
-  .note {
     font-size: var(--text-xs);
     color: var(--color-neutral);
   }
