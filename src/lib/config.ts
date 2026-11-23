@@ -3,8 +3,7 @@ import type { SiteConfig, SiteContent } from "./types";
 export const SITE_CONFIG: SiteConfig = {
   title: "Austin Sternberg - Computer Science Student",
   author: "Austin Sternberg",
-  description:
-    "CS Senior @ Kent State, with a passion for web development & cybersecurity.",
+  description: "CS Senior @ Kent State, with a passion for web development & cybersecurity.",
   lang: "en",
   siteLogo: "/austin-small.jpg",
   navLinks: [
@@ -18,11 +17,10 @@ export const SITE_CONFIG: SiteConfig = {
     { text: "About", href: "#about" },
   ],
   socialLinks: [
-    { text: "Linktree" , href: "https://yoyojesus.xyz" },
+    { text: "Linktree", href: "https://yoyojesus.xyz" },
     { text: "LinkedIn", href: "https://www.linkedin.com/in/austin-sternberg/" },
     { text: "Github", href: "https://github.com/yoyojesus" },
     { text: "Youtube", href: "https://www.youtube.com/@yoyojesus" },
-    
   ],
   socialImage: "/zen-og.png",
   canonicalURL: "https://dev.asternberg.xyz",
@@ -228,7 +226,7 @@ export const SITE_CONTENT: SiteContent = {
           position: "Events Coordinator",
           startDate: "Jan 2025",
           endDate: "August 2026",
-        }
+        },
       ],
       hacker: {
         position: "CTF Director",
@@ -262,7 +260,7 @@ export const SITE_CONTENT: SiteContent = {
           position: "Project Manager",
           startDate: "May 2024",
           endDate: "May 2025",
-        }
+        },
       ],
     },
   ],
@@ -272,7 +270,8 @@ export const SITE_CONTENT: SiteContent = {
       status: "Prototype",
       openSource: true,
       hackathon: { name: "Hack The Nest 2026", href: "https://hackthenest.tech/" },
-      summary: "A continuous authentication prototype that uses keyboard and mouse timing to flag unfamiliar users. A background Rust agent collects timing summaries for a per-user machine learning model, with a web dashboard for alerts.",
+      summary:
+        "A continuous authentication prototype that uses keyboard and mouse timing to flag unfamiliar users. A background Rust agent collects timing summaries for a per-user machine learning model, with a web dashboard for alerts.",
       linkSource: "https://github.com/hack-the-nest-but-happier/Inquisitor",
       linkWriteup: "https://devpost.com/software/inquisitor-io",
       linkVideo: "https://youtu.be/tqeCtaJPcYo",
@@ -281,23 +280,34 @@ export const SITE_CONTENT: SiteContent = {
         { icon: "devicon-rust-original", name: "Rust", languageLink: "https://www.rust-lang.org/" },
         { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
         { icon: "devicon-flask-original colored", name: "Flask", languageLink: "https://flask.palletsprojects.com/" },
-        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
+        {
+          icon: "devicon-typescript-plain colored",
+          name: "TypeScript",
+          languageLink: "https://www.typescriptlang.org/",
+        },
         { icon: "devicon-pytorch-original colored", name: "PyTorch", languageLink: "https://pytorch.org/" },
       ],
       collaborators: [
         { name: "Ian Rohrbacher", image: "/collaborators/ianr.jpg", profileLink: "http://rohrbacher.cc/" },
-        { name: "Conner Brunner", image: "/collaborators/connerb.jpg", profileLink: "https://www.linkedin.com/in/conner-brunner/" },
-        { name: "Colin Grant", image: "/collaborators/coling.jpg", profileLink: "https://www.linkedin.com/in/colin-grant-3062cg/" },
+        {
+          name: "Conner Brunner",
+          image: "/collaborators/connerb.jpg",
+          profileLink: "https://www.linkedin.com/in/conner-brunner/",
+        },
+        {
+          name: "Colin Grant",
+          image: "/collaborators/coling.jpg",
+          profileLink: "https://www.linkedin.com/in/colin-grant-3062cg/",
+        },
       ],
     },
     {
       name: "BluQ",
       status: "Prototype",
       openSource: true,
-      awards: [
-        { label: "1st place at Hack Dearborn 4", href: "https://devpost.com/software/bluq" },
-      ],
-      summary: "TCP/IP implemented in Bluetooth to build a simple chat application. Built with python and Angular for user frontend. ",
+      awards: [{ label: "1st place at Hack Dearborn 4", href: "https://devpost.com/software/bluq" }],
+      summary:
+        "TCP/IP implemented in Bluetooth to build a simple chat application. Built with python and Angular for user frontend. ",
       linkPreview: "/",
       linkSource: "https://github.com/IanRohrbacher/Dearborn-Hack-2025",
       linkWriteup: "https://devpost.com/software/bluq",
@@ -306,7 +316,11 @@ export const SITE_CONTENT: SiteContent = {
         { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
         { icon: "devicon-angular-plain colored", name: "Angular", languageLink: "https://angular.dev/" },
         { icon: "devicon-flask-original colored", name: "Flask", languageLink: "https://flask.palletsprojects.com/" },
-        { icon: "devicon-raspberrypi-plain colored", name: "Raspberry Pi", languageLink: "https://www.raspberrypi.com/" },
+        {
+          icon: "devicon-raspberrypi-plain colored",
+          name: "Raspberry Pi",
+          languageLink: "https://www.raspberrypi.com/",
+        },
         { icon: "devicon-bash-plain", name: "Bash", languageLink: "https://www.gnu.org/software/bash/" },
       ],
       collaborators: [
@@ -332,9 +346,14 @@ export const SITE_CONTENT: SiteContent = {
       status: "Prototype",
       openSource: true,
       awards: [
-        { label: "2 track wins at NexHacks 2026", href: "https://devpost.com/software/triage-flow", details: "DevSwarm and The Token Company" },
+        {
+          label: "2 track wins at NexHacks 2026",
+          href: "https://devpost.com/software/triage-flow",
+          details: "DevSwarm and The Token Company",
+        },
       ],
-      summary: "An automated ticketing assignment system for IT and DevOps teams. Built with SvelteKit, FastAPI, n8n, and OpenRouter.",
+      summary:
+        "An automated ticketing assignment system for IT and DevOps teams. Built with SvelteKit, FastAPI, n8n, and OpenRouter.",
       linkPreview: "/",
       linkSource: "https://github.com/nexhacks2026/nexhacks-2026",
       linkWriteup: "https://devpost.com/software/triage-flow",
@@ -345,12 +364,17 @@ export const SITE_CONTENT: SiteContent = {
         { icon: "devicon-fastapi-plain colored", name: "FastAPI", languageLink: "https://fastapi.tiangolo.com/" },
         { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
         { icon: "devicon-docker-plain colored", name: "Docker", languageLink: "https://www.docker.com/" },
-        { icon : "https://n8n.io/favicon.ico", name: "n8n", languageLink: "https://n8n.io/" },
-        { icon: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/openrouter-icon.png",
-          name: "OpenRouter", languageLink: "https://openrouter.ai/"
+        { icon: "https://n8n.io/favicon.ico", name: "n8n", languageLink: "https://n8n.io/" },
+        {
+          icon: "https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/openrouter-icon.png",
+          name: "OpenRouter",
+          languageLink: "https://openrouter.ai/",
         },
-        { icon: "devicon-digitalocean-plain colored", name: "DigitalOcean", languageLink: "https://www.digitalocean.com/" }
-        
+        {
+          icon: "devicon-digitalocean-plain colored",
+          name: "DigitalOcean",
+          languageLink: "https://www.digitalocean.com/",
+        },
       ],
       collaborators: [
         {
@@ -375,7 +399,8 @@ export const SITE_CONTENT: SiteContent = {
       status: "Prototype",
       openSource: true,
       hackathon: { name: "SteelHacks XIII", href: "https://steelhacksxiii.devpost.com/" },
-      summary: "Turns photos of hand-drawn circuits into editable digital circuits. Built with SvelteKit, Tauri, OpenCV, and custom PyTorch models. The AI model server is currently offline.",
+      summary:
+        "Turns photos of hand-drawn circuits into editable digital circuits. Built with SvelteKit, Tauri, OpenCV, and custom PyTorch models. The AI model server is currently offline.",
       linkPreview: "https://app.ifyousmellityouwilleventuallydie.tech/",
       linkSource: "https://github.com/HappyCoderHackathons/holotrace",
       linkWriteup: "https://devpost.com/software/holotrace",
@@ -389,9 +414,17 @@ export const SITE_CONTENT: SiteContent = {
         { icon: "devicon-pytorch-original colored", name: "PyTorch", languageLink: "https://pytorch.org/" },
       ],
       collaborators: [
-        { name: "Noah Al-lahabi", image: "/collaborators/noaha.jpg", profileLink: "https://enderhubris.github.io/my_happy_site/" },
+        {
+          name: "Noah Al-lahabi",
+          image: "/collaborators/noaha.jpg",
+          profileLink: "https://enderhubris.github.io/my_happy_site/",
+        },
         { name: "Ian Rohrbacher", image: "/collaborators/ianr.jpg", profileLink: "http://rohrbacher.cc/" },
-        { name: "Savar Shrestha", image: "/collaborators/savars.jpg", profileLink: "https://www.linkedin.com/in/savar-shrestha/" },
+        {
+          name: "Savar Shrestha",
+          image: "/collaborators/savars.jpg",
+          profileLink: "https://www.linkedin.com/in/savar-shrestha/",
+        },
       ],
     },
     {
@@ -399,9 +432,11 @@ export const SITE_CONTENT: SiteContent = {
       status: "Prototype",
       openSource: true,
       hackathon: { name: "HackOHI/O 2026", href: "https://hackohio2026.devpost.com/" },
-      summary: "Turns a project's lockfile into an interactive dependency graph. Pick any package to simulate a compromise and see everything that depends on it, with known advisories pulled from OSV.dev. Built with SvelteKit and Cytoscape.",
+      summary:
+        "Turns a project's lockfile into an interactive dependency graph. Pick any package to simulate a compromise and see everything that depends on it, with known advisories pulled from OSV.dev. Built with SvelteKit and Cytoscape.",
       hacker: {
-        summary: "A supply-chain blast radius mapper. Feed it an npm, pnpm, Yarn, or Bun lockfile, mark any package as compromised, and trace every dependent back to the project root, with OSV.dev advisories layered on top.",
+        summary:
+          "A supply-chain blast radius mapper. Feed it an npm, pnpm, Yarn, or Bun lockfile, mark any package as compromised, and trace every dependent back to the project root, with OSV.dev advisories layered on top.",
       },
       linkPreview: "https://dependency.toolsmith.online/",
       linkSource: "https://github.com/YoyoJesus/Dependency-Domino",
@@ -410,15 +445,31 @@ export const SITE_CONTENT: SiteContent = {
       image: "/dependency-domino.webp",
       languages: [
         { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
-        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
-        { icon: "https://js.cytoscape.org/img/cytoscape-logo.svg", name: "Cytoscape.js", languageLink: "https://js.cytoscape.org/" },
+        {
+          icon: "devicon-typescript-plain colored",
+          name: "TypeScript",
+          languageLink: "https://www.typescriptlang.org/",
+        },
+        {
+          icon: "https://js.cytoscape.org/img/cytoscape-logo.svg",
+          name: "Cytoscape.js",
+          languageLink: "https://js.cytoscape.org/",
+        },
         { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
         { icon: "https://osv.dev/static/img/favicon-32x32.png", name: "OSV.dev", languageLink: "https://osv.dev/" },
         { icon: "devicon-vitest-plain colored", name: "Vitest", languageLink: "https://vitest.dev/" },
       ],
       collaborators: [
-        { name: "Savar Shrestha", image: "/collaborators/savars.jpg", profileLink: "https://www.linkedin.com/in/savar-shrestha/" },
-        { name: "Conner Brunner", image: "/collaborators/connerb.jpg", profileLink: "https://www.linkedin.com/in/conner-brunner/" },
+        {
+          name: "Savar Shrestha",
+          image: "/collaborators/savars.jpg",
+          profileLink: "https://www.linkedin.com/in/savar-shrestha/",
+        },
+        {
+          name: "Conner Brunner",
+          image: "/collaborators/connerb.jpg",
+          profileLink: "https://www.linkedin.com/in/conner-brunner/",
+        },
       ],
     },
     {
@@ -427,20 +478,20 @@ export const SITE_CONTENT: SiteContent = {
       openSource: true,
       summary: "A collection of python scripts for various information security and reconnaissance tasks.",
       hacker: {
-        summary: "My personal recon toolkit: a collection of python scripts for scanning, enumeration, and other information security tasks.",
+        summary:
+          "My personal recon toolkit: a collection of python scripts for scanning, enumeration, and other information security tasks.",
       },
       linkPreview: "/",
       linkSource: "https://github.com/YoyoJesus/python-INFOsec",
       linkWriteup: "/",
       image: "/infosec.png",
-      languages: [
-        { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
-      ],
+      languages: [{ icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" }],
     },
     {
       name: "ToolSmith",
       status: "Active",
-      summary: "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface. Some tooling backed by OpenAI's API platform, allowing for uploading of documents to fill in data.",
+      summary:
+        "A suite of professional tools built with Svelte & WASM, hosted on Vercel. Uses the Typst typesetting system to generate beautiful, custom documents with a simple interface. Some tooling backed by OpenAI's API platform, allowing for uploading of documents to fill in data.",
       linkPreview: "https://toolsmith.online/",
       linkSource: "/",
       linkWriteup: "/",
@@ -451,24 +502,34 @@ export const SITE_CONTENT: SiteContent = {
         { icon: "https://typst.app/favicon.ico", name: "Typst", languageLink: "https://typst.app/" },
         { icon: "https://webassembly.org/favicon.ico", name: "WebAssembly", languageLink: "https://webassembly.org/" },
         { icon: "devicon-tailwindcss-plain colored", name: "TailwindCSS", languageLink: "https://tailwindcss.com/" },
-        { icon: "https://ui.shadcn.com/favicon.ico", name: "ShadCN", languageLink: "https://ui.shadcn.com/"},
-        { icon: "https://github.com/naptha/tesseract.js/raw/master/docs/images/tesseract_dark.png", name: "Tesseract JS", languageLink: "https://tesseract.projectnaptha.com/"},
-        {icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai.svg", name: "OpenAI API", languageLink: "https://openai.com/api/"},
+        { icon: "https://ui.shadcn.com/favicon.ico", name: "ShadCN", languageLink: "https://ui.shadcn.com/" },
+        {
+          icon: "https://github.com/naptha/tesseract.js/raw/master/docs/images/tesseract_dark.png",
+          name: "Tesseract JS",
+          languageLink: "https://tesseract.projectnaptha.com/",
+        },
+        {
+          icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai.svg",
+          name: "OpenAI API",
+          languageLink: "https://openai.com/api/",
+        },
       ],
-     collaborators: [
+      collaborators: [
         {
           name: "TJ Raklovits",
           image: "/collaborators/tjk.jpeg",
           profileLink: "https://monster0506.dev/",
         },
-     ],
+      ],
     },
     {
       name: "Kent Hack It",
       status: "Active",
-      summary: "The competition platform and challenges for Kent Hack It, HacKSU's annual CTF event. Built with SvelteKit, PostgreSQL, and Drizzle, with challenges spanning a variety of technologies.",
+      summary:
+        "The competition platform and challenges for Kent Hack It, HacKSU's annual CTF event. Built with SvelteKit, PostgreSQL, and Drizzle, with challenges spanning a variety of technologies.",
       hacker: {
-        summary: "HacKSU's annual capture-the-flag. The scoring platform is built with SvelteKit and PostgreSQL, and the challenges span web, crypto, forensics, and reversing, each one built to be broken.",
+        summary:
+          "HacKSU's annual capture-the-flag. The scoring platform is built with SvelteKit and PostgreSQL, and the challenges span web, crypto, forensics, and reversing, each one built to be broken.",
       },
       linkPreview: "https://ctf.hacksu.com",
       linkSource: "https://github.com/hacksu/kent-hack-it",
@@ -476,7 +537,11 @@ export const SITE_CONTENT: SiteContent = {
       image: "/khi.webp",
       languages: [
         { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
-        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
+        {
+          icon: "devicon-typescript-plain colored",
+          name: "TypeScript",
+          languageLink: "https://www.typescriptlang.org/",
+        },
         { icon: "devicon-postgresql-plain colored", name: "PostgreSQL", languageLink: "https://www.postgresql.org/" },
         { icon: "https://orm.drizzle.team/favicon.ico", name: "Drizzle", languageLink: "https://orm.drizzle.team/" },
         { icon: "devicon-tailwindcss-plain colored", name: "Tailwind CSS", languageLink: "https://tailwindcss.com/" },
@@ -502,14 +567,19 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "KSU Combat Robotics Website",
       status: "Active",
-      summary: "Kent State's Combat Robotics club website, with event registration, team updates, and club information. Built with SvelteKit, PostgreSQL, and Drizzle, and hosted on Vercel.",
+      summary:
+        "Kent State's Combat Robotics club website, with event registration, team updates, and club information. Built with SvelteKit, PostgreSQL, and Drizzle, and hosted on Vercel.",
       linkPreview: "https://ksucombat.club",
       linkSource: "https://github.com/CombatRoboticsKSU/KSU-Combat-Robotics-Website",
       linkWriteup: "/",
       image: "/ksucombat.webp",
       languages: [
         { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
-        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
+        {
+          icon: "devicon-typescript-plain colored",
+          name: "TypeScript",
+          languageLink: "https://www.typescriptlang.org/",
+        },
         { icon: "devicon-postgresql-plain colored", name: "PostgreSQL", languageLink: "https://www.postgresql.org/" },
         { icon: "https://orm.drizzle.team/favicon.ico", name: "Drizzle", languageLink: "https://orm.drizzle.team/" },
       ],
@@ -535,9 +605,14 @@ export const SITE_CONTENT: SiteContent = {
       name: "SCI Smart Badge",
       status: "Active",
       awards: [
-        { label: "Best Presentation at COF 2026", href: "/sci-smart-badge-poster.pdf", details: "Choose Ohio First Research Symposium" },
+        {
+          label: "Best Presentation at COF 2026",
+          href: "/sci-smart-badge-poster.pdf",
+          details: "Choose Ohio First Research Symposium",
+        },
       ],
-      summary: "An IOT badge that collects decibel levels and motion data to monitor engagement in small group settings. Built using an Arduino Sense board and integrated with a set of python scripts for data analysis.",
+      summary:
+        "An IOT badge that collects decibel levels and motion data to monitor engagement in small group settings. Built using an Arduino Sense board and integrated with a set of python scripts for data analysis.",
       linkPreview: "/",
       linkSource: "https://github.com/YoyoJesus/SCI-Lab-BadgeSoftware",
       linkWriteup: "/",
@@ -552,14 +627,15 @@ export const SITE_CONTENT: SiteContent = {
           name: "Bishop Kliskey",
           image: "/collaborators/bishopk.jpg",
           profileLink: "https://www.linkedin.com/in/bishop-kliskey-0074251b1/",
-        }
+        },
       ],
     },
     {
       name: "MediTrack",
       status: "Prototype",
       openSource: true,
-      summary: "A website for booking doctor appointments and tracking diagnoses, with workflows for doctors, billing, and insurance. Built with Flask and MySQL.",
+      summary:
+        "A website for booking doctor appointments and tracking diagnoses, with workflows for doctors, billing, and insurance. Built with Flask and MySQL.",
       linkPreview: "/",
       linkSource: "https://github.com/EnderHubris/MediTrack",
       linkWriteup: "https://blog.yoyojesus.xyz/blog/meditrack",
@@ -591,7 +667,8 @@ export const SITE_CONTENT: SiteContent = {
       name: "Ripple Chat",
       status: "Prototype",
       openSource: true,
-      summary: "A real-time chat, voice, and video application using websockets and peer-to-peer connections. Built with React, Node.js, and WebRTC.",
+      summary:
+        "A real-time chat, voice, and video application using websockets and peer-to-peer connections. Built with React, Node.js, and WebRTC.",
       linkPreview: "/",
       linkSource: "https://github.com/arizotaz/discord_clone",
       linkWriteup: "https://blog.yoyojesus.xyz/blog/ripple-chat",
@@ -599,8 +676,11 @@ export const SITE_CONTENT: SiteContent = {
       languages: [
         { icon: "devicon-react-original colored", name: "React", languageLink: "https://react.dev/" },
         { icon: "devicon-nodejs-plain colored", name: "Node.js", languageLink: "https://nodejs.org/" },
-        { icon: "https://webrtc.github.io/webrtc-org/assets/images/webrtc-logo-vert-retro-dist.svg", 
-          name: "WebRTC", languageLink: "https://webrtc.org/" },
+        {
+          icon: "https://webrtc.github.io/webrtc-org/assets/images/webrtc-logo-vert-retro-dist.svg",
+          name: "WebRTC",
+          languageLink: "https://webrtc.org/",
+        },
         { icon: "devicon-mongodb-plain colored", name: "MongoDB", languageLink: "https://www.mongodb.com/" },
       ],
       collaborators: [
@@ -629,19 +709,40 @@ export const SITE_CONTENT: SiteContent = {
     {
       name: "TYPO",
       status: "Archived",
-      summary: "A Simon Says-style memory game with solo challenges, leaderboards, and head-to-head multiplayer. Built with Python and pygame, with browser support through pygbag. No longer maintained; the hosted game is unavailable.",
+      summary:
+        "A Simon Says-style memory game with solo challenges, leaderboards, and head-to-head multiplayer. Built with Python and pygame, with browser support through pygbag. No longer maintained; the hosted game is unavailable.",
       linkSource: "https://github.com/Typ0-SWE-Spring26/Typ0",
       image: "/typo.webp",
       languages: [
         { icon: "devicon-python-plain colored", name: "Python", languageLink: "https://www.python.org/" },
         { icon: "devicon-python-plain colored", name: "pygame", languageLink: "https://www.pygame.org/" },
-        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
-        { icon: "https://webassembly.org/favicon.ico", name: "pygbag", languageLink: "https://github.com/pygame-web/pygbag" },
+        {
+          icon: "devicon-typescript-plain colored",
+          name: "TypeScript",
+          languageLink: "https://www.typescriptlang.org/",
+        },
+        {
+          icon: "https://webassembly.org/favicon.ico",
+          name: "pygbag",
+          languageLink: "https://github.com/pygame-web/pygbag",
+        },
       ],
       collaborators: [
-        { name: "Benjamin Purdum", image: "/collaborators/benp.jpg", profileLink: "https://benpurdum.github.io/portfolio/" },
-        { name: "Dipen Thapa", image: "/collaborators/dipent.jpg", profileLink: "https://www.linkedin.com/in/dipen-thapa-7189042a4/" },
-        { name: "Charlie Burrows", image: "/collaborators/charlieb.jpg", profileLink: "https://www.linkedin.com/in/charlie-burrows-043414402/" },
+        {
+          name: "Benjamin Purdum",
+          image: "/collaborators/benp.jpg",
+          profileLink: "https://benpurdum.github.io/portfolio/",
+        },
+        {
+          name: "Dipen Thapa",
+          image: "/collaborators/dipent.jpg",
+          profileLink: "https://www.linkedin.com/in/dipen-thapa-7189042a4/",
+        },
+        {
+          name: "Charlie Burrows",
+          image: "/collaborators/charlieb.jpg",
+          profileLink: "https://www.linkedin.com/in/charlie-burrows-043414402/",
+        },
         { name: "Jude Skrzat", image: "/collaborators/judes.jpg", profileLink: "https://judeswebsite.netlify.app/" },
       ],
     },
@@ -649,21 +750,27 @@ export const SITE_CONTENT: SiteContent = {
       name: "Sitch Replacement",
       status: "Active",
       openSource: true,
-      summary: "A custom profile page for my RFID business card, replacing Sitch's limited page builder. Built with SvelteKit and TypeScript, and hosted on Vercel.",
+      summary:
+        "A custom profile page for my RFID business card, replacing Sitch's limited page builder. Built with SvelteKit and TypeScript, and hosted on Vercel.",
       linkPreview: "https://sitch.yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/sitch-replacement",
       linkWriteup: "/",
       image: "/sitch-clone.webp",
       languages: [
         { icon: "devicon-svelte-plain colored", name: "SvelteKit", languageLink: "https://svelte.dev/" },
-        { icon: "devicon-typescript-plain colored", name: "TypeScript", languageLink: "https://www.typescriptlang.org/" },
+        {
+          icon: "devicon-typescript-plain colored",
+          name: "TypeScript",
+          languageLink: "https://www.typescriptlang.org/",
+        },
       ],
     },
     {
       name: "Linktree Replacement",
       status: "Active",
       openSource: true,
-      summary: "A personal Linktree-style website built with Svelte, Vite, and Tailwind CSS, hosted on Vercel. Fully customizable and open source.",
+      summary:
+        "A personal Linktree-style website built with Svelte, Vite, and Tailwind CSS, hosted on Vercel. Fully customizable and open source.",
       linkPreview: "https://yoyojesus.xyz",
       linkSource: "https://github.com/YoyoJesus/linktree-replacement",
       linkWriteup: "/",
@@ -675,7 +782,8 @@ export const SITE_CONTENT: SiteContent = {
     },
   ],
   about: {
-    description: "I'm drawn to cybersecurity and networking: understanding how systems work, finding weak spots, and making them stronger. I build tools, compete in CTFs, and turn hackathon ideas into working projects. I'm preparing to return to Awetomaton as a software engineer after interning there this past summer.",
+    description:
+      "I'm drawn to cybersecurity and networking: understanding how systems work, finding weak spots, and making them stronger. I build tools, compete in CTFs, and turn hackathon ideas into working projects. I'm preparing to return to Awetomaton as a software engineer after interning there this past summer.",
     image: "/austin-big.JPG",
   },
   // Security work first, then networking/protocols, hardware, and apps handling sensitive data; plain web builds last.
@@ -698,10 +806,15 @@ export const SITE_CONTENT: SiteContent = {
   ],
   workspace: {
     image: "/workspace.jpg",
-    imageAlt: "My desk: a laptop and Samsung monitor with a mechanical keyboard, mic, and mouse on a circuit-board desk mat",
+    imageAlt:
+      "My desk: a laptop and Samsung monitor with a mechanical keyboard, mic, and mouse on a circuit-board desk mat",
     // `pin` is percent from the photo's top-left and places a numbered marker.
     gear: [
-      { name: "Laptop", detail: "Dell Inspiron 16 Plus, 32GB DDR5 RAM, RTX 3060 Laptop GPU, Intel Core i7-1700H", pin: { x: 69, y: 50 } },
+      {
+        name: "Laptop",
+        detail: "Dell Inspiron 16 Plus, 32GB DDR5 RAM, RTX 3060 Laptop GPU, Intel Core i7-1700H",
+        pin: { x: 69, y: 50 },
+      },
       { name: "Monitor", detail: "Samsung, 27-inch", pin: { x: 27, y: 37 } },
       { name: "Keyboard", detail: "Redragon K707 PRO", pin: { x: 62, y: 60 } },
       { name: "Mouse", detail: "Logitech G305", pin: { x: 87, y: 62 } },
@@ -724,10 +837,26 @@ export const SITE_CONTENT: SiteContent = {
           { name: "VS Code", icon: "devicon-vscode-plain colored", href: "https://code.visualstudio.com/" },
           { name: "T3 Code", icon: "https://t3.codes/favicon.ico", href: "https://t3.codes/" },
           { name: "Git", icon: "devicon-git-plain colored", href: "https://git-scm.com/" },
-          { name: "GitHub Desktop", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg", href: "https://desktop.github.com/" },
-          { name: "Docker Desktop", icon: "devicon-docker-plain colored", href: "https://www.docker.com/products/docker-desktop/" },
-          { name: "Podman", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/podman.svg", href: "https://podman.io/" },
-          { name: "PGAdmin", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/pgadmin.svg", href: "https://www.pgadmin.org/" },
+          {
+            name: "GitHub Desktop",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg",
+            href: "https://desktop.github.com/",
+          },
+          {
+            name: "Docker Desktop",
+            icon: "devicon-docker-plain colored",
+            href: "https://www.docker.com/products/docker-desktop/",
+          },
+          {
+            name: "Podman",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/podman.svg",
+            href: "https://podman.io/",
+          },
+          {
+            name: "PGAdmin",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/pgadmin.svg",
+            href: "https://www.pgadmin.org/",
+          },
           { name: "Postman", icon: "devicon-postman-plain colored", href: "https://www.postman.com/" },
         ],
       },
@@ -738,7 +867,11 @@ export const SITE_CONTENT: SiteContent = {
           { name: "TypeScript", icon: "devicon-typescript-plain colored", href: "https://www.typescriptlang.org/" },
           { name: "TailwindCSS", icon: "devicon-tailwindcss-plain colored", href: "https://tailwindcss.com/" },
           { name: "ShadCN", icon: "https://ui.shadcn.com/favicon.ico", href: "https://ui.shadcn.com/" },
-          { name: "Lucide", icon: "https://api.iconify.design/simple-icons/lucide.svg?color=%23f56565", href: "https://lucide.dev/" },
+          {
+            name: "Lucide",
+            icon: "https://api.iconify.design/simple-icons/lucide.svg?color=%23f56565",
+            href: "https://lucide.dev/",
+          },
           { name: "Drizzle", icon: "https://orm.drizzle.team/favicon.ico", href: "https://orm.drizzle.team/" },
           { name: "PostgreSQL", icon: "devicon-postgresql-plain colored", href: "https://www.postgresql.org/" },
           { name: "Python", icon: "devicon-python-plain colored", href: "https://www.python.org/" },
@@ -746,19 +879,48 @@ export const SITE_CONTENT: SiteContent = {
           { name: "PyTorch", icon: "devicon-pytorch-original colored", href: "https://pytorch.org/" },
           { name: "Playwright", icon: "devicon-playwright-plain colored", href: "https://playwright.dev/" },
           { name: "Typst", icon: "https://typst.app/favicon.ico", href: "https://typst.app/", trying: true },
-          { name: "OpenAI API", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg", href: "https://openai.com/api/", trying: true },
+          {
+            name: "OpenAI API",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/openai-light.svg",
+            href: "https://openai.com/api/",
+            trying: true,
+          },
           { name: "Astro", icon: "devicon-astro-plain colored", href: "https://astro.build/", trying: true },
         ],
       },
       {
         title: "Everyday",
         items: [
-          { name: "Zen Browser", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/zen-browser.svg", href: "https://zen-browser.app/" },
-          { name: "Floorp Browser", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/floorp.svg", href: "https://floorp.dev/" },
-          { name: "Spotify", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg", href: "https://open.spotify.com/" },
-          { name: "Obsidian", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/obsidian.svg", href: "https://obsidian.md/" },
-          { name: "Discord", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg", href: "https://discord.com/" },
-          { name: "Steam", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/steam.svg", href: "https://store.steampowered.com/" },
+          {
+            name: "Zen Browser",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/zen-browser.svg",
+            href: "https://zen-browser.app/",
+          },
+          {
+            name: "Floorp Browser",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/floorp.svg",
+            href: "https://floorp.dev/",
+          },
+          {
+            name: "Spotify",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg",
+            href: "https://open.spotify.com/",
+          },
+          {
+            name: "Obsidian",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/obsidian.svg",
+            href: "https://obsidian.md/",
+          },
+          {
+            name: "Discord",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg",
+            href: "https://discord.com/",
+          },
+          {
+            name: "Steam",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/steam.svg",
+            href: "https://store.steampowered.com/",
+          },
         ],
       },
     ],
@@ -767,7 +929,11 @@ export const SITE_CONTENT: SiteContent = {
     image: "/workspace.jpg",
     imageAlt: "My hacking setup",
     gear: [
-      { name: "Laptop", detail: "Dell Inspiron 16 Plus, 32GB DDR5 RAM, RTX 3060 Laptop GPU, Intel Core i7-1700H", pin: { x: 69, y: 50 } },
+      {
+        name: "Laptop",
+        detail: "Dell Inspiron 16 Plus, 32GB DDR5 RAM, RTX 3060 Laptop GPU, Intel Core i7-1700H",
+        pin: { x: 69, y: 50 },
+      },
       { name: "Mouse", detail: "Logitech G305", pin: { x: 87, y: 62 } },
       { name: "Keyboard", detail: "Redragon K707 PRO", pin: { x: 62, y: 60 } },
       { name: "Monitor", detail: "Samsung, 27-inch", pin: { x: 27, y: 37 } },
@@ -796,10 +962,22 @@ export const SITE_CONTENT: SiteContent = {
       {
         title: "Web & Cracking",
         items: [
-          { name: "Burp Suite", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/burpsuite.svg", href: "https://portswigger.net/burp" },
+          {
+            name: "Burp Suite",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/burpsuite.svg",
+            href: "https://portswigger.net/burp",
+          },
           { name: "Hashcat", icon: "https://hashcat.net/favicon.ico", href: "https://hashcat.net/hashcat/" },
-          { name: "John the Ripper", icon: "https://www.openwall.com/favicon.ico", href: "https://www.openwall.com/john/" },
-          { name: "CyberChef", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/cyberchef.svg", href: "https://gchq.github.io/CyberChef/" },
+          {
+            name: "John the Ripper",
+            icon: "https://www.openwall.com/favicon.ico",
+            href: "https://www.openwall.com/john/",
+          },
+          {
+            name: "CyberChef",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/cyberchef.svg",
+            href: "https://gchq.github.io/CyberChef/",
+          },
         ],
       },
       {
@@ -813,7 +991,11 @@ export const SITE_CONTENT: SiteContent = {
       {
         title: "Ops & Privacy",
         items: [
-          { name: "Proton VPN", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/proton-vpn.svg", href: "https://protonvpn.com/" },
+          {
+            name: "Proton VPN",
+            icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/proton-vpn.svg",
+            href: "https://protonvpn.com/",
+          },
           { name: "Docker", icon: "devicon-docker-plain colored", href: "https://www.docker.com/" },
         ],
       },
@@ -823,56 +1005,359 @@ export const SITE_CONTENT: SiteContent = {
     phone: { name: "Google Pixel 7", detail: "Android", href: "https://store.google.com/product/pixel_7" },
     apps: [
       // Dev & AI
-      { name: "GitHub", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg", href: "https://github.com/yoyojesus" },
-      { name: "Termius", icon: "https://api.iconify.design/simple-icons/termius.svg?color=%23ffffff", href: "https://termius.com/" },
-      { name: "ChatGPT", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/chatgpt.svg", href: "https://chatgpt.com/" },
-      { name: "Claude", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/claude-ai.svg", href: "https://claude.ai/" },
+      {
+        name: "GitHub",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg",
+        href: "https://github.com/yoyojesus",
+      },
+      {
+        name: "Termius",
+        icon: "https://api.iconify.design/simple-icons/termius.svg?color=%23ffffff",
+        href: "https://termius.com/",
+      },
+      {
+        name: "ChatGPT",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/chatgpt.svg",
+        href: "https://chatgpt.com/",
+      },
+      {
+        name: "Claude",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/claude-ai.svg",
+        href: "https://claude.ai/",
+      },
       // Social
-      { name: "Instagram", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/instagram.svg", href: "https://www.instagram.com/yoyoje_sus/" },
-      { name: "X", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/x-light.svg", href: "https://x.com/CBooted25144" },
-      { name: "Bluesky", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bluesky.svg", href: "https://bsky.app/profile/yoyojesus.bsky.social" },
-      { name: "Discord", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg", href: "https://discord.com/" },
+      {
+        name: "Instagram",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/instagram.svg",
+        href: "https://www.instagram.com/yoyoje_sus/",
+      },
+      {
+        name: "X",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/x-light.svg",
+        href: "https://x.com/CBooted25144",
+      },
+      {
+        name: "Bluesky",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/bluesky.svg",
+        href: "https://bsky.app/profile/yoyojesus.bsky.social",
+      },
+      {
+        name: "Discord",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg",
+        href: "https://discord.com/",
+      },
       // Media
-      { name: "Spotify", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg", href: "https://open.spotify.com/user/austinplaysmms12" },
-      { name: "YouTube", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/youtube.svg", href: "https://www.youtube.com/@yoyojesus" },
-      { name: "F1", icon: "https://api.iconify.design/simple-icons/f1.svg?color=%23e10600", href: "https://www.formula1.com/" },
-      { name: "Xbox", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/xbox.svg", href: "https://www.xbox.com/" },
-      { name: "Fire Emblem Heroes", label: "FE Heroes", icon: "https://www.google.com/s2/favicons?domain=fire-emblem-heroes.com&sz=64", href: "https://fire-emblem-heroes.com/" },
+      {
+        name: "Spotify",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/spotify.svg",
+        href: "https://open.spotify.com/user/austinplaysmms12",
+      },
+      {
+        name: "YouTube",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/youtube.svg",
+        href: "https://www.youtube.com/@yoyojesus",
+      },
+      {
+        name: "F1",
+        icon: "https://api.iconify.design/simple-icons/f1.svg?color=%23e10600",
+        href: "https://www.formula1.com/",
+      },
+      {
+        name: "Xbox",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/xbox.svg",
+        href: "https://www.xbox.com/",
+      },
+      {
+        name: "Fire Emblem Heroes",
+        label: "FE Heroes",
+        icon: "https://www.google.com/s2/favicons?domain=fire-emblem-heroes.com&sz=64",
+        href: "https://fire-emblem-heroes.com/",
+      },
       // Security & money
-      { name: "Google Authenticator", label: "G Auth", icon: "https://api.iconify.design/simple-icons/googleauthenticator.svg?color=%23ffffff", href: "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2" },
-      { name: "Microsoft Authenticator", label: "MS Auth", icon: "https://api.iconify.design/arcticons/microsoft-authenticator.svg?color=%234ea1ff", href: "https://www.microsoft.com/security/mobile-authenticator-app" },
-      { name: "Huntington", icon: "https://www.google.com/s2/favicons?domain=huntington.com&sz=64", href: "https://www.huntington.com/" },
-      { name: "Fidelity", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/fidelity.svg", href: "https://www.fidelity.com/" },
+      {
+        name: "Google Authenticator",
+        label: "G Auth",
+        icon: "https://api.iconify.design/simple-icons/googleauthenticator.svg?color=%23ffffff",
+        href: "https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2",
+      },
+      {
+        name: "Microsoft Authenticator",
+        label: "MS Auth",
+        icon: "https://api.iconify.design/arcticons/microsoft-authenticator.svg?color=%234ea1ff",
+        href: "https://www.microsoft.com/security/mobile-authenticator-app",
+      },
+      {
+        name: "Huntington",
+        icon: "https://www.google.com/s2/favicons?domain=huntington.com&sz=64",
+        href: "https://www.huntington.com/",
+      },
+      {
+        name: "Fidelity",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/fidelity.svg",
+        href: "https://www.fidelity.com/",
+      },
       // Everyday
-      { name: "ClickUp", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/clickup.svg", href: "https://clickup.com/" },
-      { name: "Waze", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/waze.svg", href: "https://www.waze.com/" },
-      { name: "Nothing X", icon: "https://api.iconify.design/arcticons/nothing-x.svg?color=%23ffffff", href: "https://play.google.com/store/apps/details?id=com.nothing.smartcenter" },
-      { name: "Taco Bell", icon: "https://api.iconify.design/simple-icons/tacobell.svg?color=%23b98ae0", href: "https://www.tacobell.com/" },
+      {
+        name: "ClickUp",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/clickup.svg",
+        href: "https://clickup.com/",
+      },
+      {
+        name: "Waze",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/waze.svg",
+        href: "https://www.waze.com/",
+      },
+      {
+        name: "Nothing X",
+        icon: "https://api.iconify.design/arcticons/nothing-x.svg?color=%23ffffff",
+        href: "https://play.google.com/store/apps/details?id=com.nothing.smartcenter",
+      },
+      {
+        name: "Taco Bell",
+        icon: "https://api.iconify.design/simple-icons/tacobell.svg?color=%23b98ae0",
+        href: "https://www.tacobell.com/",
+      },
     ],
     dock: [
-      { name: "Gmail", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/gmail.svg", href: "https://mail.google.com/" },
-      { name: "Outlook", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/microsoft-outlook.svg", href: "https://www.microsoft.com/microsoft-365/outlook/outlook-for-android" },
-      { name: "LinkedIn", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linkedin.svg", href: "https://www.linkedin.com/in/austin-sternberg/" },
-      { name: "Teams", icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/microsoft-teams.svg", href: "https://www.microsoft.com/microsoft-teams" },
+      {
+        name: "Gmail",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/gmail.svg",
+        href: "https://mail.google.com/",
+      },
+      {
+        name: "Outlook",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/microsoft-outlook.svg",
+        href: "https://www.microsoft.com/microsoft-365/outlook/outlook-for-android",
+      },
+      {
+        name: "LinkedIn",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/linkedin.svg",
+        href: "https://www.linkedin.com/in/austin-sternberg/",
+      },
+      {
+        name: "Teams",
+        icon: "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/microsoft-teams.svg",
+        href: "https://www.microsoft.com/microsoft-teams",
+      },
     ],
     gear: [
-      { name: "CMF Watch Pro 2", image: "/gear/cmf-watch-pro-2.webp", detail: "Smartwatch", href: "https://us.nothing.tech/collections/cmf" },
-      { name: "CMF Headphone Pro", image: "/gear/cmf-headphone-pro.webp", detail: "Over-ear ANC headphones", href: "https://us.nothing.tech/products/cmf-headphone-pro" },
-      { name: "Shokz OpenRun", image: "/gear/shokz-openrun.webp", detail: "Bone-conduction headphones", href: "https://shokz.com/products/openrun" },
-      { name: "LTT Transparent Screwdriver", image: "/gear/ltt-screwdriver.webp", detail: "Ratcheting", href: "https://www.lttstore.com/products/transparent-screwdriver" },
-      { name: "Heltec WiFi LoRa 32 V3", image: "/gear/heltec-lora-v3.webp", detail: "Meshtastic node", href: "https://heltec.org/project/wifi-lora-32-v3/" },
-      { name: "Moleskine Classic Notebook", image: "/gear/moleskine-pocket.webp", detail: "Pocket, hard cover", href: "https://www.moleskine.com/en-us/" },
+      {
+        name: "CMF Watch Pro 2",
+        image: "/gear/cmf-watch-pro-2.webp",
+        detail: "Smartwatch",
+        href: "https://us.nothing.tech/collections/cmf",
+      },
+      {
+        name: "CMF Headphone Pro",
+        image: "/gear/cmf-headphone-pro.webp",
+        detail: "Over-ear ANC headphones",
+        href: "https://us.nothing.tech/products/cmf-headphone-pro",
+      },
+      {
+        name: "Shokz OpenRun",
+        image: "/gear/shokz-openrun.webp",
+        detail: "Bone-conduction headphones",
+        href: "https://shokz.com/products/openrun",
+      },
+      {
+        name: "LTT Transparent Screwdriver",
+        image: "/gear/ltt-screwdriver.webp",
+        detail: "Ratcheting",
+        href: "https://www.lttstore.com/products/transparent-screwdriver",
+      },
+      {
+        name: "Heltec WiFi LoRa 32 V3",
+        image: "/gear/heltec-lora-v3.webp",
+        detail: "Meshtastic node",
+        href: "https://heltec.org/project/wifi-lora-32-v3/",
+      },
+      {
+        name: "Moleskine Classic Notebook",
+        image: "/gear/moleskine-pocket.webp",
+        detail: "Pocket, hard cover",
+        href: "https://www.moleskine.com/en-us/",
+      },
       { name: "Pilot G2", image: "/gear/pilot-g2.webp", detail: "0.7mm gel pen", href: "https://pilotpen.us/" },
     ],
   },
   favoriteGames: [
-    { name: "BioShock", year: 2007, platform: "Xbox", cover: "/games/bioshock.webp", href: "https://www.xbox.com/en-US/games/store/x/BTBMZQ3FM2V8" },
-    { name: "Detroit: Become Human", year: 2018, platform: "PC", cover: "/games/detroit-become-human.webp", href: "https://store.steampowered.com/app/1222140/" },
-    { name: "Forza Horizon 3", year: 2016, platform: "Xbox", cover: "/games/forza-horizon-3.webp", href: "https://www.xbox.com/en-US/games/store/x/9NBLGGH1Z7TW" },
-    { name: "Halo: Reach", year: 2010, platform: "Xbox", cover: "/games/halo-reach.webp", href: "https://www.xbox.com/en-US/games/store/x/9NLGW5MXWKJ6" },
-    { name: "Watch Dogs", year: 2014, platform: "Xbox", cover: "/games/watch-dogs.webp", href: "https://www.xbox.com/en-US/games/store/x/C4DMGRPNSHXG" },
+    {
+      name: "BioShock",
+      year: 2007,
+      platform: "Xbox",
+      cover: "/games/bioshock.webp",
+      href: "https://www.xbox.com/en-US/games/store/x/BTBMZQ3FM2V8",
+    },
+    {
+      name: "Detroit: Become Human",
+      year: 2018,
+      platform: "PC",
+      cover: "/games/detroit-become-human.webp",
+      href: "https://store.steampowered.com/app/1222140/",
+    },
+    {
+      name: "Forza Horizon 3",
+      year: 2016,
+      platform: "Xbox",
+      cover: "/games/forza-horizon-3.webp",
+      href: "https://www.xbox.com/en-US/games/store/x/9NBLGGH1Z7TW",
+    },
+    {
+      name: "Halo: Reach",
+      year: 2010,
+      platform: "Xbox",
+      cover: "/games/halo-reach.webp",
+      href: "https://www.xbox.com/en-US/games/store/x/9NLGW5MXWKJ6",
+    },
+    {
+      name: "Watch Dogs",
+      year: 2014,
+      platform: "Xbox",
+      cover: "/games/watch-dogs.webp",
+      href: "https://www.xbox.com/en-US/games/store/x/C4DMGRPNSHXG",
+    },
   ],
   history: [
+    {
+      name: "The current site",
+      period: "November 2026 - Present",
+      summary:
+        "A redesign around oversized type that reacts to the cursor, a dithered noise field, and slate with teal in place of the green.",
+      screenshots: { desktop: "/history/current-desktop.webp", phone: "/history/current-phone.webp" },
+      details: [
+        {
+          title: "Certifications",
+          caption: "A new section that groups credentials by issuer, with links to verify them.",
+          image: "/history/current-certifications.webp",
+        },
+        {
+          title: "Projects",
+          caption: "The cards opened up into a wider layout with much larger type.",
+          image: "/history/current-projects.webp",
+        },
+        {
+          title: "When I'm Not Coding",
+          caption: "Films and games now sit side by side, and Xbox joined Steam.",
+          image: "/history/current-offclock.webp",
+        },
+        {
+          title: "Workspace",
+          caption: "The desk photo now shares the screen with its hardware list.",
+          image: "/history/current-workspace.webp",
+        },
+      ],
+    },
+    {
+      name: "Green, on SvelteKit",
+      period: "September - November 2026",
+      summary:
+        "In September the green site moved from Astro to SvelteKit and gained a leadership section. Hacker mode followed a few days later.",
+      screenshots: { desktop: "/history/green-desktop.webp", phone: "/history/green-phone.webp" },
+      details: [
+        {
+          title: "Projects",
+          caption: "Redesigned in September, then given status labels and awards in October.",
+          image: "/history/green-projects.webp",
+        },
+        {
+          title: "When I'm Not Coding",
+          caption:
+            "Added in September with recent films from Letterboxd, music from Last.fm, and my most played Steam games.",
+          image: "/history/green-offclock.webp",
+        },
+        {
+          title: "Workspace",
+          caption: "Added in October: a photo of my desk with numbered markers that show each item's specs on hover.",
+          image: "/history/green-workspace.webp",
+        },
+        {
+          title: "Hacker mode",
+          caption: "An easter egg that swapped the green for a red terminal theme and my CTF results.",
+          image: "/history/green-hacker.webp",
+        },
+      ],
+    },
+    {
+      name: "Green, on Astro",
+      period: "January - September 2026",
+      summary:
+        "The template turned green on January 2. That month it gained a contact form, a project stack that animated as you scrolled, collaborators on each project, and links to write-ups.",
+      screenshots: { desktop: "/history/astro-desktop.webp", phone: "/history/astro-phone.webp" },
+      details: [
+        {
+          title: "Experience",
+          caption: "By May it covered an internship and two club presidencies.",
+          image: "/history/astro-experience.webp",
+        },
+        {
+          title: "Projects",
+          caption: "Each card showed the project's tools and the people I built it with.",
+          image: "/history/astro-projects.webp",
+        },
+        {
+          title: "Contact",
+          caption: "The contact form opened over the page and sent messages through EmailJS.",
+          image: "/history/astro-contact.webp",
+        },
+      ],
+    },
+    {
+      name: "Starting from a template",
+      period: "December 2025 - January 2026",
+      summary:
+        "On New Year's Eve I started over from the Astro Zen template, putting in my name, photo, work experience, and resume first.",
+      screenshots: { desktop: "/history/template-desktop.webp", phone: "/history/template-phone.webp" },
+      details: [
+        {
+          title: "Experience",
+          caption: "My own roles replaced the template's on the first day.",
+          image: "/history/template-experience.webp",
+        },
+        {
+          title: "Projects",
+          caption: "These are still the template's sample projects, not mine.",
+          image: "/history/template-projects.webp",
+        },
+        {
+          title: "About",
+          caption: "The template's bio, with my name and photo swapped in.",
+          image: "/history/template-about.webp",
+        },
+      ],
+    },
+    {
+      name: "Bootstrap and PHP",
+      period: "March - November 2025",
+      summary:
+        "In March the class site moved to Bootstrap and PHP. By November it had a guestbook, a movies page, and social media highlights.",
+      screenshots: { desktop: "/history/class-desktop.webp", phone: "/history/class-phone.webp" },
+      details: [
+        {
+          title: "About",
+          caption:
+            "The bio got more specific about security, robotics, and IT work, and gained social media highlights.",
+          image: "/history/class-about.webp",
+        },
+        {
+          title: "Projects",
+          caption: "Tables organized the work, and research joined the programming and robotics projects.",
+          image: "/history/class-projects.webp",
+        },
+        {
+          title: "Downloads",
+          caption: "The list grew to include CTF write-ups and battlebot files.",
+          image: "/history/class-downloads.webp",
+        },
+      ],
+    },
+    {
+      name: "The class port",
+      period: "February 2025",
+      summary:
+        "I ported my site for a web development class at Kent State: hand-written HTML, CSS, and JavaScript, with a typing effect on the home page. It did not fit phone screens yet.",
+      screenshots: { desktop: "/history/early-class-desktop.webp", phone: "/history/early-class-phone.webp" },
+      details: [],
+    },
     {
       name: "My first site",
       period: "2023",
@@ -897,80 +1382,10 @@ export const SITE_CONTENT: SiteContent = {
         },
       ],
     },
-    {
-      name: "The class port",
-      period: "February - November 2025",
-      summary:
-        "I ported my site for a web development class at Kent State. It grew into several pages with Bootstrap, a typing effect, and a PHP guestbook.",
-      screenshots: { desktop: "/history/class-desktop.webp", phone: "/history/class-phone.webp" },
-      details: [
-        {
-          title: "About",
-          caption: "The bio got more specific about security, robotics, and IT work, and gained social media highlights.",
-          image: "/history/class-about.webp",
-        },
-        {
-          title: "Projects",
-          caption: "Tables organized the work, and research joined the programming and robotics projects.",
-          image: "/history/class-projects.webp",
-        },
-        {
-          title: "Downloads",
-          caption: "The empty page filled up with C++ examples, CTF write-ups, and battlebot files.",
-          image: "/history/class-downloads.webp",
-        },
-      ],
-    },
-    {
-      name: "The green one",
-      period: "January - November 2026",
-      summary:
-        "A single-page portfolio that started from the Astro Zen template and turned green two days later. It moved to SvelteKit in September and picked up hacker mode along the way.",
-      screenshots: { desktop: "/history/green-desktop.webp", phone: "/history/green-phone.webp" },
-      details: [
-        {
-          title: "Projects",
-          caption: "Projects became cards with screenshots, tech stacks, and links to code, write-ups, and videos.",
-          image: "/history/green-projects.webp",
-        },
-        {
-          title: "Workspace",
-          caption: "Added in October, with numbered markers for the gear on my desk.",
-          image: "/history/green-workspace.webp",
-        },
-        {
-          title: "Hacker mode",
-          caption: "An easter egg that swapped the green for a red terminal theme and my CTF results.",
-          image: "/history/green-hacker.webp",
-        },
-      ],
-    },
-    {
-      name: "The current site",
-      period: "November 2026 - Present",
-      summary: "A redesign around oversized type that reacts to the cursor, a dithered noise field, and slate with teal in place of the green.",
-      screenshots: { desktop: "/history/current-desktop.webp", phone: "/history/current-phone.webp" },
-      details: [
-        {
-          title: "Certifications",
-          caption: "A new section that groups credentials by issuer, with links to verify them.",
-          image: "/history/current-certifications.webp",
-        },
-        {
-          title: "Projects",
-          caption: "The cards opened up into a wider layout with much larger type.",
-          image: "/history/current-projects.webp",
-        },
-        {
-          title: "Workspace",
-          caption: "The desk photo now shares the screen with its hardware list.",
-          image: "/history/current-workspace.webp",
-        },
-      ],
-    },
   ],
   hackerAbout: {
-    description: "I go by yoyojesus. I explore networks, web apps, and the edge cases people miss. Most of my spare time goes to CTFs and building tools for recon and automation.",
+    description:
+      "I go by yoyojesus. I explore networks, web apps, and the edge cases people miss. Most of my spare time goes to CTFs and building tools for recon and automation.",
   },
 };
 

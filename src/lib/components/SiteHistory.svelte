@@ -34,7 +34,7 @@
   }
 </script>
 
-<Section text={hacker.on ? "$ git log --reverse" : "Site History"} href="history" level="h1">
+<Section text={hacker.on ? "$ git log" : "Site History"} href="history" level="h1">
   <ol>
     {#each versions as { name, period, summary, screenshots, details }, i}
       <li class="version">
@@ -65,27 +65,29 @@
             {/each}
           </div>
         </div>
-        <ul class="gallery">
-          {#each details as { title, caption, image }}
-            <li>
-              <figure>
-                <a
-                  href={image}
-                  aria-label="View larger: {name}, {title}"
-                  aria-haspopup="dialog"
-                  onclick={(event) =>
-                    open(event, { src: image, alt: `${name}: ${title}`, width: 1200, height: 750, title, caption })}
-                >
-                  <img src={image} alt="" width="1200" height="750" loading="lazy" decoding="async" />
-                </a>
-                <figcaption>
-                  <h3>{title}</h3>
-                  <p>{caption}</p>
-                </figcaption>
-              </figure>
-            </li>
-          {/each}
-        </ul>
+        {#if details.length}
+          <ul class="gallery" class:pairs={details.length % 2 === 0}>
+            {#each details as { title, caption, image }}
+              <li>
+                <figure>
+                  <a
+                    href={image}
+                    aria-label="View larger: {name}, {title}"
+                    aria-haspopup="dialog"
+                    onclick={(event) =>
+                      open(event, { src: image, alt: `${name}: ${title}`, width: 1200, height: 750, title, caption })}
+                  >
+                    <img src={image} alt="" width="1200" height="750" loading="lazy" decoding="async" />
+                  </a>
+                  <figcaption>
+                    <h3>{title}</h3>
+                    <p>{caption}</p>
+                  </figcaption>
+                </figure>
+              </li>
+            {/each}
+          </ul>
+        {/if}
       </li>
     {/each}
   </ol>
@@ -269,6 +271,9 @@
   @media (min-width: 768px) {
     .gallery {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .gallery.pairs {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
   @media (min-width: 900px) {
