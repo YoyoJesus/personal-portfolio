@@ -15,7 +15,7 @@ export interface SiteConfig extends HeaderProps {
     xbox: string;
     github: string;
     archidekt: string;
-    /** Archidekt deck IDs, in display order. Tag cards with a "Showcase" category to feature them. */
+    /** Archidekt deck IDs, in display order. Give cards a "Showcase" color tag to feature them. */
     commanderDecks: number[];
   };
 }

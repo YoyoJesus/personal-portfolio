@@ -10,13 +10,15 @@ export interface CommanderDeck {
   colors: string[];
   size: number;
   commanders: MtgCard[];
-  /** Cards tagged with the "Showcase" category on Archidekt. */
+  /** Cards with a "Showcase" color tag or category on Archidekt. */
   showcase: MtgCard[];
 }
 
 interface ArchidektCard {
   quantity: number;
   categories: string[] | null;
+  /** Color tag as "Name,#hex"; the name is empty when untagged. */
+  label?: string;
   card: { uid: string; scryfallImageHash?: string; oracleCard: { name: string; colorIdentity: string[] } };
 }
 
@@ -35,6 +37,8 @@ const COLORS: [string, string][] = [
 ];
 
 const SHOWCASE = "showcase";
+const isShowcase = (c: ArchidektCard) =>
+  c.label?.split(",")[0].trim().toLowerCase() === SHOWCASE || !!c.categories?.some((n) => n.toLowerCase() === SHOWCASE);
 
 // Scryfall's CDN files images by the first two characters of the card's Scryfall ID.
 const toCard = ({ card }: ArchidektCard): MtgCard => ({
@@ -54,9 +58,7 @@ export function parseDeck(id: number, deck: ArchidektDeck): CommanderDeck {
     colors: COLORS.filter(([name]) => identity.has(name)).map(([, letter]) => letter),
     size: cards.reduce((sum, c) => sum + c.quantity, 0),
     commanders: commanders.map(toCard),
-    showcase: cards
-      .filter((c) => !c.categories?.includes("Commander") && c.categories?.some((n) => n.toLowerCase() === SHOWCASE))
-      .map(toCard),
+    showcase: cards.filter((c) => !c.categories?.includes("Commander") && isShowcase(c)).map(toCard),
   };
 }
 
