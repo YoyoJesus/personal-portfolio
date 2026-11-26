@@ -60,6 +60,7 @@
 
   // Keep popovers on screen: the first column opens rightward, the last leftward, and the phone's middle column centers.
   const mobileSide = (i: number) => i === 0 || i % 2 === 1 ? "max-sm:left-0" : "max-sm:right-0";
+  const deckCols = (deck: CommanderDeck) => deck.commanders.length * 2 + 2;
   const popoverSide = (i: number) => `${mobileSide(i)} ${i % 5 === 0 ? "sm:left-0" : "sm:right-0"}`;
 </script>
 
@@ -325,15 +326,16 @@
     {:else}<p class="text-neutral">Recent listening is unavailable. Try again in a minute or visit Last.fm.</p>{/if}
   </div>
   <div class="activity-section deck-journal">
-    <p class="media-label">Magic: The Gathering</p>
+    <p class="media-label">Tabletop</p>
     <div class="activity-heading">
       <h3 class="activity-title"><IconCards class="size-6 text-accent" /> Magic <span>Decks</span></h3>
       <a href={`https://archidekt.com/u/${archidektUser}`} target="_blank" rel="noopener noreferrer" class="text-sm text-neutral hover:text-primary">Archidekt <span aria-hidden="true"><LinkIcon /></span></a>
     </div>
     {#if decks.length}
+      <!-- Each commander takes two columns and the Showcase block two more, so partner commanders shrink to fit the same footprint as a single commander. -->
       <ul class="deck-list">
         {#each decks as deck}
-          <li class="deck">
+          <li class="deck" style:--cols={deckCols(deck)}>
             <div class="deck-heading">
               <a href={deck.link} target="_blank" rel="noopener noreferrer" class="deck-name">{deck.name}</a>
               <span class="deck-meta">
@@ -397,7 +399,7 @@
   .deck-meta { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--color-neutral); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
   .pips { display: inline-flex; gap: 0.2rem; }
   .pip { width: 1.1rem; height: 1.1rem; }
-  .deck-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-flow: dense; gap: 0.75rem; }
+  .deck-cards { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); grid-auto-flow: dense; gap: 0.75rem; }
   .mtg-card.commander { grid-column: span 2; grid-row: span 2; }
   .mtg-card { width: 100%; height: auto; aspect-ratio: 488 / 680; border-radius: 4.75% / 3.5%; background: var(--color-surface); box-shadow: 0 0 0 1px var(--color-edge); transition: transform 400ms var(--ease-out-expo); }
   .mtg-card:hover { transform: translateY(-3px); }
@@ -420,6 +422,6 @@
   .artist-line a:hover { color: var(--color-accent); }
   :global(#not-coding .group img) { transition: transform 400ms var(--ease-out-expo); }
   :global(#not-coding .group:hover img) { transform: translateY(-3px); }
-  @media (min-width: 640px) { .deck-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
-  @media (min-width: 1100px) { .media-journal { grid-template-columns: repeat(2, minmax(0, 1fr)); } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
+  @media (min-width: 640px) { .deck-cards { max-width: 34rem; } .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
+  @media (min-width: 1100px) { .media-journal { grid-template-columns: repeat(2, minmax(0, 1fr)); } .deck-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .deck-cards { max-width: none; } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
 </style>
