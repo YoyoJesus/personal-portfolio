@@ -60,7 +60,6 @@
 
   // Keep popovers on screen: the first column opens rightward, the last leftward, and the phone's middle column centers.
   const mobileSide = (i: number) => i === 0 || i % 2 === 1 ? "max-sm:left-0" : "max-sm:right-0";
-  const deckCols = (deck: CommanderDeck) => deck.commanders.length * 2 + 2;
   const popoverSide = (i: number) => `${mobileSide(i)} ${i % 5 === 0 ? "sm:left-0" : "sm:right-0"}`;
 </script>
 
@@ -332,10 +331,9 @@
       <a href={`https://archidekt.com/u/${archidektUser}`} target="_blank" rel="noopener noreferrer" class="text-sm text-neutral hover:text-primary">Archidekt <span aria-hidden="true"><LinkIcon /></span></a>
     </div>
     {#if decks.length}
-      <!-- Each commander takes two columns and the Showcase block two more, so partner commanders shrink to fit the same footprint as a single commander. -->
       <ul class="deck-list">
         {#each decks as deck}
-          <li class="deck" style:--cols={deckCols(deck)}>
+          <li class="deck">
             <div class="deck-heading">
               <a href={deck.link} target="_blank" rel="noopener noreferrer" class="deck-name">{deck.name}</a>
               <span class="deck-meta">
@@ -346,9 +344,12 @@
               </span>
             </div>
             <div class="deck-cards">
-              {#each deck.commanders as card}
-                <img src={card.image} alt={card.name} title={card.name} loading="lazy" width="488" height="680" class="mtg-card commander" />
-              {/each}
+              <!-- Partner commanders fan out inside the single commander's slot, so Showcase cards keep the same size in every deck. -->
+              <div class={["commanders", deck.commanders.length > 1 && "partners"]}>
+                {#each deck.commanders as card}
+                  <img src={card.image} alt={card.name} title={card.name} loading="lazy" width="488" height="680" class="mtg-card commander" />
+                {/each}
+              </div>
               {#each deck.showcase as card}
                 <img src={card.image} alt={card.name} title={card.name} loading="lazy" width="488" height="680" class="mtg-card" />
               {/each}
@@ -399,8 +400,13 @@
   .deck-meta { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--color-neutral); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
   .pips { display: inline-flex; gap: 0.2rem; }
   .pip { width: 1.1rem; height: 1.1rem; }
-  .deck-cards { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); grid-auto-flow: dense; gap: 0.75rem; }
-  .mtg-card.commander { grid-column: span 2; grid-row: span 2; }
+  .deck-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+  .commanders { grid-column: span 2; grid-row: span 2; }
+  .partners { position: relative; min-height: 100%; aspect-ratio: 488 / 680; }
+  .partners .commander { position: absolute; width: 75%; }
+  .partners .commander:first-child { top: 0; left: 0; }
+  .partners .commander:last-child { right: 0; bottom: 0; }
+  .partners .commander:hover { z-index: 1; }
   .mtg-card { width: 100%; height: auto; aspect-ratio: 488 / 680; border-radius: 4.75% / 3.5%; background: var(--color-surface); box-shadow: 0 0 0 1px var(--color-edge); transition: transform 400ms var(--ease-out-expo); }
   .mtg-card:hover { transform: translateY(-3px); }
   .mtg-card.commander { box-shadow: 0 0 0 2px var(--color-accent); }
