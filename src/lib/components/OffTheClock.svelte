@@ -425,6 +425,6 @@
   .artist-line a:hover { color: var(--color-accent); }
   :global(#not-coding .group img) { transition: transform 400ms var(--ease-out-expo); }
   :global(#not-coding .group:hover img) { transform: translateY(-3px); }
-  @media (min-width: 640px) { .deck-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); } .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
+  @media (min-width: 640px) { .deck-cards { grid-template-columns: repeat(6, minmax(0, 1fr)); } .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
   @media (min-width: 1100px) { .media-journal, .deck-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .deck-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
 </style>
