@@ -327,7 +327,7 @@
   <div class="activity-section deck-journal">
     <p class="media-label">Magic: The Gathering</p>
     <div class="activity-heading">
-      <h3 class="activity-title"><IconCards class="size-6 text-accent" /> Commander <span>decks</span></h3>
+      <h3 class="activity-title"><IconCards class="size-6 text-accent" /> Magic <span>Decks</span></h3>
       <a href={`https://archidekt.com/u/${archidektUser}`} target="_blank" rel="noopener noreferrer" class="text-sm text-neutral hover:text-primary">Archidekt <span aria-hidden="true"><LinkIcon /></span></a>
     </div>
     {#if decks.length}
@@ -337,10 +337,10 @@
             <div class="deck-heading">
               <a href={deck.link} target="_blank" rel="noopener noreferrer" class="deck-name">{deck.name}</a>
               <span class="deck-meta">
-                <span class="pips" role="img" aria-label={`Colors: ${deck.colors.join("") || "colorless"}`}>
-                  {#each deck.colors as c}<span class="pip pip-{c}" aria-hidden="true">{c}</span>{/each}
+                <span class="pips" role="img" aria-label={`Color identity: ${deck.colors.join(", ") || "colorless"}`}>
+                  {#each deck.colors.length ? deck.colors : ["C"] as c}<img src={`https://svgs.scryfall.io/card-symbols/${c}.svg`} alt="" width="18" height="18" class="pip" />{/each}
                 </span>
-                {deck.size} cards
+                {#if deck.format}{deck.format}{/if}
               </span>
             </div>
             <div class="deck-cards">
@@ -396,14 +396,9 @@
   .deck-name:hover { color: var(--color-accent); }
   .deck-meta { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--color-neutral); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
   .pips { display: inline-flex; gap: 0.2rem; }
-  .pip { display: grid; place-items: center; width: 1.1rem; height: 1.1rem; border-radius: 50%; font-size: 0.6rem; font-weight: 700; line-height: 1; }
-  .pip-W { background: #f8f6d8; color: #3b3a2c; }
-  .pip-U { background: #c1d7e9; color: #0e3a5c; }
-  .pip-B { background: #bab1ab; color: #1c1714; }
-  .pip-R { background: #e49977; color: #5a1a0c; }
-  .pip-G { background: #a3c095; color: #173a22; }
-  :global(html.hacker) .pip { border-radius: 0; }
-  .deck-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+  .pip { width: 1.1rem; height: 1.1rem; }
+  .deck-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-flow: dense; gap: 0.75rem; }
+  .mtg-card.commander { grid-column: span 2; grid-row: span 2; }
   .mtg-card { width: 100%; height: auto; aspect-ratio: 488 / 680; border-radius: 4.75% / 3.5%; background: var(--color-surface); box-shadow: 0 0 0 1px var(--color-edge); transition: transform 400ms var(--ease-out-expo); }
   .mtg-card:hover { transform: translateY(-3px); }
   .mtg-card.commander { box-shadow: 0 0 0 2px var(--color-accent); }
@@ -425,6 +420,6 @@
   .artist-line a:hover { color: var(--color-accent); }
   :global(#not-coding .group img) { transition: transform 400ms var(--ease-out-expo); }
   :global(#not-coding .group:hover img) { transform: translateY(-3px); }
-  @media (min-width: 640px) { .deck-cards { grid-template-columns: repeat(6, minmax(0, 1fr)); } .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
-  @media (min-width: 1100px) { .media-journal, .deck-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .deck-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
+  @media (min-width: 640px) { .deck-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
+  @media (min-width: 1100px) { .media-journal { grid-template-columns: repeat(2, minmax(0, 1fr)); } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
 </style>

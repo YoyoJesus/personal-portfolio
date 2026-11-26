@@ -8,7 +8,8 @@ export interface CommanderDeck {
   link: string;
   /** WUBRG letters from the commanders' color identity, in WUBRG order. */
   colors: string[];
-  size: number;
+  /** Format name, or null for formats not in FORMATS. */
+  format: string | null;
   commanders: MtgCard[];
   /** Cards with a "Showcase" color tag or category on Archidekt. */
   showcase: MtgCard[];
@@ -24,6 +25,7 @@ interface ArchidektCard {
 
 interface ArchidektDeck {
   name: string;
+  deckFormat: number;
   categories: { name: string; includedInDeck: boolean }[];
   cards: ArchidektCard[];
 }
@@ -35,6 +37,17 @@ const COLORS: [string, string][] = [
   ["Red", "R"],
   ["Green", "G"],
 ];
+
+// Archidekt's numeric deckFormat values; others leave the format out.
+const FORMATS: Record<number, string> = {
+  1: "Standard",
+  2: "Modern",
+  3: "Commander",
+  4: "Legacy",
+  6: "Pauper",
+  13: "Brawl",
+  14: "Oathbreaker",
+};
 
 const SHOWCASE = "showcase";
 const isShowcase = (c: ArchidektCard) =>
@@ -56,7 +69,7 @@ export function parseDeck(id: number, deck: ArchidektDeck): CommanderDeck {
     name: deck.name,
     link: `https://archidekt.com/decks/${id}`,
     colors: COLORS.filter(([name]) => identity.has(name)).map(([, letter]) => letter),
-    size: cards.reduce((sum, c) => sum + c.quantity, 0),
+    format: FORMATS[deck.deckFormat] ?? null,
     commanders: commanders.map(toCard),
     showcase: cards.filter((c) => !c.categories?.includes("Commander") && isShowcase(c)).map(toCard),
   };
