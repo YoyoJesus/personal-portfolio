@@ -60,6 +60,13 @@
 
   // Keep popovers on screen: the first column opens rightward, the last leftward, and the phone's middle column centers.
   const mobileSide = (i: number) => i === 0 || i % 2 === 1 ? "max-sm:left-0" : "max-sm:right-0";
+  // Decks without a commander lead with their first Showcase card. Fewer than four Showcase cards narrow the deck instead of leaving gaps.
+  const deckLayout = (deck: CommanderDeck) => {
+    const hasCommander = deck.commanders.length > 0;
+    const lead = hasCommander ? deck.commanders : deck.showcase.slice(0, 1);
+    const rest = hasCommander ? deck.showcase : deck.showcase.slice(1);
+    return { hasCommander, lead, rest, cols: 2 + Math.min(2, Math.ceil(rest.length / 2)) };
+  };
   const popoverSide = (i: number) => `${mobileSide(i)} ${i % 5 === 0 ? "sm:left-0" : "sm:right-0"}`;
 </script>
 
@@ -333,6 +340,7 @@
     {#if decks.length}
       <ul class="deck-list">
         {#each decks as deck}
+          {@const layout = deckLayout(deck)}
           <li class="deck">
             <div class="deck-heading">
               <a href={deck.link} target="_blank" rel="noopener noreferrer" class="deck-name">{deck.name}</a>
@@ -343,17 +351,19 @@
                 {#if deck.format}{deck.format}{/if}
               </span>
             </div>
-            <div class="deck-cards">
-              <!-- Partner commanders fan out inside the single commander's slot, so Showcase cards keep the same size in every deck. -->
-              <div class={["commanders", deck.commanders.length > 1 && "partners"]}>
-                {#each deck.commanders as card}
-                  <img src={card.image} alt={card.name} title={card.name} loading="lazy" width="488" height="680" class="mtg-card commander" />
+            {#if layout.lead.length}
+              <div class="deck-cards" style:--cols={layout.cols}>
+                <!-- Partner commanders fan out inside the single commander's slot, so Showcase cards keep the same size in every deck. -->
+                <div class={["lead", layout.lead.length > 1 && "partners"]}>
+                  {#each layout.lead as card}
+                    <img src={card.image} alt={card.name} title={card.name} loading="lazy" width="488" height="680" class={["mtg-card", layout.hasCommander && "commander"]} />
+                  {/each}
+                </div>
+                {#each layout.rest as card}
+                  <img src={card.image} alt={card.name} title={card.name} loading="lazy" width="488" height="680" class="mtg-card" />
                 {/each}
               </div>
-              {#each deck.showcase as card}
-                <img src={card.image} alt={card.name} title={card.name} loading="lazy" width="488" height="680" class="mtg-card" />
-              {/each}
-            </div>
+            {/if}
           </li>
         {/each}
       </ul>
@@ -400,13 +410,13 @@
   .deck-meta { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--color-neutral); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
   .pips { display: inline-flex; gap: 0.2rem; }
   .pip { width: 1.1rem; height: 1.1rem; }
-  .deck-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
-  .commanders { grid-column: span 2; grid-row: span 2; }
+  .deck-cards { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 0.75rem; width: calc((100% + 0.75rem) * var(--cols) / 4 - 0.75rem); }
+  .lead { grid-column: span 2; grid-row: span 2; }
   .partners { position: relative; min-height: 100%; aspect-ratio: 488 / 680; }
-  .partners .commander { position: absolute; width: 75%; }
-  .partners .commander:first-child { top: 0; left: 0; }
-  .partners .commander:last-child { right: 0; bottom: 0; }
-  .partners .commander:hover { z-index: 1; }
+  .partners .mtg-card { position: absolute; width: 75%; }
+  .partners .mtg-card:first-child { top: 0; left: 0; }
+  .partners .mtg-card:last-child { right: 0; bottom: 0; }
+  .partners .mtg-card:hover { z-index: 1; }
   .mtg-card { width: 100%; height: auto; aspect-ratio: 488 / 680; border-radius: 4.75% / 3.5%; background: var(--color-surface); box-shadow: 0 0 0 1px var(--color-edge); transition: transform 400ms var(--ease-out-expo); }
   .mtg-card:hover { transform: translateY(-3px); }
   .mtg-card.commander { box-shadow: 0 0 0 2px var(--color-accent); }
@@ -428,6 +438,6 @@
   .artist-line a:hover { color: var(--color-accent); }
   :global(#not-coding .group img) { transition: transform 400ms var(--ease-out-expo); }
   :global(#not-coding .group:hover img) { transform: translateY(-3px); }
-  @media (min-width: 640px) { .deck-cards { max-width: 34rem; } .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
+  @media (min-width: 640px) { .deck-cards { max-width: calc((34rem + 0.75rem) * var(--cols) / 4 - 0.75rem); } .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
   @media (min-width: 1100px) { .media-journal { grid-template-columns: repeat(2, minmax(0, 1fr)); } .deck-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .deck-cards { max-width: none; } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
 </style>
