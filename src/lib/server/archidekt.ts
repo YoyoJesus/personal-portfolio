@@ -81,10 +81,17 @@ let decksCache: { at: number; key: string; decks: CommanderDeck[] } | null = nul
 
 async function getDeck(id: number): Promise<CommanderDeck | null> {
   try {
-    const res = await fetch(`https://archidekt.com/api/decks/${id}/`, { signal: AbortSignal.timeout(8000) });
-    if (!res.ok) return null;
+    const res = await fetch(`https://archidekt.com/api/decks/${id}/`, {
+      headers: { "User-Agent": "Mozilla/5.0", Accept: "application/json" },
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!res.ok) {
+      console.warn(`Archidekt deck ${id} returned ${res.status}`);
+      return null;
+    }
     return parseDeck(id, await res.json());
-  } catch {
+  } catch (err) {
+    console.warn(`Archidekt deck ${id} failed:`, err);
     return null;
   }
 }
