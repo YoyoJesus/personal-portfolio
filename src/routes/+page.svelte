@@ -12,7 +12,7 @@
 
   let { data } = $props();
 
-  const { letterboxd, lastfm, steam, xbox } = SITE_CONFIG.activity;
+  const { letterboxd, lastfm, steam, xbox, archidekt } = SITE_CONFIG.activity;
 
   // svelte-ignore state_referenced_locally
   let films = $state(data.films);
@@ -69,6 +69,8 @@
     xboxGames={data.xboxGames}
     xboxGamertag={xbox}
     favoriteGames={SITE_CONTENT.favoriteGames}
+    decks={data.decks}
+    archidektUser={archidekt}
   />
   <About
     {...SITE_CONTENT.about}

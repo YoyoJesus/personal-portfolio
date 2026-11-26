@@ -14,6 +14,9 @@ export interface SiteConfig extends HeaderProps {
     steam: string;
     xbox: string;
     github: string;
+    archidekt: string;
+    /** Archidekt deck IDs, in display order. Tag cards with a "Showcase" category to feature them. */
+    commanderDecks: number[];
   };
 }
 

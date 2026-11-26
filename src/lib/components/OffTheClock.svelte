@@ -11,11 +11,13 @@
   import IconPlaying from "~icons/svg-spinners/bars-scale-middle";
   import IconReview from "~icons/ph/chat-text-fill";
   import IconClose from "~icons/ph/x-bold";
+  import IconCards from "~icons/ph/cards-three-fill";
   import { fade } from "svelte/transition";
   import Section from "./Section.svelte";
   import type { FavoriteFilm, Film } from "$lib/server/letterboxd";
   import type { Listening } from "$lib/server/lastfm";
   import type { Game, Gaming } from "$lib/server/steam";
+  import type { CommanderDeck } from "$lib/server/archidekt";
   import type { FavoriteGame } from "$lib/types";
   import { hacker } from "$lib/hacker.svelte";
 
@@ -30,9 +32,11 @@
     xboxGames: Game[];
     xboxGamertag: string;
     favoriteGames: FavoriteGame[];
+    decks: CommanderDeck[];
+    archidektUser: string;
   }
 
-  let { films, favoriteFilms, listening, letterboxdUser, lastfmUser, gaming, steamId, xboxGames, xboxGamertag, favoriteGames }: Props = $props();
+  let { films, favoriteFilms, listening, letterboxdUser, lastfmUser, gaming, steamId, xboxGames, xboxGamertag, favoriteGames, decks, archidektUser }: Props = $props();
 
   const watchedOn = (d: string) =>
     new Date(`${d}T12:00:00`).toLocaleDateString("en-US", { month: "short", day: "numeric" });
@@ -320,6 +324,38 @@
       {/if}
     {:else}<p class="text-neutral">Recent listening is unavailable. Try again in a minute or visit Last.fm.</p>{/if}
   </div>
+  <div class="activity-section deck-journal">
+    <p class="media-label">Magic: The Gathering</p>
+    <div class="activity-heading">
+      <h3 class="activity-title"><IconCards class="size-6 text-accent" /> Commander <span>decks</span></h3>
+      <a href={`https://archidekt.com/u/${archidektUser}`} target="_blank" rel="noopener noreferrer" class="text-sm text-neutral hover:text-primary">Archidekt <span aria-hidden="true"><LinkIcon /></span></a>
+    </div>
+    {#if decks.length}
+      <ul class="deck-list">
+        {#each decks as deck}
+          <li class="deck">
+            <div class="deck-heading">
+              <a href={deck.link} target="_blank" rel="noopener noreferrer" class="deck-name">{deck.name}</a>
+              <span class="deck-meta">
+                <span class="pips" role="img" aria-label={`Colors: ${deck.colors.join("") || "colorless"}`}>
+                  {#each deck.colors as c}<span class="pip pip-{c}" aria-hidden="true">{c}</span>{/each}
+                </span>
+                {deck.size} cards
+              </span>
+            </div>
+            <div class="deck-cards">
+              {#each deck.commanders as card}
+                <img src={card.image} alt={card.name} title={card.name} loading="lazy" width="488" height="680" class="mtg-card commander" />
+              {/each}
+              {#each deck.showcase as card}
+                <img src={card.image} alt={card.name} title={card.name} loading="lazy" width="488" height="680" class="mtg-card" />
+              {/each}
+            </div>
+          </li>
+        {/each}
+      </ul>
+    {:else}<p class="text-neutral">Archidekt didn't respond. Try refreshing in a minute.</p>{/if}
+  </div>
 
 </Section>
 
@@ -353,7 +389,24 @@
   :global(html.hacker) .favorite-rank { font-size: 1rem; }
   .favorite-name { margin-top: 0.6rem; color: var(--color-white); font-family: var(--font-serif); font-size: 0.9rem; line-height: 1.35; overflow-wrap: anywhere; }
   .favorite-meta { margin-top: 0.2rem; color: var(--color-neutral); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
-  .music-journal { margin-top: 3rem; }
+  .music-journal, .deck-journal { margin-top: 3rem; }
+  .deck-list { display: grid; gap: 2.5rem 2rem; }
+  .deck-heading { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0.25rem 1rem; margin-bottom: 1rem; }
+  .deck-name { color: var(--color-white); font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; line-height: 1.3; }
+  .deck-name:hover { color: var(--color-accent); }
+  .deck-meta { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--color-neutral); font-size: 0.8rem; font-variant-numeric: tabular-nums; }
+  .pips { display: inline-flex; gap: 0.2rem; }
+  .pip { display: grid; place-items: center; width: 1.1rem; height: 1.1rem; border-radius: 50%; font-size: 0.6rem; font-weight: 700; line-height: 1; }
+  .pip-W { background: #f8f6d8; color: #3b3a2c; }
+  .pip-U { background: #c1d7e9; color: #0e3a5c; }
+  .pip-B { background: #bab1ab; color: #1c1714; }
+  .pip-R { background: #e49977; color: #5a1a0c; }
+  .pip-G { background: #a3c095; color: #173a22; }
+  :global(html.hacker) .pip { border-radius: 0; }
+  .deck-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+  .mtg-card { width: 100%; height: auto; aspect-ratio: 488 / 680; border-radius: 4.75% / 3.5%; background: var(--color-surface); box-shadow: 0 0 0 1px var(--color-edge); transition: transform 400ms var(--ease-out-expo); }
+  .mtg-card:hover { transform: translateY(-3px); }
+  .mtg-card.commander { box-shadow: 0 0 0 2px var(--color-accent); }
   .media-label { display: flex; align-items: center; gap: 0.9rem; margin-bottom: 1.1rem; color: var(--color-accent); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
   .media-label::after { content: ""; flex: 1; height: 1px; background: var(--color-edge-strong); }
   .album-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem 1rem; }
@@ -372,6 +425,6 @@
   .artist-line a:hover { color: var(--color-accent); }
   :global(#not-coding .group img) { transition: transform 400ms var(--ease-out-expo); }
   :global(#not-coding .group:hover img) { transform: translateY(-3px); }
-  @media (min-width: 640px) { .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
-  @media (min-width: 1100px) { .media-journal { grid-template-columns: repeat(2, minmax(0, 1fr)); } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
+  @media (min-width: 640px) { .deck-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); } .film-shelf, .album-gallery { grid-template-columns: repeat(5, minmax(0, 1fr)); } .top-four-shelf { grid-template-columns: repeat(4, minmax(0, 1fr)); } .favorite-shelf { grid-auto-flow: row; grid-template-columns: repeat(5, minmax(0, 1fr)); overflow: visible; } }
+  @media (min-width: 1100px) { .media-journal, .deck-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } .deck-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } .games-journal { border-left: 1px solid var(--color-edge); padding-left: 2rem; } }
 </style>

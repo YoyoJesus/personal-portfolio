@@ -31,6 +31,8 @@ export const SITE_CONFIG: SiteConfig = {
     steam: "76561198820308988",
     xbox: "Yoyojesus",
     github: "yoyojesus",
+    archidekt: "Yoyojesus",
+    commanderDecks: [5327114, 5604961],
   },
 };
 
